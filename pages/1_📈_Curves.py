@@ -226,10 +226,10 @@ if curve_type == "Raw Curve" and "_tenor_days" in df.columns:
     fig = go.Figure()
     fig.add_trace(go.Scatter(
         x=df["_tenor_days"],
-        y=df[value_col],
+        y=df[value_col] * 100,
         mode="lines+markers",
         text=df["maturityTenor"],
-        hovertemplate="<b>%{text}</b><br>Rate: %{y:.4f}<extra></extra>",
+        hovertemplate="<b>%{text}</b><br>Rate: %{y:.4f}%<extra></extra>",
     ))
     fig.update_layout(
         title=chart_title,
@@ -239,17 +239,23 @@ if curve_type == "Raw Curve" and "_tenor_days" in df.columns:
             ticktext=df["maturityTenor"].tolist(),
             title=t("curves.xaxis_tenor"),
         ),
-        yaxis_title="Rate",
+        yaxis_title="Rate (%)",
         hovermode="x unified",
         height=450,
     )
 else:
     df[value_col] = pd.to_numeric(df[value_col], errors="coerce")
-    fig = px.line(df, x=date_col, y=value_col, title=chart_title, markers=True)
+    _y_col = value_col
+    _y_label = value_col
+    if curve_type != "Discount Factor":
+        df = df.copy()
+        df[value_col] = df[value_col] * 100
+        _y_label = f"{value_col} (%)"
+    fig = px.line(df, x=date_col, y=_y_col, title=chart_title, markers=True)
     fig.update_layout(
         hovermode="x unified",
         xaxis_title=t("curves.xaxis_date"),
-        yaxis_title=value_col,
+        yaxis_title=_y_label,
         height=450,
     )
 
