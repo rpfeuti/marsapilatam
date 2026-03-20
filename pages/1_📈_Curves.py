@@ -260,7 +260,15 @@ st.plotly_chart(fig, use_container_width=True)
 # ---------------------------------------------------------------------------
 
 st.subheader(t("curves.table_header", n=len(df)))
-display_df = df.drop(columns=["_tenor_days"], errors="ignore")
+display_df = df.drop(columns=["_tenor_days"], errors="ignore").copy()
+
+# Format numeric value column as string so all columns share left-alignment
+_fmt = ".6f" if curve_type == "Discount Factor" else ".4f"
+if value_col in display_df.columns:
+    display_df[value_col] = display_df[value_col].apply(
+        lambda x: f"{x:{_fmt}}" if pd.notna(x) else ""
+    )
+
 st.dataframe(display_df, use_container_width=True, height=400)
 
 # ---------------------------------------------------------------------------
