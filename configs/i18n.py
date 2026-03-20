@@ -32,6 +32,15 @@ _DEFAULT_LANG = "EN"
 
 TRANSLATIONS: dict[str, dict[str, str]] = {
     # ------------------------------------------------------------------
+    # navigation labels
+    # ------------------------------------------------------------------
+    "nav.home": {
+        "EN": "Home",
+        "PT": "Início",
+        "ES": "Inicio",
+    },
+
+    # ------------------------------------------------------------------
     # app.py — home page
     # ------------------------------------------------------------------
     "app.title": {
@@ -102,10 +111,25 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "PT": "### Recursos",
         "ES": "### Recursos",
     },
+    "app.coming_soon": {
+        "EN": "*(Coming soon...)*",
+        "PT": "*(Em breve...)*",
+        "ES": "*(Próximamente...)*",
+    },
 
     # ------------------------------------------------------------------
     # common — shared across pages
     # ------------------------------------------------------------------
+    "common.status_demo": {
+        "EN": "Demo Mode — mock data",
+        "PT": "Modo Demo — dados simulados",
+        "ES": "Modo Demo — datos simulados",
+    },
+    "common.status_live": {
+        "EN": "Connected — Bloomberg API",
+        "PT": "Conectado — Bloomberg API",
+        "ES": "Conectado — Bloomberg API",
+    },
     "common.lang_label": {
         "EN": "Language",
         "PT": "Idioma",

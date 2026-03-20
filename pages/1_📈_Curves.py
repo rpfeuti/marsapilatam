@@ -21,7 +21,7 @@ import streamlit as st
 
 from bloomberg.exceptions import CurveError, MarsApiError
 from configs.curves_catalog import CURVES_BY_LABEL
-from configs.i18n import lang_selector, t
+from configs.i18n import t
 from configs.settings import (
     CURVE_API_FIELDS,
     CURVE_SIDES,
@@ -38,7 +38,6 @@ from services.curves_service import CurvesService
 # Page config
 # ---------------------------------------------------------------------------
 
-st.set_page_config(page_title=t("curves.page_title"), page_icon="📈", layout="wide")
 st.title(t("curves.title"))
 st.caption(t("curves.caption"))
 
@@ -109,9 +108,6 @@ _labels_map = (
 )
 
 with st.sidebar:
-    # Language selector first — affects all labels below
-    lang_selector()
-
     st.header(t("curves.sidebar_header"))
 
     _labels = list(_labels_map.keys())
