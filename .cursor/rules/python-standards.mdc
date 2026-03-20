@@ -1,0 +1,51 @@
+---
+description: Python coding standards for the MARS API LatAm project
+globs: "**/*.py"
+alwaysApply: false
+---
+
+# Python Standards
+
+## Imports & Typing
+
+```python
+# Always include at the top of every module
+from __future__ import annotations
+```
+
+- Use `X | Y` union syntax (not `Union[X, Y]`)
+- Use `list[str]`, `dict[str, Any]` (lowercase generics, not `List`, `Dict`)
+- Type all public method signatures — parameters and return types
+
+## Pydantic
+
+- Use Pydantic v2 (`model_validate`, `model_dump`, `@model_validator(mode="after")`)
+- Settings via `pydantic-settings BaseSettings`; read from `.env` only
+
+## Error Handling
+
+Raise from the custom hierarchy in `bloomberg/exceptions.py`:
+
+```python
+# ✅ GOOD
+raise StructuringError(response.get("error_description", str(response["error"])))
+
+# ❌ BAD — never raise bare Exception or ValueError for API errors
+raise ValueError("API error")
+```
+
+## Comments & Docstrings
+
+- **All comments and docstrings must be in English**
+- No obvious/redundant comments (`# increment counter`, `# return result`)
+- Docstrings explain *why*, trade-offs, or non-obvious behaviour only
+
+## HTTP Client
+
+- Use `MarsClient` from `bloomberg.webapi` — never call `httpx` directly in services
+- Body format for structuring: `"tail"` + `"dealStructureOverride"` (not `"structureRequest"`)
+
+## Formatting
+
+- Line length: **110** characters (ruff enforced)
+- Run `ruff check --fix` and `ruff format` before committing

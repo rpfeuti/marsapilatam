@@ -1,0 +1,69 @@
+---
+description: Conventions for Streamlit page files in the MARS API LatAm project
+globs: "pages/**/*.py"
+alwaysApply: false
+---
+
+# Streamlit Page Conventions
+
+## Required Boilerplate (top of every page)
+
+```python
+from configs.i18n import lang_selector, t
+from configs.settings import settings
+
+st.set_page_config(page_title=t("mypage.page_title"), page_icon="...", layout="wide")
+st.title(t("mypage.title"))
+
+IS_DEMO = settings.demo_mode
+if IS_DEMO:
+    st.warning(t("common.demo_banner"), icon="🔒")
+```
+
+## Language Selector
+
+Place `lang_selector()` as the **first item** in every sidebar:
+
+```python
+with st.sidebar:
+    lang_selector()           # must be first
+    st.header(t("..."))
+    ...
+```
+
+## i18n — No Hardcoded UI Strings
+
+```python
+# ✅ GOOD
+st.button(t("curves.button_load"))
+st.error(t("curves.error_api", error=e))
+
+# ❌ BAD — never hardcode English (or any language) in page files
+st.button("Load curve")
+```
+
+Add missing keys to `configs/i18n.py` in all 3 languages before using them.
+
+## Caching Pattern
+
+```python
+@st.cache_resource(show_spinner=t("mypage.spinner_session"))
+def get_service(date: date) -> MyService:
+    return MyService(market_date=date)
+
+@st.cache_data(show_spinner=t("mypage.spinner_download"))
+def fetch_data(_svc: MyService, ...) -> pd.DataFrame:
+    return _svc.download(...)
+```
+
+- `@st.cache_resource` — for service/session objects (expensive to create)
+- `@st.cache_data` — for API call results (keyed on serialisable args)
+- Prefix unhashable args with `_` to exclude from cache key
+
+## Demo Mode
+
+- Show `common.demo_banner` warning at the top
+- In sidebar, show `common.demo_cta_sidebar` after a `st.divider()`
+- At page bottom after results, show `common.demo_cta_bottom` with `st.info(..., icon="ℹ️")`
+- Disable date/side inputs when `IS_DEMO` is True
+- Filter selectors to demo-available options only

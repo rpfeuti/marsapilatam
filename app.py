@@ -1,37 +1,40 @@
 import streamlit as st
 
+from configs.i18n import lang_selector, t
+
 st.set_page_config(
     page_title="MARS API LatAm",
     page_icon="📊",
     layout="wide",
 )
 
-st.title("Bloomberg MARS API — LatAm")
+# Language selector — sets st.session_state["lang"] shared across all pages
+with st.sidebar:
+    lang_selector()
+
+st.title(t("app.title"))
+st.markdown(t("app.subtitle"))
+st.markdown(t("app.nav_prompt"))
+st.markdown("---")
+st.markdown(t("app.demos_header"))
 
 st.markdown(
-    """
-    **MARS** (Multi-Asset Risk System) API demo for Latin America markets.
-    Built on Python 3.11 with `httpx`, `pydantic-settings`, and `streamlit`.
+    f"""
+| {t("app.table_page")} | {t("app.table_desc")} |
+|---|---|
+| 📈 {t("curves.page_title")} | {t("app.demo_curves")} |
+| 💱 Swaps | {t("app.demo_swaps")} |
+| 💵 FX Options | {t("app.demo_fx")} |
+| 🏦 Portfolio | {t("app.demo_portfolio")} |
+| 📃 Deal Information | {t("app.demo_dealinfo")} |
+| 🚀 Swaps Async | {t("app.demo_async")} |
+"""
+)
 
-    **👈 Select a page from the sidebar** to explore the demos.
-
-    ---
-
-    ### Available demos
-
-    | Page | Description |
-    |---|---|
-    | 📈 Curves | Download and visualize interest rate curves via XMarket |
-    | 💱 Swaps | Structure, price, and solve IR swaps (SWPM back-end) |
-    | 💵 FX Options | Price FX vanilla options with full greeks (OVML back-end) |
-    | 🏦 Portfolio | Price an entire Bloomberg portfolio |
-    | 📃 Deal Information | Browse deal types, schemas, and terms & conditions |
-    | 🚀 Swaps Async | Build a par rate curve with concurrent async requests |
-
-    ---
-
-    ### Resources
-    - Bloomberg Terminal: `RISK<GO>`, `EAPI<GO>`, `SWPM<GO>`, `OVML<GO>`
-    - [Bloomberg MARS API documentation](https://developer.bloomberg.com/pages/apis/marsapi/reference)
-    """
+st.markdown("---")
+st.markdown(t("app.resources_header"))
+st.markdown(
+    "- Bloomberg Terminal: `RISK<GO>`, `EAPI<GO>`, `SWPM<GO>`, `OVML<GO>`\n"
+    "- [Bloomberg MARS API documentation]"
+    "(https://developer.bloomberg.com/pages/apis/marsapi/reference)"
 )

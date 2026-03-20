@@ -1,0 +1,41 @@
+---
+description: Project architecture and conventions for MARS API LatAm — always apply
+alwaysApply: true
+---
+
+# MARS API LatAm — Project Overview
+
+## Stack
+
+- **Python 3.10+**, `httpx`, `pydantic-settings`, `streamlit`, `plotly`, `pandas`
+- **Linter/formatter**: `ruff` (line length 110, target py311)
+- **Auth**: HS256 JWT generated in `bloomberg/webapi/bbg_jwt.py`
+
+## Layer Architecture
+
+```
+bloomberg/webapi/mars_client.py   ← low-level HTTP + JWT + session management
+services/curves_service.py        ← XMarket curve downloads (supports demo mode)
+services/security_service.py      ← deal structure + price + solve + save
+services/portfolio_service.py     ← portfolio pricing
+services/risk_service.py          ← Key Rate Risk (KRR)
+instruments/swap.py               ← Pydantic model → MARS params
+instruments/fx_option.py
+instruments/equity_option.py
+configs/settings.py               ← credentials + constants (pydantic-settings)
+configs/i18n.py                   ← UI translations EN/PT/ES
+configs/curves_catalog.py         ← 248-entry XMarket curve catalog
+pages/1_📈_Curves.py              ← Streamlit UI pages
+app.py                            ← Streamlit home page
+demo_data/                        ← pre-saved JSON curve snapshots for demo mode
+```
+
+## Key Conventions
+
+- **Demo mode**: `settings.demo_mode` is `True` when no Bloomberg credentials are set. Services must handle this gracefully — `CurvesService` loads from `demo_data/`.
+- **Credentials**: Never hardcode. Always read from `.env` via `pydantic-settings`. `.env` is gitignored.
+- **Structure requests**: Use `"tail"` + `"dealStructureOverride"` body format (NOT `"structureRequest"`).
+- **DayCount**: Use MARS notation (`"ACT/365"`, `"ACT/360"`) not long-form.
+- **Curve IDs**: Format is `S{number}` (e.g. `S329` for COP OIS).
+- **Comments and docstrings**: Always in English.
+- **UI strings**: Always via `t(key)` from `configs.i18n` — never hardcoded in page files.
