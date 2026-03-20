@@ -1,0 +1,2109 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Restful Web Service exposing financial analytics workflow.",
+    "version": "1.0.0",
+    "title": "riskwebapi API Service",
+    "termsOfService": "",
+    "x-logo": {
+      "url": "/portal/assets/redoc-cis-web/API_Documentation.svg",
+      "backgroundColor": "#171717"
+    }
+  },
+  "host": "swaggerhub.dev.bloomberg.com",
+  "basePath": "/virts/klane55/risk-web-api/1.0.0",
+  "tags": [
+    { "name": "BvalPortfolioDeals", "description": "Endpoint for fetching BVAL portfolio deals" },
+    { "name": "DataFields", "description": "Fetch data fields for securities" },
+    { "name": "JMGRBatch", "description": "Endpoint for dealing with a specific JMGR batch (batch definition)" },
+    { "name": "JMGRBatchRun", "description": "Endpoint for dealing with a specific JMGR batch-run" },
+    { "name": "JMGRBatchRunResultsCollection", "description": "Endpoint for dealing with the results of a specific JMGR batch-run" },
+    { "name": "JMGRBatchRunStep", "description": "Endpoint for dealing with a specific step of a specific JMGR batch-run" },
+    { "name": "JMGRBatchRunStepResultsCollection", "description": "Endpoint for dealing with the results of a specific step of a specific JMGR batch-run" },
+    { "name": "JMGRBatchRunsCollection", "description": "Endpoint for dealing with JMGR batch-runs" },
+    { "name": "JMGRBatchesCollection", "description": "Endpoint for dealing with JMGR batches" },
+    { "name": "JMGRCentralDependencies", "description": "Endpoint for dealing with JMGR Central Dependency Resources" },
+    { "name": "JMGRFileConfigurationsCollection", "description": "Endpoint for dealing with JMGR file configurations" },
+    { "name": "JMGROutputFilesCollection", "description": "Endpoint for dealing with a specific JMGR batch-run's output files" },
+    { "name": "JMGRSiteDependencies", "description": "Endpoint for dealing with JMGR Site Dependency Resources" },
+    { "name": "JMGRStepOutputFilesCollection", "description": "Endpoint for dealing with the output files of a specific step belonging to a specific batch-run" },
+    { "name": "MapilfcRealizedMetricsResult", "description": "Retreive asynchronous mapilfc realized metrics result" },
+    { "name": "MapilfcSecuritiesRealizedMetrics", "description": "Endpoint for securities realized metrics through MARS API" },
+    { "name": "PortAnalytics", "description": "Endpoint for computing new analytics via the PORT stack" },
+    { "name": "PortFields", "description": "Endpoint for requesting a list of available PORT fields" },
+    { "name": "PortOptimization", "description": "PORT Optimization request" },
+    { "name": "PortOptimizationConstraints", "description": "List all pre-defined constraints for PORT optimization" },
+    { "name": "PortOptimizationDataset", "description": "Entry point for the optimization dataset related request of portfolio optimizer" },
+    { "name": "PortOptimizationDatasets", "description": "Optimization datasets requests." },
+    { "name": "PortOptimizationGoals", "description": "List all pre-defined goals for PORT optimization" },
+    { "name": "PortOptimizationResult", "description": "Retreive asynchronous PORT optimization result" },
+    { "name": "PortOptimizationTask", "description": "Entry point for the optimization task related request of portfolio optimizer" },
+    { "name": "PortOptimizationTasks", "description": "Get to list all optimization tasks, or post to create a new API task." },
+    { "name": "PortSingleSecurityAcquisition", "description": "Endpoint to set the pricing for a single security" },
+    { "name": "PortStatus", "description": "Report PORT RESTful server status" },
+    { "name": "PortfolioHoldingsSnapshot", "description": "Endpoint for portfolio holdings management" },
+    { "name": "PortfolioTickerizationSettings", "description": "Endpoint for portfolio tickerization settings management" },
+    { "name": "aggregatedAccounting", "description": "Calculate a HEFF aggregated accounting report" },
+    { "name": "cdsCurves", "description": "Endpoint for CDS Curve retrieval" },
+    { "name": "creditRisk", "description": "Endpoint for calculating credit risk reports" },
+    { "name": "creditRiskMetadata", "description": "Endpoint for retrieving credit risk report metadata" },
+    { "name": "dataDownload", "description": "Endpoint for data download" },
+    { "name": "dataSession", "description": "Endpoint for starting a Data upload session" },
+    { "name": "dataUpload", "description": "Endpoint for data upload" },
+    { "name": "dealSchema", "description": "Endpoint for retrieving deal schema" },
+    { "name": "dealType", "description": "Endpoint for retrieving deal type" },
+    { "name": "deals", "description": "Endpoint for bulk securities import through the MARS Uploader" },
+    { "name": "dealsTemporary", "description": "Endpoint for saving temporary deals" },
+    { "name": "dealsTemporaryCollection", "description": "Endpoint for structuring temporary deals" },
+    { "name": "designation", "description": "Return summary level HEFF designation information" },
+    { "name": "designationAccounting", "description": "Endpoint for fetching accounting numbers" },
+    { "name": "designationDiscovery", "description": "Discover designations belonging to a group" },
+    { "name": "heffProcess", "description": "Endpoints for running HEFF process" },
+    { "name": "initialMargin", "description": "Start an initial margin calculation" },
+    { "name": "portData", "description": "Endpoint for fetching Port Data from Portfolio Enterprise Data Lake (PEDL) by jmgrPortDataId" },
+    { "name": "portDataCollection", "description": "Endpoint for fetching Port Data from Portfolio Enterprise Data Lake (PEDL)" },
+    { "name": "portDataDeleted", "description": "Returns a list of DeleteInfo objects" },
+    { "name": "portInfo", "description": "Endpoint for fetching Port Info from Portfolio Enterprise Data Lake (PEDL)" },
+    { "name": "portfolio", "description": "Endpoint for portfolio level management" },
+    { "name": "portfolioId", "description": "Endpoint for bval portfolio Id information" },
+    { "name": "portfolioPricing", "description": "This endpoint allows one to send a portfolio pricing request to MARS API backend." },
+    { "name": "results", "description": "Endpoint for retrieving results by resultId under different modes" },
+    { "name": "scenarios", "description": "Endpoint for SHOC schenarios" },
+    { "name": "securitiesKrr", "description": "Endpoint for starting a securities KRR calculation through MARS API" },
+    { "name": "securitiesPricing", "description": "Endpoint for securities pricing/solve through MARS API" },
+    { "name": "sessions", "description": "Endpoint for starting a MARS API session" },
+    { "name": "xvaCalculation", "description": "Endpoints for running XVA calculation request" },
+    { "name": "xvaMetric", "description": "Endpoints for running XVA Get Available Metrics" },
+    { "name": "xvaResult", "description": "Endpoints for running XVA result retrieval" },
+    { "name": "xvaWhatIfCalculation", "description": "Endpoints for running XVA What If Request" },
+    { "name": "xvaWhatIfMetric", "description": "Endpoints for running XVA Get What If Available Metrics" },
+    { "name": "xvaWhatIfResult", "description": "Endpoints for running XVA result retrieval" }
+  ],
+  "schemes": ["https", "http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/enterprise/bvalotc/portfolio-ids": {
+      "get": {
+        "tags": ["portfolioId"],
+        "summary": "Send a get bval portfolio id request",
+        "description": "Send a get bval portfolio id request",
+        "parameters": [
+          { "name": "portfolioName", "in": "query", "description": "Filter accessible portfolioIds that only have the name set to portfolioName", "required": false, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/portmgmtsvc_GetBvalPortfolioIdsResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      }
+    },
+    "/enterprise/bvalotc/portfolios/{portfolio_id}/deals": {
+      "get": {
+        "tags": ["BvalPortfolioDeals"],
+        "summary": "Send a get portfolio deals request",
+        "description": "Send a get portfolio deals request",
+        "parameters": [
+          { "name": "portfolio_id", "in": "path", "description": "Portfolio Id to uniquely identify a portfolio", "required": true, "type": "string" },
+          { "name": "instrumentIdDisplayType", "in": "query", "description": "Format the deal Ids in display", "required": false, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/portmgmtsvc_GetBvalPortfolioDealsResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      }
+    },
+    "/enterprise/common/portfolio-ids": {
+      "get": {
+        "tags": ["portfolioId"],
+        "summary": "Send a get portfolio id request",
+        "parameters": [
+          { "name": "portfolioName", "in": "query", "required": false, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/portmgmtsvc_GetPortfolioIdsResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      }
+    },
+    "/enterprise/common/portfolios": {
+      "post": {
+        "tags": ["portfolio"],
+        "summary": "Send a create portfolio request",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/portmgmtsvc_Portfolio" } }
+        ],
+        "responses": {
+          "201": { "description": "The resource was created.", "schema": { "$ref": "#/definitions/portmgmtsvc_CreatePortfolioResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      }
+    },
+    "/enterprise/common/portfolios/{portfolio_id}": {
+      "get": {
+        "tags": ["portfolio"],
+        "summary": "Send a get portfolio metadata request",
+        "parameters": [
+          { "name": "portfolio_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/portmgmtsvc_GetPortfolioMetadataResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      },
+      "delete": {
+        "tags": ["portfolio"],
+        "summary": "Send a delete portfolio request",
+        "parameters": [
+          { "name": "portfolio_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "201": { "description": "The resource was created.", "schema": { "$ref": "#/definitions/portmgmtsvc_DeletePortfolioResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      },
+      "patch": {
+        "tags": ["portfolio"],
+        "summary": "Send a update portfolio metadata request",
+        "parameters": [
+          { "name": "portfolio_id", "in": "path", "required": true, "type": "string" },
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/portmgmtsvc_Portfolio" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/portmgmtsvc_UpdatePortfolioMetadataResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      }
+    },
+    "/enterprise/common/portfolios/{portfolio_id}/snapshots": {
+      "get": {
+        "tags": ["PortfolioHoldingsSnapshot"],
+        "summary": "Send a get portfolio snapshot request",
+        "parameters": [
+          { "name": "portfolio_id", "in": "path", "required": true, "type": "string" },
+          { "name": "instrumentIdDisplayType", "in": "query", "required": false, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/portmgmtsvc_GetHoldingsAsOfDateResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      },
+      "post": {
+        "tags": ["PortfolioHoldingsSnapshot"],
+        "summary": "Request to add holdings to a portfolio snapshot",
+        "parameters": [
+          { "name": "portfolio_id", "in": "path", "required": true, "type": "string" },
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/portmgmtsvc_HoldingsSnapshot" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/portmgmtsvc_AddHoldingsAsOfDateResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      },
+      "put": {
+        "tags": ["PortfolioHoldingsSnapshot"],
+        "summary": "Request to fully replace all holdings as specified in the snapshot",
+        "parameters": [
+          { "name": "portfolio_id", "in": "path", "required": true, "type": "string" },
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/portmgmtsvc_HoldingsSnapshot" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/portmgmtsvc_ReplaceHoldingsAsOfDateResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      },
+      "patch": {
+        "tags": ["PortfolioHoldingsSnapshot"],
+        "summary": "Request to update specific holdings in a snapshot",
+        "parameters": [
+          { "name": "portfolio_id", "in": "path", "required": true, "type": "string" },
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/portmgmtsvc_HoldingsSnapshot" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/portmgmtsvc_UpdateHoldingsAsOfDateResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      }
+    },
+    "/enterprise/common/portfolios/{portfolio_id}/snapshots/{date}": {
+      "get": {
+        "tags": ["PortfolioHoldingsSnapshot"],
+        "summary": "Send a get portfolio snapshot request",
+        "parameters": [
+          { "name": "portfolio_id", "in": "path", "required": true, "type": "string" },
+          { "name": "date", "in": "path", "required": true, "type": "string" },
+          { "name": "instrumentIdDisplayType", "in": "query", "required": false, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/portmgmtsvc_GetHoldingsAsOfDateResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      }
+    },
+    "/enterprise/common/portfolios/{portfolio_id}/tickerization": {
+      "get": {
+        "tags": ["PortfolioTickerizationSettings"],
+        "summary": "Send a get tickerization settings request",
+        "parameters": [
+          { "name": "portfolio_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/portmgmtsvc_GetTickerizationSettingsResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      },
+      "patch": {
+        "tags": ["PortfolioTickerizationSettings"],
+        "summary": "Send a update portfolio tickerization settings request",
+        "parameters": [
+          { "name": "portfolio_id", "in": "path", "required": true, "type": "string" },
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/portmgmtsvc_TickerizationSettings" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/portmgmtsvc_UpdateTickerizationSettingsResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/portfolioPricing": {
+      "post": {
+        "tags": ["portfolioPricing"],
+        "summary": "Sends a portfolio pricing request",
+        "description": "Sends a portfolio pricing request",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/xapxsvc_PortfolioPricingSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/xapxsvc_PortfolioPricingResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/results/{mode}/{result_id}": {
+      "get": {
+        "tags": ["results"],
+        "summary": "Retrieve results for the given result_id under specific mode",
+        "parameters": [
+          { "name": "mode", "in": "path", "required": true, "type": "string", "enum": ["Pricing", "Upload", "CreditRisk"] },
+          { "name": "result_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/ResultRetrievalResponseModel" } },
+          "401": { "description": "The user is not authorized to access this resource.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/scenarios": {
+      "post": {
+        "tags": ["scenarios"],
+        "summary": "Create a scenario",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/xapxsvc_CreateScenarioRequestSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/xapxsvc_CreateScenarioResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      },
+      "put": {
+        "tags": ["scenarios"],
+        "summary": "Update multiple scenarios",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/xapxsvc_UpdateScenariosRequestSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/xapxsvc_UpdateScenarioResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      },
+      "delete": {
+        "tags": ["scenarios"],
+        "summary": "Delete multiple scenarios",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/xapxsvc_DeleteScenariosRequestSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/xapxsvc_DeleteScenariosResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/scenarios/{scenario_id}": {
+      "get": {
+        "tags": ["scenarios"],
+        "summary": "Retrieve a scenario",
+        "parameters": [
+          { "name": "scenario_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/xapxsvc_GetScenarioResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/securitiesKrr": {
+      "post": {
+        "tags": ["securitiesKrr"],
+        "summary": "Send a securities krr request",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/xapxsvc_SecuritiesKrrSchema" } }
+        ],
+        "responses": {
+          "201": { "description": "The resource was created.", "schema": { "$ref": "#/definitions/xapxsvc_SecuritiesKrrResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/securitiesKrr/{result_id}": {
+      "get": {
+        "tags": ["securitiesKrr"],
+        "summary": "Retrieve krr results for the given result_id",
+        "parameters": [
+          { "name": "result_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "201": { "description": "The resource was created.", "schema": { "$ref": "#/definitions/xapxsvc_SecuritiesKrrResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/securitiesPricing": {
+      "post": {
+        "tags": ["securitiesPricing"],
+        "summary": "Send a securities pricing/solve request",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/xapxsvc_SecuritiesPricingSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/xapxsvc_SecuritiesPricingResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/sessions": {
+      "post": {
+        "tags": ["sessions"],
+        "summary": "Create a new MARS API session",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/xapxsvc_StartSessionRequest" } }
+        ],
+        "responses": {
+          "201": { "description": "The resource was created.", "schema": { "$ref": "#/definitions/xapxsvc_StartMarketDataSessionResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/sessions/{session_id}": {
+      "delete": {
+        "tags": ["sessions"],
+        "summary": "End the MARS API session corresponding to the given session_id",
+        "parameters": [
+          { "name": "session_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/EndSessionResponseModel" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/deals/temporary": {
+      "post": {
+        "tags": ["dealsTemporaryCollection"],
+        "summary": "Structure a temporary deal",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/xapxsvc_StructureRequest" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/xapxsvc_StructureResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/deals/temporary/{deal_id}": {
+      "patch": {
+        "tags": ["dealsTemporary"],
+        "summary": "Save the temporary deal with given deal_id into a permanent deal",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/xapxsvc_SaveRequest" } },
+          { "name": "deal_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/xapxsvc_SaveResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/deals": {
+      "post": {
+        "tags": ["deals"],
+        "summary": "Send an upload request through MARS Uploader",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/marsupd_ImportSecuritiesSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/marsupd_DealsResponseSchema" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/dealSchema": {
+      "get": {
+        "tags": ["dealSchema"],
+        "summary": "Retrieve deal schema for given deal type",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/xapxsvc_GetDealSchemaSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/xapxsvc_GetDealSchemaResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/dealType": {
+      "get": {
+        "tags": ["dealType"],
+        "summary": "Retrieve supported deal types",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/xapxsvc_GetDealTypeSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/xapxsvc_GetDealTypeResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/cdsCurves": {
+      "get": {
+        "tags": ["cdsCurves"],
+        "summary": "Send a curve report request",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/CurveReportSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/CurveReportResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/creditRisk/reports": {
+      "post": {
+        "tags": ["creditRisk"],
+        "summary": "Calculate a credit risk report",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/GetCreditRiskByPortfolioRequestSchema" } }
+        ],
+        "responses": {
+          "202": { "description": "The request has been accepted for processing.", "schema": { "$ref": "#/definitions/ResultNotReadyResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/creditRisk/reports/{report_id}": {
+      "get": {
+        "tags": ["creditRisk"],
+        "summary": "Retrieve a credit risk report",
+        "parameters": [
+          { "name": "report_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "202": { "description": "The request has been accepted for processing.", "schema": { "$ref": "#/definitions/ResultNotReadyResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/dataDownload": {
+      "post": {
+        "tags": ["dataDownload"],
+        "summary": "Send a get data request",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/GetDataRequestSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/GetDataResponse" } },
+          "default": { "description": "", "schema": { "$ref": "#/definitions/DataDownloadErrorResponseSchema" } }
+        }
+      }
+    },
+    "/marswebapi/v1/dataSessions": {
+      "post": {
+        "tags": ["dataSession"],
+        "summary": "Create a new data upload session",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/StartDataSessionRequestSchema" } }
+        ],
+        "responses": {
+          "201": { "description": "The resource was created.", "schema": { "$ref": "#/definitions/StartDataSessionResponseSchema" } },
+          "default": { "description": "", "schema": { "$ref": "#/definitions/DataUploadErrorResponseSchema" } }
+        }
+      },
+      "delete": {
+        "tags": ["dataSession"],
+        "summary": "End a data upload session",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/EndDataSessionRequestSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/EndDataSessionResponseSchema" } },
+          "default": { "description": "", "schema": { "$ref": "#/definitions/DataUploadErrorResponseSchema" } }
+        }
+      }
+    },
+    "/marswebapi/v1/dataUpload": {
+      "post": {
+        "tags": ["dataUpload"],
+        "summary": "Data upload request",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/AddOrUpdateDataRequestSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/AddOrUpdateDataResponseSchema" } },
+          "default": { "description": "", "schema": { "$ref": "#/definitions/DataUploadErrorResponseSchema" } }
+        }
+      }
+    },
+    "/marswebapi/v1/initialMargin": {
+      "post": {
+        "tags": ["initialMargin"],
+        "summary": "Send an initial margin request",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/InitialMarginRequest" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/InitialMarginResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/InitialMarginResponse" } },
+          "401": { "description": "The user is not authorized to access this resource.", "schema": { "$ref": "#/definitions/InitialMarginResponse" } },
+          "500": { "description": "Internal server error.", "schema": { "$ref": "#/definitions/InitialMarginResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/initialMargin/{result_id}": {
+      "get": {
+        "tags": ["initialMargin"],
+        "summary": "Retrieve initial margin results for the given result_id",
+        "parameters": [
+          { "name": "result_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/InitialMarginResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/InitialMarginResponse" } },
+          "401": { "description": "The user is not authorized to access this resource.", "schema": { "$ref": "#/definitions/InitialMarginResponse" } },
+          "500": { "description": "Internal server error.", "schema": { "$ref": "#/definitions/InitialMarginResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/xva/xvaCalculations": {
+      "post": {
+        "tags": ["xvaCalculation"],
+        "summary": "Start XVA calculation with the calculation request",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/exvamapi_CalculationRequest" } }
+        ],
+        "responses": {
+          "202": { "description": "The request has been accepted for processing.", "schema": { "$ref": "#/definitions/exvamapi_ResultNotReadyResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "503": { "description": "Service Unavailable", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/xva/xvaCalculations/availableMetrics/{metric_level}": {
+      "get": {
+        "tags": ["xvaMetric"],
+        "summary": "Retrieves XVA available metrics for the request metric level",
+        "parameters": [
+          { "name": "metric_level", "in": "path", "required": true, "type": "string", "enum": ["ALL", "BOOK", "NETTING_SET", "PROFILE_EXPOSURE", "DEAL"] }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/exvamapi_XvaCalculationInputMetrics" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "503": { "description": "Service Unavailable", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/xva/xvaCalculations/{result_id}": {
+      "get": {
+        "tags": ["xvaResult"],
+        "summary": "Retrieves XVA result for given result id",
+        "parameters": [
+          { "name": "result_id", "in": "path", "required": true, "type": "string" },
+          { "name": "status", "in": "query", "required": false, "type": "boolean" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/exvamapi_ResultResponse" } },
+          "202": { "description": "The request has been accepted for processing.", "schema": { "$ref": "#/definitions/exvamapi_ResultNotReadyResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "503": { "description": "Service Unavailable", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/xva/whatIfCalculations": {
+      "post": {
+        "tags": ["xvaWhatIfCalculation"],
+        "summary": "Start XVA What If calculation",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/exvamapi_WhatIfCalculationRequest" } }
+        ],
+        "responses": {
+          "202": { "description": "The request has been accepted for processing.", "schema": { "$ref": "#/definitions/exvamapi_ResultNotReadyResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "503": { "description": "Service Unavailable", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/xva/whatIfCalculations/availableMetrics/{metric_level}": {
+      "get": {
+        "tags": ["xvaWhatIfMetric"],
+        "summary": "Retrieves XVA What If available metrics for the request metric level",
+        "parameters": [
+          { "name": "metric_level", "in": "path", "required": true, "type": "string", "enum": ["ALL", "BOOK", "NETTING_SET", "PROFILE_EXPOSURE", "DEAL"] }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/exvamapi_XvaCalculationInputMetrics" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "503": { "description": "Service Unavailable", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/xva/whatIfCalculations/{result_id}": {
+      "get": {
+        "tags": ["xvaWhatIfResult"],
+        "summary": "Retrieves XVA What If result for given result id",
+        "parameters": [
+          { "name": "result_id", "in": "path", "required": true, "type": "string" },
+          { "name": "status", "in": "query", "required": false, "type": "boolean" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/exvamapi_ResultResponse" } },
+          "202": { "description": "The request has been accepted for processing.", "schema": { "$ref": "#/definitions/exvamapi_ResultNotReadyResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "503": { "description": "Service Unavailable", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/enterprise/mars/lifecycle/realizedMetrics": {
+      "post": {
+        "tags": ["MapilfcSecuritiesRealizedMetrics"],
+        "summary": "Send a securities realized metrics request",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/MapilfcSecuritiesRealizedMetricsRequest" } }
+        ],
+        "responses": {
+          "202": { "description": "The request has been accepted for processing.", "schema": { "$ref": "#/definitions/MapilfcResultNotReadyResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "401": { "description": "The user is not authorized to access this resource.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Internal server error", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/enterprise/mars/lifecycle/realizedMetrics/{result_id}": {
+      "get": {
+        "tags": ["MapilfcRealizedMetricsResult"],
+        "summary": "Retreive asynchronous mapilfc realized metrics result",
+        "parameters": [
+          { "name": "result_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/MapilfcSecuritiesRealizedMetricsResponse" } },
+          "202": { "description": "The request has been accepted for processing.", "schema": { "$ref": "#/definitions/MapilfcResultNotReadyResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "401": { "description": "The user is not authorized to access this resource.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "Input validation error", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "503": { "description": "Service Unavailable", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/enterprise/mars/dataFields": {
+      "post": {
+        "tags": ["DataFields"],
+        "summary": "Fetch data fields for securities",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/mapicw_CalcDataFieldsRequestType" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/mapicw_CalcDataFieldsResponseType" } },
+          "202": { "description": "The request has been accepted for processing.", "schema": { "$ref": "#/definitions/mapicw_ResultNotReadyResponse" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "401": { "description": "The user is not authorized to access this resource.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      }
+    },
+    "/enterprise/mars/dataFields/{result_id}": {
+      "get": {
+        "tags": ["DataFields"],
+        "summary": "Fetch data fields for securities (retrieve async result)",
+        "parameters": [
+          { "name": "result_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/mapicw_CalcDataFieldsResponseType" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "401": { "description": "The user is not authorized to access this resource.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } }
+        }
+      }
+    },
+    "/marswebapi/v1/heff/aggregatedAccounting": {
+      "post": {
+        "tags": ["aggregatedAccounting"],
+        "summary": "Request a HEFF aggregated accounting report",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/AggregatedAccountingRequestSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/AggregatedAccountingResponseSchema" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "503": { "description": "Service Unavailable", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/heff/designation/{heff_id}": {
+      "get": {
+        "tags": ["designation"],
+        "summary": "Request HEFF designation",
+        "parameters": [
+          { "name": "heff_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/DesignationResponseSchema" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "401": { "description": "The user is not authorized to access this resource.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "503": { "description": "Service Unavailable", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/heff/designationAccounting": {
+      "post": {
+        "tags": ["designationAccounting"],
+        "summary": "Retrieves accounting event data for the specified set of designations",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/DesignationAccountingRequestSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/DesignationAccountingResponseSchema" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "503": { "description": "Service Unavailable", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/heff/designationDiscovery": {
+      "post": {
+        "tags": ["designationDiscovery"],
+        "summary": "Discover a set of designations",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/DesignationDiscoveryRequestSchema" } }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/DesignationDiscoveryResponseSchema" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "503": { "description": "Service Unavailable", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/heff/processes": {
+      "post": {
+        "tags": ["heffProcess"],
+        "summary": "Create a batch",
+        "parameters": [
+          { "in": "body", "name": "body", "required": true, "schema": { "$ref": "#/definitions/CreateBatchRequestSchema" } }
+        ],
+        "responses": {
+          "201": { "description": "The resource was created.", "schema": { "$ref": "#/definitions/CreateBatchResponseSchema" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "503": { "description": "Service Unavailable", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    },
+    "/marswebapi/v1/heff/processes/{batch_id}": {
+      "get": {
+        "tags": ["heffProcess"],
+        "summary": "Retrieves the current state of a batch of HEFF processes",
+        "parameters": [
+          { "name": "batch_id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "The resource was found.", "schema": { "$ref": "#/definitions/BatchStateResponseSchema" } },
+          "400": { "description": "There was a problem with the request.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "404": { "description": "The resource was not found.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "500": { "description": "The server encountered an unexpected error.", "schema": { "$ref": "#/definitions/ErrorSchema" } },
+          "503": { "description": "Service Unavailable", "schema": { "$ref": "#/definitions/ErrorResponse" } }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "error": { "type": "string" }
+      }
+    },
+    "ErrorSchema": {
+      "type": "object",
+      "required": ["error", "error_description", "errors"],
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ErrorObjectSchema" },
+          "minItems": 1
+        },
+        "error": { "type": "string" },
+        "error_description": { "type": "string" }
+      }
+    },
+    "ErrorObjectSchema": {
+      "type": "object",
+      "required": ["detail", "id", "status", "title"],
+      "properties": {
+        "id": { "type": "string" },
+        "detail": { "type": "string" },
+        "status": { "type": "string" },
+        "title": { "type": "string" },
+        "code": { "type": "string" }
+      }
+    },
+    "ResultNotReadyResponse": {
+      "type": "object",
+      "properties": {
+        "resultRetrievalId": { "type": "string" }
+      }
+    },
+    "ResultRetrievalResponseModel": {
+      "type": "object",
+      "properties": {
+        "pricingResultRetrievalResponseType": { "$ref": "#/definitions/xapxsvc_PricingResultRetrievalResponse" },
+        "uploadResultRetrievalResponseType": { "$ref": "#/definitions/marsupd_UploadResultRetrievalResponseType" },
+        "creditRiskResultRetrievalResponseType": { "$ref": "#/definitions/CreditRiskResultRetrievalResponseType" }
+      }
+    },
+    "xapxsvc_PricingResultRetrievalResponse": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_PricingResultRetrievalResponseType" }
+        }
+      }
+    },
+    "xapxsvc_PricingResultRetrievalResponseType": {
+      "type": "object",
+      "properties": {
+        "pricingResultResponse": { "$ref": "#/definitions/xapxsvc_PricingResultResponse" },
+        "resultNotReadyResponse": { "$ref": "#/definitions/xapxsvc_ResultNotReady" },
+        "heartBeatResponse": { "$ref": "#/definitions/xapxsvc_HeartbeatResponse" }
+      }
+    },
+    "xapxsvc_PricingResultResponse": {
+      "type": "object",
+      "required": ["errorCode", "marketDataTimestamp", "requestId"],
+      "properties": {
+        "resultRetrievalId": { "type": "string" },
+        "errorCode": { "type": "integer" },
+        "errorMessage": { "type": "string" },
+        "marketDataTimestamp": { "type": "string" },
+        "securityResult": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_SecurityResultType" }
+        },
+        "requestId": { "type": "string" },
+        "additionalResult": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_Param" }
+        },
+        "marketDataResult": { "$ref": "#/definitions/xapxsvc_MarketDataResultType" }
+      }
+    },
+    "xapxsvc_SecurityResultType": {
+      "type": "object",
+      "required": ["errorCode", "identifiers", "position"],
+      "properties": {
+        "identifiers": { "$ref": "#/definitions/xapxsvc_SecurityNameOutputType" },
+        "position": { "type": "number" },
+        "errorCode": { "type": "integer" },
+        "errorMessage": { "type": "string" },
+        "scenarioParameter": { "$ref": "#/definitions/xapxsvc_ScenarioParameterType" },
+        "pricingResult": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_Param" }
+        },
+        "krrResult": { "$ref": "#/definitions/xapxsvc_KrrResults" },
+        "portfolioSourceDetails": { "$ref": "#/definitions/xapxsvc_PortfolioSourceDetailsType" }
+      }
+    },
+    "xapxsvc_SecurityNameOutputType": {
+      "type": "object",
+      "properties": {
+        "bloombergDealId": { "type": "string" },
+        "bloombergUniqueId": { "type": "string" },
+        "CUSIP": { "type": "string" },
+        "ISIN": { "type": "string" },
+        "SEDOL": { "type": "string" },
+        "dealHandle": { "type": "string" },
+        "securityCustomId": { "type": "string" },
+        "portfolioCustomId": { "type": "string" }
+      }
+    },
+    "xapxsvc_ScenarioParameterType": {
+      "type": "object",
+      "properties": {
+        "scenario": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_ScenarioType" }
+        },
+        "requestedField": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "xapxsvc_ScenarioType": {
+      "type": "object",
+      "required": ["scenarioId"],
+      "properties": {
+        "scenarioId": { "type": "string" }
+      }
+    },
+    "xapxsvc_Param": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "value": { "$ref": "#/definitions/xapxsvc_Value" }
+      }
+    },
+    "xapxsvc_Value": {
+      "type": "object",
+      "properties": {
+        "boolVal": { "type": "boolean" },
+        "intVal": { "type": "integer" },
+        "doubleVal": { "type": "number" },
+        "stringVal": { "type": "string" },
+        "dateVal": { "type": "string" },
+        "dateTimeVal": { "type": "string" }
+      }
+    },
+    "xapxsvc_KrrResults": {
+      "type": "object",
+      "properties": {
+        "krrId": { "type": "string" },
+        "krrExternalName": { "type": "string" },
+        "krrRiskResults": { "$ref": "#/definitions/xapxsvc_RiskRspKrrRspType" }
+      }
+    },
+    "xapxsvc_RiskRspKrrRspType": {
+      "type": "object",
+      "required": ["valuationCurrency"],
+      "properties": {
+        "krrs": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_RiskRspOneKrr" }
+        },
+        "valuationCurrency": { "type": "string" },
+        "errorCode": { "type": "integer" },
+        "errorMessage": { "type": "string" },
+        "shiftSize": { "type": "number" }
+      }
+    },
+    "xapxsvc_RiskRspOneKrr": {
+      "type": "object",
+      "required": ["errorCode"],
+      "properties": {
+        "term": { "$ref": "#/definitions/xapxsvc_RiskRspOneTerm" },
+        "krr": { "type": "number" },
+        "rate": { "type": "number" },
+        "ticker": { "type": "string" },
+        "errorCode": { "type": "integer" },
+        "errorMessage": { "type": "string" },
+        "krd": { "type": "number" }
+      }
+    },
+    "xapxsvc_RiskRspOneTerm": {
+      "type": "object",
+      "required": ["term"],
+      "properties": {
+        "term": { "type": "number" },
+        "unit": {
+          "type": "string",
+          "enum": ["DAY", "WEEK", "MONTH", "YEAR"]
+        }
+      }
+    },
+    "xapxsvc_PortfolioSourceDetailsType": {
+      "type": "object",
+      "required": ["portfolioName", "portfolioSource"],
+      "properties": {
+        "portfolioSource": { "$ref": "#/definitions/xapxsvc_PortfolioSourceType" },
+        "portfolioName": { "type": "string" }
+      }
+    },
+    "xapxsvc_PortfolioSourceType": {
+      "type": "string",
+      "enum": ["PORTFOLIO", "PORTFOLIO_GROUP", "AIM_ACCOUNT", "AIM_ACCOUNT_GROUP", "TOMS_BOOK", "TOMS_DEPARTMENT", "TOMS_FIRM_MACRO", "TOMS_USER_MACRO", "BVAL_PORTFOLIO"]
+    },
+    "xapxsvc_MarketDataResultType": {
+      "type": "object",
+      "properties": {
+        "mortgageMarketDataResult": { "$ref": "#/definitions/xapxsvc_MortgageMarketDataResultType" }
+      }
+    },
+    "xapxsvc_MortgageMarketDataResultType": {
+      "type": "object",
+      "properties": {
+        "ModelError": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_Param" } },
+        "SpotRate": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_Param" } },
+        "ProjectionRate": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_Param" } }
+      }
+    },
+    "xapxsvc_ResultNotReady": {
+      "type": "object",
+      "required": ["requestId"],
+      "properties": {
+        "resultRetrievalId": { "type": "string" },
+        "earliestDelivery": { "type": "string" },
+        "latestDelivery": { "type": "string" },
+        "requestId": { "type": "string" }
+      }
+    },
+    "xapxsvc_HeartbeatResponse": {
+      "type": "object",
+      "required": ["requestId"],
+      "properties": {
+        "resultRetrievalId": { "type": "string" },
+        "requestId": { "type": "string" }
+      }
+    },
+    "xapxsvc_SecuritiesPricingSchema": {
+      "type": "object",
+      "properties": {
+        "securitiesPricingRequest": { "$ref": "#/definitions/xapxsvc_SecuritiesPricingRequest" },
+        "solveRequest": { "$ref": "#/definitions/xapxsvc_SolveRequest" }
+      }
+    },
+    "xapxsvc_SecuritiesPricingRequest": {
+      "type": "object",
+      "required": ["pricingParameter"],
+      "properties": {
+        "pricingParameter": { "$ref": "#/definitions/xapxsvc_PricingParameterType" },
+        "scenarioParameter": { "$ref": "#/definitions/xapxsvc_ScenarioParameterType" },
+        "security": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_SecurityType" }
+        }
+      }
+    },
+    "xapxsvc_PricingParameterType": {
+      "type": "object",
+      "required": ["valuationDate"],
+      "properties": {
+        "valuationDate": { "type": "string" },
+        "marketDataDate": { "type": "string" },
+        "dealSession": { "type": "string" },
+        "marketDataSession": { "type": "string" },
+        "requestedField": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "cashflow": { "$ref": "#/definitions/xapxsvc_CashflowParametersType" },
+        "portfolioCurrency": { "type": "string" },
+        "marketDataSnapshot": { "$ref": "#/definitions/xapxsvc_MarketDataSnapshot" },
+        "useBbgRecommendedSettings": { "type": "boolean" },
+        "settingsSetId": { "type": "string" }
+      }
+    },
+    "xapxsvc_CashflowParametersType": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "enum": ["ALL"] },
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" }
+      }
+    },
+    "xapxsvc_MarketDataSnapshot": {
+      "type": "object",
+      "properties": {
+        "bvalCashSnapshot": { "type": "string" },
+        "goldenCopy": {
+          "type": "string",
+          "enum": ["LONDON_415PM", "LONDON_5PM", "NEWYORK_3PM", "NEWYORK_4PM", "NEWYORK_5PM", "SYDNEY_5PM", "TOKYO_5PM"]
+        }
+      }
+    },
+    "xapxsvc_SecurityType": {
+      "type": "object",
+      "required": ["identifier"],
+      "properties": {
+        "identifier": { "$ref": "#/definitions/xapxsvc_SecurityNameType" },
+        "position": { "type": "number" },
+        "marketPrice": { "type": "number" },
+        "customId": { "type": "string" },
+        "marketDataOverrides": { "$ref": "#/definitions/xapxsvc_MarketDataOverrides" },
+        "settlementDate": { "type": "string" }
+      }
+    },
+    "xapxsvc_SecurityNameType": {
+      "type": "object",
+      "properties": {
+        "bloombergDealId": { "type": "string" },
+        "bloombergUniqueId": { "type": "string" },
+        "dealHandle": { "type": "string" },
+        "CUSIP": { "type": "string" },
+        "ISIN": { "type": "string" },
+        "SEDOL": { "type": "string" }
+      }
+    },
+    "xapxsvc_MarketDataOverrides": {
+      "type": "object",
+      "properties": {
+        "interestRateCurveOverrides": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_InterestRateCurveOverrides" }
+        },
+        "interestRateVolatilityCubeOverrides": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_InterestRateVolatilityCubeOverrides" }
+        }
+      }
+    },
+    "xapxsvc_InterestRateCurveOverrides": {
+      "type": "object",
+      "required": ["category", "currency", "overrideCurveId"],
+      "properties": {
+        "category": { "type": "string", "enum": ["DISCOUNT_CURVE"] },
+        "currency": { "type": "string" },
+        "overrideCurveId": { "type": "string" },
+        "overrideCurveName": { "type": "string" }
+      }
+    },
+    "xapxsvc_InterestRateVolatilityCubeOverrides": {
+      "type": "object",
+      "required": ["cubeName", "currency"],
+      "properties": {
+        "sourceId": { "type": "string" },
+        "currency": { "type": "string" },
+        "cubeName": { "type": "string" }
+      }
+    },
+    "xapxsvc_SolveRequest": {
+      "type": "object",
+      "required": ["dealSession", "identifier", "input", "solveFor", "valuationDate"],
+      "properties": {
+        "identifier": { "$ref": "#/definitions/xapxsvc_SecurityNameType" },
+        "input": { "$ref": "#/definitions/xapxsvc_Param" },
+        "solveFor": { "type": "string" },
+        "valuationDate": { "type": "string" },
+        "marketDataDate": { "type": "string" },
+        "dealSession": { "type": "string" }
+      }
+    },
+    "xapxsvc_SecuritiesPricingResponse": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_SecuritiesPricingResponseType" }
+        }
+      }
+    },
+    "xapxsvc_SecuritiesPricingResponseType": {
+      "type": "object",
+      "properties": {
+        "pricingResultResponse": { "$ref": "#/definitions/xapxsvc_PricingResultResponse" },
+        "resultNotReadyResponse": { "$ref": "#/definitions/xapxsvc_ResultNotReady" },
+        "heartBeatResponse": { "$ref": "#/definitions/xapxsvc_HeartbeatResponse" }
+      }
+    },
+    "xapxsvc_PortfolioPricingSchema": {
+      "type": "object",
+      "properties": {
+        "portfolioPricingRequest": { "$ref": "#/definitions/xapxsvc_PortfolioPricingRequest" },
+        "bulkPortfolioPricingRequest": { "$ref": "#/definitions/xapxsvc_BulkPortfolioPricingRequest" }
+      }
+    },
+    "xapxsvc_PortfolioPricingRequest": {
+      "type": "object",
+      "required": ["pricingParameter"],
+      "properties": {
+        "pricingParameter": { "$ref": "#/definitions/xapxsvc_PricingParameterType" },
+        "scenarioParameter": { "$ref": "#/definitions/xapxsvc_ScenarioParameterType" },
+        "portfolioDescription": { "$ref": "#/definitions/xapxsvc_PortfolioDescriptionType" }
+      }
+    },
+    "xapxsvc_PortfolioDescriptionType": {
+      "type": "object",
+      "properties": {
+        "portfolioName": { "type": "string" },
+        "portfolioSource": { "type": "string" },
+        "portfolioOwner": { "type": "integer" },
+        "portfolioDate": { "type": "string" },
+        "additionalParameter": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_Param" }
+        }
+      }
+    },
+    "xapxsvc_BulkPortfolioPricingRequest": {
+      "type": "object",
+      "required": ["portfolioSourceDescription", "pricingParameter"],
+      "properties": {
+        "pricingParameter": { "$ref": "#/definitions/xapxsvc_PricingParameterType" },
+        "scenarioParameter": { "$ref": "#/definitions/xapxsvc_ScenarioParameterType" },
+        "portfolioSourceDescription": { "$ref": "#/definitions/xapxsvc_PortfolioSourceDescriptionType" }
+      }
+    },
+    "xapxsvc_PortfolioSourceDescriptionType": {
+      "type": "object",
+      "required": ["portfolioSourceDetails"],
+      "properties": {
+        "portfolioOwner": { "type": "integer" },
+        "portfolioDate": { "type": "string" },
+        "portfolioSourceDetails": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_PortfolioSourceDetailsType" }
+        }
+      }
+    },
+    "xapxsvc_PortfolioPricingResponse": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_SecuritiesPricingResponseType" }
+        }
+      }
+    },
+    "xapxsvc_SecuritiesKrrSchema": {
+      "type": "object",
+      "required": ["securitiesKrrRequest"],
+      "properties": {
+        "securitiesKrrRequest": { "$ref": "#/definitions/xapxsvc_SecuritiesKrrRequest" }
+      }
+    },
+    "xapxsvc_SecuritiesKrrRequest": {
+      "type": "object",
+      "required": ["krrDefinition", "pricingParameter"],
+      "properties": {
+        "krrDefinition": { "$ref": "#/definitions/xapxsvc_KrrDefinitionType" },
+        "security": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_SecurityType" }
+        },
+        "pricingParameter": { "$ref": "#/definitions/xapxsvc_PricingParameterType" }
+      }
+    },
+    "xapxsvc_KrrDefinitionType": {
+      "type": "object",
+      "required": ["externalName", "id"],
+      "properties": {
+        "id": { "type": "string" },
+        "externalName": { "type": "string" },
+        "krrConfig": { "$ref": "#/definitions/xapxsvc_KrrConfig" }
+      }
+    },
+    "xapxsvc_KrrConfig": {
+      "type": "object",
+      "required": ["shiftSize"],
+      "properties": {
+        "tenor": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_RiskRspOneTerm" }
+        },
+        "shiftSize": { "type": "number" },
+        "shiftMethod": { "type": "string", "enum": ["WAVE"] }
+      }
+    },
+    "xapxsvc_SecuritiesKrrResponse": {
+      "type": "object",
+      "properties": {
+        "resultNotReadyResponse": { "$ref": "#/definitions/xapxsvc_ResultNotReady" }
+      }
+    },
+    "xapxsvc_StartSessionRequest": {
+      "type": "object",
+      "properties": {
+        "startSession": { "type": "object" },
+        "startMarketDataSession": { "$ref": "#/definitions/xapxsvc_StartMarketDataSessionRequest" }
+      }
+    },
+    "xapxsvc_StartMarketDataSessionRequest": {
+      "type": "object",
+      "properties": {
+        "marketId": { "type": "string" }
+      }
+    },
+    "xapxsvc_StartMarketDataSessionResponse": {
+      "type": "object",
+      "required": ["errorCode"],
+      "properties": {
+        "errorCode": { "type": "integer" },
+        "errorMessage": { "type": "string" },
+        "marketDataSession": { "type": "string" }
+      }
+    },
+    "EndSessionResponseModel": {
+      "type": "object",
+      "properties": {
+        "endSession": { "$ref": "#/definitions/xapxsvc_EndSession" }
+      }
+    },
+    "xapxsvc_EndSession": {
+      "type": "object",
+      "required": ["returnStatus"],
+      "properties": {
+        "returnStatus": { "$ref": "#/definitions/xapxsvc_ReturnStatus" }
+      }
+    },
+    "xapxsvc_ReturnStatus": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["S_SUCCESS", "S_FAILURE", "S_TEMPORARY_ACCESS", "S_DISABLED_IMMIENT", "S_DISABLED", "S_UNSUPPORTED"]
+        }
+      }
+    },
+    "xapxsvc_StructureRequest": {
+      "type": "object",
+      "required": ["sessionId", "tail"],
+      "properties": {
+        "sessionId": { "type": "string" },
+        "tail": { "type": "string" }
+      }
+    },
+    "xapxsvc_StructureResponse": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_StructureResponseSchemaType" }
+        },
+        "dealVersion": { "type": "string" }
+      }
+    },
+    "xapxsvc_StructureResponseSchemaType": {
+      "type": "object",
+      "properties": {
+        "structureResponse": { "$ref": "#/definitions/xapxsvc_StructureResponseType" }
+      }
+    },
+    "xapxsvc_StructureResponseType": {
+      "type": "object",
+      "required": ["dealHandle", "dealType", "returnStatus"],
+      "properties": {
+        "returnStatus": { "$ref": "#/definitions/xapxsvc_ReturnStatus" },
+        "dealHandle": { "type": "string" },
+        "dealType": { "type": "string" }
+      }
+    },
+    "xapxsvc_SaveRequest": {
+      "type": "object",
+      "properties": {
+        "saveOverride": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_Param" }
+        }
+      }
+    },
+    "xapxsvc_SaveResponse": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/xapxsvc_SaveResponseSchemaType" }
+        }
+      }
+    },
+    "xapxsvc_SaveResponseSchemaType": {
+      "type": "object",
+      "properties": {
+        "saveResponse": { "$ref": "#/definitions/xapxsvc_SaveResponseType" }
+      }
+    },
+    "xapxsvc_SaveResponseType": {
+      "type": "object",
+      "required": ["dealId", "returnStatus"],
+      "properties": {
+        "returnStatus": { "$ref": "#/definitions/xapxsvc_ReturnStatus" },
+        "dealId": { "type": "string" }
+      }
+    },
+    "xapxsvc_GetDealTypeSchema": {
+      "type": "object",
+      "required": ["voidName"],
+      "properties": {
+        "voidName": { "type": "string" }
+      }
+    },
+    "xapxsvc_GetDealTypeResponse": {
+      "type": "object",
+      "required": ["returnStatus"],
+      "properties": {
+        "returnStatus": { "$ref": "#/definitions/xapxsvc_ReturnStatus" },
+        "dealType": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "xapxsvc_GetDealSchemaSchema": {
+      "type": "object",
+      "required": ["tail"],
+      "properties": {
+        "tail": { "type": "string" }
+      }
+    },
+    "xapxsvc_GetDealSchemaResponse": {
+      "type": "object",
+      "required": ["dealStructure", "dealType", "returnStatus"],
+      "properties": {
+        "returnStatus": { "$ref": "#/definitions/xapxsvc_ReturnStatus" },
+        "dealType": { "type": "string" },
+        "dealStructure": { "type": "object" }
+      }
+    },
+    "xapxsvc_CreateScenarioRequestSchema": {
+      "type": "object",
+      "required": ["createScenarioRequest"],
+      "properties": {
+        "createScenarioRequest": { "$ref": "#/definitions/xapxsvc_CreateScenarioRequest" }
+      }
+    },
+    "xapxsvc_CreateScenarioRequest": {
+      "type": "object",
+      "required": ["scenario"],
+      "properties": {
+        "scenario": { "$ref": "#/definitions/xapxsvc_Scenario" }
+      }
+    },
+    "xapxsvc_Scenario": {
+      "type": "object",
+      "required": ["content", "header"],
+      "properties": {
+        "header": { "$ref": "#/definitions/xapxsvc_ScenarioHeader" },
+        "content": { "$ref": "#/definitions/xapxsvc_ScenarioContent" }
+      }
+    },
+    "xapxsvc_ScenarioHeader": {
+      "type": "object",
+      "required": ["description", "name"],
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "xapxsvc_ScenarioContent": {
+      "type": "object",
+      "properties": {
+        "regularScenario": { "$ref": "#/definitions/xapxsvc_RegularScenario" }
+      }
+    },
+    "xapxsvc_RegularScenario": {
+      "type": "object",
+      "properties": {
+        "swapCurveShift": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_ShiftNode" } },
+        "governmentCurveShift": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_ShiftNode" } },
+        "equitySpotShift": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_ShiftNode" } },
+        "equityVolShift": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_ShiftNode" } },
+        "fxSpotShift": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_ShiftNode" } },
+        "fxVolShift": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_ShiftNode" } },
+        "issuerCurveShift": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_ShiftNode" } },
+        "cdsCurveShift": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_ShiftNode" } },
+        "creditSpreadShift": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_ShiftNode" } },
+        "inflationCurveShift": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_ShiftNode" } },
+        "commodityCurveShift": { "type": "array", "items": { "$ref": "#/definitions/xapxsvc_ShiftNode" } }
+      }
+    },
+    "xapxsvc_ShiftNode": {
+      "type": "object",
+      "required": ["shiftMode", "shiftValue", "shiftWhat"],
+      "properties": {
+        "shiftWhat": { "type": "string" },
+        "shiftMode": {
+          "type": "object",
+          "properties": {
+            "absolute": { "type": "object" },
+            "percent": { "type": "object" },
+            "override": { "type": "object" }
+          }
+        },
+        "shiftValue": {
+          "type": "object",
+          "properties": {
+            "scalarShift": { "type": "number" }
+          }
+        }
+      }
+    },
+    "xapxsvc_CreateScenarioResponse": {
+      "type": "object",
+      "required": ["returnStatus", "scenarioId", "scenarioName"],
+      "properties": {
+        "returnStatus": { "$ref": "#/definitions/xapxsvc_ReturnStatus" },
+        "scenarioId": { "type": "string" },
+        "scenarioName": { "type": "string" }
+      }
+    },
+    "xapxsvc_GetScenarioResponse": {
+      "type": "object",
+      "required": ["returnStatus"],
+      "properties": {
+        "returnStatus": { "$ref": "#/definitions/xapxsvc_ReturnStatus" },
+        "scenario": { "$ref": "#/definitions/xapxsvc_Scenario" }
+      }
+    },
+    "xapxsvc_UpdateScenariosRequestSchema": {
+      "type": "object",
+      "required": ["updateScenariosRequest"],
+      "properties": {
+        "updateScenariosRequest": { "$ref": "#/definitions/xapxsvc_UpdateScenariosRequest" }
+      }
+    },
+    "xapxsvc_UpdateScenariosRequest": {
+      "type": "object",
+      "properties": {
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["scenario", "scenarioId"],
+            "properties": {
+              "scenario": { "$ref": "#/definitions/xapxsvc_Scenario" },
+              "scenarioId": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "xapxsvc_UpdateScenarioResponse": {
+      "type": "object",
+      "required": ["returnStatus"],
+      "properties": {
+        "returnStatus": { "$ref": "#/definitions/xapxsvc_ReturnStatus" }
+      }
+    },
+    "xapxsvc_DeleteScenariosRequestSchema": {
+      "type": "object",
+      "required": ["deleteScenariosRequest"],
+      "properties": {
+        "deleteScenariosRequest": { "$ref": "#/definitions/xapxsvc_DeleteScenariosRequest" }
+      }
+    },
+    "xapxsvc_DeleteScenariosRequest": {
+      "type": "object",
+      "properties": {
+        "scenarioIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "xapxsvc_DeleteScenariosResponse": {
+      "type": "object",
+      "required": ["returnStatus"],
+      "properties": {
+        "returnStatus": { "$ref": "#/definitions/xapxsvc_ReturnStatus" }
+      }
+    },
+    "marsupd_ImportSecuritiesSchema": {
+      "type": "object",
+      "required": ["portMgmtCsvRequest"],
+      "properties": {
+        "portMgmtCsvRequest": {
+          "type": "object",
+          "required": ["clientID", "content"],
+          "properties": {
+            "content": { "type": "string" },
+            "clientID": { "type": "string" }
+          }
+        }
+      }
+    },
+    "marsupd_DealsResponseSchema": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      }
+    },
+    "marsupd_UploadResultRetrievalResponseType": {
+      "type": "object",
+      "properties": {
+        "uploadResponse": { "type": "object" }
+      }
+    },
+    "CreditRiskResultRetrievalResponseType": {
+      "type": "object",
+      "properties": {
+        "resultNotReadyResponse": { "$ref": "#/definitions/ResultNotReadyResponse" },
+        "getCreditRiskByPortfolioResponse": { "type": "object" }
+      }
+    },
+    "portmgmtsvc_GetBvalPortfolioIdsResponse": {
+      "type": "object",
+      "properties": {
+        "portfolioIds": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "portmgmtsvc_GetBvalPortfolioDealsResponse": {
+      "type": "object",
+      "properties": {
+        "deals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["instrumentId", "instrumentIdType"],
+            "properties": {
+              "instrumentId": { "type": "string" },
+              "instrumentIdType": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "portmgmtsvc_GetPortfolioIdsResponse": {
+      "type": "object",
+      "properties": {
+        "portfolioIds": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "portmgmtsvc_Portfolio": {
+      "type": "object",
+      "properties": {
+        "portfolioId": { "type": "string" },
+        "coreTerms": {
+          "type": "object",
+          "properties": {
+            "portfolioName": { "type": "string" },
+            "portfolioLongName": { "type": "string" },
+            "baseCcyCode": { "type": "string" },
+            "inceptionDate": { "type": "string" },
+            "portfolioDesc": { "type": "string" }
+          }
+        }
+      }
+    },
+    "portmgmtsvc_CreatePortfolioResponse": {
+      "type": "object",
+      "required": ["portfolioId", "status"],
+      "properties": {
+        "status": { "type": "object" },
+        "portfolioId": { "type": "string" }
+      }
+    },
+    "portmgmtsvc_GetPortfolioMetadataResponse": {
+      "type": "object",
+      "required": ["portfolio"],
+      "properties": {
+        "portfolio": { "$ref": "#/definitions/portmgmtsvc_Portfolio" }
+      }
+    },
+    "portmgmtsvc_DeletePortfolioResponse": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "type": "object" }
+      }
+    },
+    "portmgmtsvc_UpdatePortfolioMetadataResponse": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "type": "object" }
+      }
+    },
+    "portmgmtsvc_HoldingsSnapshot": {
+      "type": "object",
+      "properties": {
+        "snapshotStartDate": { "type": "string" },
+        "holdings": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "portmgmtsvc_GetHoldingsAsOfDateResponse": {
+      "type": "object",
+      "required": ["holdingsSnapshot"],
+      "properties": {
+        "holdingsSnapshot": { "$ref": "#/definitions/portmgmtsvc_HoldingsSnapshot" }
+      }
+    },
+    "portmgmtsvc_AddHoldingsAsOfDateResponse": {
+      "type": "object",
+      "required": ["status"],
+      "properties": { "status": { "type": "object" } }
+    },
+    "portmgmtsvc_ReplaceHoldingsAsOfDateResponse": {
+      "type": "object",
+      "required": ["status"],
+      "properties": { "status": { "type": "object" } }
+    },
+    "portmgmtsvc_UpdateHoldingsAsOfDateResponse": {
+      "type": "object",
+      "required": ["status"],
+      "properties": { "status": { "type": "object" } }
+    },
+    "portmgmtsvc_TickerizationSettings": {
+      "type": "object",
+      "properties": {
+        "portfolioTickerId": { "type": "string" }
+      }
+    },
+    "portmgmtsvc_GetTickerizationSettingsResponse": {
+      "type": "object",
+      "required": ["tickerizationSettings"],
+      "properties": {
+        "tickerizationSettings": { "$ref": "#/definitions/portmgmtsvc_TickerizationSettings" }
+      }
+    },
+    "portmgmtsvc_UpdateTickerizationSettingsResponse": {
+      "type": "object",
+      "required": ["status"],
+      "properties": { "status": { "type": "object" } }
+    },
+    "GetCreditRiskByPortfolioRequestSchema": {
+      "type": "object",
+      "properties": {
+        "getCreditRiskByPortfolioRequest": { "type": "object" }
+      }
+    },
+    "InitialMarginRequest": {
+      "type": "object",
+      "required": ["calculateInitialMarginRequest"],
+      "properties": {
+        "calculateInitialMarginRequest": { "type": "object" }
+      }
+    },
+    "InitialMarginResponse": {
+      "type": "object",
+      "required": ["initialMarginResponse"],
+      "properties": {
+        "initialMarginResponse": { "type": "object" }
+      }
+    },
+    "CurveReportSchema": {
+      "type": "object",
+      "properties": {
+        "curveReportRequest": { "type": "object" }
+      }
+    },
+    "CurveReportResponse": {
+      "type": "object",
+      "properties": {
+        "report": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "GetDataRequestSchema": {
+      "type": "object",
+      "properties": {
+        "getDataRequest": { "type": "object" }
+      }
+    },
+    "GetDataResponse": {
+      "type": "object",
+      "required": ["keyAndData", "requestId"],
+      "properties": {
+        "requestId": { "type": "string" },
+        "keyAndData": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "DataDownloadErrorResponseSchema": {
+      "type": "object",
+      "properties": {
+        "errorResponse": { "type": "object" }
+      }
+    },
+    "AddOrUpdateDataRequestSchema": {
+      "type": "object",
+      "properties": {
+        "addOrUpdateDataRequest": { "type": "object" }
+      }
+    },
+    "AddOrUpdateDataResponseSchema": {
+      "type": "object",
+      "properties": {
+        "addOrUpdateDataResponse": { "type": "object" }
+      }
+    },
+    "DataUploadErrorResponseSchema": {
+      "type": "object",
+      "properties": {
+        "errorResponse": { "type": "object" }
+      }
+    },
+    "StartDataSessionRequestSchema": {
+      "type": "object",
+      "properties": {
+        "startSessionRequest": { "type": "object" }
+      }
+    },
+    "StartDataSessionResponseSchema": {
+      "type": "object",
+      "properties": {
+        "startSessionResponse": { "type": "object" }
+      }
+    },
+    "EndDataSessionRequestSchema": {
+      "type": "object",
+      "properties": {
+        "endSessionRequest": { "type": "object" }
+      }
+    },
+    "EndDataSessionResponseSchema": {
+      "type": "object",
+      "properties": {
+        "endSessionResponse": { "type": "object" }
+      }
+    },
+    "AggregatedAccountingRequestSchema": {
+      "type": "object",
+      "properties": {
+        "aggregatedAccountingRequest": { "type": "object" }
+      }
+    },
+    "AggregatedAccountingResponseSchema": {
+      "type": "object",
+      "properties": {
+        "aggregatedAccountingResponse": { "type": "object" }
+      }
+    },
+    "DesignationResponseSchema": {
+      "type": "object",
+      "properties": {
+        "designationResponse": { "type": "object" }
+      }
+    },
+    "DesignationAccountingRequestSchema": {
+      "type": "object",
+      "properties": {
+        "designationAccountingRequest": { "type": "object" }
+      }
+    },
+    "DesignationAccountingResponseSchema": {
+      "type": "object",
+      "properties": {
+        "designationAccountingResponse": { "type": "object" }
+      }
+    },
+    "DesignationDiscoveryRequestSchema": {
+      "type": "object",
+      "properties": {
+        "designationDiscoveryRequest": { "type": "object" }
+      }
+    },
+    "DesignationDiscoveryResponseSchema": {
+      "type": "object",
+      "properties": {
+        "designationDiscoveryResponse": { "type": "object" }
+      }
+    },
+    "CreateBatchRequestSchema": {
+      "type": "object",
+      "required": ["createBatchRequest"],
+      "properties": {
+        "createBatchRequest": { "type": "object" }
+      }
+    },
+    "CreateBatchResponseSchema": {
+      "type": "object",
+      "properties": {
+        "createBatchResponse": { "type": "object" }
+      }
+    },
+    "BatchStateResponseSchema": {
+      "type": "object",
+      "properties": {
+        "batchStateResponse": { "type": "object" }
+      }
+    },
+    "MapilfcSecuritiesRealizedMetricsRequest": {
+      "type": "object",
+      "required": ["date", "security"],
+      "properties": {
+        "date": { "type": "string" },
+        "security": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["identifier"],
+            "properties": {
+              "identifier": {
+                "type": "object",
+                "properties": {
+                  "bloombergDealId": { "type": "string" }
+                }
+              },
+              "customId": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "MapilfcResultNotReadyResponse": {
+      "type": "object",
+      "properties": {
+        "resultRetrievalId": { "type": "string" }
+      }
+    },
+    "MapilfcSecuritiesRealizedMetricsResponse": {
+      "type": "object",
+      "required": ["requestId", "resultRetrievalId"],
+      "properties": {
+        "requestId": { "type": "string" },
+        "resultRetrievalId": { "type": "string" },
+        "realizedMetricsResult": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "mapicw_CalcDataFieldsRequestType": {
+      "type": "object",
+      "required": ["fieldNames", "securities"],
+      "properties": {
+        "fieldNames": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "fieldNameId": { "type": "string" },
+              "fieldNameMnemonic": { "type": "string" }
+            }
+          }
+        },
+        "securities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["identifier"],
+            "properties": {
+              "identifier": {
+                "type": "object",
+                "properties": {
+                  "bloombergDealId": { "type": "string" },
+                  "bloombergUniqueId": { "type": "string" },
+                  "CUSIP": { "type": "string" },
+                  "ISIN": { "type": "string" },
+                  "SEDOL": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "mapicw_ResultNotReadyResponse": {
+      "type": "object",
+      "properties": {
+        "resultRetrievalId": { "type": "string" }
+      }
+    },
+    "mapicw_CalcDataFieldsResponseType": {
+      "type": "object",
+      "required": ["requestId", "resultRetrievalId", "securitiesResults", "status"],
+      "properties": {
+        "requestId": { "type": "string" },
+        "resultRetrievalId": { "type": "string" },
+        "status": { "type": "object" },
+        "securitiesResults": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "exvamapi_CalculationRequest": {
+      "type": "object",
+      "required": ["xvaCalculationInfo"],
+      "properties": {
+        "xvaCalculationInfo": { "type": "object" }
+      }
+    },
+    "exvamapi_ResultNotReadyResponse": {
+      "type": "object",
+      "properties": {
+        "resultRetrievalId": { "type": "string" }
+      }
+    },
+    "exvamapi_ResultResponse": {
+      "type": "object",
+      "properties": {
+        "xvaCalculationResult": { "type": "object" },
+        "xvaWhatIfCalculationResult": { "type": "object" }
+      }
+    },
+    "exvamapi_XvaCalculationInputMetrics": {
+      "type": "object",
+      "required": ["xvaCalculationMetricLevels"],
+      "properties": {
+        "xvaCalculationMetricLevels": { "type": "object" }
+      }
+    },
+    "exvamapi_WhatIfCalculationRequest": {
+      "type": "object",
+      "required": ["baseline", "target"],
+      "properties": {
+        "baseline": { "type": "object" },
+        "target": { "type": "object" }
+      }
+    }
+  }
+}
