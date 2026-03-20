@@ -133,35 +133,6 @@ class CurvesService:
         return self._parse_response(response, spec)
 
     # ------------------------------------------------------------------
-    # Public API — asynchronous
-    # ------------------------------------------------------------------
-
-    async def download_curve_async(
-        self,
-        curve_type: CurveType | str,
-        curve_id: str,
-        curve_date: date,
-        side: Side = "Mid",
-        requested_dates: list[date] | None = None,
-        interpolation: str = "INTERPOLATION_METHOD_LINEAR_SIMPLE",
-    ) -> pd.DataFrame:
-        """Async version of :meth:`download_curve`."""
-        spec = self._resolve_spec(curve_type)
-
-        if self._demo:
-            return self._load_demo(curve_id, spec)
-
-        body     = self._build_request(
-            spec, curve_id, curve_date, side, requested_dates or [], interpolation
-        )
-        response = await self._client.send_async("POST", "/marswebapi/v1/dataDownload", body)
-
-        if "error" in response:
-            raise CurveError(response.get("error_description", str(response["error"])))
-
-        return self._parse_response(response, spec)
-
-    # ------------------------------------------------------------------
     # Private: spec resolution (single validation point for both methods)
     # ------------------------------------------------------------------
 
