@@ -80,21 +80,28 @@ streamlit run app.py
 
 ```
 marsapilatam/
-├── app.py                   # Streamlit home page
+├── app.py                        # Streamlit entry point + navigation
 ├── pages/
-│   └── 1_📈_Curves.py       # Rate curves explorer
+│   ├── home.py                   # Home page
+│   └── curves.py                 # Rate curves explorer
 ├── bloomberg/
-│   ├── webapi/              # MARS API client (JWT auth, sessions, polling)
-│   └── pricing_result.py    # Response parser
+│   ├── webapi/                   # MARS API client (JWT auth, session management)
+│   ├── api_models.py             # Pydantic models for all API request/response envelopes
+│   ├── exceptions.py             # Custom exception hierarchy
+│   └── pricing_result.py        # Response parser utilities
 ├── services/
-│   ├── curves_service.py    # XMarket curve downloads
-│   └── security_service.py  # Deal structuring & pricing
-├── instruments/             # Typed Pydantic models (Swap, FxOption, EquityOption)
+│   └── curves_service.py        # Repository pattern: CurveQuery, XMarketCurveService
 ├── configs/
-│   ├── settings.py          # Credentials + constants
-│   └── curves_catalog.py    # 248 Bloomberg XMarket curves
-├── demo_data/               # Pre-saved JSON curve data for demo mode
-└── docs/                    # API documentation & Swagger spec
+│   ├── settings.py               # Bloomberg credentials (via .env)
+│   ├── curves_config.py          # Curve domain constants, CurveType, CurveSpec
+│   ├── curves_catalog.py         # 248 Bloomberg XMarket curve definitions
+│   └── i18n.py                   # UI translations (EN / PT / ES)
+├── demo_data/                    # Pre-saved JSON snapshots (Raw, Zero, Discount)
+├── scripts/
+│   └── download_demo_data.py    # Regenerate demo snapshots from live API
+├── examples/
+│   └── curves_example.py        # Standalone curve download example
+└── docs/                         # API documentation & Swagger spec
 ```
 
 ## Bloomberg MARS API
