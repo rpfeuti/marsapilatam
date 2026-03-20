@@ -124,6 +124,9 @@ class CurvesService:
         }
         key = key_map[curve_type]
         if key not in payload:
+            # Demo file is in old single-type format — fall back to raw records
+            if "records" in payload:
+                return pd.DataFrame(payload["records"])
             raise CurveError(
                 f"Curve type {curve_type!r} not found in demo file {entry['filename']}. "
                 "Re-run scripts/download_demo_data.py to regenerate demo data."
