@@ -3,8 +3,7 @@
   "profile": "COP.OIS",
   "label": "Colombia OIS",
   "curve_date": "2026-03-18",
-  "curve_type": "Raw Curve",
-  "records": [
+  "raw": [
     {
       "maturityTenor": {
         "length": 1,
@@ -202,6 +201,3610 @@
       "rate": 0.11274999618530274,
       "instrType": "IC_DETAILED_SWAP",
       "startDate": "2026-03-20"
+    }
+  ],
+  "zero": [
+    {
+      "date": "2026-03-19",
+      "rate": 0.1032576911448321,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2026-04-18",
+      "rate": 0.10282202483626443,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2026-05-18",
+      "rate": 0.10549343888847929,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2026-06-17",
+      "rate": 0.10833462950374236,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2026-07-17",
+      "rate": 0.11052326526443466,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2026-08-16",
+      "rate": 0.11254961705220168,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2026-09-15",
+      "rate": 0.11453403445251002,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2026-10-15",
+      "rate": 0.11574548990675014,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2026-11-14",
+      "rate": 0.11674902481263201,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2026-12-14",
+      "rate": 0.11772935969088903,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2027-01-13",
+      "rate": 0.11838630261546365,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2027-02-12",
+      "rate": 0.11893614119107322,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2027-03-14",
+      "rate": 0.11947141752959732,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2027-04-13",
+      "rate": 0.11975047642903462,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2027-05-13",
+      "rate": 0.11991768771875867,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2027-06-12",
+      "rate": 0.1200778888638601,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2027-07-12",
+      "rate": 0.12023120740489941,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2027-08-11",
+      "rate": 0.12037776975632392,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2027-09-10",
+      "rate": 0.12051770115498435,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2027-10-10",
+      "rate": 0.12059171763379997,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2027-11-09",
+      "rate": 0.12063113124182366,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2027-12-09",
+      "rate": 0.12066604171919211,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2028-01-08",
+      "rate": 0.12069654349089741,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2028-02-07",
+      "rate": 0.1207227295515753,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2028-03-08",
+      "rate": 0.12074469146459745,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2028-04-07",
+      "rate": 0.12066404011647772,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2028-05-07",
+      "rate": 0.12050668235987247,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2028-06-06",
+      "rate": 0.1203486956279216,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2028-07-06",
+      "rate": 0.12019010849210025,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2028-08-05",
+      "rate": 0.1200309488008891,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2028-09-04",
+      "rate": 0.11987124369632571,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2028-10-04",
+      "rate": 0.11971101963023349,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2028-11-03",
+      "rate": 0.11955030238013008,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2028-12-03",
+      "rate": 0.11938911706481939,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2029-01-02",
+      "rate": 0.11922748815966805,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2029-02-01",
+      "rate": 0.11906543951157267,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2029-03-03",
+      "rate": 0.11890299435361797,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2029-04-02",
+      "rate": 0.11873081663265593,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2029-05-02",
+      "rate": 0.11854633276832317,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2029-06-01",
+      "rate": 0.11836190886712926,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2029-07-01",
+      "rate": 0.11817755866704074,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2029-07-31",
+      "rate": 0.11799329549521831,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2029-08-30",
+      "rate": 0.1178091322786885,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2029-09-29",
+      "rate": 0.1176250815547476,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2029-10-29",
+      "rate": 0.11744115548110765,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2029-11-28",
+      "rate": 0.11725736584578741,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2029-12-28",
+      "rate": 0.11707372407675563,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2030-01-27",
+      "rate": 0.11689024125133153,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2030-02-26",
+      "rate": 0.11670692810534913,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2030-03-28",
+      "rate": 0.11652701963886787,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2030-04-27",
+      "rate": 0.11635603402437895,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2030-05-27",
+      "rate": 0.11618503815545003,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2030-06-26",
+      "rate": 0.11601404526862717,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2030-07-26",
+      "rate": 0.11584306823015598,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2030-08-25",
+      "rate": 0.11567211954513472,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2030-09-24",
+      "rate": 0.11550121136645092,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2030-10-24",
+      "rate": 0.11533035550350533,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2030-11-23",
+      "rate": 0.11515956343072775,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2030-12-23",
+      "rate": 0.11498884629588939,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2031-01-22",
+      "rate": 0.11481821492821641,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2031-02-21",
+      "rate": 0.11464767984630855,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2031-03-23",
+      "rate": 0.11448351668684888,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2031-04-22",
+      "rate": 0.1143752617928641,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2031-05-22",
+      "rate": 0.11426606070316418,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2031-06-21",
+      "rate": 0.11415594124133188,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2031-07-21",
+      "rate": 0.11404493063916867,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2031-08-20",
+      "rate": 0.11393305554813295,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2031-09-19",
+      "rate": 0.11382034205060768,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2031-10-19",
+      "rate": 0.11370681567099603,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2031-11-18",
+      "rate": 0.1135925013866451,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2031-12-18",
+      "rate": 0.11347742363859775,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2032-01-17",
+      "rate": 0.11336160634217256,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2032-02-16",
+      "rate": 0.1132450728973722,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2032-03-17",
+      "rate": 0.11312784619912089,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2032-04-16",
+      "rate": 0.11304102192570228,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2032-05-16",
+      "rate": 0.11296071303458878,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2032-06-15",
+      "rate": 0.1128791160377544,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2032-07-15",
+      "rate": 0.11279626299303425,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2032-08-14",
+      "rate": 0.11271218532562184,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2032-09-13",
+      "rate": 0.11262691383917914,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2032-10-13",
+      "rate": 0.1125404787268198,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2032-11-12",
+      "rate": 0.1124529095819639,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2032-12-12",
+      "rate": 0.11236423540906093,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2033-01-11",
+      "rate": 0.1122744846341799,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2033-02-10",
+      "rate": 0.11218368511546352,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2033-03-12",
+      "rate": 0.11209186415344592,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2033-04-11",
+      "rate": 0.11202178488105333,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2033-05-11",
+      "rate": 0.1119616154494016,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2033-06-10",
+      "rate": 0.11189992406458435,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2033-07-10",
+      "rate": 0.1118367455270246,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2033-08-09",
+      "rate": 0.11177211397963636,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2033-09-08",
+      "rate": 0.11170606291872437,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2033-10-08",
+      "rate": 0.11163862520478379,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2033-11-07",
+      "rate": 0.11156983307319551,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2033-12-07",
+      "rate": 0.1114997181448137,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2034-01-06",
+      "rate": 0.11142831143644215,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2034-02-05",
+      "rate": 0.1113556433711966,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2034-03-07",
+      "rate": 0.11128174378875036,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2034-04-06",
+      "rate": 0.1112237947038518,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2034-05-06",
+      "rate": 0.11117925603309065,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2034-06-05",
+      "rate": 0.11113302578828853,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2034-07-05",
+      "rate": 0.11108514065282718,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2034-08-04",
+      "rate": 0.11103563663511042,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2034-09-03",
+      "rate": 0.11098454907942382,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2034-10-03",
+      "rate": 0.1109319126767049,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2034-11-02",
+      "rate": 0.11087776147521898,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2034-12-02",
+      "rate": 0.11082212889113764,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2035-01-01",
+      "rate": 0.11076504771901496,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2035-01-31",
+      "rate": 0.11070655014215866,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2035-03-02",
+      "rate": 0.11064666774289328,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2035-04-01",
+      "rate": 0.11060009730647308,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2035-05-01",
+      "rate": 0.11057375830911281,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2035-05-31",
+      "rate": 0.11054550017563498,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2035-06-30",
+      "rate": 0.11051536265470556,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2035-07-30",
+      "rate": 0.11048338477865084,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2035-08-29",
+      "rate": 0.11044960487470397,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2035-09-28",
+      "rate": 0.1104140605761695,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2035-10-28",
+      "rate": 0.11037678883350005,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2035-11-27",
+      "rate": 0.11033782592528146,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2035-12-27",
+      "rate": 0.11029720746912132,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2036-01-26",
+      "rate": 0.11025496843243655,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2036-02-25",
+      "rate": 0.11021114314313728,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2036-03-26",
+      "rate": 0.11018746532748638,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2036-04-25",
+      "rate": 0.11024788559736742,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2036-05-25",
+      "rate": 0.11030487323427297,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2036-06-24",
+      "rate": 0.1103584941466677,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2036-07-24",
+      "rate": 0.11040881310221622,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2036-08-23",
+      "rate": 0.11045589374310999,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2036-09-22",
+      "rate": 0.11049979860145895,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2036-10-22",
+      "rate": 0.11054058911472996,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2036-11-21",
+      "rate": 0.11057832564121263,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2036-12-21",
+      "rate": 0.11061306747549596,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2037-01-20",
+      "rate": 0.11064487286393933,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2037-02-19",
+      "rate": 0.11067379902012289,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2037-03-21",
+      "rate": 0.11069990214026348,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2037-04-20",
+      "rate": 0.1107232374185828,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2037-05-20",
+      "rate": 0.11074385906261555,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2037-06-19",
+      "rate": 0.1107618203084468,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2037-07-19",
+      "rate": 0.11077717343586732,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2037-08-18",
+      "rate": 0.11078996978343761,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2037-09-17",
+      "rate": 0.11080025976345181,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2037-10-17",
+      "rate": 0.11080809287679272,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2037-11-16",
+      "rate": 0.11081351772767056,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2037-12-16",
+      "rate": 0.11081658203823878,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2038-01-15",
+      "rate": 0.11081733266307994,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2038-02-14",
+      "rate": 0.11081581560355623,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2038-03-16",
+      "rate": 0.11081207602201934,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2038-04-15",
+      "rate": 0.11086500925275256,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2038-05-15",
+      "rate": 0.11092927490826356,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2038-06-14",
+      "rate": 0.11099008870567949,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2038-07-14",
+      "rate": 0.11104751800391012,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2038-08-13",
+      "rate": 0.11110162891890929,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2038-09-12",
+      "rate": 0.11115248634425075,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2038-10-12",
+      "rate": 0.11120015397153932,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2038-11-11",
+      "rate": 0.111244694310647,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2038-12-11",
+      "rate": 0.11128616870976363,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2039-01-10",
+      "rate": 0.11132463737525333,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2039-02-09",
+      "rate": 0.11136015939130905,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2039-03-11",
+      "rate": 0.11139279273939741,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2039-04-10",
+      "rate": 0.11142259431748758,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2039-05-10",
+      "rate": 0.11144961995905846,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2039-06-09",
+      "rate": 0.11147392445187884,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2039-07-09",
+      "rate": 0.1114955615565561,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2039-08-08",
+      "rate": 0.11151458402484948,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2039-09-07",
+      "rate": 0.11153104361774477,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2039-10-07",
+      "rate": 0.11154499112328702,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2039-11-06",
+      "rate": 0.11155647637416947,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2039-12-06",
+      "rate": 0.11156554826507656,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2040-01-05",
+      "rate": 0.11157225476977893,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2040-02-04",
+      "rate": 0.11157664295798053,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2040-03-05",
+      "rate": 0.11157875901191587,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2040-04-04",
+      "rate": 0.11157864824269753,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2040-05-04",
+      "rate": 0.11157635510641378,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2040-06-03",
+      "rate": 0.1115719232199766,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2040-07-03",
+      "rate": 0.11156539537672024,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2040-08-02",
+      "rate": 0.11155681356175132,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2040-09-01",
+      "rate": 0.11154621896705147,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2040-10-01",
+      "rate": 0.11153365200633317,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2040-10-31",
+      "rate": 0.11151915232965086,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2040-11-30",
+      "rate": 0.11150275883776838,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2040-12-30",
+      "rate": 0.11148450969628446,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2041-01-29",
+      "rate": 0.11146444234951852,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2041-02-28",
+      "rate": 0.11144259353415828,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2041-03-30",
+      "rate": 0.11146196203537279,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2041-04-29",
+      "rate": 0.11156388039295315,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2041-05-29",
+      "rate": 0.11166166436525446,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2041-06-28",
+      "rate": 0.11175539763756272,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2041-07-28",
+      "rate": 0.11184516216618645,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2041-08-27",
+      "rate": 0.11193103821528524,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2041-09-26",
+      "rate": 0.11201310439296547,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2041-10-26",
+      "rate": 0.11209143768665156,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2041-11-25",
+      "rate": 0.11216611349774248,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2041-12-25",
+      "rate": 0.11223720567556199,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2042-01-24",
+      "rate": 0.1123047865506131,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2042-02-23",
+      "rate": 0.11236892696714575,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2042-03-25",
+      "rate": 0.11242969631504901,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2042-04-24",
+      "rate": 0.11248716256107678,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2042-05-24",
+      "rate": 0.1125413922794187,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2042-06-23",
+      "rate": 0.11259245068162584,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2042-07-23",
+      "rate": 0.11264040164590243,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2042-08-22",
+      "rate": 0.11268530774577427,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2042-09-21",
+      "rate": 0.11272723027814462,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2042-10-21",
+      "rate": 0.11276622929074788,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2042-11-20",
+      "rate": 0.11280236360901283,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2042-12-20",
+      "rate": 0.11283569086234545,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2043-01-19",
+      "rate": 0.11286626750984233,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2043-02-18",
+      "rate": 0.11289414886544531,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2043-03-20",
+      "rate": 0.11291938912254854,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2043-04-19",
+      "rate": 0.11294204137806753,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2043-05-19",
+      "rate": 0.1129621576559818,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2043-06-18",
+      "rate": 0.11297978893036094,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2043-07-18",
+      "rate": 0.11299498514788424,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2043-08-17",
+      "rate": 0.11300779524986491,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2043-09-16",
+      "rate": 0.11301826719378825,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2043-10-16",
+      "rate": 0.11302644797437388,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2043-11-15",
+      "rate": 0.11303238364417201,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2043-12-15",
+      "rate": 0.11303611933370408,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2044-01-14",
+      "rate": 0.11303769927115578,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2044-02-13",
+      "rate": 0.11303716680163367,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2044-03-14",
+      "rate": 0.11303456440599371,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2044-04-13",
+      "rate": 0.11302993371925082,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2044-05-13",
+      "rate": 0.11302331554857922,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2044-06-12",
+      "rate": 0.11301474989091163,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2044-07-12",
+      "rate": 0.11300427595014638,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2044-08-11",
+      "rate": 0.11299193215397131,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2044-09-10",
+      "rate": 0.1129777561703123,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2044-10-10",
+      "rate": 0.11296178492341503,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2044-11-09",
+      "rate": 0.11294405460956812,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2044-12-09",
+      "rate": 0.11292460071247538,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2045-01-08",
+      "rate": 0.1129034580182855,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2045-02-07",
+      "rate": 0.11288066063028593,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2045-03-09",
+      "rate": 0.11285624198326943,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2045-04-08",
+      "rate": 0.11283023485758019,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2045-05-08",
+      "rate": 0.11280267139284669,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2045-06-07",
+      "rate": 0.11277358310140846,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2045-07-07",
+      "rate": 0.11274300088144389,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2045-08-06",
+      "rate": 0.11271095502980544,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2045-09-05",
+      "rate": 0.11267747525456916,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2045-10-05",
+      "rate": 0.11264259068730534,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2045-11-04",
+      "rate": 0.11260632989507569,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2045-12-04",
+      "rate": 0.11256872089216438,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2046-01-03",
+      "rate": 0.11252979115154861,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2046-02-02",
+      "rate": 0.11248956761611409,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2046-03-04",
+      "rate": 0.11244807670962234,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2046-04-03",
+      "rate": 0.1122958361722543,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2046-05-03",
+      "rate": 0.1120192892108732,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2046-06-02",
+      "rate": 0.11174433020202447,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2046-07-02",
+      "rate": 0.1114709446390712,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2046-08-01",
+      "rate": 0.11119911819764029,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2046-08-31",
+      "rate": 0.11092883673270595,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2046-09-30",
+      "rate": 0.11066008627572974,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2046-10-30",
+      "rate": 0.11039285303185586,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2046-11-29",
+      "rate": 0.11012712337716087,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2046-12-29",
+      "rate": 0.10986288385595608,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2047-01-28",
+      "rate": 0.10960012117814182,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2047-02-27",
+      "rate": 0.10933882221661204,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2047-03-29",
+      "rate": 0.10907897400470856,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2047-04-28",
+      "rate": 0.10882056373372348,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2047-05-28",
+      "rate": 0.1085635787504488,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2047-06-27",
+      "rate": 0.10830800655477232,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2047-07-27",
+      "rate": 0.10805383479731862,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2047-08-26",
+      "rate": 0.10780105127713405,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2047-09-25",
+      "rate": 0.10754964393941531,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2047-10-25",
+      "rate": 0.10729960087327978,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2047-11-24",
+      "rate": 0.10705091030957747,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2047-12-24",
+      "rate": 0.10680356061874335,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2048-01-23",
+      "rate": 0.10655754030868894,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2048-02-22",
+      "rate": 0.10631283802273304,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2048-03-23",
+      "rate": 0.10606944253756993,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2048-04-22",
+      "rate": 0.1058273427612746,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2048-05-22",
+      "rate": 0.10558652773134457,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2048-06-21",
+      "rate": 0.10534698661277672,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2048-07-21",
+      "rate": 0.10510870869617908,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2048-08-20",
+      "rate": 0.10487168339591661,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2048-09-19",
+      "rate": 0.10463590024829009,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2048-10-19",
+      "rate": 0.10440134890974756,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2048-11-18",
+      "rate": 0.10416801915512781,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2048-12-18",
+      "rate": 0.10393590087593486,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2049-01-17",
+      "rate": 0.10370498407864302,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2049-02-16",
+      "rate": 0.10347525888303202,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2049-03-18",
+      "rate": 0.10324671552055122,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2049-04-17",
+      "rate": 0.10301934433271252,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2049-05-17",
+      "rate": 0.10279313576951157,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2049-06-16",
+      "rate": 0.1025680803878763,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2049-07-16",
+      "rate": 0.10234416885014232,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2049-08-15",
+      "rate": 0.10212139192255494,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2049-09-14",
+      "rate": 0.10189974047379707,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2049-10-14",
+      "rate": 0.10167920547354205,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2049-11-13",
+      "rate": 0.10145977799103177,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2049-12-13",
+      "rate": 0.10124144919367895,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2050-01-12",
+      "rate": 0.10102421034569307,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2050-02-11",
+      "rate": 0.10080805280673,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2050-03-13",
+      "rate": 0.10059296803056418,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2050-04-12",
+      "rate": 0.10037894756378336,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2050-05-12",
+      "rate": 0.10016598304450551,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2050-06-11",
+      "rate": 0.09995406620111694,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2050-07-11",
+      "rate": 0.09974318885103171,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2050-08-10",
+      "rate": 0.09953334289947191,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2050-09-09",
+      "rate": 0.09932452033826795,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2050-10-09",
+      "rate": 0.09911671324467886,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2050-11-08",
+      "rate": 0.09890991378023219,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2050-12-08",
+      "rate": 0.098704114189583,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2051-01-07",
+      "rate": 0.09849930679939152,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2051-02-06",
+      "rate": 0.09829548401721938,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2051-03-08",
+      "rate": 0.09809263833044367,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2051-04-07",
+      "rate": 0.09789076230518894,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2051-05-07",
+      "rate": 0.09768984858527639,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2051-06-06",
+      "rate": 0.0974898898911901,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2051-07-06",
+      "rate": 0.09729087901906011,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2051-08-05",
+      "rate": 0.09709280883966166,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2051-09-04",
+      "rate": 0.09689567229743065,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2051-10-04",
+      "rate": 0.09669946240949494,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2051-11-03",
+      "rate": 0.09650417226472088,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2051-12-03",
+      "rate": 0.09630979502277527,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2052-01-02",
+      "rate": 0.09611632391320211,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2052-02-01",
+      "rate": 0.09592375223451396,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2052-03-02",
+      "rate": 0.09573207335329763,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2052-04-01",
+      "rate": 0.09554128070333408,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2052-05-01",
+      "rate": 0.095351367784732,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2052-05-31",
+      "rate": 0.09516232816307499,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2052-06-30",
+      "rate": 0.0949741554685821,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2052-07-30",
+      "rate": 0.09478684339528143,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2052-08-29",
+      "rate": 0.09460038570019651,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2052-09-28",
+      "rate": 0.0944147762025453,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2052-10-28",
+      "rate": 0.09423000878295168,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2052-11-27",
+      "rate": 0.09404607738266879,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2052-12-27",
+      "rate": 0.09386297600281465,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2053-01-26",
+      "rate": 0.09368069870361924,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2053-02-25",
+      "rate": 0.09349923960368316,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2053-03-27",
+      "rate": 0.09331859287924751,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2053-04-26",
+      "rate": 0.09313875276347515,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2053-05-26",
+      "rate": 0.09295971354574226,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2053-06-25",
+      "rate": 0.0927814695709413,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2053-07-25",
+      "rate": 0.09260401523879397,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2053-08-24",
+      "rate": 0.09242734500317458,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2053-09-23",
+      "rate": 0.09225145337144387,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2053-10-23",
+      "rate": 0.09207633490379234,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2053-11-22",
+      "rate": 0.09190198421259363,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2053-12-22",
+      "rate": 0.0917283959617675,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2054-01-21",
+      "rate": 0.09155556486615218,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2054-02-20",
+      "rate": 0.09138348569088606,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2054-03-22",
+      "rate": 0.09121215325079843,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2054-04-21",
+      "rate": 0.09104156240980919,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2054-05-21",
+      "rate": 0.09087170808033751,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2054-06-20",
+      "rate": 0.09070258522271894,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2054-07-20",
+      "rate": 0.09053418884463109,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2054-08-19",
+      "rate": 0.09036651400052774,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2054-09-18",
+      "rate": 0.09019955579108117,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2054-10-18",
+      "rate": 0.09003330936263235,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2054-11-17",
+      "rate": 0.08986776990664938,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2054-12-17",
+      "rate": 0.08970293265919352,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2055-01-16",
+      "rate": 0.08953879290039289,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2055-02-15",
+      "rate": 0.08937534595392392,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2055-03-17",
+      "rate": 0.0892125871864999,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2055-04-16",
+      "rate": 0.0890505120073671,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2055-05-16",
+      "rate": 0.0888891158678079,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2055-06-15",
+      "rate": 0.088728394260651,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2055-07-15",
+      "rate": 0.08856834271978853,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2055-08-14",
+      "rate": 0.08840895681970014,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2055-09-13",
+      "rate": 0.0882502321749835,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2055-10-13",
+      "rate": 0.08809216443989162,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2055-11-12",
+      "rate": 0.08793474930787668,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2055-12-12",
+      "rate": 0.08777798251113993,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2056-01-11",
+      "rate": 0.08762185982018826,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2056-02-10",
+      "rate": 0.08746637704339662,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2056-03-11",
+      "rate": 0.08731153002657668,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2056-04-10",
+      "rate": 0.08715731465255139,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2056-05-10",
+      "rate": 0.08700372684073548,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2056-06-09",
+      "rate": 0.0868507625467216,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2056-07-09",
+      "rate": 0.0866984177618722,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2056-08-08",
+      "rate": 0.08654668851291719,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2056-09-07",
+      "rate": 0.08639557086155675,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2056-10-07",
+      "rate": 0.08624506090406979,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2056-11-06",
+      "rate": 0.08609515477092775,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2056-12-06",
+      "rate": 0.0859458486264134,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2057-01-05",
+      "rate": 0.08579713866824516,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2057-02-04",
+      "rate": 0.08564902112720614,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2057-03-06",
+      "rate": 0.0855014922667784,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2057-04-05",
+      "rate": 0.08535454838278207,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2057-05-05",
+      "rate": 0.08520818580301916,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2057-06-04",
+      "rate": 0.08506240088692242,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2057-07-04",
+      "rate": 0.08491719002520863,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2057-08-03",
+      "rate": 0.08477254963953663,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2057-09-02",
+      "rate": 0.08462847618216984,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2057-10-02",
+      "rate": 0.08448496613564324,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2057-11-01",
+      "rate": 0.08434201601243478,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2057-12-01",
+      "rate": 0.08419962235464118,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2057-12-31",
+      "rate": 0.08405778173365781,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2058-01-30",
+      "rate": 0.08391649074986299,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2058-03-01",
+      "rate": 0.08377574603230621,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2058-03-31",
+      "rate": 0.08363554423840068,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2058-04-30",
+      "rate": 0.08349588205361955,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2058-05-30",
+      "rate": 0.08335675619119634,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2058-06-29",
+      "rate": 0.08321816339182925,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2058-07-29",
+      "rate": 0.08308010042338908,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2058-08-28",
+      "rate": 0.08294256408063118,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2058-09-27",
+      "rate": 0.08280555118491081,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2058-10-27",
+      "rate": 0.0826690585839026,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2058-11-26",
+      "rate": 0.08253308315132306,
+      "dayCountType": "ACTUAL_365_FIXED"
+    },
+    {
+      "date": "2058-12-26",
+      "rate": 0.0823976217866571,
+      "dayCountType": "ACTUAL_365_FIXED"
+    }
+  ],
+  "discount": [
+    {
+      "date": "2026-03-19",
+      "factor": 0.9997171422278465
+    },
+    {
+      "date": "2026-04-18",
+      "factor": 0.9913051908932357
+    },
+    {
+      "date": "2026-05-18",
+      "factor": 0.9825240960135899
+    },
+    {
+      "date": "2026-06-17",
+      "factor": 0.9733520378777203
+    },
+    {
+      "date": "2026-07-17",
+      "factor": 0.9640238736859794
+    },
+    {
+      "date": "2026-08-16",
+      "factor": 0.9545057398260719
+    },
+    {
+      "date": "2026-09-15",
+      "factor": 0.9447864749877134
+    },
+    {
+      "date": "2026-10-15",
+      "factor": 0.9352789925071384
+    },
+    {
+      "date": "2026-11-14",
+      "factor": 0.9258099134958081
+    },
+    {
+      "date": "2026-12-14",
+      "factor": 0.9163013188020993
+    },
+    {
+      "date": "2027-01-13",
+      "factor": 0.9069860980309936
+    },
+    {
+      "date": "2027-02-12",
+      "factor": 0.8977558243515059
+    },
+    {
+      "date": "2027-03-14",
+      "factor": 0.8885519695884033
+    },
+    {
+      "date": "2027-04-13",
+      "factor": 0.8796064852696585
+    },
+    {
+      "date": "2027-05-13",
+      "factor": 0.8708234524684123
+    },
+    {
+      "date": "2027-06-12",
+      "factor": 0.8621118905125975
+    },
+    {
+      "date": "2027-07-12",
+      "factor": 0.8534727425708504
+    },
+    {
+      "date": "2027-08-11",
+      "factor": 0.8449068641344556
+    },
+    {
+      "date": "2027-09-10",
+      "factor": 0.8364150263388187
+    },
+    {
+      "date": "2027-10-10",
+      "factor": 0.8280748743413796
+    },
+    {
+      "date": "2027-11-09",
+      "factor": 0.8198546207283864
+    },
+    {
+      "date": "2027-12-09",
+      "factor": 0.8117170291524226
+    },
+    {
+      "date": "2028-01-08",
+      "factor": 0.8036620129189049
+    },
+    {
+      "date": "2028-02-07",
+      "factor": 0.7956894414980955
+    },
+    {
+      "date": "2028-03-08",
+      "factor": 0.7877991427803317
+    },
+    {
+      "date": "2028-04-07",
+      "factor": 0.7801489664775869
+    },
+    {
+      "date": "2028-05-07",
+      "factor": 0.7727101373665184
+    },
+    {
+      "date": "2028-06-06",
+      "factor": 0.7653631055314931
+    },
+    {
+      "date": "2028-07-06",
+      "factor": 0.7581066670907486
+    },
+    {
+      "date": "2028-08-05",
+      "factor": 0.7509396292876743
+    },
+    {
+      "date": "2028-09-04",
+      "factor": 0.7438608107112678
+    },
+    {
+      "date": "2028-10-04",
+      "factor": 0.7368690414939297
+    },
+    {
+      "date": "2028-11-03",
+      "factor": 0.7299631634878055
+    },
+    {
+      "date": "2028-12-03",
+      "factor": 0.7231420304208243
+    },
+    {
+      "date": "2029-01-02",
+      "factor": 0.7164045080335414
+    },
+    {
+      "date": "2029-02-01",
+      "factor": 0.7097494741978382
+    },
+    {
+      "date": "2029-03-03",
+      "factor": 0.7031758190184865
+    },
+    {
+      "date": "2029-04-02",
+      "factor": 0.6967022911092235
+    },
+    {
+      "date": "2029-05-02",
+      "factor": 0.6903344531765112
+    },
+    {
+      "date": "2029-06-01",
+      "factor": 0.684045429626906
+    },
+    {
+      "date": "2029-07-01",
+      "factor": 0.6778340844872323
+    },
+    {
+      "date": "2029-07-31",
+      "factor": 0.6716992981093608
+    },
+    {
+      "date": "2029-08-30",
+      "factor": 0.6656399670242434
+    },
+    {
+      "date": "2029-09-29",
+      "factor": 0.6596550037912141
+    },
+    {
+      "date": "2029-10-29",
+      "factor": 0.6537433368430023
+    },
+    {
+      "date": "2029-11-28",
+      "factor": 0.6479039103268933
+    },
+    {
+      "date": "2029-12-28",
+      "factor": 0.6421356839424341
+    },
+    {
+      "date": "2030-01-27",
+      "factor": 0.6364376327760698
+    },
+    {
+      "date": "2030-02-26",
+      "factor": 0.6308087471330618
+    },
+    {
+      "date": "2030-03-28",
+      "factor": 0.6252399069672955
+    },
+    {
+      "date": "2030-04-27",
+      "factor": 0.6197158168466185
+    },
+    {
+      "date": "2030-05-27",
+      "factor": 0.6142578241660949
+    },
+    {
+      "date": "2030-06-26",
+      "factor": 0.6088650079226181
+    },
+    {
+      "date": "2030-07-26",
+      "factor": 0.6035364599054744
+    },
+    {
+      "date": "2030-08-25",
+      "factor": 0.5982712845860706
+    },
+    {
+      "date": "2030-09-24",
+      "factor": 0.593068599004167
+    },
+    {
+      "date": "2030-10-24",
+      "factor": 0.5879275326509401
+    },
+    {
+      "date": "2030-11-23",
+      "factor": 0.58284722734918
+    },
+    {
+      "date": "2030-12-23",
+      "factor": 0.5778268371309107
+    },
+    {
+      "date": "2031-01-22",
+      "factor": 0.5728655281127023
+    },
+    {
+      "date": "2031-02-21",
+      "factor": 0.5679624783689381
+    },
+    {
+      "date": "2031-03-23",
+      "factor": 0.5630991792626793
+    },
+    {
+      "date": "2031-04-22",
+      "factor": 0.5581334671824641
+    },
+    {
+      "date": "2031-05-22",
+      "factor": 0.5532241020322698
+    },
+    {
+      "date": "2031-06-21",
+      "factor": 0.5483704139385492
+    },
+    {
+      "date": "2031-07-21",
+      "factor": 0.5435717381818936
+    },
+    {
+      "date": "2031-08-20",
+      "factor": 0.5388274153314099
+    },
+    {
+      "date": "2031-09-19",
+      "factor": 0.5341367913679664
+    },
+    {
+      "date": "2031-10-19",
+      "factor": 0.5294992177968388
+    },
+    {
+      "date": "2031-11-18",
+      "factor": 0.5249140517502605
+    },
+    {
+      "date": "2031-12-18",
+      "factor": 0.5203806560803668
+    },
+    {
+      "date": "2032-01-17",
+      "factor": 0.515898399443001
+    },
+    {
+      "date": "2032-02-16",
+      "factor": 0.5114666563728331
+    },
+    {
+      "date": "2032-03-17",
+      "factor": 0.5070848073502218
+    },
+    {
+      "date": "2032-04-16",
+      "factor": 0.5026571880713331
+    },
+    {
+      "date": "2032-05-16",
+      "factor": 0.498255319316333
+    },
+    {
+      "date": "2032-06-15",
+      "factor": 0.49390249452857365
+    },
+    {
+      "date": "2032-07-15",
+      "factor": 0.4895981571816171
+    },
+    {
+      "date": "2032-08-14",
+      "factor": 0.4853417540712081
+    },
+    {
+      "date": "2032-09-13",
+      "factor": 0.4811327354717741
+    },
+    {
+      "date": "2032-10-13",
+      "factor": 0.47697055528213295
+    },
+    {
+      "date": "2032-11-12",
+      "factor": 0.4728546711608883
+    },
+    {
+      "date": "2032-12-12",
+      "factor": 0.4687845446519714
+    },
+    {
+      "date": "2033-01-11",
+      "factor": 0.4647596413007727
+    },
+    {
+      "date": "2033-02-10",
+      "factor": 0.46077943076129285
+    },
+    {
+      "date": "2033-03-12",
+      "factor": 0.4568433868947238
+    },
+    {
+      "date": "2033-04-11",
+      "factor": 0.45287817086432147
+    },
+    {
+      "date": "2033-05-11",
+      "factor": 0.4489207183538137
+    },
+    {
+      "date": "2033-06-10",
+      "factor": 0.4450071497849427
+    },
+    {
+      "date": "2033-07-10",
+      "factor": 0.44113697289619536
+    },
+    {
+      "date": "2033-08-09",
+      "factor": 0.43730969815946985
+    },
+    {
+      "date": "2033-09-08",
+      "factor": 0.4335248389277477
+    },
+    {
+      "date": "2033-10-08",
+      "factor": 0.4297819115729182
+    },
+    {
+      "date": "2033-11-07",
+      "factor": 0.4260804356141879
+    },
+    {
+      "date": "2033-12-07",
+      "factor": 0.4224199338374855
+    },
+    {
+      "date": "2034-01-06",
+      "factor": 0.41879993240626384
+    },
+    {
+      "date": "2034-02-05",
+      "factor": 0.41521996096408376
+    },
+    {
+      "date": "2034-03-07",
+      "factor": 0.41167955272935014
+    },
+    {
+      "date": "2034-04-06",
+      "factor": 0.4081218346319515
+    },
+    {
+      "date": "2034-05-06",
+      "factor": 0.4045545539191969
+    },
+    {
+      "date": "2034-06-05",
+      "factor": 0.40102696730082504
+    },
+    {
+      "date": "2034-07-05",
+      "factor": 0.3975386242454673
+    },
+    {
+      "date": "2034-08-04",
+      "factor": 0.3940890769465224
+    },
+    {
+      "date": "2034-09-03",
+      "factor": 0.39067788044638285
+    },
+    {
+      "date": "2034-10-03",
+      "factor": 0.38730459275204826
+    },
+    {
+      "date": "2034-11-02",
+      "factor": 0.38396877494250736
+    },
+    {
+      "date": "2034-12-02",
+      "factor": 0.3806699912682549
+    },
+    {
+      "date": "2035-01-01",
+      "factor": 0.377407809243299
+    },
+    {
+      "date": "2035-01-31",
+      "factor": 0.37418179973000176
+    },
+    {
+      "date": "2035-03-02",
+      "factor": 0.37099153701708004
+    },
+    {
+      "date": "2035-04-01",
+      "factor": 0.367787814108865
+    },
+    {
+      "date": "2035-05-01",
+      "factor": 0.3645472348924294
+    },
+    {
+      "date": "2035-05-31",
+      "factor": 0.36134315843918613
+    },
+    {
+      "date": "2035-06-30",
+      "factor": 0.35817516077339023
+    },
+    {
+      "date": "2035-07-30",
+      "factor": 0.35504282077818183
+    },
+    {
+      "date": "2035-08-29",
+      "factor": 0.3519457203006324
+    },
+    {
+      "date": "2035-09-28",
+      "factor": 0.34888344424900297
+    },
+    {
+      "date": "2035-10-28",
+      "factor": 0.3458555806825717
+    },
+    {
+      "date": "2035-11-27",
+      "factor": 0.3428617208943707
+    },
+    {
+      "date": "2035-12-27",
+      "factor": 0.33990145948716444
+    },
+    {
+      "date": "2036-01-26",
+      "factor": 0.3369743944429849
+    },
+    {
+      "date": "2036-02-25",
+      "factor": 0.33408012718653046
+    },
+    {
+      "date": "2036-03-26",
+      "factor": 0.3311461794263114
+    },
+    {
+      "date": "2036-04-25",
+      "factor": 0.3279602506315173
+    },
+    {
+      "date": "2036-05-25",
+      "factor": 0.32481311372996235
+    },
+    {
+      "date": "2036-06-24",
+      "factor": 0.32170429387305605
+    },
+    {
+      "date": "2036-07-24",
+      "factor": 0.3186333189314683
+    },
+    {
+      "date": "2036-08-23",
+      "factor": 0.31559971967712325
+    },
+    {
+      "date": "2036-09-22",
+      "factor": 0.3126030299521765
+    },
+    {
+      "date": "2036-10-22",
+      "factor": 0.3096427868255897
+    },
+    {
+      "date": "2036-11-21",
+      "factor": 0.3067185307378984
+    },
+    {
+      "date": "2036-12-21",
+      "factor": 0.3038298056347423
+    },
+    {
+      "date": "2037-01-20",
+      "factor": 0.3009761590897083
+    },
+    {
+      "date": "2037-02-19",
+      "factor": 0.2981571424170111
+    },
+    {
+      "date": "2037-03-21",
+      "factor": 0.29537231077451925
+    },
+    {
+      "date": "2037-04-20",
+      "factor": 0.2926212232576122
+    },
+    {
+      "date": "2037-05-20",
+      "factor": 0.2899034429843322
+    },
+    {
+      "date": "2037-06-19",
+      "factor": 0.28721853717227985
+    },
+    {
+      "date": "2037-07-19",
+      "factor": 0.2845660772076808
+    },
+    {
+      "date": "2037-08-18",
+      "factor": 0.2819456387070323
+    },
+    {
+      "date": "2037-09-17",
+      "factor": 0.2793568015717244
+    },
+    {
+      "date": "2037-10-17",
+      "factor": 0.2767991500360096
+    },
+    {
+      "date": "2037-11-16",
+      "factor": 0.27427227270868254
+    },
+    {
+      "date": "2037-12-16",
+      "factor": 0.2717757626088115
+    },
+    {
+      "date": "2038-01-15",
+      "factor": 0.2693092171958524
+    },
+    {
+      "date": "2038-02-14",
+      "factor": 0.26687223839445906
+    },
+    {
+      "date": "2038-03-16",
+      "factor": 0.2644644326142887
+    },
+    {
+      "date": "2038-04-15",
+      "factor": 0.26189907919860245
+    },
+    {
+      "date": "2038-05-15",
+      "factor": 0.259320595050494
+    },
+    {
+      "date": "2038-06-14",
+      "factor": 0.2567756413976351
+    },
+    {
+      "date": "2038-07-14",
+      "factor": 0.2542637337326671
+    },
+    {
+      "date": "2038-08-13",
+      "factor": 0.25178439358104737
+    },
+    {
+      "date": "2038-09-12",
+      "factor": 0.24933714851468203
+    },
+    {
+      "date": "2038-10-12",
+      "factor": 0.2469215321590917
+    },
+    {
+      "date": "2038-11-11",
+      "factor": 0.2445370841945289
+    },
+    {
+      "date": "2038-12-11",
+      "factor": 0.24218335035144542
+    },
+    {
+      "date": "2039-01-10",
+      "factor": 0.23985988240068887
+    },
+    {
+      "date": "2039-02-09",
+      "factor": 0.237566238138785
+    },
+    {
+      "date": "2039-03-11",
+      "factor": 0.23530198136864766
+    },
+    {
+      "date": "2039-04-10",
+      "factor": 0.23306668187603777
+    },
+    {
+      "date": "2039-05-10",
+      "factor": 0.23085991540207734
+    },
+    {
+      "date": "2039-06-09",
+      "factor": 0.22868126361210728
+    },
+    {
+      "date": "2039-07-09",
+      "factor": 0.22653031406116383
+    },
+    {
+      "date": "2039-08-08",
+      "factor": 0.22440666015633176
+    },
+    {
+      "date": "2039-09-07",
+      "factor": 0.22230990111621998
+    },
+    {
+      "date": "2039-10-07",
+      "factor": 0.2202396419277921
+    },
+    {
+      "date": "2039-11-06",
+      "factor": 0.2181954933007694
+    },
+    {
+      "date": "2039-12-06",
+      "factor": 0.21617707161981428
+    },
+    {
+      "date": "2040-01-05",
+      "factor": 0.2141839988946901
+    },
+    {
+      "date": "2040-02-04",
+      "factor": 0.21221590270857937
+    },
+    {
+      "date": "2040-03-05",
+      "factor": 0.2102724161647371
+    },
+    {
+      "date": "2040-04-04",
+      "factor": 0.2083531778316409
+    },
+    {
+      "date": "2040-05-04",
+      "factor": 0.20645783168679374
+    },
+    {
+      "date": "2040-06-03",
+      "factor": 0.2045860270593237
+    },
+    {
+      "date": "2040-07-03",
+      "factor": 0.20273741857151806
+    },
+    {
+      "date": "2040-08-02",
+      "factor": 0.20091166607942088
+    },
+    {
+      "date": "2040-09-01",
+      "factor": 0.1991084346126136
+    },
+    {
+      "date": "2040-10-01",
+      "factor": 0.19732739431329402
+    },
+    {
+      "date": "2040-10-31",
+      "factor": 0.1955682203747589
+    },
+    {
+      "date": "2040-11-30",
+      "factor": 0.19383059297939115
+    },
+    {
+      "date": "2040-12-30",
+      "factor": 0.1921141972362449
+    },
+    {
+      "date": "2041-01-29",
+      "factor": 0.19041872311831617
+    },
+    {
+      "date": "2041-02-28",
+      "factor": 0.18874386539958168
+    },
+    {
+      "date": "2041-03-30",
+      "factor": 0.1869684422582896
+    },
+    {
+      "date": "2041-04-29",
+      "factor": 0.1849780126757416
+    },
+    {
+      "date": "2041-05-29",
+      "factor": 0.18301721391482279
+    },
+    {
+      "date": "2041-06-28",
+      "factor": 0.18108550485416025
+    },
+    {
+      "date": "2041-07-28",
+      "factor": 0.17918235542109806
+    },
+    {
+      "date": "2041-08-27",
+      "factor": 0.1773072463659478
+    },
+    {
+      "date": "2041-09-26",
+      "factor": 0.1754596690396736
+    },
+    {
+      "date": "2041-10-26",
+      "factor": 0.17363912517506483
+    },
+    {
+      "date": "2041-11-25",
+      "factor": 0.1718451266714383
+    },
+    {
+      "date": "2041-12-25",
+      "factor": 0.17007719538290408
+    },
+    {
+      "date": "2042-01-24",
+      "factor": 0.16833486291021668
+    },
+    {
+      "date": "2042-02-23",
+      "factor": 0.1666176703962307
+    },
+    {
+      "date": "2042-03-25",
+      "factor": 0.1649251683249661
+    },
+    {
+      "date": "2042-04-24",
+      "factor": 0.16325691632428782
+    },
+    {
+      "date": "2042-05-24",
+      "factor": 0.1616124829721939
+    },
+    {
+      "date": "2042-06-23",
+      "factor": 0.15999144560670217
+    },
+    {
+      "date": "2042-07-23",
+      "factor": 0.15839339013932127
+    },
+    {
+      "date": "2042-08-22",
+      "factor": 0.15681791087208624
+    },
+    {
+      "date": "2042-09-21",
+      "factor": 0.1552646103181337
+    },
+    {
+      "date": "2042-10-21",
+      "factor": 0.15373309902579124
+    },
+    {
+      "date": "2042-11-20",
+      "factor": 0.15222299540614825
+    },
+    {
+      "date": "2042-12-20",
+      "factor": 0.1507339255640749
+    },
+    {
+      "date": "2043-01-19",
+      "factor": 0.1492655231326527
+    },
+    {
+      "date": "2043-02-18",
+      "factor": 0.14781742911097823
+    },
+    {
+      "date": "2043-03-20",
+      "factor": 0.14638929170529708
+    },
+    {
+      "date": "2043-04-19",
+      "factor": 0.14498076617342687
+    },
+    {
+      "date": "2043-05-19",
+      "factor": 0.143591514672424
+    },
+    {
+      "date": "2043-06-18",
+      "factor": 0.14222120610944766
+    },
+    {
+      "date": "2043-07-18",
+      "factor": 0.14086951599577444
+    },
+    {
+      "date": "2043-08-17",
+      "factor": 0.13953612630391538
+    },
+    {
+      "date": "2043-09-16",
+      "factor": 0.13822072532778565
+    },
+    {
+      "date": "2043-10-16",
+      "factor": 0.13692300754587775
+    },
+    {
+      "date": "2043-11-15",
+      "factor": 0.13564267348738826
+    },
+    {
+      "date": "2043-12-15",
+      "factor": 0.13437942960124566
+    },
+    {
+      "date": "2044-01-14",
+      "factor": 0.1331329881279908
+    },
+    {
+      "date": "2044-02-13",
+      "factor": 0.1319030669744569
+    },
+    {
+      "date": "2044-03-14",
+      "factor": 0.13068938959119822
+    },
+    {
+      "date": "2044-04-13",
+      "factor": 0.12949168485261742
+    },
+    {
+      "date": "2044-05-13",
+      "factor": 0.12830968693973863
+    },
+    {
+      "date": "2044-06-12",
+      "factor": 0.12714313522557685
+    },
+    {
+      "date": "2044-07-12",
+      "factor": 0.1259917741630524
+    },
+    {
+      "date": "2044-08-11",
+      "factor": 0.12485535317540015
+    },
+    {
+      "date": "2044-09-10",
+      "factor": 0.12373362654902366
+    },
+    {
+      "date": "2044-10-10",
+      "factor": 0.12262635332874458
+    },
+    {
+      "date": "2044-11-09",
+      "factor": 0.12153329721539886
+    },
+    {
+      "date": "2044-12-09",
+      "factor": 0.12045422646573022
+    },
+    {
+      "date": "2045-01-08",
+      "factor": 0.11938891379453369
+    },
+    {
+      "date": "2045-02-07",
+      "factor": 0.11833713627900203
+    },
+    {
+      "date": "2045-03-09",
+      "factor": 0.11729867526522716
+    },
+    {
+      "date": "2045-04-08",
+      "factor": 0.11627331627681181
+    },
+    {
+      "date": "2045-05-08",
+      "factor": 0.11526084892554508
+    },
+    {
+      "date": "2045-06-07",
+      "factor": 0.11426106682409697
+    },
+    {
+      "date": "2045-07-07",
+      "factor": 0.1132737675006887
+    },
+    {
+      "date": "2045-08-06",
+      "factor": 0.11229875231569458
+    },
+    {
+      "date": "2045-09-05",
+      "factor": 0.11133582638013302
+    },
+    {
+      "date": "2045-10-05",
+      "factor": 0.11038479847600448
+    },
+    {
+      "date": "2045-11-04",
+      "factor": 0.10944548097843598
+    },
+    {
+      "date": "2045-12-04",
+      "factor": 0.1085176897795904
+    },
+    {
+      "date": "2046-01-03",
+      "factor": 0.10760124421430191
+    },
+    {
+      "date": "2046-02-02",
+      "factor": 0.10669596698739792
+    },
+    {
+      "date": "2046-03-04",
+      "factor": 0.10580168410266944
+    },
+    {
+      "date": "2046-04-03",
+      "factor": 0.10514892716639758
+    },
+    {
+      "date": "2046-05-03",
+      "factor": 0.10476476300615493
+    },
+    {
+      "date": "2046-06-02",
+      "factor": 0.10438339573360239
+    },
+    {
+      "date": "2046-07-02",
+      "factor": 0.10400479491562478
+    },
+    {
+      "date": "2046-08-01",
+      "factor": 0.1036289305590376
+    },
+    {
+      "date": "2046-08-31",
+      "factor": 0.1032557731026662
+    },
+    {
+      "date": "2046-09-30",
+      "factor": 0.10288529340959554
+    },
+    {
+      "date": "2046-10-30",
+      "factor": 0.10251746275958638
+    },
+    {
+      "date": "2046-11-29",
+      "factor": 0.10215225284165323
+    },
+    {
+      "date": "2046-12-29",
+      "factor": 0.1017896357468007
+    },
+    {
+      "date": "2047-01-28",
+      "factor": 0.1014295839609138
+    },
+    {
+      "date": "2047-02-27",
+      "factor": 0.10107207035779871
+    },
+    {
+      "date": "2047-03-29",
+      "factor": 0.10071706819237013
+    },
+    {
+      "date": "2047-04-28",
+      "factor": 0.10036455109398182
+    },
+    {
+      "date": "2047-05-28",
+      "factor": 0.10001449305989657
+    },
+    {
+      "date": "2047-06-27",
+      "factor": 0.09966686844889239
+    },
+    {
+      "date": "2047-07-27",
+      "factor": 0.09932165197500172
+    },
+    {
+      "date": "2047-08-26",
+      "factor": 0.09897881870138002
+    },
+    {
+      "date": "2047-09-25",
+      "factor": 0.09863834403430127
+    },
+    {
+      "date": "2047-10-25",
+      "factor": 0.09830020371727657
+    },
+    {
+      "date": "2047-11-24",
+      "factor": 0.09796437382529369
+    },
+    {
+      "date": "2047-12-24",
+      "factor": 0.09763083075917396
+    },
+    {
+      "date": "2048-01-23",
+      "factor": 0.09729955124004436
+    },
+    {
+      "date": "2048-02-22",
+      "factor": 0.09697051230392145
+    },
+    {
+      "date": "2048-03-23",
+      "factor": 0.09664369129640508
+    },
+    {
+      "date": "2048-04-22",
+      "factor": 0.096319065867479
+    },
+    {
+      "date": "2048-05-22",
+      "factor": 0.0959966139664157
+    },
+    {
+      "date": "2048-06-21",
+      "factor": 0.09567631383678356
+    },
+    {
+      "date": "2048-07-21",
+      "factor": 0.09535814401155342
+    },
+    {
+      "date": "2048-08-20",
+      "factor": 0.09504208330830248
+    },
+    {
+      "date": "2048-09-19",
+      "factor": 0.09472811082451335
+    },
+    {
+      "date": "2048-10-19",
+      "factor": 0.09441620593296592
+    },
+    {
+      "date": "2048-11-18",
+      "factor": 0.0941063482772199
+    },
+    {
+      "date": "2048-12-18",
+      "factor": 0.0937985177671862
+    },
+    {
+      "date": "2049-01-17",
+      "factor": 0.09349269457478478
+    },
+    {
+      "date": "2049-02-16",
+      "factor": 0.09318885912968718
+    },
+    {
+      "date": "2049-03-18",
+      "factor": 0.09288699211514193
+    },
+    {
+      "date": "2049-04-17",
+      "factor": 0.09258707446388068
+    },
+    {
+      "date": "2049-05-17",
+      "factor": 0.0922890873541035
+    },
+    {
+      "date": "2049-06-16",
+      "factor": 0.09199301220554137
+    },
+    {
+      "date": "2049-07-16",
+      "factor": 0.0916988306755943
+    },
+    {
+      "date": "2049-08-15",
+      "factor": 0.09140652465554322
+    },
+    {
+      "date": "2049-09-14",
+      "factor": 0.09111607626683417
+    },
+    {
+      "date": "2049-10-14",
+      "factor": 0.09082746785743313
+    },
+    {
+      "date": "2049-11-13",
+      "factor": 0.09054068199824977
+    },
+    {
+      "date": "2049-12-13",
+      "factor": 0.09025570147962889
+    },
+    {
+      "date": "2050-01-12",
+      "factor": 0.08997250930790784
+    },
+    {
+      "date": "2050-02-11",
+      "factor": 0.08969108870203855
+    },
+    {
+      "date": "2050-03-13",
+      "factor": 0.08941142309027275
+    },
+    {
+      "date": "2050-04-12",
+      "factor": 0.08913349610690906
+    },
+    {
+      "date": "2050-05-12",
+      "factor": 0.08885729158910048
+    },
+    {
+      "date": "2050-06-11",
+      "factor": 0.08858279357372116
+    },
+    {
+      "date": "2050-07-11",
+      "factor": 0.08830998629429099
+    },
+    {
+      "date": "2050-08-10",
+      "factor": 0.08803885417795677
+    },
+    {
+      "date": "2050-09-09",
+      "factor": 0.08776938184252908
+    },
+    {
+      "date": "2050-10-09",
+      "factor": 0.08750155409357309
+    },
+    {
+      "date": "2050-11-08",
+      "factor": 0.08723535592155265
+    },
+    {
+      "date": "2050-12-08",
+      "factor": 0.08697077249902636
+    },
+    {
+      "date": "2051-01-07",
+      "factor": 0.08670778917789446
+    },
+    {
+      "date": "2051-02-06",
+      "factor": 0.08644639148669543
+    },
+    {
+      "date": "2051-03-08",
+      "factor": 0.08618656512795159
+    },
+    {
+      "date": "2051-04-07",
+      "factor": 0.08592829597556217
+    },
+    {
+      "date": "2051-05-07",
+      "factor": 0.08567157007224324
+    },
+    {
+      "date": "2051-06-06",
+      "factor": 0.08541637362701339
+    },
+    {
+      "date": "2051-07-06",
+      "factor": 0.08516269301272417
+    },
+    {
+      "date": "2051-08-05",
+      "factor": 0.08491051476363447
+    },
+    {
+      "date": "2051-09-04",
+      "factor": 0.08465982557302776
+    },
+    {
+      "date": "2051-10-04",
+      "factor": 0.08441061229087161
+    },
+    {
+      "date": "2051-11-03",
+      "factor": 0.08416286192151816
+    },
+    {
+      "date": "2051-12-03",
+      "factor": 0.08391656162144517
+    },
+    {
+      "date": "2052-01-02",
+      "factor": 0.08367169869703663
+    },
+    {
+      "date": "2052-02-01",
+      "factor": 0.0834282606024019
+    },
+    {
+      "date": "2052-03-02",
+      "factor": 0.08318623493723305
+    },
+    {
+      "date": "2052-04-01",
+      "factor": 0.0829456094446993
+    },
+    {
+      "date": "2052-05-01",
+      "factor": 0.08270637200937778
+    },
+    {
+      "date": "2052-05-31",
+      "factor": 0.0824685106552202
+    },
+    {
+      "date": "2052-06-30",
+      "factor": 0.08223201354355444
+    },
+    {
+      "date": "2052-07-30",
+      "factor": 0.08199686897112024
+    },
+    {
+      "date": "2052-08-29",
+      "factor": 0.08176306536813881
+    },
+    {
+      "date": "2052-09-28",
+      "factor": 0.08153059129641514
+    },
+    {
+      "date": "2052-10-28",
+      "factor": 0.0812994354474727
+    },
+    {
+      "date": "2052-11-27",
+      "factor": 0.08106958664071967
+    },
+    {
+      "date": "2052-12-27",
+      "factor": 0.0808410338216464
+    },
+    {
+      "date": "2053-01-26",
+      "factor": 0.08061376606005301
+    },
+    {
+      "date": "2053-02-25",
+      "factor": 0.08038777254830697
+    },
+    {
+      "date": "2053-03-27",
+      "factor": 0.08016304259962996
+    },
+    {
+      "date": "2053-04-26",
+      "factor": 0.07993956564641315
+    },
+    {
+      "date": "2053-05-26",
+      "factor": 0.07971733123856084
+    },
+    {
+      "date": "2053-06-25",
+      "factor": 0.07949632904186146
+    },
+    {
+      "date": "2053-07-25",
+      "factor": 0.07927654883638575
+    },
+    {
+      "date": "2053-08-24",
+      "factor": 0.07905798051491128
+    },
+    {
+      "date": "2053-09-23",
+      "factor": 0.07884061408137308
+    },
+    {
+      "date": "2053-10-23",
+      "factor": 0.07862443964933971
+    },
+    {
+      "date": "2053-11-22",
+      "factor": 0.07840944744051433
+    },
+    {
+      "date": "2053-12-22",
+      "factor": 0.07819562778326031
+    },
+    {
+      "date": "2054-01-21",
+      "factor": 0.07798297111115093
+    },
+    {
+      "date": "2054-02-20",
+      "factor": 0.07777146796154255
+    },
+    {
+      "date": "2054-03-22",
+      "factor": 0.07756110897417114
+    },
+    {
+      "date": "2054-04-21",
+      "factor": 0.07735188488977134
+    },
+    {
+      "date": "2054-05-21",
+      "factor": 0.07714378654871791
+    },
+    {
+      "date": "2054-06-20",
+      "factor": 0.07693680488968903
+    },
+    {
+      "date": "2054-07-20",
+      "factor": 0.07673093094835107
+    },
+    {
+      "date": "2054-08-19",
+      "factor": 0.07652615585606433
+    },
+    {
+      "date": "2054-09-18",
+      "factor": 0.07632247083860967
+    },
+    {
+      "date": "2054-10-18",
+      "factor": 0.07611986721493515
+    },
+    {
+      "date": "2054-11-17",
+      "factor": 0.07591833639592273
+    },
+    {
+      "date": "2054-12-17",
+      "factor": 0.07571786988317457
+    },
+    {
+      "date": "2055-01-16",
+      "factor": 0.07551845926781832
+    },
+    {
+      "date": "2055-02-15",
+      "factor": 0.0753200962293314
+    },
+    {
+      "date": "2055-03-17",
+      "factor": 0.07512277253438374
+    },
+    {
+      "date": "2055-04-16",
+      "factor": 0.07492648003569852
+    },
+    {
+      "date": "2055-05-16",
+      "factor": 0.07473121067093091
+    },
+    {
+      "date": "2055-06-15",
+      "factor": 0.07453695646156429
+    },
+    {
+      "date": "2055-07-15",
+      "factor": 0.07434370951182341
+    },
+    {
+      "date": "2055-08-14",
+      "factor": 0.07415146200760465
+    },
+    {
+      "date": "2055-09-13",
+      "factor": 0.07396020621542283
+    },
+    {
+      "date": "2055-10-13",
+      "factor": 0.07376993448137409
+    },
+    {
+      "date": "2055-11-12",
+      "factor": 0.07358063923011492
+    },
+    {
+      "date": "2055-12-12",
+      "factor": 0.07339231296385677
+    },
+    {
+      "date": "2056-01-11",
+      "factor": 0.07320494826137612
+    },
+    {
+      "date": "2056-02-10",
+      "factor": 0.07301853777703965
+    },
+    {
+      "date": "2056-03-11",
+      "factor": 0.07283307423984421
+    },
+    {
+      "date": "2056-04-10",
+      "factor": 0.07264855045247151
+    },
+    {
+      "date": "2056-05-10",
+      "factor": 0.072464959290357
+    },
+    {
+      "date": "2056-06-09",
+      "factor": 0.07228229370077295
+    },
+    {
+      "date": "2056-07-09",
+      "factor": 0.0721005467019253
+    },
+    {
+      "date": "2056-08-08",
+      "factor": 0.07191971138206411
+    },
+    {
+      "date": "2056-09-07",
+      "factor": 0.0717397808986074
+    },
+    {
+      "date": "2056-10-07",
+      "factor": 0.07156074847727802
+    },
+    {
+      "date": "2056-11-06",
+      "factor": 0.07138260741125353
+    },
+    {
+      "date": "2056-12-06",
+      "factor": 0.07120535106032866
+    },
+    {
+      "date": "2057-01-05",
+      "factor": 0.07102897285009023
+    },
+    {
+      "date": "2057-02-04",
+      "factor": 0.07085346627110437
+    },
+    {
+      "date": "2057-03-06",
+      "factor": 0.07067882487811562
+    },
+    {
+      "date": "2057-04-05",
+      "factor": 0.07050504228925804
+    },
+    {
+      "date": "2057-05-05",
+      "factor": 0.07033211218527771
+    },
+    {
+      "date": "2057-06-04",
+      "factor": 0.07016002830876686
+    },
+    {
+      "date": "2057-07-04",
+      "factor": 0.06998878446340902
+    },
+    {
+      "date": "2057-08-03",
+      "factor": 0.06981837451323533
+    },
+    {
+      "date": "2057-09-02",
+      "factor": 0.06964879238189171
+    },
+    {
+      "date": "2057-10-02",
+      "factor": 0.06948003205191647
+    },
+    {
+      "date": "2057-11-01",
+      "factor": 0.06931208756402872
+    },
+    {
+      "date": "2057-12-01",
+      "factor": 0.06914495301642676
+    },
+    {
+      "date": "2057-12-31",
+      "factor": 0.06897862256409681
+    },
+    {
+      "date": "2058-01-30",
+      "factor": 0.06881309041813169
+    },
+    {
+      "date": "2058-03-01",
+      "factor": 0.068648350845059
+    },
+    {
+      "date": "2058-03-31",
+      "factor": 0.0684843981661794
+    },
+    {
+      "date": "2058-04-30",
+      "factor": 0.06832122675691399
+    },
+    {
+      "date": "2058-05-30",
+      "factor": 0.06815883104616102
+    },
+    {
+      "date": "2058-06-29",
+      "factor": 0.06799720551566196
+    },
+    {
+      "date": "2058-07-29",
+      "factor": 0.06783634469937645
+    },
+    {
+      "date": "2058-08-28",
+      "factor": 0.06767624318286594
+    },
+    {
+      "date": "2058-09-27",
+      "factor": 0.0675168956026864
+    },
+    {
+      "date": "2058-10-27",
+      "factor": 0.06735829664578923
+    },
+    {
+      "date": "2058-11-26",
+      "factor": 0.06720044104893078
+    },
+    {
+      "date": "2058-12-26",
+      "factor": 0.06704332359809019
     }
   ]
 }

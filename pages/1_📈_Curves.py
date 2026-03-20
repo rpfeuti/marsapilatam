@@ -134,7 +134,7 @@ with st.sidebar:
 
     curve_type = st.selectbox(
         t("curves.curve_type_label"),
-        ["Raw Curve"] if IS_DEMO else CURVE_TYPES,
+        CURVE_TYPES,
     )
     side = st.selectbox(t("curves.side_label"), CURVE_SIDES, disabled=IS_DEMO)
 

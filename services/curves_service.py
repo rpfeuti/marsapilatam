@@ -84,7 +84,7 @@ class CurvesService:
             raise ValueError(f"curve_type must be one of {CURVE_TYPES}, got {curve_type!r}")
 
         if self._demo:
-            return self._load_demo(curve_id)
+            return self._load_demo(curve_id, curve_type)
 
         if curve_id.upper() in CSA_CURVE_IDS.values():
             raise NotImplementedError(
@@ -105,8 +105,8 @@ class CurvesService:
     # Demo mode helper
     # ------------------------------------------------------------------
 
-    def _load_demo(self, curve_id: str) -> pd.DataFrame:
-        """Load a pre-saved curve from demo_data/."""
+    def _load_demo(self, curve_id: str, curve_type: str) -> pd.DataFrame:
+        """Load a pre-saved curve from demo_data/ for the requested curve type."""
         entry = next((c for c in DEMO_CURVES if c["curve_id"] == curve_id), None)
         if entry is None:
             raise CurveError(
@@ -117,7 +117,18 @@ class CurvesService:
         if not path.exists():
             raise CurveError(f"Demo data file not found: {path}")
         payload = json.loads(path.read_text(encoding="utf-8"))
-        return pd.DataFrame(payload["records"])
+        key_map = {
+            "Raw Curve": "raw",
+            "Zero Coupon": "zero",
+            "Discount Factor": "discount",
+        }
+        key = key_map[curve_type]
+        if key not in payload:
+            raise CurveError(
+                f"Curve type {curve_type!r} not found in demo file {entry['filename']}. "
+                "Re-run scripts/download_demo_data.py to regenerate demo data."
+            )
+        return pd.DataFrame(payload[key])
 
     async def download_curve_async(
         self,
