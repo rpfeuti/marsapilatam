@@ -1,0 +1,361 @@
+{
+  "curve_id": "S514",
+  "profile": "EUR.OIS.ESTR",
+  "label": "EUR OIS ESTR",
+  "curve_date": "2026-03-18",
+  "curve_type": "Raw Curve",
+  "records": [
+    {
+      "maturityTenor": {
+        "length": 1,
+        "unit": "WEEK"
+      },
+      "maturityDate": "2026-03-27",
+      "ticker": "EESWE1Z",
+      "rate": 0.01934000015258789,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 2,
+        "unit": "WEEK"
+      },
+      "maturityDate": "2026-04-07",
+      "ticker": "EESWE2Z",
+      "rate": 0.019364995956420897,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 1,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-04-20",
+      "ticker": "EESWEA",
+      "rate": 0.01937999963760376,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 2,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-05-20",
+      "ticker": "EESWEB",
+      "rate": 0.019595000743865967,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 3,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-06-22",
+      "ticker": "EESWEC",
+      "rate": 0.01990299940109253,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 4,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-07-20",
+      "ticker": "EESWED",
+      "rate": 0.020264501571655272,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 5,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-08-20",
+      "ticker": "EESWEE",
+      "rate": 0.020630497932434082,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 6,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-09-21",
+      "ticker": "EESWEF",
+      "rate": 0.02092949867248535,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 7,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-10-20",
+      "ticker": "EESWEG",
+      "rate": 0.02128650188446045,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 8,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-11-20",
+      "ticker": "EESWEH",
+      "rate": 0.02159249782562256,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 9,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-12-21",
+      "ticker": "EESWEI",
+      "rate": 0.021869001388549806,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 10,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2027-01-20",
+      "ticker": "EESWEJ",
+      "rate": 0.022171998023986818,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 11,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2027-02-22",
+      "ticker": "EESWEK",
+      "rate": 0.022414999008178713,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 1,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2027-03-22",
+      "ticker": "EESWE1",
+      "rate": 0.022531981468200683,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 18,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2027-09-20",
+      "ticker": "EESWE1F",
+      "rate": 0.023302001953125,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 2,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2028-03-20",
+      "ticker": "EESWE2",
+      "rate": 0.0235599946975708,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 3,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2029-03-20",
+      "ticker": "EESWE3",
+      "rate": 0.023969998359680177,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 4,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2030-03-20",
+      "ticker": "EESWE4",
+      "rate": 0.024424500465393066,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 5,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2031-03-20",
+      "ticker": "EESWE5",
+      "rate": 0.024868001937866212,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 6,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2032-03-22",
+      "ticker": "EESWE6",
+      "rate": 0.02536900043487549,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 7,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2033-03-21",
+      "ticker": "EESWE7",
+      "rate": 0.025950000286102295,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 8,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2034-03-20",
+      "ticker": "EESWE8",
+      "rate": 0.026477000713348388,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 9,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2035-03-20",
+      "ticker": "EESWE9",
+      "rate": 0.026999998092651366,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 10,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2036-03-20",
+      "ticker": "EESWE10",
+      "rate": 0.027709994316101074,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 11,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2037-03-20",
+      "ticker": "EESWE11",
+      "rate": 0.027979001998901368,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 12,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2038-03-22",
+      "ticker": "EESWE12",
+      "rate": 0.028429000377655028,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 15,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2041-03-20",
+      "ticker": "EESWE15",
+      "rate": 0.029395499229431153,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 20,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2046-03-20",
+      "ticker": "EESWE20",
+      "rate": 0.03008999824523926,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 25,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2051-03-20",
+      "ticker": "EESWE25",
+      "rate": 0.029980001449584962,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 30,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2056-03-20",
+      "ticker": "EESWE30",
+      "rate": 0.029629998207092285,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 40,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2066-03-22",
+      "ticker": "EESWE40",
+      "rate": 0.028548498153686524,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 50,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2076-03-20",
+      "ticker": "EESWE50",
+      "rate": 0.02725999355316162,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    }
+  ]
+}

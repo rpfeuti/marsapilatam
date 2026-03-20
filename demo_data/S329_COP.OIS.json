@@ -1,0 +1,207 @@
+{
+  "curve_id": "S329",
+  "profile": "COP.OIS",
+  "label": "Colombia OIS",
+  "curve_date": "2026-03-18",
+  "curve_type": "Raw Curve",
+  "records": [
+    {
+      "maturityTenor": {
+        "length": 1,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-04-20",
+      "ticker": "CLSWIBA",
+      "rate": 0.1018000030517578,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 3,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-06-22",
+      "ticker": "CLSWIBC",
+      "rate": 0.10895000457763672,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 6,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-09-21",
+      "ticker": "CLSWIBF",
+      "rate": 0.11684999465942383,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 9,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-12-21",
+      "ticker": "CLSWIBI",
+      "rate": 0.12180000305175781,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 1,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2027-03-23",
+      "ticker": "CLSWIB1",
+      "rate": 0.12550000190734864,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 18,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2027-09-20",
+      "ticker": "CLSWIB1F",
+      "rate": 0.13045000076293944,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 2,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2028-03-21",
+      "ticker": "CLSWIB2",
+      "rate": 0.12079999923706054,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 3,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2029-03-20",
+      "ticker": "CLSWIB3",
+      "rate": 0.11909999847412109,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 4,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2030-03-20",
+      "ticker": "CLSWIB4",
+      "rate": 0.11718223571777343,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 5,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2031-03-20",
+      "ticker": "CLSWIB5",
+      "rate": 0.11545000076293946,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 6,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2032-03-23",
+      "ticker": "CLSWIB6",
+      "rate": 0.11430000305175782,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 7,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2033-03-22",
+      "ticker": "CLSWIB7",
+      "rate": 0.11344999313354492,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 8,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2034-03-21",
+      "ticker": "CLSWIB8",
+      "rate": 0.11280000686645508,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 9,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2035-03-20",
+      "ticker": "CLSWIB9",
+      "rate": 0.11229999542236328,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 10,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2036-03-20",
+      "ticker": "CLSWIB10",
+      "rate": 0.11194999694824219,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 12,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2038-03-22",
+      "ticker": "CLSWIB12",
+      "rate": 0.11215000152587891,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 15,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2041-03-20",
+      "ticker": "CLSWIB15",
+      "rate": 0.11234999656677246,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 20,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2046-03-20",
+      "ticker": "CLSWIB20",
+      "rate": 0.11274999618530274,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    }
+  ]
+}

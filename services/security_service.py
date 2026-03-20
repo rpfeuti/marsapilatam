@@ -79,19 +79,19 @@ class SecurityService:
         if isinstance(instrument, Swap):
             deal_params, leg1_params, leg2_params = instrument.to_mars_params()
             body: dict[str, Any] = {
-                "structureRequest": {
-                    "dealType": instrument.deal_type,
+                "tail": instrument.deal_type,
+                "dealStructureOverride": {
                     "param": deal_params,
-                    "legs": [{"param": leg1_params}, {"param": leg2_params}],
-                }
+                    "leg": [{"param": leg1_params}, {"param": leg2_params}],
+                },
             }
         elif isinstance(instrument, (FxOption, EquityOption)):
             params = instrument.to_mars_params()
             body = {
-                "structureRequest": {
-                    "dealType": instrument.deal_type,
+                "tail": instrument.deal_type,
+                "dealStructureOverride": {
                     "param": params,
-                }
+                },
             }
         else:
             raise ValueError(f"Unsupported instrument type: {type(instrument)}")
@@ -219,7 +219,7 @@ class SecurityService:
 
         Columns: ``name``, ``description``, ``mode``, ``solvableTarget``, ``category``.
         """
-        response = self._client.send("GET", "/marswebapi/v1/dealSchema", {"dealType": deal_type})
+        response = self._client.send("GET", "/marswebapi/v1/dealSchema", {"tail": deal_type})
 
         if "error" in response:
             raise MarsApiError(response.get("error_description", str(response["error"])))

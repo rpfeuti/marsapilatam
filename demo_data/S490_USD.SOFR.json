@@ -1,0 +1,361 @@
+{
+  "curve_id": "S490",
+  "profile": "USD.SOFR",
+  "label": "USD SOFR",
+  "curve_date": "2026-03-18",
+  "curve_type": "Raw Curve",
+  "records": [
+    {
+      "maturityTenor": {
+        "length": 1,
+        "unit": "WEEK"
+      },
+      "maturityDate": "2026-03-27",
+      "ticker": "USOSFR1Z",
+      "rate": 0.03658809900283813,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 2,
+        "unit": "WEEK"
+      },
+      "maturityDate": "2026-04-03",
+      "ticker": "USOSFR2Z",
+      "rate": 0.03677000045776367,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 3,
+        "unit": "WEEK"
+      },
+      "maturityDate": "2026-04-10",
+      "ticker": "USOSFR3Z",
+      "rate": 0.03676499843597412,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 1,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-04-20",
+      "ticker": "USOSFRA",
+      "rate": 0.0368149995803833,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 2,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-05-20",
+      "ticker": "USOSFRB",
+      "rate": 0.03690340995788574,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 3,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-06-22",
+      "ticker": "USOSFRC",
+      "rate": 0.03698500156402588,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 4,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-07-20",
+      "ticker": "USOSFRD",
+      "rate": 0.037039999961853025,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 5,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-08-20",
+      "ticker": "USOSFRE",
+      "rate": 0.03704900026321411,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 6,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-09-21",
+      "ticker": "USOSFRF",
+      "rate": 0.03704699993133545,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 7,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-10-20",
+      "ticker": "USOSFRG",
+      "rate": 0.037030000686645505,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 8,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-11-20",
+      "ticker": "USOSFRH",
+      "rate": 0.03700049877166748,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 9,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-12-21",
+      "ticker": "USOSFRI",
+      "rate": 0.036971001625061034,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 10,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2027-01-20",
+      "ticker": "USOSFRJ",
+      "rate": 0.03695019721984863,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 11,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2027-02-22",
+      "ticker": "USOSFRK",
+      "rate": 0.036916000843048094,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 12,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2027-03-22",
+      "ticker": "USOSFR1",
+      "rate": 0.03689899921417236,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 18,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2027-09-20",
+      "ticker": "USOSFR1F",
+      "rate": 0.03630800008773804,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 2,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2028-03-20",
+      "ticker": "USOSFR2",
+      "rate": 0.035914373397827146,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 3,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2029-03-20",
+      "ticker": "USOSFR3",
+      "rate": 0.03537899971008301,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 4,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2030-03-20",
+      "ticker": "USOSFR4",
+      "rate": 0.03531650066375733,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 5,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2031-03-20",
+      "ticker": "USOSFR5",
+      "rate": 0.03555200099945068,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 6,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2032-03-22",
+      "ticker": "USOSFR6",
+      "rate": 0.035967502593994144,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 7,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2033-03-21",
+      "ticker": "USOSFR7",
+      "rate": 0.036431000232696534,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 8,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2034-03-20",
+      "ticker": "USOSFR8",
+      "rate": 0.03690700054168701,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 9,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2035-03-20",
+      "ticker": "USOSFR9",
+      "rate": 0.0373799991607666,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 10,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2036-03-20",
+      "ticker": "USOSFR10",
+      "rate": 0.03784550189971924,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 12,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2038-03-22",
+      "ticker": "USOSFR12",
+      "rate": 0.03875450134277344,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 15,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2041-03-20",
+      "ticker": "USOSFR15",
+      "rate": 0.039875001907348634,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 20,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2046-03-20",
+      "ticker": "USOSFR20",
+      "rate": 0.040811505317687985,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 25,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2051-03-20",
+      "ticker": "USOSFR25",
+      "rate": 0.04089835166931152,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 30,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2056-03-20",
+      "ticker": "USOSFR30",
+      "rate": 0.040600004196166994,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 40,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2066-03-22",
+      "ticker": "USOSFR40",
+      "rate": 0.03960500001907349,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 50,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2076-03-20",
+      "ticker": "USOSFR50",
+      "rate": 0.03855084896087647,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    }
+  ]
+}

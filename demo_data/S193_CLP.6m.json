@@ -1,0 +1,218 @@
+{
+  "curve_id": "S193",
+  "profile": "CLP.6m",
+  "label": "Chile CLP 6m",
+  "curve_date": "2026-03-18",
+  "curve_type": "Raw Curve",
+  "records": [
+    {
+      "maturityTenor": {
+        "length": 1,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-04-20",
+      "ticker": "CHSWPA",
+      "rate": 0.04519999980926514,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 2,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-05-20",
+      "ticker": "CHSWPB",
+      "rate": 0.04519999980926514,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 3,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-06-22",
+      "ticker": "CHSWPC",
+      "rate": 0.04525000095367432,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 6,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-09-21",
+      "ticker": "CHSWPF",
+      "rate": 0.04565000057220459,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 9,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-12-21",
+      "ticker": "CHSWPI",
+      "rate": 0.04630000114440918,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 1,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2027-03-22",
+      "ticker": "CHSWP1",
+      "rate": 0.04694999694824219,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 18,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2027-09-20",
+      "ticker": "CHSWP1F",
+      "rate": 0.04829999923706055,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 2,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2028-03-20",
+      "ticker": "CHSWP2",
+      "rate": 0.04824999809265137,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 3,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2029-03-20",
+      "ticker": "CHSWP3",
+      "rate": 0.04934999942779541,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 4,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2030-03-20",
+      "ticker": "CHSWP4",
+      "rate": 0.04985000610351562,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 5,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2031-03-20",
+      "ticker": "CHSWP5",
+      "rate": 0.05074999809265137,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 6,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2032-03-22",
+      "ticker": "CHSWP6",
+      "rate": 0.05159999847412109,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 7,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2033-03-21",
+      "ticker": "CHSWP7",
+      "rate": 0.052100000381469724,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 8,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2034-03-20",
+      "ticker": "CHSWP8",
+      "rate": 0.05260000228881836,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 9,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2035-03-20",
+      "ticker": "CHSWP9",
+      "rate": 0.05300000190734863,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 10,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2036-03-20",
+      "ticker": "CHSWP10",
+      "rate": 0.053400001525878905,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 12,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2038-03-22",
+      "ticker": "CHSWP12",
+      "rate": 0.05420000076293945,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 15,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2041-03-20",
+      "ticker": "CHSWP15",
+      "rate": 0.05559999942779541,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 20,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2046-03-20",
+      "ticker": "CHSWP20",
+      "rate": 0.056599998474121095,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    }
+  ]
+}

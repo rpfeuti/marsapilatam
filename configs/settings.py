@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     """
     Bloomberg MARS API credentials and runtime constants.
     Values are read from environment variables or a .env file at project root.
+    When credentials are absent the app automatically enters demo mode.
     """
 
     model_config = SettingsConfigDict(
@@ -17,12 +18,17 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    bbg_client_id: str = Field(..., description="Bloomberg Enterprise Console client ID")
+    bbg_client_id: str = Field(default="", description="Bloomberg Enterprise Console client ID")
     bbg_client_secret: str = Field(
-        ..., description="Bloomberg Enterprise Console client secret (hex)"
+        default="", description="Bloomberg Enterprise Console client secret (hex)"
     )
-    bbg_uuid: int = Field(..., description="Bloomberg user UUID")
+    bbg_uuid: int = Field(default=0, description="Bloomberg user UUID")
     bbg_host: str = Field(default="https://api.bloomberg.com", description="MARS API base URL")
+
+    @property
+    def demo_mode(self) -> bool:
+        """True when Bloomberg credentials are not configured."""
+        return not self.bbg_client_id or not self.bbg_client_secret or self.bbg_uuid == 0
 
 
 settings = Settings()  # type: ignore[call-arg]
@@ -119,3 +125,14 @@ CSA_CURVE_IDS: dict[str, str] = {
     "UYI": "S446",
     "ZAR": "S430",
 }
+
+# Curves available in demo mode (pre-saved JSON files in demo_data/)
+DEMO_CURVES: list[dict[str, str]] = [
+    {"curve_id": "S329", "profile": "COP.OIS",     "label": "Colombia OIS",       "filename": "S329_COP.OIS.json"},
+    {"curve_id": "S490", "profile": "USD.SOFR",    "label": "USD SOFR",            "filename": "S490_USD.SOFR.json"},
+    {"curve_id": "S89",  "profile": "BRL.BM&F",    "label": "Brazil Pre x DI",     "filename": "S89_BRL.BMandF.json"},
+    {"curve_id": "S583", "profile": "MXN.OIS.TIIE","label": "Mexico OIS TIIE",     "filename": "S583_MXN.OIS.TIIE.json"},
+    {"curve_id": "S193", "profile": "CLP.6m",      "label": "Chile CLP 6m",        "filename": "S193_CLP.6m.json"},
+    {"curve_id": "S514", "profile": "EUR.OIS.ESTR","label": "EUR OIS ESTR",        "filename": "S514_EUR.OIS.ESTR.json"},
+    {"curve_id": "S374", "profile": "PEN.OIS",     "label": "Peru OIS",            "filename": "S374_PEN.OIS.json"},
+]

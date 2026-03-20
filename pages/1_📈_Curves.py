@@ -20,13 +20,16 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from bloomberg.exceptions import CurveError, MarsApiError
+from configs.curves_catalog import CURVES_BY_LABEL
 from configs.settings import (
     CURVE_API_FIELDS,
     CURVE_SIDES,
     CURVE_SIZE,
     CURVE_TYPES,
+    DEMO_CURVES,
     INTERPOLATION_INTERVALS,
     INTERPOLATION_METHODS,
+    settings,
 )
 from services.curves_service import CurvesService
 
@@ -39,7 +42,20 @@ st.title("📈 Interest Rate Curves")
 st.caption("Download and visualize Bloomberg XMarket rate curves via the MARS API.")
 
 # ---------------------------------------------------------------------------
-# Cached service — one CurvesService per (market_date) combination
+# Demo mode detection
+# ---------------------------------------------------------------------------
+
+IS_DEMO = settings.demo_mode
+
+if IS_DEMO:
+    st.warning(
+        "**Demo Mode** — displaying pre-loaded market data (2026-03-18). "
+        "Connect a Bloomberg MARS API account to access live data for any curve and date.",
+        icon="🔒",
+    )
+
+# ---------------------------------------------------------------------------
+# Cached service
 # ---------------------------------------------------------------------------
 
 
@@ -49,11 +65,11 @@ def get_curves_service(market_date: date) -> CurvesService:
 
 
 # ---------------------------------------------------------------------------
-# Cached API call — re-runs only when inputs change
+# Cached download — re-runs only when inputs change
 # ---------------------------------------------------------------------------
 
 
-@st.cache_data(show_spinner="Downloading curve…")
+@st.cache_data(show_spinner="Loading curve…")
 def fetch_curve(
     _svc: CurvesService,
     curve_id: str,
@@ -66,7 +82,6 @@ def fetch_curve(
     requested_dates: list[date] = []
 
     if curve_type != "Raw Curve":
-        # Grid starts at T+1 of the curve date (API rejects T+0)
         step_map = {"Daily": 1, "Weekly": 7, "Monthly": 30}
         step = timedelta(days=step_map[interval])
         d = curve_date + timedelta(days=1)
@@ -89,22 +104,56 @@ def fetch_curve(
 # Sidebar controls
 # ---------------------------------------------------------------------------
 
+# In demo mode restrict the curve selector to the 7 pre-saved curves
+_demo_ids = {c["curve_id"] for c in DEMO_CURVES}
+
+if IS_DEMO:
+    _demo_labels_map = {
+        lbl: cid
+        for lbl, cid in CURVES_BY_LABEL.items()
+        if cid in _demo_ids
+    }
+else:
+    _demo_labels_map = CURVES_BY_LABEL
+
 with st.sidebar:
     st.header("Curve parameters")
 
-    curve_id = st.text_input(
-        "Curve ID", value="S490",
-        help="Bloomberg curve identifier, e.g. S442 (BRL), S428 (MXN), S423 (CLP), S438 (COP)",
+    _labels = list(_demo_labels_map.keys())
+    _default_label = next(
+        (lbl for lbl in _labels if "USD.SOFR" in lbl), _labels[0]
+    )
+    curve_label = st.selectbox(
+        "Curve",
+        options=_labels,
+        index=_labels.index(_default_label),
+        help="Select a Bloomberg XMarket curve from the catalog."
+        if not IS_DEMO
+        else "Demo mode: 7 LatAm + global curves available.",
+    )
+    curve_id = _demo_labels_map[curve_label]
+    st.caption(f"Curve ID: **{curve_id}**")
+
+    market_date = st.date_input(
+        "Market date (XMarket session)",
+        value=date(2026, 3, 18) if IS_DEMO else date.today(),
+        disabled=IS_DEMO,
+    )
+    curve_date = st.date_input(
+        "Curve date",
+        value=date(2026, 3, 18) if IS_DEMO else date.today(),
+        disabled=IS_DEMO,
     )
 
-    market_date = st.date_input("Market date (XMarket session)", value=date.today())
-    curve_date = st.date_input("Curve date", value=date.today())
+    curve_type = st.selectbox("Curve type", ["Raw Curve"] if IS_DEMO else CURVE_TYPES)
 
-    curve_type = st.selectbox("Curve type", CURVE_TYPES)
+    side = st.selectbox("Side", CURVE_SIDES, disabled=IS_DEMO)
 
-    side = st.selectbox("Side", CURVE_SIDES)
-
-    interpolation_label = st.selectbox("Interpolation method", list(INTERPOLATION_METHODS.keys()))
+    interpolation_label = st.selectbox(
+        "Interpolation method",
+        list(INTERPOLATION_METHODS.keys()),
+        disabled=(curve_type == "Raw Curve"),
+    )
     interpolation = INTERPOLATION_METHODS[interpolation_label]
 
     interval = st.selectbox(
@@ -114,18 +163,25 @@ with st.sidebar:
         help="Only used for Zero Coupon and Discount Factor curves.",
     )
 
-    run = st.button("Download curve", type="primary", use_container_width=True)
+    run = st.button("Load curve", type="primary", use_container_width=True)
+
+    if IS_DEMO:
+        st.divider()
+        st.markdown(
+            "**Want live data?**\n\n"
+            "This tool is powered by the [Bloomberg MARS API](https://www.bloomberg.com/professional/product/multi-asset-risk-system/). "
+            "Reach out to your Bloomberg representative to request a trial."
+        )
 
 # ---------------------------------------------------------------------------
 # Main panel
 # ---------------------------------------------------------------------------
 
 if not run:
-    st.info("Configure the curve parameters in the sidebar and click **Download curve**.")
+    st.info("Select a curve in the sidebar and click **Load curve**.")
     st.stop()
 
-# Validate dates
-if curve_type != "Raw Curve" and curve_date >= market_date + timedelta(days=CURVE_SIZE):
+if not IS_DEMO and curve_type != "Raw Curve" and curve_date >= market_date + timedelta(days=CURVE_SIZE):
     st.error("Curve date is too far in the future for the selected market date.")
     st.stop()
 
@@ -140,7 +196,7 @@ except MarsApiError as e:
     st.stop()
 
 if df.empty:
-    st.warning("The API returned an empty result for this curve.")
+    st.warning("No data returned for this curve.")
     st.stop()
 
 # ---------------------------------------------------------------------------
@@ -176,45 +232,36 @@ if "maturityTenor" in df.columns:
 date_col = CURVE_API_FIELDS[curve_type][0]   # "maturityDate" or "date"
 value_col = CURVE_API_FIELDS[curve_type][1]  # "rate" or "factor"
 
-# For Raw Curve use the numeric days column for correct proportional spacing;
-# overlay the tenor labels as custom tick text.
+demo_tag = "  |  Demo Data — 2026-03-18" if IS_DEMO else ""
+
 if curve_type == "Raw Curve" and "_tenor_days" in df.columns:
-    x_col = "_tenor_days"
-    use_tenor_ticks = True
-else:
-    x_col = date_col
-    use_tenor_ticks = False
-
-# Coerce values to numeric
-df[value_col] = pd.to_numeric(df[value_col], errors="coerce")
-
-if use_tenor_ticks:
     fig = go.Figure()
     fig.add_trace(go.Scatter(
         x=df["_tenor_days"],
         y=df[value_col],
         mode="lines+markers",
         text=df["maturityTenor"],
-        hovertemplate="<b>%{text}</b><br>Rate: %{y:.6f}<extra></extra>",
+        hovertemplate="<b>%{text}</b><br>Rate: %{y:.4f}<extra></extra>",
     ))
     fig.update_layout(
-        title=f"{curve_type} — Curve ID {curve_id}  |  {curve_date}  |  {side}",
+        title=f"{curve_type} — {curve_label.split(' (')[0]}  |  {curve_id}{demo_tag}",
         xaxis=dict(
             tickmode="array",
             tickvals=df["_tenor_days"].tolist(),
             ticktext=df["maturityTenor"].tolist(),
             title="Tenor",
         ),
-        yaxis_title=value_col,
+        yaxis_title="Rate",
         hovermode="x unified",
         height=450,
     )
 else:
+    df[value_col] = pd.to_numeric(df[value_col], errors="coerce")
     fig = px.line(
         df,
-        x=x_col,
+        x=date_col,
         y=value_col,
-        title=f"{curve_type} — Curve ID {curve_id}  |  {curve_date}  |  {side}",
+        title=f"{curve_type} — {curve_label.split(' (')[0]}  |  {curve_id}{demo_tag}",
         markers=True,
     )
     fig.update_layout(
@@ -233,3 +280,17 @@ st.plotly_chart(fig, use_container_width=True)
 st.subheader(f"Curve data  —  {len(df)} points")
 display_df = df.drop(columns=["_tenor_days"], errors="ignore")
 st.dataframe(display_df, use_container_width=True, height=400)
+
+# ---------------------------------------------------------------------------
+# Demo CTA
+# ---------------------------------------------------------------------------
+
+if IS_DEMO:
+    st.divider()
+    st.info(
+        "**This is a live Bloomberg MARS API integration.**  "
+        "With a Bloomberg terminal subscription you get access to 246+ curves across all asset classes, "
+        "live dates, and the full structuring & pricing engine.  "
+        "**[Learn more about Bloomberg MARS](https://www.bloomberg.com/professional/product/multi-asset-risk-system/)**",
+        icon="ℹ️",
+    )

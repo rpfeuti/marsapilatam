@@ -1,0 +1,174 @@
+{
+  "curve_id": "S583",
+  "profile": "MXN.OIS.TIIE",
+  "label": "Mexico OIS TIIE",
+  "curve_date": "2026-03-18",
+  "curve_type": "Raw Curve",
+  "records": [
+    {
+      "maturityTenor": {
+        "length": 1,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2026-04-17",
+      "ticker": "MPSWFA",
+      "rate": 0.06989999771118165,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 2,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2026-05-15",
+      "ticker": "MPSWFB",
+      "rate": 0.06980000019073486,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 3,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2026-06-12",
+      "ticker": "MPSWFC",
+      "rate": 0.06949999809265137,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 6,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2026-09-04",
+      "ticker": "MPSWFF",
+      "rate": 0.06970000267028809,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 9,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2026-11-27",
+      "ticker": "MPSWFI",
+      "rate": 0.07045000076293945,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 13,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2027-03-19",
+      "ticker": "MPSWF1A",
+      "rate": 0.07164999961853027,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 26,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2028-03-17",
+      "ticker": "MPSWF2B",
+      "rate": 0.07579999923706054,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 39,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2029-03-16",
+      "ticker": "MPSWF3C",
+      "rate": 0.07829999923706055,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 52,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2030-03-15",
+      "ticker": "MPSWF4D",
+      "rate": 0.08005000114440917,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 65,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2031-03-14",
+      "ticker": "MPSWF5E",
+      "rate": 0.08125,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 91,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2033-03-11",
+      "ticker": "MPSWF7G",
+      "rate": 0.08295000076293946,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 130,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2036-03-07",
+      "ticker": "MPSWF10J",
+      "rate": 0.08479999542236329,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 195,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2041-03-01",
+      "ticker": "MPSWF16C",
+      "rate": 0.08719999313354493,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 260,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2046-02-23",
+      "ticker": "MPSWF21H",
+      "rate": 0.0884000015258789,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 390,
+        "unit": "LUNAR_MONTH"
+      },
+      "maturityDate": "2056-02-11",
+      "ticker": "MPSWF32F",
+      "rate": 0.08795000076293945,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    }
+  ]
+}

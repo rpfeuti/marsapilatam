@@ -1,92 +1,117 @@
-# MARS API — Bloomberg LatAm
+# MARS API LatAm — Bloomberg MARS Rate Curves Explorer
 
-Python 3.12 service layer for the Bloomberg MARS (Multi-Asset Risk System) API.
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://marsapilatam.streamlit.app)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Prerequisites
+An open-source Python application built on top of the **Bloomberg MARS (Multi-Asset Risk System) API** that lets you explore, visualize, and price interest rate curves across LatAm and global markets.
 
-- Python 3.12+
-- Bloomberg EAPI credentials (client ID, client secret, UUID) from the Enterprise Console
-- Your IP must be whitelisted by Bloomberg
+> **Try the live demo** → [marsapilatam.streamlit.app](https://marsapilatam.streamlit.app)
+> No Bloomberg subscription needed for the demo. Connect your own credentials to unlock all 246+ curves and live pricing.
 
-## Setup
+---
+
+## Features
+
+- **246 rate curves** across 50+ currencies from Bloomberg XMarket
+- Interactive Plotly charts with correct tenor spacing
+- Raw Curve, Zero Coupon, and Discount Factor views
+- Swap structuring & pricing engine (Bloomberg SWPM back-end)
+- Full LatAm coverage: COP, BRL, MXN, CLP, PEN, ARS
+
+## Demo Mode
+
+When no Bloomberg credentials are configured the app automatically enters **demo mode**, serving pre-loaded real market data (2026-03-18) for 7 representative curves:
+
+| Curve | Country | ID |
+|---|---|---|
+| COP OIS | Colombia | S329 |
+| USD SOFR | United States | S490 |
+| BRL Pre x DI | Brazil | S89 |
+| MXN OIS TIIE | Mexico | S583 |
+| CLP 6m | Chile | S193 |
+| EUR OIS ESTR | Europe | S514 |
+| PEN OIS | Peru | S374 |
+
+## Quick Start
+
+### 1. Clone the repo
 
 ```bash
-# 1. Create and activate a virtual environment
-python -m venv .venv
-.venv\Scripts\activate          # Windows
-source .venv/bin/activate       # macOS / Linux
-
-# 2. Install the package in editable mode
-pip install -e .
-
-# 3. Copy the credentials template and fill in your values
-copy .env.example .env          # Windows
-cp .env.example .env            # macOS / Linux
+git clone https://github.com/YOUR_USERNAME/marsapilatam.git
+cd marsapilatam
 ```
 
-Edit `.env` with your Bloomberg credentials:
-```
-BBG_CLIENT_ID=...
-BBG_CLIENT_SECRET=...
-BBG_UUID=...
-```
+### 2. Install dependencies
 
-## Project layout
-
-```
-bloomberg/          # API client layer (JWT auth, httpx, tenacity polling)
-configs/            # pydantic-settings config loaded from .env
-instruments/        # Pydantic v2 instrument models (Swap, FxOption, EquityOption)
-services/           # Business logic services (security, curves, portfolio, risk)
-examples/           # Runnable CLI scripts
+```bash
+pip install -e .[dev]
 ```
 
-## Quick start
+### 3a. Run in demo mode (no credentials)
 
-```python
-from configs.settings import settings
-from bloomberg.webapi import MarsClient
-from services.security_service import SecurityService
-
-svc = SecurityService()
-df = svc.price({
-    "securitiesPricingRequest": {
-        "pricingParameter": {
-            "valuationDate": "2024-04-18+00:00",
-            "requestedField": ["MktPx", "MktVal", "Notional"],
-        },
-        "security": [{"identifier": {"bloombergDealId": "IBM 2.85 05/15/2040 Corp"}}],
-    }
-})
-print(df)
+```bash
+streamlit run app.py
 ```
 
-## Authentication
+The app will start immediately using the pre-loaded curve data.
 
-The API uses HS256 JWT tokens signed with your `client_secret`. Each request gets a
-fresh token (5-minute expiry) injected as a `jwt` HTTP header. Sessions are managed
-automatically by `MarsClient` and closed on destruction.
+### 3b. Run with live Bloomberg data
 
-## Services
+Copy `.env.example` to `.env` and fill in your Bloomberg MARS API credentials:
 
-| Service | Methods |
-|---|---|
-| `SecurityService` | `structure`, `price`, `solve`, `save`, `get_deal_schema`, `get_deal_type`, `get_terms_and_conditions` |
-| `CurvesService` | `download_curve` (Raw / Zero Coupon / Discount Factor) |
-| `PortfolioService` | `create`, `price` |
-| `RiskService` | `key_rate_risk` |
-
-## Error handling
-
-All services raise `MarsApiError` (or a subclass) on failure — no silent error tuples.
-
-```python
-from bloomberg.exceptions import MarsApiError, PricingError
-
-try:
-    df = svc.price(body)
-except PricingError as e:
-    print(f"Pricing failed: {e}")
-except MarsApiError as e:
-    print(f"API error: {e}")
+```bash
+cp .env.example .env
 ```
+
+```env
+BBG_CLIENT_ID=your_client_id
+BBG_CLIENT_SECRET=your_hex_secret
+BBG_UUID=your_bloomberg_uuid
+```
+
+Then run:
+
+```bash
+streamlit run app.py
+```
+
+## Project Structure
+
+```
+marsapilatam/
+├── app.py                   # Streamlit home page
+├── pages/
+│   └── 1_📈_Curves.py       # Rate curves explorer
+├── bloomberg/
+│   ├── webapi/              # MARS API client (JWT auth, sessions, polling)
+│   └── pricing_result.py    # Response parser
+├── services/
+│   ├── curves_service.py    # XMarket curve downloads
+│   └── security_service.py  # Deal structuring & pricing
+├── instruments/             # Typed Pydantic models (Swap, FxOption, EquityOption)
+├── configs/
+│   ├── settings.py          # Credentials + constants
+│   └── curves_catalog.py    # 248 Bloomberg XMarket curves
+├── demo_data/               # Pre-saved JSON curve data for demo mode
+└── docs/                    # API documentation & Swagger spec
+```
+
+## Bloomberg MARS API
+
+This project uses the [Bloomberg MARS API](https://www.bloomberg.com/professional/product/multi-asset-risk-system/) — a professional-grade pricing and risk system available to Bloomberg Terminal subscribers.
+
+**Want to try it?** Contact your Bloomberg representative or visit [bloomberg.com/professional](https://www.bloomberg.com/professional/product/multi-asset-risk-system/) to request a trial.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/my-feature`)
+3. Commit your changes
+4. Push to the branch and open a Pull Request
+
+## License
+
+MIT — see [LICENSE](LICENSE) for details.

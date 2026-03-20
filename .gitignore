@@ -11,9 +11,11 @@ __pycache__/
 venv/
 env/
 
-# Credentials — NEVER commit these
+# Old project — reference only, not part of the repo
+marsapilatam-old/
 .env
 credentials.json
+marsapilatam-old/credentials.json
 
 # Build / packaging
 dist/

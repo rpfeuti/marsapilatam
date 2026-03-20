@@ -1,0 +1,526 @@
+{
+  "curve_id": "S89",
+  "profile": "BRL.BM&F",
+  "label": "Brazil Pre x DI",
+  "curve_date": "2026-03-18",
+  "curve_type": "Raw Curve",
+  "records": [
+    {
+      "maturityTenor": {
+        "length": 1,
+        "unit": "DAY"
+      },
+      "maturityDate": "2026-03-19",
+      "ticker": "BZDIOVRA",
+      "rate": 0.149,
+      "instrType": "IC_CASH",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 10,
+        "unit": "DAY"
+      },
+      "maturityDate": "2026-04-01",
+      "ticker": "ODJ26",
+      "rate": 0.14702,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 30,
+        "unit": "DAY"
+      },
+      "maturityDate": "2026-05-04",
+      "ticker": "ODK26",
+      "rate": 0.14672000000000002,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 50,
+        "unit": "DAY"
+      },
+      "maturityDate": "2026-06-01",
+      "ticker": "ODM26",
+      "rate": 0.14587999999999998,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 71,
+        "unit": "DAY"
+      },
+      "maturityDate": "2026-07-01",
+      "ticker": "ODN26",
+      "rate": 0.1451,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 94,
+        "unit": "DAY"
+      },
+      "maturityDate": "2026-08-03",
+      "ticker": "ODQ26",
+      "rate": 0.1444,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 115,
+        "unit": "DAY"
+      },
+      "maturityDate": "2026-09-01",
+      "ticker": "ODU26",
+      "rate": 0.14355,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 136,
+        "unit": "DAY"
+      },
+      "maturityDate": "2026-10-01",
+      "ticker": "ODV26",
+      "rate": 0.14302,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 157,
+        "unit": "DAY"
+      },
+      "maturityDate": "2026-11-03",
+      "ticker": "ODX26",
+      "rate": 0.14241,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 176,
+        "unit": "DAY"
+      },
+      "maturityDate": "2026-12-01",
+      "ticker": "ODZ26",
+      "rate": 0.14193,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 198,
+        "unit": "DAY"
+      },
+      "maturityDate": "2027-01-04",
+      "ticker": "ODF27",
+      "rate": 0.14128,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 218,
+        "unit": "DAY"
+      },
+      "maturityDate": "2027-02-01",
+      "ticker": "ODG27",
+      "rate": 0.14089000000000002,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 236,
+        "unit": "DAY"
+      },
+      "maturityDate": "2027-03-01",
+      "ticker": "ODH27",
+      "rate": 0.14061,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 258,
+        "unit": "DAY"
+      },
+      "maturityDate": "2027-04-01",
+      "ticker": "ODJ27",
+      "rate": 0.14016,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 321,
+        "unit": "DAY"
+      },
+      "maturityDate": "2027-07-01",
+      "ticker": "ODN27",
+      "rate": 0.13884,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 343,
+        "unit": "DAY"
+      },
+      "maturityDate": "2027-08-02",
+      "ticker": "ODQ27",
+      "rate": 0.13846,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 386,
+        "unit": "DAY"
+      },
+      "maturityDate": "2027-10-01",
+      "ticker": "ODV27",
+      "rate": 0.13788999999999998,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 406,
+        "unit": "DAY"
+      },
+      "maturityDate": "2027-11-01",
+      "ticker": "ODX27",
+      "rate": 0.13762,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 426,
+        "unit": "DAY"
+      },
+      "maturityDate": "2027-12-01",
+      "ticker": "ODZ27",
+      "rate": 0.13718,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 449,
+        "unit": "DAY"
+      },
+      "maturityDate": "2028-01-03",
+      "ticker": "ODF28",
+      "rate": 0.13694,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 512,
+        "unit": "DAY"
+      },
+      "maturityDate": "2028-04-03",
+      "ticker": "ODJ28",
+      "rate": 0.13669,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 573,
+        "unit": "DAY"
+      },
+      "maturityDate": "2028-07-03",
+      "ticker": "ODN28",
+      "rate": 0.13669,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 637,
+        "unit": "DAY"
+      },
+      "maturityDate": "2028-10-02",
+      "ticker": "ODV28",
+      "rate": 0.13669,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 658,
+        "unit": "DAY"
+      },
+      "maturityDate": "2028-11-01",
+      "ticker": "ODX28",
+      "rate": 0.13672,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 677,
+        "unit": "DAY"
+      },
+      "maturityDate": "2028-12-01",
+      "ticker": "ODZ28",
+      "rate": 0.13677,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 697,
+        "unit": "DAY"
+      },
+      "maturityDate": "2029-01-02",
+      "ticker": "ODF29",
+      "rate": 0.13687,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 758,
+        "unit": "DAY"
+      },
+      "maturityDate": "2029-04-02",
+      "ticker": "ODJ29",
+      "rate": 0.13714,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 821,
+        "unit": "DAY"
+      },
+      "maturityDate": "2029-07-02",
+      "ticker": "ODN29",
+      "rate": 0.13746,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 885,
+        "unit": "DAY"
+      },
+      "maturityDate": "2029-10-01",
+      "ticker": "ODV29",
+      "rate": 0.13766,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 907,
+        "unit": "DAY"
+      },
+      "maturityDate": "2029-11-01",
+      "ticker": "ODX29",
+      "rate": 0.13773,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 926,
+        "unit": "DAY"
+      },
+      "maturityDate": "2029-12-03",
+      "ticker": "ODZ29",
+      "rate": 0.13781000000000002,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 946,
+        "unit": "DAY"
+      },
+      "maturityDate": "2030-01-02",
+      "ticker": "ODF30",
+      "rate": 0.13791,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 1007,
+        "unit": "DAY"
+      },
+      "maturityDate": "2030-04-01",
+      "ticker": "ODJ30",
+      "rate": 0.13796,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 1069,
+        "unit": "DAY"
+      },
+      "maturityDate": "2030-07-01",
+      "ticker": "ODN30",
+      "rate": 0.13816,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 1135,
+        "unit": "DAY"
+      },
+      "maturityDate": "2030-10-01",
+      "ticker": "ODV30",
+      "rate": 0.13829,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 1198,
+        "unit": "DAY"
+      },
+      "maturityDate": "2031-01-02",
+      "ticker": "ODF31",
+      "rate": 0.13859,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 1259,
+        "unit": "DAY"
+      },
+      "maturityDate": "2031-04-01",
+      "ticker": "ODJ31",
+      "rate": 0.13859,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 1320,
+        "unit": "DAY"
+      },
+      "maturityDate": "2031-07-01",
+      "ticker": "ODN31",
+      "rate": 0.13872,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 1386,
+        "unit": "DAY"
+      },
+      "maturityDate": "2031-10-01",
+      "ticker": "ODV31",
+      "rate": 0.13881,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 1450,
+        "unit": "DAY"
+      },
+      "maturityDate": "2032-01-02",
+      "ticker": "ODF32",
+      "rate": 0.13901,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 1702,
+        "unit": "DAY"
+      },
+      "maturityDate": "2033-01-03",
+      "ticker": "ODF33",
+      "rate": 0.13910999999999998,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 1953,
+        "unit": "DAY"
+      },
+      "maturityDate": "2034-01-02",
+      "ticker": "ODF34",
+      "rate": 0.13905,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 2201,
+        "unit": "DAY"
+      },
+      "maturityDate": "2035-01-02",
+      "ticker": "ODF35",
+      "rate": 0.13888999999999999,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 2450,
+        "unit": "DAY"
+      },
+      "maturityDate": "2036-01-02",
+      "ticker": "ODF36",
+      "rate": 0.13861,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 2703,
+        "unit": "DAY"
+      },
+      "maturityDate": "2037-01-02",
+      "ticker": "ODF37",
+      "rate": 0.13882,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 2952,
+        "unit": "DAY"
+      },
+      "maturityDate": "2038-01-04",
+      "ticker": "ODF38",
+      "rate": 0.13849999999999998,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    },
+    {
+      "maturityTenor": {
+        "length": 3203,
+        "unit": "DAY"
+      },
+      "maturityDate": "2039-01-03",
+      "ticker": "ODF39",
+      "rate": 0.13832,
+      "instrType": "IC_FUTURE",
+      "startDate": "2026-03-18"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "curve_id": "S374",
+  "profile": "PEN.OIS",
+  "label": "Peru OIS",
+  "curve_date": "2026-03-18",
+  "curve_type": "Raw Curve",
+  "records": [
+    {
+      "maturityTenor": {
+        "length": 1,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-04-20",
+      "ticker": "",
+      "rate": 0.0493492295251702,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 2,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-05-20",
+      "ticker": "",
+      "rate": 0.05115070154965494,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 3,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-06-22",
+      "ticker": "",
+      "rate": 0.05204335954562512,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 6,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-09-21",
+      "ticker": "",
+      "rate": 0.05204209372008525,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 9,
+        "unit": "MONTH"
+      },
+      "maturityDate": "2026-12-21",
+      "ticker": "",
+      "rate": 0.05187683851464349,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 1,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2027-03-22",
+      "ticker": "",
+      "rate": 0.0517491089464422,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 2,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2028-03-20",
+      "ticker": "PENSSS2",
+      "rate": 0.05039999961852976,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 3,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2029-03-20",
+      "ticker": "PENSSS3",
+      "rate": 0.050999999046325434,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 4,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2030-03-20",
+      "ticker": "PENSSS4",
+      "rate": 0.051499996185302516,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 5,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2031-03-20",
+      "ticker": "PENSSS5",
+      "rate": 0.0519000005722044,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 7,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2033-03-21",
+      "ticker": "PENSSS7",
+      "rate": 0.052499999999999866,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 10,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2036-03-20",
+      "ticker": "PENSSS10",
+      "rate": 0.053299999237060414,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 12,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2038-03-22",
+      "ticker": "PENSSS12",
+      "rate": 0.05239999771118153,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 15,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2041-03-20",
+      "ticker": "PENSSS15",
+      "rate": 0.05199999809265129,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    },
+    {
+      "maturityTenor": {
+        "length": 20,
+        "unit": "YEAR"
+      },
+      "maturityDate": "2046-03-20",
+      "ticker": "PENSSS20",
+      "rate": 0.050999999046325635,
+      "instrType": "IC_DETAILED_SWAP",
+      "startDate": "2026-03-20"
+    }
+  ]
+}
