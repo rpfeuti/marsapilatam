@@ -146,29 +146,32 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
     "common.demo_cta_sidebar": {
         "EN": "**Want live data?**\n\nThis tool is powered by the "
               "[Bloomberg MARS API](https://www.bloomberg.com/professional/product/multi-asset-risk-system/). "
-              "Reach out to your Bloomberg representative to request a trial.",
+              "Contact [Ricardo Pfeuti](mailto:rpfeuti4@bloomberg.net) to request a trial.",
         "PT": "**Quer dados ao vivo?**\n\nEsta ferramenta é alimentada pela "
               "[Bloomberg MARS API](https://www.bloomberg.com/professional/product/multi-asset-risk-system/). "
-              "Entre em contato com seu representante Bloomberg para solicitar uma versão de avaliação.",
+              "Entre em contato com [Ricardo Pfeuti](mailto:rpfeuti4@bloomberg.net) para solicitar uma versão de avaliação.",
         "ES": "**¿Quiere datos en vivo?**\n\nEsta herramienta utiliza la "
               "[Bloomberg MARS API](https://www.bloomberg.com/professional/product/multi-asset-risk-system/). "
-              "Contacte a su representante de Bloomberg para solicitar una prueba.",
+              "Contacte a [Ricardo Pfeuti](mailto:rpfeuti4@bloomberg.net) para solicitar una prueba.",
     },
     "common.demo_cta_bottom": {
         "EN": "**This is a live Bloomberg MARS API integration.**  "
               "With a Bloomberg terminal subscription you get access to 246+ curves across all asset classes, "
               "live dates, and the full structuring & pricing engine.  "
-              "**[Learn more about Bloomberg MARS]"
+              "Contact [Ricardo Pfeuti](mailto:rpfeuti4@bloomberg.net) or "
+              "**[learn more about Bloomberg MARS]"
               "(https://www.bloomberg.com/professional/product/multi-asset-risk-system/)**",
         "PT": "**Esta é uma integração real com a Bloomberg MARS API.**  "
               "Com uma assinatura do terminal Bloomberg você tem acesso a mais de 246 curvas em todas as "
               "classes de ativos, datas ao vivo e o motor completo de estruturação e precificação.  "
-              "**[Saiba mais sobre o Bloomberg MARS]"
+              "Entre em contato com [Ricardo Pfeuti](mailto:rpfeuti4@bloomberg.net) ou "
+              "**[saiba mais sobre o Bloomberg MARS]"
               "(https://www.bloomberg.com/professional/product/multi-asset-risk-system/)**",
         "ES": "**Esta es una integración real con la Bloomberg MARS API.**  "
               "Con una suscripción al terminal Bloomberg obtiene acceso a más de 246 curvas en todas las "
               "clases de activos, fechas en vivo y el motor completo de estructuración y valoración.  "
-              "**[Más información sobre Bloomberg MARS]"
+              "Contacte a [Ricardo Pfeuti](mailto:rpfeuti4@bloomberg.net) o "
+              "**[más información sobre Bloomberg MARS]"
               "(https://www.bloomberg.com/professional/product/multi-asset-risk-system/)**",
     },
 
