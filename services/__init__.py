@@ -1,3 +1,3 @@
-from services.curves_service import CurvesService
+from services.curves_service import CurveQuery, CurveRepository, XMarketCurveService
 
-__all__ = ["CurvesService"]
+__all__ = ["CurveQuery", "CurveRepository", "XMarketCurveService"]

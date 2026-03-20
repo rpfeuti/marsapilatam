@@ -1,21 +1,26 @@
 """
-CurvesService — download and normalize interest rate curves via the MARS XMarket platform.
+XMarket interest rate curve service — Repository pattern.
 
-Supports three curve representations:
-- **Raw Curve**        — par rates at the market instruments' own maturities
-- **Zero Coupon**      — zero rates interpolated at custom dates
-- **Discount Factor**  — discount factors interpolated at custom dates
+Architecture:
+    CurveQuery          — immutable value object describing a single download request
+    CurveRepository     — structural Protocol (interface) for any data source
+    XMarketRepository   — live Bloomberg MARS XMarket implementation
+    DemoRepository      — offline, pre-saved JSON snapshot implementation
+    XMarketCurveService — thin orchestrator: delegates to repository, enriches result
 
-In demo mode (no Bloomberg credentials) all curves are served from pre-saved
-JSON snapshots in the ``demo_data/`` directory.  Run ``scripts/download_demo_data.py``
-against live credentials to refresh those snapshots.
+The two concrete repositories are the only places that know about Bloomberg
+credentials or the filesystem.  XMarketCurveService knows neither; it only
+calls fetch() and applies normalisation.  Swapping demo ↔ live or injecting
+a test double requires changing exactly one line at construction time.
 """
 
 from __future__ import annotations
 
 import json
+from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
+from typing import Protocol
 
 import pandas as pd
 from pydantic import ValidationError
@@ -36,222 +41,265 @@ from configs.curves_config import (
     DEMO_CURVES,
     CurveSpec,
     CurveType,
+    DemoCurve,
     Side,
 )
 from configs.settings import settings
 
-_DEMO_DATA_DIR = Path(__file__).resolve().parent.parent / "demo_data"
+_SNAPSHOTS_DIR = Path(__file__).resolve().parent.parent / "demo_data"
 
-_DAYS_PER_UNIT: dict[str, int] = {"DAY": 1, "WEEK": 7, "MONTH": 30, "YEAR": 365}
-_UNIT_ABBREV:   dict[str, str] = {"DAY": "D", "WEEK": "W", "MONTH": "M", "YEAR": "Y"}
+# Tenor unit → approximate days, and → single-letter abbreviation for labels
+_TENOR_DAYS:  dict[str, int] = {"DAY": 1, "WEEK": 7, "MONTH": 30, "YEAR": 365}
+_TENOR_LABEL: dict[str, str] = {"DAY": "D", "WEEK": "W", "MONTH": "M", "YEAR": "Y"}
 
 
-def _parse_tenor(v: object) -> tuple[str, float]:
-    """Parse a maturityTenor dict e.g. {"unit": "WEEK", "length": 1} into ("1W", 7.0).
+# ===========================================================================
+# Value object
+# ===========================================================================
 
-    Non-dict inputs are stringified with 0.0 days — safe for already-normalised data.
+
+@dataclass(frozen=True)
+class CurveQuery:
     """
-    if not isinstance(v, dict):
-        return str(v), 0.0
-    unit   = str(v.get("unit", "")).upper()
-    length = int(v.get("length", 0))
-    label  = f"{length}{_UNIT_ABBREV.get(unit, unit)}"
-    days   = float(length) * _DAYS_PER_UNIT.get(unit, 1)
-    return label, days
+    Immutable value object that fully describes a single curve download request.
 
-
-class CurvesService:
-    """
-    Download Bloomberg curve data via the MARS XMarket data platform.
-
-    Args:
-        market_date: The historical market date for which to retrieve data.
-                     An XMarket session is opened immediately on construction.
-                     Ignored in demo mode.
-        client:      Optional pre-constructed :class:`MarsClient`. Useful in tests
-                     or when sharing a session across multiple service calls.
+    Frozen + hashable means it can be used directly as a key in st.cache_data,
+    replacing the previous flat list of individual scalar arguments.
+    Accepts plain strings for curve_type — they are coerced to CurveType in
+    __post_init__ so callers can use either form without ceremony.
     """
 
-    def __init__(self, market_date: date, client: MarsClient | None = None) -> None:
-        self._demo = settings.demo_mode
-        if not self._demo:
-            self._client = client or MarsClient(settings, market_date=market_date)
+    curve_id:        str
+    curve_type:      CurveType
+    as_of:           date
+    side:            Side             = "Mid"
+    requested_dates: tuple[date, ...] = ()
+    interpolation:   str              = "INTERPOLATION_METHOD_LINEAR_SIMPLE"
 
-    # ------------------------------------------------------------------
-    # Public API — synchronous
-    # ------------------------------------------------------------------
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "curve_type", CurveType(self.curve_type))
 
-    def download_curve(
-        self,
-        curve_type: CurveType | str,
-        curve_id: str,
-        curve_date: date,
-        side: Side = "Mid",
-        requested_dates: list[date] | None = None,
-        interpolation: str = "INTERPOLATION_METHOD_LINEAR_SIMPLE",
-    ) -> pd.DataFrame:
-        """
-        Download and normalize a single rate curve.
 
-        Args:
-            curve_type:      ``CurveType`` enum member or its string value
-                             (``"Raw Curve"``, ``"Zero Coupon"``, ``"Discount Factor"``).
-            curve_id:        Bloomberg curve identifier (e.g. ``"S329"`` for COP OIS).
-            curve_date:      Curve valuation date.
-            side:            ``"Mid"``, ``"Bid"``, or ``"Ask"``.
-            requested_dates: Required for Zero Coupon and Discount Factor.
-            interpolation:   MARS interpolation method string.
+# ===========================================================================
+# Repository Protocol
+# ===========================================================================
 
-        Returns:
-            Normalized :class:`~pandas.DataFrame`.
-            Raw Curve includes an extra ``maturityTenor`` (str label) and
-            ``_tenor_days`` (float, for chart x-axis) column.
 
-        Raises:
-            ValueError:       For unknown ``curve_type`` values.
-            NotImplementedError: For CSA curves that are not yet wired up.
-            CurveError:       If the API returns an error or the demo file is missing.
-        """
-        spec = self._resolve_spec(curve_type)
+class CurveRepository(Protocol):
+    """
+    Structural interface for curve data sources.
 
-        if self._demo:
-            return self._load_demo(curve_id, spec)
+    Any object with a matching fetch() signature satisfies this protocol
+    without inheritance — plain duck typing, verified statically by mypy/pyright.
+    """
 
-        if curve_id.upper() in CSA_CURVE_IDS.values():
-            raise NotImplementedError(
-                f"CSA curve {curve_id!r} is available in the MARS API but not yet wired up."
-            )
+    def fetch(self, query: CurveQuery) -> pd.DataFrame: ...
 
-        body     = self._build_request(
-            spec, curve_id, curve_date, side, requested_dates or [], interpolation
+
+# ===========================================================================
+# Pure helper functions (no state, easily unit-tested)
+# ===========================================================================
+
+
+def _decode_tenor(raw: object) -> tuple[str, float]:
+    """Decode one raw maturityTenor API value into a (label, days) pair.
+
+    API format: {"unit": "WEEK", "length": 2}  ->  ("2W", 14.0)
+    Already-decoded strings pass through:         ->  ("2W",  0.0)
+    """
+    if not isinstance(raw, dict):
+        return str(raw), 0.0
+    unit   = str(raw.get("unit", "")).upper()
+    length = int(raw.get("length", 0))
+    return (
+        f"{length}{_TENOR_LABEL.get(unit, unit)}",
+        float(length) * _TENOR_DAYS.get(unit, 1),
+    )
+
+
+def _enrich_tenors(df: pd.DataFrame) -> pd.DataFrame:
+    """Decode maturityTenor dicts and add a tenor_days column for charting.
+
+    Only acts on Raw Curve data (which carries a maturityTenor column).
+    Returns the DataFrame unchanged for Zero Coupon and Discount Factor.
+    """
+    if "maturityTenor" not in df.columns:
+        return df
+
+    decoded            = df["maturityTenor"].apply(_decode_tenor)
+    labels, days       = zip(*decoded)
+    df                 = df.copy()
+    df["maturityTenor"] = list(labels)
+    df["tenor_days"]    = pd.array(list(days), dtype="float64")
+    return df
+
+
+def _build_api_request(
+    spec:       CurveSpec,
+    query:      CurveQuery,
+    session_id: str | None,
+) -> dict:
+    """Build and serialise a DataDownloadRequest from a CurveSpec + CurveQuery."""
+    as_of_str = str(query.as_of)
+
+    if spec.api_outer == "rawCurve":
+        rate_curve: dict = {
+            spec.api_outer: {
+                "curveDate":    as_of_str,
+                "settleDate":   as_of_str,
+                spec.api_inner: [],
+            }
+        }
+    else:
+        inner: dict = {
+            spec.api_inner: [
+                {"date": str(d), spec.value_col: 0} for d in query.requested_dates
+            ],
+            "interpolationMethodOverride": query.interpolation,
+        }
+        if spec.api_inner == "discountFactor":
+            inner["discountToDateType"] = "CUSTOM_DATE"
+            inner["discountToDate"]     = as_of_str
+        rate_curve = {spec.api_outer: inner}
+
+    return DataDownloadRequest(
+        get_data_request=GetDataRequest(
+            session_id=session_id,
+            key_and_data=[
+                KeyAndDataItem(
+                    key=_DataKey(rate_curve_key=_RateCurveKey(curve_id=query.curve_id)),
+                    data={"marketData": {
+                        "side": query.side,
+                        "data": {"rateCurve": rate_curve},
+                    }},
+                )
+            ],
         )
-        response = self._client.send("POST", "/marswebapi/v1/dataDownload", body)
+    ).model_dump(by_alias=True)
+
+
+def _extract_rows(response: dict, spec: CurveSpec) -> pd.DataFrame:
+    """Validate the API response envelope and return curve rows as a DataFrame."""
+    try:
+        parsed      = DataDownloadResponse.model_validate(response)
+        market_data = parsed.get_data_response.key_and_data[0].data.market_data
+    except (ValidationError, IndexError) as exc:
+        raise CurveError(f"Unexpected API response structure: {exc}") from exc
+
+    if market_data.error:
+        raise CurveError(f"API returned an error: {market_data.error}")
+
+    try:
+        rows = market_data.data.rate_curve[spec.api_outer][spec.api_inner]
+    except KeyError as exc:
+        raise CurveError(f"Unexpected response shape — missing key: {exc}") from exc
+
+    return pd.DataFrame(rows)
+
+
+def _find_snapshot(curve_id: str) -> DemoCurve:
+    """Return the DemoCurve manifest entry for curve_id, or raise CurveError."""
+    entry = next((c for c in DEMO_CURVES if c.curve_id == curve_id), None)
+    if entry is None:
+        raise CurveError(
+            f"Curve {curve_id!r} is not available in demo mode. "
+            f"Available IDs: {[c.curve_id for c in DEMO_CURVES]}"
+        )
+    return entry
+
+
+def _load_snapshot(path: Path, spec: CurveSpec) -> pd.DataFrame:
+    """Read a pre-saved JSON snapshot file and return rows for the requested spec."""
+    if not path.exists():
+        raise CurveError(f"Demo snapshot not found: {path}")
+
+    payload = json.loads(path.read_text(encoding="utf-8"))
+
+    if spec.demo_key not in payload:
+        raise CurveError(
+            f"Key {spec.demo_key!r} missing in {path.name!r}. "
+            "Re-run scripts/download_demo_data.py to regenerate demo snapshots."
+        )
+
+    return pd.DataFrame(payload[spec.demo_key])
+
+
+# ===========================================================================
+# Repository implementations
+# ===========================================================================
+
+
+class XMarketRepository:
+    """Live Bloomberg MARS XMarket data source."""
+
+    def __init__(self, client: MarsClient) -> None:
+        self._client = client
+
+    def fetch(self, query: CurveQuery) -> pd.DataFrame:
+        if query.curve_id.upper() in CSA_CURVE_IDS.values():
+            raise NotImplementedError(
+                f"CSA curve {query.curve_id!r} is not yet wired up."
+            )
+        spec     = CURVE_SPECS[query.curve_type]
+        payload  = _build_api_request(spec, query, self._client.xmarket_session_id)
+        response = self._client.send("POST", "/marswebapi/v1/dataDownload", payload)
 
         if "error" in response:
             raise CurveError(response.get("error_description", str(response["error"])))
 
-        return self._parse_response(response, spec)
+        return _extract_rows(response, spec)
 
-    # ------------------------------------------------------------------
-    # Private: spec resolution (single validation point for both methods)
-    # ------------------------------------------------------------------
 
-    @staticmethod
-    def _resolve_spec(curve_type: CurveType | str) -> CurveSpec:
-        """Convert a curve_type string or enum to a CurveSpec, raising ValueError if unknown."""
-        try:
-            ct = CurveType(curve_type)
-            return CURVE_SPECS[ct]
-        except (ValueError, KeyError):
-            raise ValueError(
-                f"Unknown curve_type: {curve_type!r}. "
-                f"Valid values: {[ct.value for ct in CurveType]}"
-            )
+class DemoRepository:
+    """Offline data source backed by pre-saved JSON snapshots on disk."""
 
-    # ------------------------------------------------------------------
-    # Private: demo mode
-    # ------------------------------------------------------------------
+    def __init__(self, snapshots_dir: Path) -> None:
+        self._dir = snapshots_dir
 
-    def _load_demo(self, curve_id: str, spec: CurveSpec) -> pd.DataFrame:
-        """Load a pre-saved curve snapshot from demo_data/ for the given spec."""
-        entry = next((c for c in DEMO_CURVES if c.curve_id == curve_id), None)
-        if entry is None:
-            raise CurveError(
-                f"Curve {curve_id!r} is not available in demo mode. "
-                f"Available IDs: {[c.curve_id for c in DEMO_CURVES]}"
-            )
-        path = _DEMO_DATA_DIR / entry.filename
-        if not path.exists():
-            raise CurveError(f"Demo data file not found: {path}")
+    def fetch(self, query: CurveQuery) -> pd.DataFrame:
+        spec  = CURVE_SPECS[query.curve_type]
+        entry = _find_snapshot(query.curve_id)
+        return _load_snapshot(self._dir / entry.filename, spec)
 
-        payload = json.loads(path.read_text(encoding="utf-8"))
 
-        if spec.demo_key not in payload:
-            raise CurveError(
-                f"Key {spec.demo_key!r} missing in demo file {entry.filename!r}. "
-                "Re-run scripts/download_demo_data.py to regenerate the demo snapshots."
-            )
+# ===========================================================================
+# Service (orchestrator)
+# ===========================================================================
 
-        return self._normalize(pd.DataFrame(payload[spec.demo_key]))
 
-    # ------------------------------------------------------------------
-    # Private: request building
-    # ------------------------------------------------------------------
+class XMarketCurveService:
+    """
+    Thin orchestrator: delegates data fetching to the injected repository and
+    applies response enrichment (_enrich_tenors) to every result.
 
-    def _build_request(
-        self,
-        spec: CurveSpec,
-        curve_id: str,
-        curve_date: date,
-        side: str,
-        requested_dates: list[date],
-        interpolation: str,
-    ) -> dict:
-        """Build and serialise the full DataDownload request for the given curve spec."""
-        curve_date_str = str(curve_date)
+    XMarketCurveService has no knowledge of Bloomberg credentials, filesystem
+    paths, or demo mode — all of that lives in the repository implementations.
 
-        if spec.api_outer == "rawCurve":
-            rate_curve: dict = {
-                spec.api_outer: {
-                    "curveDate":    curve_date_str,
-                    "settleDate":   curve_date_str,
-                    spec.api_inner: [],
-                }
-            }
-        else:
-            inner: dict = {
-                spec.api_inner: [{"date": str(d), spec.value_col: 0} for d in requested_dates],
-                "interpolationMethodOverride": interpolation,
-            }
-            if spec.api_inner == "discountFactor":
-                inner["discountToDateType"] = "CUSTOM_DATE"
-                inner["discountToDate"]     = curve_date_str
-            rate_curve = {spec.api_outer: inner}
+    Usage via factory (application code)::
 
-        return DataDownloadRequest(
-            get_data_request=GetDataRequest(
-                session_id=self._client.xmarket_session_id,
-                key_and_data=[
-                    KeyAndDataItem(
-                        key=_DataKey(rate_curve_key=_RateCurveKey(curve_id=curve_id)),
-                        data={"marketData": {"side": side, "data": {"rateCurve": rate_curve}}},
-                    )
-                ],
-            )
-        ).model_dump(by_alias=True)
+        svc = XMarketCurveService.from_settings(market_date)
+        df  = svc.get_curve(CurveQuery(curve_id="S329", curve_type=CurveType.RAW, as_of=date.today()))
 
-    # ------------------------------------------------------------------
-    # Private: response parsing and normalisation
-    # ------------------------------------------------------------------
+    Usage with custom repository (tests)::
 
-    @staticmethod
-    def _parse_response(response: dict, spec: CurveSpec) -> pd.DataFrame:
-        """Extract the data rows from the API response envelope and normalise them."""
-        try:
-            parsed  = DataDownloadResponse.model_validate(response)
-            md_body = parsed.get_data_response.key_and_data[0].data.market_data
-        except (ValidationError, IndexError) as exc:
-            raise CurveError(f"Unexpected curve response structure: {exc}") from exc
+        svc = XMarketCurveService(repository=MyMockRepository())
+    """
 
-        if md_body.error:
-            raise CurveError(f"Curve not found or invalid — API error: {md_body.error}")
+    def __init__(self, repository: CurveRepository) -> None:
+        self._repo = repository
 
-        try:
-            data = md_body.data.rate_curve[spec.api_outer][spec.api_inner]
-        except KeyError as exc:
-            raise CurveError(f"Missing expected key in curve response: {exc}") from exc
+    def get_curve(self, query: CurveQuery) -> pd.DataFrame:
+        """Fetch and normalise the curve described by *query*."""
+        return _enrich_tenors(self._repo.fetch(query))
 
-        return CurvesService._normalize(pd.DataFrame(data))
+    @classmethod
+    def from_settings(cls, market_date: date) -> XMarketCurveService:
+        """
+        Factory: select the correct repository based on application settings.
 
-    @staticmethod
-    def _normalize(df: pd.DataFrame) -> pd.DataFrame:
-        """Normalise raw API rows: convert maturityTenor dicts to string labels and day counts."""
-        if "maturityTenor" not in df.columns:
-            return df
-
-        parsed           = df["maturityTenor"].apply(_parse_tenor)
-        labels, days     = zip(*parsed)
-        df               = df.copy()
-        df["maturityTenor"] = list(labels)
-        df["_tenor_days"]   = pd.array(list(days), dtype="float64")
-        return df
+        Constructs a DemoRepository when credentials are absent, and an
+        XMarketRepository backed by a live MarsClient otherwise.
+        """
+        if settings.demo_mode:
+            return cls(DemoRepository(_SNAPSHOTS_DIR))
+        return cls(XMarketRepository(MarsClient(settings, market_date=market_date)))

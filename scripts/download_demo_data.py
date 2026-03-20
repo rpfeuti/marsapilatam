@@ -18,18 +18,18 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from configs.curves_config import CURVE_SIZE, DEMO_CURVES, CurveType
 from configs.settings import settings
-from services.curves_service import CurvesService
+from services.curves_service import CurveQuery, XMarketCurveService
 
-CURVE_DATE     = date(2026, 3, 18)
-DEMO_DATA_DIR  = Path(__file__).resolve().parent.parent / "demo_data"
+CURVE_DATE    = date(2026, 3, 18)
+DEMO_DATA_DIR = Path(__file__).resolve().parent.parent / "demo_data"
 
-# Monthly date grid from day after curve_date up to CURVE_SIZE days
-_step             = timedelta(days=30)
-_requested_dates: list[date] = []
-_d                = CURVE_DATE + timedelta(days=1)
-_limit            = CURVE_DATE + timedelta(days=CURVE_SIZE)
+# Monthly date grid from day after CURVE_DATE up to CURVE_SIZE days out
+_step: timedelta      = timedelta(days=30)
+_date_grid: list[date] = []
+_d    = CURVE_DATE + timedelta(days=1)
+_limit = CURVE_DATE + timedelta(days=CURVE_SIZE)
 while _d < _limit:
-    _requested_dates.append(_d)
+    _date_grid.append(_d)
     _d += _step
 
 
@@ -41,24 +41,34 @@ def download_all() -> None:
         )
         sys.exit(1)
 
-    svc = CurvesService(market_date=CURVE_DATE)
+    svc = XMarketCurveService.from_settings(market_date=CURVE_DATE)
     print(f"XMarket session opened for {CURVE_DATE}")
     print(f"Downloading {len(DEMO_CURVES)} curves x 3 types ...\n")
 
     for entry in DEMO_CURVES:
         print(f"  {entry.curve_id} ({entry.label})")
 
-        raw_df = svc.download_curve(CurveType.RAW, entry.curve_id, CURVE_DATE)
+        raw_df = svc.get_curve(CurveQuery(
+            curve_id=entry.curve_id,
+            curve_type=CurveType.RAW,
+            as_of=CURVE_DATE,
+        ))
         print(f"    Raw Curve       -> {len(raw_df)} rows")
 
-        zero_df = svc.download_curve(
-            CurveType.ZERO, entry.curve_id, CURVE_DATE, requested_dates=_requested_dates
-        )
+        zero_df = svc.get_curve(CurveQuery(
+            curve_id=entry.curve_id,
+            curve_type=CurveType.ZERO,
+            as_of=CURVE_DATE,
+            requested_dates=tuple(_date_grid),
+        ))
         print(f"    Zero Coupon     -> {len(zero_df)} rows")
 
-        disc_df = svc.download_curve(
-            CurveType.DISCOUNT, entry.curve_id, CURVE_DATE, requested_dates=_requested_dates
-        )
+        disc_df = svc.get_curve(CurveQuery(
+            curve_id=entry.curve_id,
+            curve_type=CurveType.DISCOUNT,
+            as_of=CURVE_DATE,
+            requested_dates=tuple(_date_grid),
+        ))
         print(f"    Discount Factor -> {len(disc_df)} rows")
 
         payload = {

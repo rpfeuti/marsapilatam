@@ -33,7 +33,7 @@ from configs.curves_config import (
 )
 from configs.i18n import t
 from configs.settings import settings
-from services.curves_service import CurvesService
+from services.curves_service import CurveQuery, XMarketCurveService
 
 # ---------------------------------------------------------------------------
 # Title
@@ -52,49 +52,23 @@ if IS_DEMO:
     st.warning(t("common.demo_banner"), icon="🔒")
 
 # ---------------------------------------------------------------------------
-# Cached service construction (one per market_date per session)
+# Cached service — one instance per market_date per browser session
 # ---------------------------------------------------------------------------
 
 
 @st.cache_resource(show_spinner=t("curves.spinner_session"))
-def get_curves_service(market_date: date) -> CurvesService:
-    return CurvesService(market_date=market_date)
+def get_service(market_date: date) -> XMarketCurveService:
+    return XMarketCurveService.from_settings(market_date)
 
 
 # ---------------------------------------------------------------------------
-# Cached data download — re-runs only when any input changes
+# Cached data download — CurveQuery is frozen+hashable, so it's a safe key
 # ---------------------------------------------------------------------------
 
 
 @st.cache_data(show_spinner=t("curves.spinner_download"))
-def fetch_curve(
-    _svc: CurvesService,
-    curve_id: str,
-    curve_date: date,
-    curve_type: CurveType,
-    side: str,
-    interval: str,
-    interpolation: str,
-) -> pd.DataFrame:
-    requested_dates: list[date] = []
-
-    if curve_type != CurveType.RAW:
-        step_map = {"Daily": 1, "Weekly": 7, "Monthly": 30}
-        step    = timedelta(days=step_map[interval])
-        d       = curve_date + timedelta(days=1)
-        limit   = curve_date + timedelta(days=CURVE_SIZE)
-        while d < limit:
-            requested_dates.append(d)
-            d += step
-
-    return _svc.download_curve(
-        curve_type=curve_type,
-        curve_id=curve_id,
-        curve_date=curve_date,
-        side=side,
-        requested_dates=requested_dates,
-        interpolation=interpolation,
-    )
+def fetch_curve(_svc: XMarketCurveService, query: CurveQuery) -> pd.DataFrame:
+    return _svc.get_curve(query)
 
 
 # ---------------------------------------------------------------------------
@@ -111,7 +85,7 @@ _labels_map = (
 with st.sidebar:
     st.header(t("curves.sidebar_header"))
 
-    _labels       = list(_labels_map.keys())
+    _labels        = list(_labels_map.keys())
     _default_label = next((lbl for lbl in _labels if "USD.SOFR" in lbl), _labels[0])
     curve_label = st.selectbox(
         t("curves.curve_label"),
@@ -127,13 +101,12 @@ with st.sidebar:
         value=date(2026, 3, 18) if IS_DEMO else date.today(),
         disabled=IS_DEMO,
     )
-    curve_date = st.date_input(
+    as_of = st.date_input(
         t("curves.curve_date_label"),
         value=date(2026, 3, 18) if IS_DEMO else date.today(),
         disabled=IS_DEMO,
     )
 
-    # curve_type is a CurveType enum instance; __str__ returns the human-readable value
     curve_type: CurveType = st.selectbox(
         t("curves.curve_type_label"),
         options=CURVE_TYPES,
@@ -170,17 +143,43 @@ if not run:
     st.info(t("curves.info_idle"))
     st.stop()
 
-if not IS_DEMO and not is_raw and curve_date >= market_date + timedelta(days=CURVE_SIZE):
+if not IS_DEMO and not is_raw and as_of >= market_date + timedelta(days=CURVE_SIZE):
     st.error(t("curves.error_date_range"))
     st.stop()
+
+# ---------------------------------------------------------------------------
+# Build the query value object
+# ---------------------------------------------------------------------------
+
+if is_raw:
+    requested_dates: tuple[date, ...] = ()
+else:
+    step_map = {"Daily": 1, "Weekly": 7, "Monthly": 30}
+    step     = timedelta(days=step_map[interval])
+    d        = as_of + timedelta(days=1)
+    limit    = as_of + timedelta(days=CURVE_SIZE)
+    dates: list[date] = []
+    while d < limit:
+        dates.append(d)
+        d += step
+    requested_dates = tuple(dates)
+
+query = CurveQuery(
+    curve_id=curve_id,
+    curve_type=curve_type,
+    as_of=as_of,
+    side=side,
+    requested_dates=requested_dates,
+    interpolation=interpolation,
+)
 
 # ---------------------------------------------------------------------------
 # Data fetch
 # ---------------------------------------------------------------------------
 
 try:
-    svc = get_curves_service(market_date)
-    df  = fetch_curve(svc, curve_id, curve_date, curve_type, side, interval, interpolation)
+    svc = get_service(market_date)
+    df  = fetch_curve(svc, query)
 except CurveError as e:
     st.error(t("curves.error_curve", error=e))
     st.stop()
@@ -193,12 +192,11 @@ if df.empty:
     st.stop()
 
 # ---------------------------------------------------------------------------
-# Display scaling
-# All curve types are normalised once here; spec drives both chart and table.
+# Display scaling — applied once; spec drives chart and table consistently
 # ---------------------------------------------------------------------------
 
 spec       = CURVE_SPECS[curve_type]
-df_display = df.drop(columns=["_tenor_days"], errors="ignore").copy()
+df_display = df.drop(columns=["tenor_days"], errors="ignore").copy()
 df_display[spec.value_col] = (
     pd.to_numeric(df_display[spec.value_col], errors="coerce") * spec.scale
 )
@@ -207,8 +205,8 @@ df_display[spec.value_col] = (
 # Chart
 # ---------------------------------------------------------------------------
 
-profile    = curve_label.split(" (")[0]
-demo_tag   = t("curves.demo_date_tag") if IS_DEMO else ""
+profile     = curve_label.split(" (")[0]
+demo_tag    = t("curves.demo_date_tag") if IS_DEMO else ""
 chart_title = t(
     "curves.chart_title",
     curve_type=str(curve_type),
@@ -217,11 +215,10 @@ chart_title = t(
     demo_tag=demo_tag,
 )
 
-if curve_type == CurveType.RAW and "_tenor_days" in df.columns:
-    # Raw Curve: numeric tenor days on x-axis with readable tick labels
+if curve_type == CurveType.RAW and "tenor_days" in df.columns:
     fig = go.Figure()
     fig.add_trace(go.Scatter(
-        x=df["_tenor_days"],
+        x=df["tenor_days"],
         y=df_display[spec.value_col],
         mode="lines+markers",
         text=df["maturityTenor"],
@@ -231,7 +228,7 @@ if curve_type == CurveType.RAW and "_tenor_days" in df.columns:
         title=chart_title,
         xaxis=dict(
             tickmode="array",
-            tickvals=df["_tenor_days"].tolist(),
+            tickvals=df["tenor_days"].tolist(),
             ticktext=df["maturityTenor"].tolist(),
             title=t("curves.xaxis_tenor"),
         ),
@@ -240,7 +237,6 @@ if curve_type == CurveType.RAW and "_tenor_days" in df.columns:
         height=450,
     )
 else:
-    # Zero Coupon / Discount Factor: date on x-axis
     fig = px.line(df_display, x=spec.date_col, y=spec.value_col, title=chart_title, markers=True)
     fig.update_layout(
         hovermode="x unified",
@@ -252,7 +248,7 @@ else:
 st.plotly_chart(fig, use_container_width=True)
 
 # ---------------------------------------------------------------------------
-# Data table — format value column as string for consistent alignment
+# Data table — value column formatted as string for consistent alignment
 # ---------------------------------------------------------------------------
 
 st.subheader(t("curves.table_header", n=len(df_display)))
