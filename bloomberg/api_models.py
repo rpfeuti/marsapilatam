@@ -7,9 +7,36 @@ Using typed models instead of raw dicts gives:
 - .model_dump(by_alias=True) to produce the exact camelCase JSON the API expects
 - .model_validate(response) to safely navigate nested response envelopes
 
-Two sections:
-  A. Session management       — used by bloomberg/webapi/mars_client.py
-  B. XMarket data download    — used by services/curves_service.py
+Sections
+--------
+A. Session management  (bloomberg/webapi/mars_client.py)
+   A1. Deal session           POST /marswebapi/v1/sessions
+       StartSessionRequest / StartSessionResponse
+   A2. XMarket session        POST /marswebapi/v1/dataSessions
+       StartXMarketSessionRequest / StartXMarketSessionResponse
+   A3. Market data session    POST /marswebapi/v1/sessions
+       StartMarketDataSessionRequest / StartMarketDataSessionResponse
+
+B. XMarket data download  (services/curves_service.py)
+   POST /marswebapi/v1/dataDownload
+
+   Request envelope:
+     DataDownloadRequest
+       └─ GetDataRequest          (sessionId, keyAndData[])
+            └─ KeyAndDataItem
+                 ├─ key: _DataKey → _RateCurveKey (curveId)
+                 └─ data: dict    (marketData wrapper, content varies by CurveType)
+
+   Response envelope:
+     DataDownloadResponse
+       └─ _GetDataResponse        (keyAndData[])
+            └─ _KeyAndDataResponseItem
+                 └─ data: _MarketDataWrapper
+                      └─ market_data: _MarketDataBody
+                           ├─ error: str | None   (present when Bloomberg reports an error)
+                           └─ data: _MarketDataContent
+                                ├─ rate_curve: dict   (keys vary by CurveType)
+                                └─ error: str | None
 """
 
 from __future__ import annotations
@@ -133,7 +160,8 @@ class _MarketDataContent(_Base):
 
 
 class _MarketDataBody(_Base):
-    data: _MarketDataContent
+    data:  _MarketDataContent
+    error: str | None = None
 
 
 class _MarketDataWrapper(_Base):
