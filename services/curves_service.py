@@ -122,7 +122,7 @@ class CurvesService:
                 f"CSA curve {curve_id!r} is available in the MARS API but not yet wired up."
             )
 
-        body     = self._build_body(
+        body     = self._build_request(
             spec, curve_id, curve_date, side, requested_dates or [], interpolation
         )
         response = self._client.send("POST", "/marswebapi/v1/dataDownload", body)
@@ -151,7 +151,7 @@ class CurvesService:
         if self._demo:
             return self._load_demo(curve_id, spec)
 
-        body     = self._build_body(
+        body     = self._build_request(
             spec, curve_id, curve_date, side, requested_dates or [], interpolation
         )
         response = await self._client.send_async("POST", "/marswebapi/v1/dataDownload", body)
@@ -207,43 +207,7 @@ class CurvesService:
     # Private: request building
     # ------------------------------------------------------------------
 
-    @staticmethod
-    def _build_partial_body(
-        spec: CurveSpec,
-        curve_date: date,
-        requested_dates: list[date],
-        interpolation: str,
-    ) -> dict:
-        """
-        Build the curve-type-specific inner body fragment using only the CurveSpec.
-
-        The spec already encodes all per-type API key names, so no branching on
-        curve_type is needed: api_outer/api_inner/value_col drive the structure.
-        The only special case is Discount Factor's two extra date fields.
-        """
-        curve_date_str = str(curve_date)
-
-        if spec.api_outer == "rawCurve":
-            return {
-                spec.api_outer: {
-                    "curveDate":  curve_date_str,
-                    "settleDate": curve_date_str,
-                    spec.api_inner: [],
-                }
-            }
-
-        # Interpolated curves: Zero Coupon and Discount Factor
-        inner: dict = {
-            spec.api_inner: [{"date": str(d), spec.value_col: 0} for d in requested_dates],
-            "interpolationMethodOverride": interpolation,
-        }
-        if spec.api_inner == "discountFactor":
-            inner["discountToDateType"] = "CUSTOM_DATE"
-            inner["discountToDate"]     = curve_date_str
-
-        return {spec.api_outer: inner}
-
-    def _build_body(
+    def _build_request(
         self,
         spec: CurveSpec,
         curve_id: str,
@@ -252,14 +216,34 @@ class CurvesService:
         requested_dates: list[date],
         interpolation: str,
     ) -> dict:
-        partial = self._build_partial_body(spec, curve_date, requested_dates, interpolation)
+        """Build and serialise the full DataDownload request for the given curve spec."""
+        curve_date_str = str(curve_date)
+
+        if spec.api_outer == "rawCurve":
+            rate_curve: dict = {
+                spec.api_outer: {
+                    "curveDate":    curve_date_str,
+                    "settleDate":   curve_date_str,
+                    spec.api_inner: [],
+                }
+            }
+        else:
+            inner: dict = {
+                spec.api_inner: [{"date": str(d), spec.value_col: 0} for d in requested_dates],
+                "interpolationMethodOverride": interpolation,
+            }
+            if spec.api_inner == "discountFactor":
+                inner["discountToDateType"] = "CUSTOM_DATE"
+                inner["discountToDate"]     = curve_date_str
+            rate_curve = {spec.api_outer: inner}
+
         return DataDownloadRequest(
             get_data_request=GetDataRequest(
                 session_id=self._client.xmarket_session_id,
                 key_and_data=[
                     KeyAndDataItem(
                         key=_DataKey(rate_curve_key=_RateCurveKey(curve_id=curve_id)),
-                        data={"marketData": {"side": side, "data": {"rateCurve": partial}}},
+                        data={"marketData": {"side": side, "data": {"rateCurve": rate_curve}}},
                     )
                 ],
             )
