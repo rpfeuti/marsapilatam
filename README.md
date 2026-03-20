@@ -101,7 +101,7 @@ marsapilatam/
 
 This project uses the [Bloomberg MARS API](https://www.bloomberg.com/professional/product/multi-asset-risk-system/) — a professional-grade pricing and risk system available to Bloomberg Terminal subscribers.
 
-**Want to try it?** Contact your Bloomberg representative or visit [bloomberg.com/professional](https://www.bloomberg.com/professional/product/multi-asset-risk-system/) to request a trial.
+**Want to try it?** Contact [Ricardo Pfeuti](mailto:rpfeuti4@bloomberg.net) to request a trial.
 
 ## Contributing
 
