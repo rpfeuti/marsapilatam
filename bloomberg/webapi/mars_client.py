@@ -17,7 +17,18 @@ from datetime import date
 from typing import Any
 
 import httpx
+from pydantic import ValidationError
 
+from bloomberg.api_models import (
+    StartMarketDataSessionRequest,
+    StartMarketDataSessionResponse,
+    StartSessionRequest,
+    StartSessionResponse,
+    StartXMarketSessionRequest,
+    StartXMarketSessionResponse,
+    _MarketDataSessionBody,
+    _XMarketSessionBody,
+)
 from bloomberg.exceptions import (
     IpNotWhitelistedError,
     MarsApiError,
@@ -343,30 +354,40 @@ class MarsClient:
 
     def _start_deal_session(self) -> str:
         try:
-            response = self.send("POST", "/marswebapi/v1/sessions", {"startSession": {}})
-            return response["startSession"]["sessionId"]
-        except (KeyError, MarsApiError) as exc:
+            req  = StartSessionRequest()
+            resp = StartSessionResponse.model_validate(
+                self.send("POST", "/marswebapi/v1/sessions", req.model_dump(by_alias=True))
+            )
+            return resp.start_session.session_id
+        except (ValidationError, MarsApiError) as exc:
             raise SessionError("Failed to start deal session") from exc
 
     def _start_xmarket_session(self) -> str:
         try:
-            response = self.send(
-                "POST",
-                "/marswebapi/v1/dataSessions",
-                {"startSessionRequest": {"marketDate": str(self._market_date)}},
+            req  = StartXMarketSessionRequest(
+                start_session_request=_XMarketSessionBody(market_date=str(self._market_date))
             )
-            return response["startSessionResponse"]["sessionId"]
-        except (KeyError, MarsApiError) as exc:
+            resp = StartXMarketSessionResponse.model_validate(
+                self.send("POST", "/marswebapi/v1/dataSessions", req.model_dump(by_alias=True))
+            )
+            return resp.start_session_response.session_id
+        except (ValidationError, MarsApiError) as exc:
             raise SessionError("Failed to start XMarket session") from exc
 
     def _start_market_data_session(self) -> str:
-        body: dict[str, Any] = (
-            {"startMarketDataSession": {"marketId": self._xmarket_session_id}}
-            if self._xmarket_session_id
-            else {"startMarketDataSession": {}}
-        )
         try:
-            response = self.send("POST", "/marswebapi/v1/sessions", body)
-            return response["startMarketDataSessionResponse"]["marketDataSession"]
-        except (KeyError, MarsApiError) as exc:
+            req  = StartMarketDataSessionRequest(
+                start_market_data_session=_MarketDataSessionBody(
+                    market_id=self._xmarket_session_id
+                )
+            )
+            resp = StartMarketDataSessionResponse.model_validate(
+                self.send(
+                    "POST",
+                    "/marswebapi/v1/sessions",
+                    req.model_dump(by_alias=True, exclude_none=True),
+                )
+            )
+            return resp.start_market_data_session_response.market_data_session
+        except (ValidationError, MarsApiError) as exc:
             raise SessionError("Failed to start market data session") from exc

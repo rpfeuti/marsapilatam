@@ -18,7 +18,16 @@ from datetime import date
 from pathlib import Path
 
 import pandas as pd
+from pydantic import ValidationError
 
+from bloomberg.api_models import (
+    DataDownloadRequest,
+    DataDownloadResponse,
+    GetDataRequest,
+    KeyAndDataItem,
+    _DataKey,
+    _RateCurveKey,
+)
 from bloomberg.exceptions import CurveError
 from bloomberg.webapi import MarsClient
 from configs.curves_config import (
@@ -244,22 +253,17 @@ class CurvesService:
         interpolation: str,
     ) -> dict:
         partial = self._build_partial_body(spec, curve_date, requested_dates, interpolation)
-        return {
-            "getDataRequest": {
-                "sessionId": self._client.xmarket_session_id,
-                "keyAndData": [
-                    {
-                        "key": {"rateCurveKey": {"curveId": curve_id}},
-                        "data": {
-                            "marketData": {
-                                "side": side,
-                                "data": {"rateCurve": partial},
-                            }
-                        },
-                    }
+        return DataDownloadRequest(
+            get_data_request=GetDataRequest(
+                session_id=self._client.xmarket_session_id,
+                key_and_data=[
+                    KeyAndDataItem(
+                        key=_DataKey(rate_curve_key=_RateCurveKey(curve_id=curve_id)),
+                        data={"marketData": {"side": side, "data": {"rateCurve": partial}}},
+                    )
                 ],
-            }
-        }
+            )
+        ).model_dump(by_alias=True)
 
     # ------------------------------------------------------------------
     # Private: response parsing and normalisation
@@ -269,17 +273,16 @@ class CurvesService:
     def _parse_response(response: dict, spec: CurveSpec) -> pd.DataFrame:
         """Extract the data rows from the API response envelope and normalise them."""
         try:
-            market_data = (
-                response["getDataResponse"]["keyAndData"][0]["data"]["marketData"]["data"]
-            )
-        except (KeyError, IndexError) as exc:
-            raise CurveError(f"Unexpected curve response structure: {response}") from exc
+            parsed  = DataDownloadResponse.model_validate(response)
+            md_body = parsed.get_data_response.key_and_data[0].data.market_data
+        except (ValidationError, IndexError) as exc:
+            raise CurveError(f"Unexpected curve response structure: {exc}") from exc
 
-        if "error" in market_data:
-            raise CurveError(f"Curve not found or invalid — API error: {market_data['error']}")
+        if md_body.error:
+            raise CurveError(f"Curve not found or invalid — API error: {md_body.error}")
 
         try:
-            data = market_data["rateCurve"][spec.api_outer][spec.api_inner]
+            data = md_body.data.rate_curve[spec.api_outer][spec.api_inner]
         except KeyError as exc:
             raise CurveError(f"Missing expected key in curve response: {exc}") from exc
 
