@@ -10,14 +10,14 @@ from __future__ import annotations
 from datetime import date
 
 from bloomberg.exceptions import CurveError
-from configs.settings import INTERPOLATION_METHODS
+from configs.curves_config import INTERPOLATION_METHODS, CurveType
 from services.curves_service import CurvesService
 
-MARKET_DATE = date(2024, 4, 18)
-CURVE_DATE = date(2024, 4, 18)
-CURVE_ID = "S442"           # BRL OIS
-CURVE_TYPE = "Zero Coupon"
-SIDE = "Mid"
+MARKET_DATE   = date(2024, 4, 18)
+CURVE_DATE    = date(2024, 4, 18)
+CURVE_ID      = "S442"           # BRL OIS
+CURVE_TYPE    = CurveType.ZERO
+SIDE          = "Mid"
 INTERPOLATION = INTERPOLATION_METHODS["Piecewise Linear (Simple)"]
 
 # Generate monthly dates for one year

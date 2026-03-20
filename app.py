@@ -11,7 +11,7 @@ st.set_page_config(
     layout="wide",
 )
 
-# Language selector lives here so it appears on every page
+# Language selector and connection status appear on every page via the sidebar
 with st.sidebar:
     lang_selector()
     st.markdown("---")
@@ -20,10 +20,14 @@ with st.sidebar:
     else:
         st.success(t("common.status_live"), icon="✅")
 
-pg = st.navigation(
-    [
-        st.Page("pages/home.py", title=t("nav.home"), icon="🏠", default=True),
-        st.Page("pages/1_📈_Curves.py", title=t("curves.page_title"), icon="📈"),
-    ]
-)
+# Declarative page registry — add a new page by appending one dict here
+_PAGES = [
+    {"file": "pages/home.py",   "title_key": "nav.home",          "icon": "🏠", "default": True},
+    {"file": "pages/curves.py", "title_key": "curves.page_title", "icon": "📈"},
+]
+
+pg = st.navigation([
+    st.Page(p["file"], title=t(p["title_key"]), icon=p["icon"], default=p.get("default", False))
+    for p in _PAGES
+])
 pg.run()
