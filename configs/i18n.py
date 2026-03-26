@@ -318,6 +318,205 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "PT": "Carregando curva…",
         "ES": "Cargando curva…",
     },
+
+    # ------------------------------------------------------------------
+    # swaps page
+    # ------------------------------------------------------------------
+    "swaps.page_title": {
+        "EN": "IR Swaps",
+        "PT": "Swaps de Juros",
+        "ES": "Swaps de Tasas",
+    },
+    "swaps.title": {
+        "EN": "💱 IR Swaps — OIS & XCCY",
+        "PT": "💱 Swaps de Juros — OIS e XCCY",
+        "ES": "💱 Swaps de Tasas — OIS y XCCY",
+    },
+    "swaps.caption": {
+        "EN": "Structure and price interest rate swaps via the Bloomberg MARS API.",
+        "PT": "Estruture e precifique swaps de juros via a Bloomberg MARS API.",
+        "ES": "Estructure y valore swaps de tasas de interés vía Bloomberg MARS API.",
+    },
+    "swaps.tab_ois": {
+        "EN": "OIS Swaps",
+        "PT": "Swaps OIS",
+        "ES": "Swaps OIS",
+    },
+    "swaps.tab_xccy": {
+        "EN": "XCCY Swaps",
+        "PT": "Swaps XCCY",
+        "ES": "Swaps XCCY",
+    },
+    "swaps.template_label": {
+        "EN": "Deal template",
+        "PT": "Template do deal",
+        "ES": "Plantilla del deal",
+    },
+    "swaps.template_help": {
+        "EN": "Select a template to pre-fill all fields. You can override any value before pricing.",
+        "PT": "Selecione um template para preencher todos os campos. Você pode alterar qualquer valor antes de precificar.",
+        "ES": "Seleccione una plantilla para rellenar todos los campos. Puede cambiar cualquier valor antes de valorar.",
+    },
+    "swaps.leg1_header": {
+        "EN": "Leg 1 — Fixed",
+        "PT": "Perna 1 — Fixa",
+        "ES": "Pata 1 — Fija",
+    },
+    "swaps.leg2_header": {
+        "EN": "Leg 2 — Float",
+        "PT": "Perna 2 — Flutuante",
+        "ES": "Pata 2 — Variable",
+    },
+    "swaps.valuation_header": {
+        "EN": "Valuation Settings",
+        "PT": "Configurações de Valoração",
+        "ES": "Configuración de Valoración",
+    },
+    "swaps.direction_label": {
+        "EN": "Direction",
+        "PT": "Direção",
+        "ES": "Dirección",
+    },
+    "swaps.notional_label": {
+        "EN": "Notional",
+        "PT": "Nocional",
+        "ES": "Nocional",
+    },
+    "swaps.currency_label": {
+        "EN": "Currency",
+        "PT": "Moeda",
+        "ES": "Moneda",
+    },
+    "swaps.effective_label": {
+        "EN": "Effective date",
+        "PT": "Data de início",
+        "ES": "Fecha de inicio",
+    },
+    "swaps.tenor_label": {
+        "EN": "Tenor",
+        "PT": "Prazo",
+        "ES": "Plazo",
+    },
+    "swaps.maturity_label": {
+        "EN": "Maturity date",
+        "PT": "Data de vencimento",
+        "ES": "Fecha de vencimiento",
+    },
+    "swaps.fixed_rate_label": {
+        "EN": "Fixed rate (% — leave blank to solve)",
+        "PT": "Taxa fixa (% — deixe em branco para resolver)",
+        "ES": "Tasa fija (% — deje en blanco para resolver)",
+    },
+    "swaps.float_index_label": {
+        "EN": "Float index",
+        "PT": "Índice flutuante",
+        "ES": "Índice variable",
+    },
+    "swaps.pay_freq_label": {
+        "EN": "Pay frequency",
+        "PT": "Frequência de pagamento",
+        "ES": "Frecuencia de pago",
+    },
+    "swaps.day_count_label": {
+        "EN": "Day count",
+        "PT": "Base de cálculo",
+        "ES": "Base de cálculo",
+    },
+    "swaps.curve_date_label": {
+        "EN": "Curve date",
+        "PT": "Data da curva",
+        "ES": "Fecha de curva",
+    },
+    "swaps.valuation_date_label": {
+        "EN": "Valuation date",
+        "PT": "Data de valoração",
+        "ES": "Fecha de valoración",
+    },
+    "swaps.csa_ccy_label": {
+        "EN": "CSA collateral currency",
+        "PT": "Moeda de colateral CSA",
+        "ES": "Moneda de colateral CSA",
+    },
+    "swaps.coll_curve_label": {
+        "EN": "Collateral curve",
+        "PT": "Curva de colateral",
+        "ES": "Curva de colateral",
+    },
+    "swaps.discount_curve_label": {
+        "EN": "Discount curve",
+        "PT": "Curva de desconto",
+        "ES": "Curva de descuento",
+    },
+    "swaps.forward_curve_label": {
+        "EN": "Forward curve",
+        "PT": "Curva forward",
+        "ES": "Curva forward",
+    },
+    "swaps.button_price": {
+        "EN": "Price swap",
+        "PT": "Precificar swap",
+        "ES": "Valorar swap",
+    },
+    "swaps.spinner_session": {
+        "EN": "Starting deal session…",
+        "PT": "Iniciando sessão de deals…",
+        "ES": "Iniciando sesión de deals…",
+    },
+    "swaps.spinner_pricing": {
+        "EN": "Pricing swap…",
+        "PT": "Precificando swap…",
+        "ES": "Valorando swap…",
+    },
+    "swaps.result_par_cpn": {
+        "EN": "Par Cpn (%)",
+        "PT": "Taxa Par (%)",
+        "ES": "Cpn Par (%)",
+    },
+    "swaps.result_npv": {
+        "EN": "NPV",
+        "PT": "VPL",
+        "ES": "VPN",
+    },
+    "swaps.result_dv01": {
+        "EN": "DV01",
+        "PT": "DV01",
+        "ES": "DV01",
+    },
+    "swaps.result_pv01": {
+        "EN": "PV01",
+        "PT": "PV01",
+        "ES": "PV01",
+    },
+    "swaps.result_bp_value": {
+        "EN": "BP Value",
+        "PT": "Valor BP",
+        "ES": "Valor BP",
+    },
+    "swaps.result_accrued": {
+        "EN": "Accrued",
+        "PT": "Acruado",
+        "ES": "Devengado",
+    },
+    "swaps.info_idle": {
+        "EN": "Configure the swap above and click **Price swap** to run the calculation.",
+        "PT": "Configure o swap acima e clique em **Precificar swap** para calcular.",
+        "ES": "Configure el swap arriba y haga clic en **Valorar swap** para calcular.",
+    },
+    "swaps.error_pricing": {
+        "EN": "Pricing error: {error}",
+        "PT": "Erro de precificação: {error}",
+        "ES": "Error de valoración: {error}",
+    },
+    "swaps.error_structuring": {
+        "EN": "Structuring error: {error}",
+        "PT": "Erro de estruturação: {error}",
+        "ES": "Error de estructuración: {error}",
+    },
+    "swaps.warning_no_result": {
+        "EN": "No pricing result returned. Check your inputs.",
+        "PT": "Nenhum resultado retornado. Verifique os parâmetros.",
+        "ES": "No se obtuvo resultado. Verifique los parámetros.",
+    },
 }
 
 

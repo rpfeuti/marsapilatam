@@ -17,6 +17,22 @@ from configs.curves_config import (
 )
 from configs.i18n import LANGUAGES, lang_selector, t
 from configs.settings import settings
+from configs.swaps_config import (
+    OIS_BY_LABEL,
+    OIS_DEMO_SNAPSHOTS,
+    OIS_LABELS,
+    OIS_SWAP_SPECS,
+    SWAP_DAY_COUNTS,
+    SWAP_DIRECTIONS,
+    SWAP_PAY_FREQUENCIES,
+    SWAP_TENORS,
+    XCCY_BY_LABEL,
+    XCCY_DEMO_SNAPSHOTS,
+    XCCY_LABELS,
+    XCCY_SWAP_SPECS,
+    SwapDemoSnapshot,
+    SwapSpec,
+)
 
 __all__ = [
     # credentials
@@ -30,6 +46,13 @@ __all__ = [
     "FLOAT_INDICES", "BOND_TO_SWPM_PAY_FREQUENCY",
     # curve catalog
     "CURVES_CATALOG", "CURVES_BY_LABEL", "CURVES_BY_ID",
+    # swap config
+    "SwapSpec", "SwapDemoSnapshot",
+    "OIS_SWAP_SPECS", "XCCY_SWAP_SPECS",
+    "OIS_LABELS", "XCCY_LABELS",
+    "OIS_BY_LABEL", "XCCY_BY_LABEL",
+    "SWAP_TENORS", "SWAP_DIRECTIONS", "SWAP_PAY_FREQUENCIES", "SWAP_DAY_COUNTS",
+    "OIS_DEMO_SNAPSHOTS", "XCCY_DEMO_SNAPSHOTS",
     # i18n
     "t", "lang_selector", "LANGUAGES",
 ]

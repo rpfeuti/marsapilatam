@@ -178,3 +178,119 @@ class _GetDataResponse(_Base):
 
 class DataDownloadResponse(_Base):
     get_data_response: _GetDataResponse = Field(alias="getDataResponse")
+
+
+# ===========================================================================
+# C. Deal structuring and pricing models
+#    Endpoints:
+#      POST /marswebapi/v1/deals/temporary    (structure)
+#      POST /marswebapi/v1/securitiesPricing  (price / solve)
+#
+#    Note: Response parsing for these endpoints is handled by
+#    bloomberg/pricing_result.py because the response shape varies
+#    significantly by deal type and field.  Only the REQUEST side is
+#    modelled here to get type-safe construction and .model_dump().
+# ===========================================================================
+
+# ---------------------------------------------------------------------------
+# C1. Structure request  (POST /marswebapi/v1/deals/temporary)
+# ---------------------------------------------------------------------------
+
+
+class _MarsParamValue(_Base):
+    """One typed value inside a MARS param entry."""
+
+    double_val:    float | None = Field(default=None, alias="doubleVal")
+    string_val:    str | None   = Field(default=None, alias="stringVal")
+    date_val:      str | None   = Field(default=None, alias="dateVal")
+    int_val:       int | None   = Field(default=None, alias="intVal")
+    selection_val: dict | None  = Field(default=None, alias="selectionVal")
+
+
+class _MarsParam(_Base):
+    name:  str
+    value: _MarsParamValue
+
+
+class _LegOverride(_Base):
+    param: list[_MarsParam]
+
+
+class _DealStructureOverride(_Base):
+    param: list[_MarsParam]
+    leg:   list[_LegOverride] = Field(default_factory=list)
+
+
+class StructureRequest(_Base):
+    """
+    Body for POST /marswebapi/v1/deals/temporary.
+
+    session_id is injected by the service layer before serialisation.
+    """
+
+    session_id:              str                  = Field(alias="sessionId")
+    tail:                    str
+    deal_structure_override: _DealStructureOverride = Field(alias="dealStructureOverride")
+
+
+# ---------------------------------------------------------------------------
+# C2. Pricing request  (POST /marswebapi/v1/securitiesPricing)
+# ---------------------------------------------------------------------------
+
+
+class _DealHandleIdentifier(_Base):
+    deal_handle: str = Field(alias="dealHandle")
+
+
+class _SecurityEntry(_Base):
+    identifier: _DealHandleIdentifier
+    position:   int = 1
+
+
+class _PricingParameter(_Base):
+    valuation_date:                str        = Field(alias="valuationDate")
+    market_data_date:              str        = Field(alias="marketDataDate")
+    deal_session:                  str        = Field(alias="dealSession")
+    requested_field:               list[str]  = Field(alias="requestedField")
+    use_bbg_recommended_settings:  bool       = Field(
+        default=True, alias="useBbgRecommendedSettings"
+    )
+
+
+class _SecuritiesPricingBody(_Base):
+    pricing_parameter: _PricingParameter     = Field(alias="pricingParameter")
+    security:          list[_SecurityEntry]
+
+
+class PricingRequest(_Base):
+    """Body for POST /marswebapi/v1/securitiesPricing (pricing mode)."""
+
+    securities_pricing_request: _SecuritiesPricingBody = Field(
+        alias="securitiesPricingRequest"
+    )
+
+
+# ---------------------------------------------------------------------------
+# C3. Solve request  (POST /marswebapi/v1/securitiesPricing in solve mode)
+# ---------------------------------------------------------------------------
+
+
+class _SolveInput(_Base):
+    name:  str
+    value: _MarsParamValue
+
+
+class _SolveBody(_Base):
+    identifier:       _DealHandleIdentifier
+    input:            _SolveInput
+    solve_for:        str  = Field(alias="solveFor")
+    solve_for_leg:    int  = Field(alias="solveForLeg")
+    valuation_date:   str  = Field(alias="valuationDate")
+    deal_session:     str  = Field(alias="dealSession")
+    market_data_date: str  = Field(alias="marketDataDate")
+
+
+class SolveRequest(_Base):
+    """Body for POST /marswebapi/v1/securitiesPricing (solve mode)."""
+
+    solve_request: _SolveBody = Field(alias="solveRequest")

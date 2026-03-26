@@ -24,6 +24,7 @@ with st.sidebar:
 _PAGES = [
     {"file": "pages/home.py",   "title_key": "nav.home",          "icon": "🏠", "default": True},
     {"file": "pages/curves.py", "title_key": "curves.page_title", "icon": "📈"},
+    {"file": "pages/swaps.py",  "title_key": "swaps.page_title",  "icon": "💱"},
 ]
 
 pg = st.navigation([

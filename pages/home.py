@@ -19,7 +19,7 @@ st.markdown(
 | {t("app.table_page")} | {t("app.table_desc")} |
 |---|---|
 | 📈 {t("curves.page_title")} | {t("app.demo_curves")} |
-| 💱 Swaps | {t("app.demo_swaps")} {t("app.coming_soon")} |
+| 💱 {t("swaps.page_title")} | {t("app.demo_swaps")} |
 | 💵 FX Options | {t("app.demo_fx")} {t("app.coming_soon")} |
 | 🏦 Portfolio | {t("app.demo_portfolio")} {t("app.coming_soon")} |
 | 📃 Deal Information | {t("app.demo_dealinfo")} {t("app.coming_soon")} |
