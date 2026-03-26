@@ -72,6 +72,7 @@ class SwapQuery:
     pay_frequency:  str    = ""
     day_count:      str    = ""
     fixed_rate:     float | None = None  # None = solve for par rate
+    solve_for:      str    = "Coupon"   # field to solve when fixed_rate is None
 
 
 @dataclass
@@ -237,14 +238,19 @@ def _build_solve_body(
     session_id:  str,
     valuation:   date,
     curve_date:  date,
+    solve_for:   str = "Coupon",
 ) -> dict[str, Any]:
-    """Construct the solveRequest body to find the par coupon (NPV = 0)."""
+    """Construct the solveRequest body to find the target field (NPV = 0).
+
+    Coupon and FixedRate target Leg 1; Spread targets Leg 2.
+    """
+    leg_map = {"Coupon": 1, "FixedRate": 1, "Spread": 2}
     return {
         "solveRequest": {
             "identifier":    {"dealHandle": deal_handle},
             "input":         {"name": "Premium", "value": {"doubleVal": 0}},
-            "solveFor":      "Coupon",
-            "solveForLeg":   1,
+            "solveFor":      solve_for,
+            "solveForLeg":   leg_map.get(solve_for, 1),
             "valuationDate": str(valuation),
             "dealSession":   session_id,
             "marketDataDate": str(curve_date),
@@ -312,7 +318,9 @@ class SwapLiveRepository:
         par_rate: float | None = None
         if query.fixed_rate is None:
             solve_body = _build_solve_body(
-                deal_handle, self._client.session_id, query.valuation_date, query.curve_date
+                deal_handle, self._client.session_id,
+                query.valuation_date, query.curve_date,
+                solve_for=query.solve_for,
             )
             solve_resp = self._client.send("POST", "/marswebapi/v1/securitiesPricing", solve_body)
             if "error" not in solve_resp:

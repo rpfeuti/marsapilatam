@@ -161,6 +161,10 @@ SWAP_DAY_COUNTS: list[str] = [
     "ACT/360", "ACT/365", "ACT/ACT", "30/360", "BUS/252", "DU/252",
 ]
 
+# Solve-for options presented in the Valuation Settings column.
+# The string must match the MARS API "solveFor" parameter exactly.
+SWAP_SOLVE_TARGETS: list[str] = ["Coupon", "Spread"]
+
 
 # ---------------------------------------------------------------------------
 # Demo snapshot manifest

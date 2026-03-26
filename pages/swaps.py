@@ -17,7 +17,7 @@ from typing import Literal
 
 import streamlit as st
 
-from bloomberg.exceptions import PricingError, StructuringError
+from bloomberg.exceptions import IpNotWhitelistedError, PricingError, StructuringError
 from configs.curves_catalog import CURVES_BY_LABEL
 from configs.i18n import t
 from configs.settings import settings
@@ -28,6 +28,7 @@ from configs.swaps_config import (
     SWAP_DAY_COUNTS,
     SWAP_DIRECTIONS,
     SWAP_PAY_FREQUENCIES,
+    SWAP_SOLVE_TARGETS,
     SWAP_TENORS,
     XCCY_BY_LABEL,
     XCCY_LABELS,
@@ -141,7 +142,7 @@ def _render_swap_form(
         )
         notional = st.number_input(
             t("swaps.notional_label"),
-            value=spec.notional,
+            value=float(spec.notional),
             min_value=1.0,
             step=1_000_000.0,
             format="%.0f",
@@ -291,6 +292,11 @@ def _render_swap_form(
         forward_curve_id = _curve_selectbox(
             t("swaps.forward_curve_label"), spec.forward_curve, f"{tab_key}_forward_curve"
         )
+        solve_for = st.selectbox(
+            t("swaps.solve_for_label"),
+            options=SWAP_SOLVE_TARGETS,
+            key=f"{tab_key}_solve_for",
+        )
 
         st.markdown("")
         price_clicked = st.button(
@@ -332,6 +338,7 @@ def _render_swap_form(
         pay_frequency=pay_freq_leg1,
         day_count=day_count_leg1,
         fixed_rate=fixed_rate,
+        solve_for=solve_for or "Coupon",
     )
 
 
@@ -340,7 +347,7 @@ def _render_swap_form(
 # ---------------------------------------------------------------------------
 
 
-def _render_results(result: SwapResult) -> None:
+def _render_results(result: SwapResult, solve_for: str = "Coupon") -> None:
     if not result.ok:
         st.error(result.error)
         return
@@ -353,8 +360,9 @@ def _render_results(result: SwapResult) -> None:
     m = result.metrics
     cols = st.columns(6)
 
+    solved_label = t("swaps.result_par_cpn") if solve_for == "Coupon" else f"Par {solve_for}"
     par_str = f"{result.par_rate:.6f}" if result.par_rate is not None else m.get("MktPx", "—")
-    cols[0].metric(t("swaps.result_par_cpn"), par_str)
+    cols[0].metric(solved_label, par_str)
     cols[1].metric(t("swaps.result_npv"),      m.get("MktVal",          "—"))
     cols[2].metric(t("swaps.result_dv01"),      m.get("DV01",           "—"))
     cols[3].metric(t("swaps.result_pv01"),      m.get("PV01",           "—"))
@@ -382,11 +390,16 @@ with tab_ois:
         try:
             svc        = get_service()
             result_ois = run_pricing(svc, query_ois)
-            _render_results(result_ois)
+            _render_results(result_ois, query_ois.solve_for)
         except StructuringError as e:
             st.error(t("swaps.error_structuring", error=e))
         except PricingError as e:
             st.error(t("swaps.error_pricing", error=e))
+        except IpNotWhitelistedError:
+            st.error("🔒 Your IP is not whitelisted for the Bloomberg MARS API. "
+                     "Please contact your Bloomberg representative to whitelist your current IP.")
+        except Exception as e:
+            st.error(f"Unexpected error: {e}")
 
 with tab_xccy:
     query_xccy = _render_swap_form(
@@ -402,11 +415,16 @@ with tab_xccy:
         try:
             svc         = get_service()
             result_xccy = run_pricing(svc, query_xccy)
-            _render_results(result_xccy)
+            _render_results(result_xccy, query_xccy.solve_for)
         except StructuringError as e:
             st.error(t("swaps.error_structuring", error=e))
         except PricingError as e:
             st.error(t("swaps.error_pricing", error=e))
+        except IpNotWhitelistedError:
+            st.error("🔒 Your IP is not whitelisted for the Bloomberg MARS API. "
+                     "Please contact your Bloomberg representative to whitelist your current IP.")
+        except Exception as e:
+            st.error(f"Unexpected error: {e}")
 
 # ---------------------------------------------------------------------------
 # Demo CTA at page bottom

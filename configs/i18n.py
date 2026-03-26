@@ -452,6 +452,11 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "PT": "Curva forward",
         "ES": "Curva forward",
     },
+    "swaps.solve_for_label": {
+        "EN": "Solve for",
+        "PT": "Resolver para",
+        "ES": "Resolver para",
+    },
     "swaps.button_price": {
         "EN": "Price swap",
         "PT": "Precificar swap",
