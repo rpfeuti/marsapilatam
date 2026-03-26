@@ -63,6 +63,9 @@ def download_all() -> None:
                 forward_curve=spec.forward_curve,
                 csa_ccy=spec.csa_ccy,
                 coll_curve=spec.coll_curve,
+                float_index=spec.float_index,
+                pay_frequency=spec.pay_frequency,
+                day_count=spec.day_count,
                 fixed_rate=None,  # solve for par rate
             )
             result = svc.price(query)

@@ -4,12 +4,25 @@
   "label": "MXN OIS",
   "tenor": "5Y",
   "valuation_date": "2026-03-26",
-  "par_rate": 0.102,
+  "par_rate": 8.179133,
   "metrics": {
-    "MktVal": "0.00",
-    "DV01": "-4180.00",
-    "PV01": "-4180.00",
-    "BpValue": "500.00",
-    "AccruedInterest": "0.00"
+    "BloombergDealID": "3000AX0X1B1M8P65KLNFXNYYL6WLE",
+    "AccruedInterest": "0",
+    "AsOfTimestamp": "2026-03-26T19:49:43.125",
+    "DV01": "3343.7775095708434",
+    "DelayedEid": "",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "-34.0513028019529",
+    "MktVal": "-3405130.2801952898",
+    "PV01": "4163.192216062904",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Security": "3000AX0X1B1M8P65KLNFXNYYL6WLE",
+    "Ticker": "/SWAP",
+    "TrackingId": "3998fa73-0a39-4ab3-a08a-a2c41f5582f4",
+    "UniqueID": "CO",
+    "ValuationDate": "2026-03-26"
   }
 }

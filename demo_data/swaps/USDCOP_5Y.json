@@ -4,12 +4,25 @@
   "label": "USD/COP NDS",
   "tenor": "5Y",
   "valuation_date": "2026-03-26",
-  "par_rate": 0.105025,
+  "par_rate": -18.272742,
   "metrics": {
-    "MktVal": "0.00",
-    "DV01": "-1138.00",
-    "PV01": "-1138.00",
-    "BpValue": "245.00",
-    "AccruedInterest": "0.00"
+    "BloombergDealID": "3000LFQBW62DWAP6Q1VWG5WYKANY7",
+    "AccruedInterest": "0",
+    "AsOfTimestamp": "2026-03-26T19:49:58.513",
+    "DV01": "14907145.613095094",
+    "DelayedEid": "",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "165.8785876584305",
+    "MktVal": "30495119555.125862",
+    "PV01": "16688900.572477465",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Security": "3000LFQBW62DWAP6Q1VWG5WYKANY7",
+    "Ticker": "/NDS",
+    "TrackingId": "650d9d73-4499-43ac-b8bb-4eef14a0e6e2",
+    "UniqueID": "CO",
+    "ValuationDate": "2026-03-26"
   }
 }

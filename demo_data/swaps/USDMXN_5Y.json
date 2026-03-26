@@ -4,12 +4,25 @@
   "label": "USD/MXN NDS",
   "tenor": "5Y",
   "valuation_date": "2026-03-26",
-  "par_rate": 0.102,
+  "par_rate": -16.758347,
   "metrics": {
-    "MktVal": "0.00",
-    "DV01": "-218.00",
-    "PV01": "-218.00",
-    "BpValue": "28.00",
-    "AccruedInterest": "0.00"
+    "BloombergDealID": "3000VY0A2S5A2RZPQGRTX7PHY1BCD",
+    "AccruedInterest": "0",
+    "AsOfTimestamp": "2026-03-26T19:50:11.388",
+    "DV01": "72712.23570290953",
+    "DelayedEid": "",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "146.56115556807563",
+    "MktVal": "138623623.224242",
+    "PV01": "82719.37071100925",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Security": "3000VY0A2S5A2RZPQGRTX7PHY1BCD",
+    "Ticker": "/NDS",
+    "TrackingId": "48c57339-105f-44ce-9dda-d9a29b1eb706",
+    "UniqueID": "CO",
+    "ValuationDate": "2026-03-26"
   }
 }

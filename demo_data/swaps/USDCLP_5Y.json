@@ -4,12 +4,25 @@
   "label": "USD/CLP NDS",
   "tenor": "5Y",
   "valuation_date": "2026-03-26",
-  "par_rate": 0.055,
+  "par_rate": -18.08324,
   "metrics": {
-    "MktVal": "0.00",
-    "DV01": "-4455.00",
-    "PV01": "-4455.00",
-    "BpValue": "1052.00",
-    "AccruedInterest": "0.00"
+    "BloombergDealID": "3000X7K820V1GMA3MH0SP58X39H2F",
+    "AccruedInterest": "0",
+    "AsOfTimestamp": "2026-03-26T19:50:18.040",
+    "DV01": "3772178.405012512",
+    "DelayedEid": "",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "165.62771297068699",
+    "MktVal": "7708711268.166903",
+    "PV01": "4262900.731082606",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Security": "3000X7K820V1GMA3MH0SP58X39H2F",
+    "Ticker": "/NDS",
+    "TrackingId": "a28aeab7-b933-469f-aab7-62c857cf5fe6",
+    "UniqueID": "CO",
+    "ValuationDate": "2026-03-26"
   }
 }

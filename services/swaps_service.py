@@ -34,7 +34,7 @@ from configs.swaps_config import (
 _SNAPSHOTS_DIR = Path(__file__).resolve().parent.parent / "demo_data" / "swaps"
 
 _PRICING_FIELDS = [
-    "MktVal", "DV01", "PV01", "MktPx", "AccruedInterest", "BpValue",
+    "MktVal", "DV01", "PV01", "MktPx", "AccruedInterest",
 ]
 
 _TENOR_YEARS: dict[str, int] = {
@@ -120,10 +120,13 @@ def _build_leg_params(
     float_index:    str | None,
     pay_frequency:  str,
     day_count:      str,
-    discount_curve: str,
-    forward_curve:  str,
 ) -> list[dict[str, Any]]:
-    """Build MARS param list for a single swap leg."""
+    """Build MARS param list for a single swap leg.
+
+    Curve overrides (DiscountCurve, ForwardCurve) are NOT passed here because
+    Bloomberg MARS does not expose them in the dealStructureOverride leg schema.
+    They are injected via the pricing request instead.
+    """
 
     def _str(n: str, v: str) -> dict:
         return {"name": n, "value": {"stringVal": v}}
@@ -143,18 +146,16 @@ def _build_leg_params(
         _str("Currency",     currency),
         _dat("EffectiveDate", str(effective)),
         _dat("MaturityDate",  str(maturity)),
-        _sel("PayFrequency", pay_frequency),
-        _sel("DayCount",     day_count),
     ]
 
+    if pay_frequency:
+        params.append(_sel("PayFrequency", pay_frequency))
+    if day_count:
+        params.append(_sel("DayCount", day_count))
     if fixed_rate is not None:
         params.append(_dbl("FixedRate", fixed_rate))
     if float_index:
         params.append(_str("FloatingIndex", float_index))
-    if discount_curve:
-        params.append(_str("DiscountCurve", discount_curve))
-    if forward_curve:
-        params.append(_str("ForwardCurve", forward_curve))
 
     return params
 
@@ -166,39 +167,50 @@ def _build_structure_body(
     effective:  date,
     maturity:   date,
 ) -> dict[str, Any]:
-    """Construct the full structureRequest body for the MARS API."""
+    """Construct the full structureRequest body for the MARS API.
+
+    For XCCY swaps (``spec.base_currency`` is set):
+      * Leg 1 = base currency (USD), notional = query.notional
+      * Leg 2 = local currency,      notional = query.notional
+    For OIS swaps both legs use ``spec.currency`` and ``query.notional``.
+    The MARS API handles FX conversion internally for NDS deals.
+    """
     opposite = "Pay" if query.direction == "Receive" else "Receive"
+    freq     = query.pay_frequency or spec.pay_frequency
+    dc       = query.day_count or spec.day_count
+
+    is_xccy  = bool(spec.base_currency)
+    leg1_ccy = spec.base_currency if is_xccy else spec.currency
+    leg2_ccy = spec.currency
 
     leg1 = _build_leg_params(
         direction=query.direction,
         notional=query.notional,
-        currency=spec.currency,
+        currency=leg1_ccy,
         effective=effective,
         maturity=maturity,
         fixed_rate=query.fixed_rate if query.fixed_rate is not None else 0.0,
         float_index=None,
-        pay_frequency=query.pay_frequency or spec.pay_frequency,
-        day_count=query.day_count or spec.day_count,
-        discount_curve=query.discount_curve,
-        forward_curve="",
+        pay_frequency=freq,
+        day_count=dc,
     )
     leg2 = _build_leg_params(
         direction=opposite,
         notional=query.notional,
-        currency=spec.currency,
+        currency=leg2_ccy,
         effective=effective,
         maturity=maturity,
         fixed_rate=None,
         float_index=query.float_index or spec.float_index,
-        pay_frequency=query.pay_frequency or spec.pay_frequency,
-        day_count=query.day_count or spec.day_count,
-        discount_curve=query.discount_curve,
-        forward_curve=query.forward_curve,
+        pay_frequency=freq,
+        day_count=dc,
     )
 
-    deal_params: list[dict[str, Any]] = [
-        {"name": "CSACollateralCurrency", "value": {"stringVal": query.csa_ccy}},
-    ]
+    deal_params: list[dict[str, Any]] = []
+    if query.csa_ccy:
+        deal_params.append(
+            {"name": "CSACollateralCurrency", "value": {"stringVal": query.csa_ccy}},
+        )
 
     return {
         "sessionId": session_id,
@@ -259,9 +271,12 @@ def _build_solve_body(
 
 
 def _parse_par_rate(solve_response: dict[str, Any]) -> float | None:
-    """Extract the solved coupon value from a solveResponse dict."""
+    """Extract the solved value from a solveResponse dict.
+
+    Bloomberg MARS uses the key "solveResult" (not "solvedValue").
+    """
     try:
-        val = solve_response["solvedValue"]["doubleVal"]
+        val = solve_response["solveResult"]["value"]["doubleVal"]
         return float(val)
     except (KeyError, TypeError, ValueError):
         return None
@@ -287,7 +302,7 @@ class SwapLiveRepository:
 
         # --- Structure ---
         struc_body = _build_structure_body(
-            query, spec, self._client.session_id, effective, maturity
+            query, spec, self._client.session_id, effective, maturity,
         )
         struc_resp = self._client.send("POST", "/marswebapi/v1/deals/temporary", struc_body)
 
@@ -296,9 +311,16 @@ class SwapLiveRepository:
                 struc_resp.get("error_description", str(struc_resp["error"]))
             )
         try:
-            deal_handle = struc_resp["results"][0]["structureResponse"]["dealHandle"]
+            sr = struc_resp["results"][0]["structureResponse"]
+            deal_handle = sr["dealHandle"]
         except (KeyError, IndexError) as exc:
             raise StructuringError(f"Unexpected structure response: {struc_resp}") from exc
+
+        if not deal_handle:
+            notifications = sr.get("returnStatus", {}).get("notifications", [])
+            errors = [n["message"] for n in notifications if n.get("type") == "S_ERROR"]
+            msg = errors[0] if errors else "Unknown structuring failure"
+            raise StructuringError(msg)
 
         # --- Price ---
         price_body = _build_pricing_body(

@@ -1,15 +1,28 @@
 {
   "key": "USDBRL",
   "swap_type": "XCCY",
-  "label": "USD/BRL FXFL",
+  "label": "USD/BRL NDS",
   "tenor": "5Y",
   "valuation_date": "2026-03-26",
-  "par_rate": 0.1325,
+  "par_rate": -27.521695,
   "metrics": {
-    "MktVal": "0.00",
-    "DV01": "-2115.00",
-    "PV01": "-2115.00",
-    "BpValue": "188.00",
-    "AccruedInterest": "0.00"
+    "BloombergDealID": "3000A3Z9HW8873JWLZT1F15XBRAT1",
+    "AccruedInterest": "0",
+    "AsOfTimestamp": "2026-03-26T19:50:05.677",
+    "DV01": "19497.768994724378",
+    "DelayedEid": "",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "108.74141957555139",
+    "MktVal": "33905863.467534155",
+    "PV01": "24108.120568651968",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Security": "3000A3Z9HW8873JWLZT1F15XBRAT1",
+    "Ticker": "/NDS",
+    "TrackingId": "fa1852be-59fb-44a9-aec4-df6f88f5c8ce",
+    "UniqueID": "CO",
+    "ValuationDate": "2026-03-26"
   }
 }

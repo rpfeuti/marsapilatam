@@ -18,20 +18,27 @@ class SwapSpec:
 
     Combines MARS API deal parameters with sensible UI pre-fills so that
     selecting a template auto-populates the entire form.
+
+    For XCCY swaps ``base_currency`` holds the funding-leg currency (typically
+    ``"USD"``).  When non-empty the service layer builds Leg 1 in
+    ``base_currency`` and Leg 2 in ``currency``, and fetches the FX spot rate
+    to convert the notional.
     """
 
     label:          str    # human-readable name shown in the template selector
-    deal_type:      str    # MARS deal type string (e.g. "IR.OIS", "FXFL", "IR.NDS")
-    currency:       str    # local currency code (Leg 1 for OIS, Leg 2 for XCCY)
+    deal_type:      str    # MARS deal type string (e.g. "IR.OIS", "IR.NDS")
+    currency:       str    # local currency code (both legs for OIS; Leg 2 for XCCY)
     float_index:    str    # Bloomberg float index ticker (e.g. "COOVIBR")
-    notional:       float  # default notional in local currency units
+    notional:       float  # default notional (USD for XCCY, local for OIS)
     default_tenor:  str    # default tenor shown in the selector (e.g. "5Y")
-    pay_frequency:  str    # MARS pay frequency label (e.g. "Monthly")
-    day_count:      str    # day count convention (e.g. "ACT/360")
+    pay_frequency:  str    # MARS pay frequency label; "" = let API default
+    day_count:      str    # day count convention; "" = let API default
     discount_curve: str    # Bloomberg curve ID pre-filled for discount curve
     forward_curve:  str    # Bloomberg curve ID pre-filled for forward curve
-    csa_ccy:        str    # CSA collateral currency (e.g. "USD")
+    csa_ccy:        str    # CSA collateral currency; "" = not applicable
     coll_curve:     str    # Bloomberg curve ID for collateral / CSA curve
+    base_currency:  str  = ""   # funding-leg currency for XCCY (empty for OIS)
+    fx_ticker:      str  = ""   # Bloomberg FX ticker for spot rate (empty for OIS)
 
 
 # ---------------------------------------------------------------------------
@@ -56,12 +63,12 @@ OIS_SWAP_SPECS: dict[str, SwapSpec] = {
         csa_ccy="USD",          coll_curve="S400",
     ),
     "BRL": SwapSpec(
-        label="BRL FXFL",       deal_type="FXFL",
+        label="BRL CDI",        deal_type="IR.OIS",
         currency="BRL",         float_index="BZDIOVRA",
         notional=10_000_000,    default_tenor="5Y",
-        pay_frequency="Quarterly", day_count="ACT/360",
+        pay_frequency="At Maturity", day_count="",
         discount_curve="S304",  forward_curve="S89",
-        csa_ccy="USD",          coll_curve="S400",
+        csa_ccy="",             coll_curve="S400",
     ),
     "MXN": SwapSpec(
         label="MXN OIS",        deal_type="IR.OIS",
@@ -72,7 +79,7 @@ OIS_SWAP_SPECS: dict[str, SwapSpec] = {
         csa_ccy="USD",          coll_curve="S400",
     ),
     "CLP": SwapSpec(
-        label="CLP FXFL",       deal_type="FXFL",
+        label="CLP OIS",        deal_type="IR.OIS",
         currency="CLP",         float_index="CLICP",
         notional=10_000_000_000, default_tenor="5Y",
         pay_frequency="SemiAnnual", day_count="ACT/360",
@@ -98,18 +105,20 @@ XCCY_SWAP_SPECS: dict[str, SwapSpec] = {
     "USDCOP": SwapSpec(
         label="USD/COP NDS",    deal_type="IR.NDS",
         currency="COP",         float_index="COOVIBR",
-        notional=10_000_000_000, default_tenor="5Y",
-        pay_frequency="At Maturity", day_count="ACT/360",
+        notional=10_000_000,    default_tenor="5Y",
+        pay_frequency="Annual", day_count="ACT/360",
         discount_curve="S438",  forward_curve="S329",
         csa_ccy="USD",          coll_curve="S490",
+        base_currency="USD",    fx_ticker="USDCOP",
     ),
     "USDBRL": SwapSpec(
-        label="USD/BRL FXFL",   deal_type="FXFL",
+        label="USD/BRL NDS",    deal_type="IR.NDS",
         currency="BRL",         float_index="BZDIOVRA",
         notional=10_000_000,    default_tenor="5Y",
-        pay_frequency="Quarterly", day_count="ACT/360",
+        pay_frequency="At Maturity", day_count="",
         discount_curve="S304",  forward_curve="S89",
-        csa_ccy="USD",          coll_curve="S400",
+        csa_ccy="",             coll_curve="S400",
+        base_currency="USD",    fx_ticker="USDBRL",
     ),
     "USDMXN": SwapSpec(
         label="USD/MXN NDS",    deal_type="IR.NDS",
@@ -118,22 +127,25 @@ XCCY_SWAP_SPECS: dict[str, SwapSpec] = {
         pay_frequency="Monthly", day_count="ACT/360",
         discount_curve="S428",  forward_curve="S583",
         csa_ccy="USD",          coll_curve="S400",
+        base_currency="USD",    fx_ticker="USDMXN",
     ),
     "USDCLP": SwapSpec(
         label="USD/CLP NDS",    deal_type="IR.NDS",
         currency="CLP",         float_index="CLICP",
-        notional=10_000_000_000, default_tenor="5Y",
+        notional=10_000_000,    default_tenor="5Y",
         pay_frequency="SemiAnnual", day_count="ACT/360",
         discount_curve="S423",  forward_curve="S193",
         csa_ccy="USD",          coll_curve="S400",
+        base_currency="USD",    fx_ticker="USDCLP",
     ),
     "USDEUR": SwapSpec(
-        label="USD/EUR FXFL",   deal_type="FXFL",
+        label="USD/EUR NDS",    deal_type="IR.NDS",
         currency="EUR",         float_index="ESTRON",
         notional=10_000_000,    default_tenor="5Y",
         pay_frequency="Annual", day_count="ACT/360",
         discount_curve="S403",  forward_curve="S514",
         csa_ccy="EUR",          coll_curve="S403",
+        base_currency="USD",    fx_ticker="USDEUR",
     ),
 }
 

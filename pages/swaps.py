@@ -192,14 +192,23 @@ def _render_swap_form(
             else 0,
             key=f"{tab_key}_pay_freq_leg1",
         )
-        day_count_leg1 = st.selectbox(
-            t("swaps.day_count_label"),
-            options=SWAP_DAY_COUNTS,
-            index=SWAP_DAY_COUNTS.index(spec.day_count)
-            if spec.day_count in SWAP_DAY_COUNTS
-            else 0,
-            key=f"{tab_key}_day_count_leg1",
-        )
+        if spec.day_count:
+            day_count_leg1 = st.selectbox(
+                t("swaps.day_count_label"),
+                options=SWAP_DAY_COUNTS,
+                index=SWAP_DAY_COUNTS.index(spec.day_count)
+                if spec.day_count in SWAP_DAY_COUNTS
+                else 0,
+                key=f"{tab_key}_day_count_leg1",
+            )
+        else:
+            day_count_leg1 = ""
+            st.text_input(
+                t("swaps.day_count_label"),
+                value="(API default)",
+                disabled=True,
+                key=f"{tab_key}_day_count_leg1",
+            )
 
     # -----------------------------------------------------------------------
     # Leg 2 — Float
@@ -253,15 +262,23 @@ def _render_swap_form(
             key=f"{tab_key}_pay_freq_leg2",
             disabled=True,
         )
-        st.selectbox(
-            t("swaps.day_count_label"),
-            options=SWAP_DAY_COUNTS,
-            index=SWAP_DAY_COUNTS.index(spec.day_count)
-            if spec.day_count in SWAP_DAY_COUNTS
-            else 0,
-            key=f"{tab_key}_day_count_leg2",
-            disabled=True,
-        )
+        if spec.day_count:
+            st.selectbox(
+                t("swaps.day_count_label"),
+                options=SWAP_DAY_COUNTS,
+                index=SWAP_DAY_COUNTS.index(spec.day_count)
+                if spec.day_count in SWAP_DAY_COUNTS
+                else 0,
+                key=f"{tab_key}_day_count_leg2",
+                disabled=True,
+            )
+        else:
+            st.text_input(
+                t("swaps.day_count_label"),
+                value="(API default)",
+                disabled=True,
+                key=f"{tab_key}_day_count_leg2",
+            )
 
     # -----------------------------------------------------------------------
     # Valuation Settings + Price button
@@ -370,7 +387,7 @@ def _render_results(result: SwapResult, solve_for: str = "Coupon") -> None:
     cols[1].metric(t("swaps.result_npv"),      m.get("MktVal",          "—"))
     cols[2].metric(t("swaps.result_dv01"),      m.get("DV01",           "—"))
     cols[3].metric(t("swaps.result_pv01"),      m.get("PV01",           "—"))
-    cols[4].metric(t("swaps.result_bp_value"),  m.get("BpValue",        "—"))
+    cols[4].metric(t("swaps.result_bp_value"),  m.get("BpValue", m.get("DV01", "—")))
     cols[5].metric(t("swaps.result_accrued"),   m.get("AccruedInterest","—"))
 
 

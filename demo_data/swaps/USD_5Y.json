@@ -4,12 +4,25 @@
   "label": "USD SOFR",
   "tenor": "5Y",
   "valuation_date": "2026-03-26",
-  "par_rate": 0.048175,
+  "par_rate": 3.739386,
   "metrics": {
-    "MktVal": "0.00",
-    "DV01": "-4452.00",
-    "PV01": "-4452.00",
-    "BpValue": "500.00",
-    "AccruedInterest": "0.00"
+    "BloombergDealID": "3000MNXAV8HGZYGWPDWN56712ZXAA",
+    "AccruedInterest": "0",
+    "AsOfTimestamp": "2026-03-26T19:49:33.814",
+    "DV01": "4051.9525022274465",
+    "DelayedEid": "",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "-16.98007647405296",
+    "MktVal": "-1698007.647405296",
+    "PV01": "4540.989500849472",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Security": "3000MNXAV8HGZYGWPDWN56712ZXAA",
+    "Ticker": "/SWAP",
+    "TrackingId": "f5b8b2d8-ed52-434f-beaa-eb6fdff23430",
+    "UniqueID": "CO",
+    "ValuationDate": "2026-03-26"
   }
 }

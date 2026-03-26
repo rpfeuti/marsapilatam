@@ -4,12 +4,25 @@
   "label": "COP OIS",
   "tenor": "5Y",
   "valuation_date": "2026-03-26",
-  "par_rate": 0.105025,
+  "par_rate": 15.338831,
   "metrics": {
-    "MktVal": "0.00",
-    "DV01": "-4647350.00",
-    "PV01": "-4647350.00",
-    "BpValue": "1000000.00",
-    "AccruedInterest": "0.00"
+    "BloombergDealID": "3000RV44PTRTC7LMJHWD14KV612TC",
+    "AccruedInterest": "0",
+    "AsOfTimestamp": "2026-03-26T19:49:28.159",
+    "DV01": "2808099.4712017537",
+    "DelayedEid": "",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "-43.376903255947965",
+    "MktVal": "-4337690325.594796",
+    "PV01": "2827914.5992715894",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Security": "3000RV44PTRTC7LMJHWD14KV612TC",
+    "Ticker": "/SWAP",
+    "TrackingId": "40397cd6-1ace-4aaf-872a-741f9e882be6",
+    "UniqueID": "CO",
+    "ValuationDate": "2026-03-26"
   }
 }

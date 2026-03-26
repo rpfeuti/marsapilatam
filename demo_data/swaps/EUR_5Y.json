@@ -4,12 +4,25 @@
   "label": "EUR ESTR",
   "tenor": "5Y",
   "valuation_date": "2026-03-26",
-  "par_rate": 0.0275,
+  "par_rate": 2.710147,
   "metrics": {
-    "MktVal": "0.00",
-    "DV01": "-4680.00",
-    "PV01": "-4680.00",
-    "BpValue": "500.00",
-    "AccruedInterest": "0.00"
+    "BloombergDealID": "3000LYCD94HH2S83MN3T8XMVRDM2F",
+    "AccruedInterest": "0",
+    "AsOfTimestamp": "2026-03-26T19:49:54.111",
+    "DV01": "4310.539477732173",
+    "DelayedEid": "",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "-12.691757054151065",
+    "MktVal": "-1269175.7054151066",
+    "PV01": "4683.051722268532",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Security": "3000LYCD94HH2S83MN3T8XMVRDM2F",
+    "Ticker": "/SWAP",
+    "TrackingId": "286e11de-4f50-45a5-9144-5261470572e3",
+    "UniqueID": "CO",
+    "ValuationDate": "2026-03-26"
   }
 }
