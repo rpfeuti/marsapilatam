@@ -59,13 +59,17 @@ def get_service() -> SwapPricingService:
 
 
 # ---------------------------------------------------------------------------
-# Cached pricing — re-runs only when inputs change
+# Pricing — uses session_state as cache to avoid pickle serialisation of SwapResult
 # ---------------------------------------------------------------------------
 
 
-@st.cache_data(show_spinner=t("swaps.spinner_pricing"))
-def run_pricing(_svc: SwapPricingService, query: SwapQuery) -> SwapResult:
-    return _svc.price(query)
+def run_pricing(svc: SwapPricingService, query: SwapQuery) -> SwapResult:
+    """Price query, caching the result in session_state keyed by query hash."""
+    cache_key = f"_swap_result_{hash(query)}"
+    if cache_key not in st.session_state:
+        with st.spinner(t("swaps.spinner_pricing")):
+            st.session_state[cache_key] = svc.price(query)
+    return st.session_state[cache_key]  # type: ignore[return-value]
 
 
 # ---------------------------------------------------------------------------
