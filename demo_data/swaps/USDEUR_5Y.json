@@ -1,0 +1,15 @@
+{
+  "key": "USDEUR",
+  "swap_type": "XCCY",
+  "label": "USD/EUR FXFL",
+  "tenor": "5Y",
+  "valuation_date": "2026-03-26",
+  "par_rate": 0.0275,
+  "metrics": {
+    "MktVal": "0.00",
+    "DV01": "-5185.00",
+    "PV01": "-5185.00",
+    "BpValue": "548.00",
+    "AccruedInterest": "0.00"
+  }
+}

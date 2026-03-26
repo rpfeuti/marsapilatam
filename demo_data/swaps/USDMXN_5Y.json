@@ -1,0 +1,15 @@
+{
+  "key": "USDMXN",
+  "swap_type": "XCCY",
+  "label": "USD/MXN NDS",
+  "tenor": "5Y",
+  "valuation_date": "2026-03-26",
+  "par_rate": 0.102,
+  "metrics": {
+    "MktVal": "0.00",
+    "DV01": "-218.00",
+    "PV01": "-218.00",
+    "BpValue": "28.00",
+    "AccruedInterest": "0.00"
+  }
+}

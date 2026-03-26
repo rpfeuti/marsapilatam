@@ -1,0 +1,15 @@
+{
+  "key": "BRL",
+  "swap_type": "OIS",
+  "label": "BRL FXFL",
+  "tenor": "5Y",
+  "valuation_date": "2026-03-26",
+  "par_rate": 0.1325,
+  "metrics": {
+    "MktVal": "0.00",
+    "DV01": "-11830.00",
+    "PV01": "-11830.00",
+    "BpValue": "1000.00",
+    "AccruedInterest": "0.00"
+  }
+}

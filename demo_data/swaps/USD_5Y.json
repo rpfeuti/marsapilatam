@@ -1,0 +1,15 @@
+{
+  "key": "USD",
+  "swap_type": "OIS",
+  "label": "USD SOFR",
+  "tenor": "5Y",
+  "valuation_date": "2026-03-26",
+  "par_rate": 0.048175,
+  "metrics": {
+    "MktVal": "0.00",
+    "DV01": "-4452.00",
+    "PV01": "-4452.00",
+    "BpValue": "500.00",
+    "AccruedInterest": "0.00"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "key": "MXN",
+  "swap_type": "OIS",
+  "label": "MXN OIS",
+  "tenor": "5Y",
+  "valuation_date": "2026-03-26",
+  "par_rate": 0.102,
+  "metrics": {
+    "MktVal": "0.00",
+    "DV01": "-4180.00",
+    "PV01": "-4180.00",
+    "BpValue": "500.00",
+    "AccruedInterest": "0.00"
+  }
+}

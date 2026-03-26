@@ -1,0 +1,15 @@
+{
+  "key": "USDBRL",
+  "swap_type": "XCCY",
+  "label": "USD/BRL FXFL",
+  "tenor": "5Y",
+  "valuation_date": "2026-03-26",
+  "par_rate": 0.1325,
+  "metrics": {
+    "MktVal": "0.00",
+    "DV01": "-2115.00",
+    "PV01": "-2115.00",
+    "BpValue": "188.00",
+    "AccruedInterest": "0.00"
+  }
+}

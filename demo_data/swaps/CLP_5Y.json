@@ -1,0 +1,15 @@
+{
+  "key": "CLP",
+  "swap_type": "OIS",
+  "label": "CLP FXFL",
+  "tenor": "5Y",
+  "valuation_date": "2026-03-26",
+  "par_rate": 0.055,
+  "metrics": {
+    "MktVal": "0.00",
+    "DV01": "-4228500.00",
+    "PV01": "-4228500.00",
+    "BpValue": "1000000.00",
+    "AccruedInterest": "0.00"
+  }
+}

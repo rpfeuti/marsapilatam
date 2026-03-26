@@ -1,0 +1,15 @@
+{
+  "key": "COP",
+  "swap_type": "OIS",
+  "label": "COP OIS",
+  "tenor": "5Y",
+  "valuation_date": "2026-03-26",
+  "par_rate": 0.105025,
+  "metrics": {
+    "MktVal": "0.00",
+    "DV01": "-4647350.00",
+    "PV01": "-4647350.00",
+    "BpValue": "1000000.00",
+    "AccruedInterest": "0.00"
+  }
+}

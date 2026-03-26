@@ -1,0 +1,15 @@
+{
+  "key": "USDCLP",
+  "swap_type": "XCCY",
+  "label": "USD/CLP NDS",
+  "tenor": "5Y",
+  "valuation_date": "2026-03-26",
+  "par_rate": 0.055,
+  "metrics": {
+    "MktVal": "0.00",
+    "DV01": "-4455.00",
+    "PV01": "-4455.00",
+    "BpValue": "1052.00",
+    "AccruedInterest": "0.00"
+  }
+}
