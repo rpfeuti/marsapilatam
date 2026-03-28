@@ -44,3 +44,6 @@ htmlcov/
 # Type checking
 .mypy_cache/
 .ruff_cache/
+
+# Bloomberg BLPAPI SDK source
+blpapi-*/

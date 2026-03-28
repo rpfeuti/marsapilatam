@@ -27,9 +27,10 @@ with st.sidebar:
 
 # Declarative page registry — add a new page by appending one dict here
 _PAGES = [
-    {"file": "pages/home.py",   "title_key": "nav.home",          "icon": "🏠", "default": True},
-    {"file": "pages/curves.py", "title_key": "curves.page_title", "icon": "📈"},
-    {"file": "pages/swaps.py",  "title_key": "swaps.page_title",  "icon": "💱"},
+    {"file": "pages/home.py",      "title_key": "nav.home",            "icon": "🏠", "default": True},
+    {"file": "pages/curves.py",    "title_key": "curves.page_title",   "icon": "📈"},
+    {"file": "pages/deal_info.py", "title_key": "dealinfo.page_title", "icon": "📃"},
+    {"file": "pages/swaps.py",     "title_key": "swaps.page_title",    "icon": "💱"},
 ]
 
 pg = st.navigation([

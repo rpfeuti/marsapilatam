@@ -50,11 +50,14 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
     },
     "app.subtitle": {
         "EN": "**MARS** (Multi-Asset Risk System) API demo for Latin America markets. "
-              "Built on Python 3.11 with `httpx`, `pydantic-settings`, and `streamlit`.",
+              "Built on Python 3.11 with `httpx`, `pydantic-settings`, and `streamlit`, "
+              'and of course, with a "happy" interaction with Claude and Cursor :)',
         "PT": "Demo da API **MARS** (Multi-Asset Risk System) para mercados da América Latina. "
-              "Desenvolvido em Python 3.11 com `httpx`, `pydantic-settings` e `streamlit`.",
+              "Desenvolvido em Python 3.11 com `httpx`, `pydantic-settings` e `streamlit`, "
+              'e claro, com uma interação "feliz" com Claude e Cursor :)',
         "ES": "Demo de la API **MARS** (Multi-Asset Risk System) para mercados de América Latina. "
-              "Desarrollado en Python 3.11 con `httpx`, `pydantic-settings` y `streamlit`.",
+              "Desarrollado en Python 3.11 con `httpx`, `pydantic-settings` y `streamlit`, "
+              'y por supuesto, con una interacción "feliz" con Claude y Cursor :)',
     },
     "app.nav_prompt": {
         "EN": "**👈 Select a page from the sidebar** to explore the demos.",
@@ -317,6 +320,100 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "EN": "Loading curve…",
         "PT": "Carregando curva…",
         "ES": "Cargando curva…",
+    },
+
+    # ------------------------------------------------------------------
+    # deal info page
+    # ------------------------------------------------------------------
+    "dealinfo.page_title": {
+        "EN": "Deal Info",
+        "PT": "Info de Deals",
+        "ES": "Info de Deals",
+    },
+    "dealinfo.title": {
+        "EN": "Deal Information",
+        "PT": "Informações de Deals",
+        "ES": "Información de Deals",
+    },
+    "dealinfo.caption": {
+        "EN": "Browse deal types, schemas, and terms & conditions via the Bloomberg MARS API.",
+        "PT": "Explore tipos de deals, schemas e termos e condições via a API Bloomberg MARS.",
+        "ES": "Explore tipos de operaciones, esquemas y términos y condiciones via la API Bloomberg MARS.",
+    },
+    "dealinfo.deal_type_label": {
+        "EN": "Deal type",
+        "PT": "Tipo de deal",
+        "ES": "Tipo de operación",
+    },
+    "dealinfo.btn_load": {
+        "EN": "Load schema",
+        "PT": "Carregar schema",
+        "ES": "Cargar esquema",
+    },
+    "dealinfo.deal_params_header": {
+        "EN": "Deal-Level Parameters",
+        "PT": "Parâmetros do Deal",
+        "ES": "Parámetros del Deal",
+    },
+    "dealinfo.leg_header": {
+        "EN": "Leg {n} Parameters",
+        "PT": "Parâmetros da Perna {n}",
+        "ES": "Parámetros de la Pata {n}",
+    },
+    "dealinfo.no_params": {
+        "EN": "No parameters found.",
+        "PT": "Nenhum parâmetro encontrado.",
+        "ES": "No se encontraron parámetros.",
+    },
+    "dealinfo.col_name": {
+        "EN": "Name",
+        "PT": "Nome",
+        "ES": "Nombre",
+    },
+    "dealinfo.col_type": {
+        "EN": "Type",
+        "PT": "Tipo",
+        "ES": "Tipo",
+    },
+    "dealinfo.col_mode": {
+        "EN": "Mode",
+        "PT": "Modo",
+        "ES": "Modo",
+    },
+    "dealinfo.col_solvable": {
+        "EN": "Solvable",
+        "PT": "Solucionável",
+        "ES": "Resoluble",
+    },
+    "dealinfo.col_category": {
+        "EN": "Category",
+        "PT": "Categoria",
+        "ES": "Categoría",
+    },
+    "dealinfo.col_description": {
+        "EN": "Description",
+        "PT": "Descrição",
+        "ES": "Descripción",
+    },
+    "dealinfo.col_allowed": {
+        "EN": "Allowed Values",
+        "PT": "Valores Permitidos",
+        "ES": "Valores Permitidos",
+    },
+    "dealinfo.summary": {
+        "EN": "{total} parameters · {legs} legs · {solvable} solvable fields",
+        "PT": "{total} parâmetros · {legs} pernas · {solvable} campos solucionáveis",
+        "ES": "{total} parámetros · {legs} patas · {solvable} campos resolubles",
+    },
+    "dealinfo.spinner": {
+        "EN": "Loading schema…",
+        "PT": "Carregando schema…",
+        "ES": "Cargando esquema…",
+    },
+    "dealinfo.spinner_types": {
+        "EN": "Loading deal types…",
+        "PT": "Carregando tipos de deal…",
+        "ES": "Cargando tipos de operación…",
     },
 
     # ------------------------------------------------------------------
