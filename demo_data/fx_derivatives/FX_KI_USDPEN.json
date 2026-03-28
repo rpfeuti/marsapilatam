@@ -1,0 +1,30 @@
+{
+  "key": "USDPEN",
+  "product_type": "FX_KI",
+  "label": "USD/PEN Knock-In",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "100017C5L9JZJM46HG6B96YSYP2YD",
+    "AsOfTimestamp": "2026-03-28T19:38:27.007",
+    "DV01": "0",
+    "DelayedEid": "",
+    "Delta": "0",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "0",
+    "ImplVol": "9.657535633308486",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "0",
+    "MktVal": "0",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "0",
+    "Security": "100017C5L9JZJM46HG6B96YSYP2YD",
+    "Theta": "0",
+    "TrackingId": "6ca8e8c9-119f-4cd5-abd2-0b95070ede93",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "0",
+    "Vega": "0",
+    "Volga": "0"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "key": "USDCLP",
+  "product_type": "FX_VANILLA",
+  "label": "USD/CLP Vanilla",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "10008FZMDZT83T0GPV6YZ2HYXL8QF",
+    "AsOfTimestamp": "2026-03-28T19:36:14.682",
+    "DV01": "12.028845911559461",
+    "DelayedEid": "",
+    "Delta": "-472099.8664214195",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "55.410235471450456",
+    "ImplVol": "15.154596739223617",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "2.674730363168289",
+    "MktVal": "26747.30363168289",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-1202.884591155946",
+    "Security": "10008FZMDZT83T0GPV6YZ2HYXL8QF",
+    "Theta": "-160.67712956925195",
+    "TrackingId": "5a2e7ae0-7429-42a9-9ac6-3d2df1467db5",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "-1307.8951243537156",
+    "Vega": "1968.0776907683223",
+    "Volga": "0.8315920327773176"
+  }
+}

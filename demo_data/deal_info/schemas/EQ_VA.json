@@ -1,0 +1,1413 @@
+{
+  "returnStatus": {
+    "status": "S_SUCCESS"
+  },
+  "dealType": "EQ.VA",
+  "dealStructure": {
+    "param": [
+      {
+        "name": "AnnualYield",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Annual yield",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "ApplicationLogs",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Application logs",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      },
+      {
+        "name": "BermudanType",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Fixed Strike"
+                },
+                {
+                  "value": "Variable Strike"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Specifies the bermudan strike type: variable vs fixed strike on all exercise dates",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "BorrowCost",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Borrow cost",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "BreakEven",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Breakeven price",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Broker",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Broker of the trade",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "BusDayAdjustment",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "No Adjustment"
+                },
+                {
+                  "value": "Ahead (Following)"
+                },
+                {
+                  "value": "Back (Preceding)"
+                },
+                {
+                  "value": "Modified Following"
+                },
+                {
+                  "value": "Modified Preceding"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Code for business day adjustments",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Calendars",
+        "value": {
+          "type": "STRING_ARRAY_VAL"
+        },
+        "description": "Holiday calendars used for business day computations",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "CallPut",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Call"
+                },
+                {
+                  "value": "Put"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Call or Put",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Charm",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Second order derivative (DdeltaDtime) with respect to spot and time, charm measures the rate of change of delta over the passage of time (delta decay)",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Color",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Third order derivative (DgammaDtime) with respect to spot and spot and time, color measures the rate of change of gamma over the passage of time (gamma decay)",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Convexity",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Convexity",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Counterparty",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Counterparty of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "CrossCurrencyType",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Fixed"
+                },
+                {
+                  "value": "Flexo"
+                },
+                {
+                  "value": "Quanto"
+                },
+                {
+                  "value": "Composite"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Cross currency type",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Currency",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Currency of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "CurrencyNotional",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Notional amount",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "CustomId",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "CustomId",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "DV01Gamma",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "DV01 Gamma for bond deals",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "DeliveryDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Date when the underlying is delivered",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Delta",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Change in the deals's price for a 1% change in a given underlying asset price",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Description",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Description of the product",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Direction",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Buy"
+                },
+                {
+                  "value": "Sell"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Direction",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "DiscountedDividendFlow",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Total dividend flowd",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "DividendCompounding",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Annual"
+                },
+                {
+                  "value": "Semi Annual"
+                },
+                {
+                  "value": "Continuous"
+                },
+                {
+                  "value": "Money Market"
+                },
+                {
+                  "value": "Daily"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Dividend compounding type",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "DividendSource",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Dividend source",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "DividendYield",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Annual dividends per share divided by the price per share, expressed as a percentage",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "Dv01",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Market value(NPV) sensitivity of the deal to the curve shift",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "EnrichWith",
+        "value": {
+          "type": "SELECTION_ARRAY_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "MIFID2_ALL"
+                },
+                {
+                  "value": "MIFID2_SUB_CLASS"
+                },
+                {
+                  "value": "MIFID2_RTS22"
+                },
+                {
+                  "value": "MIFID2_RTS23"
+                },
+                {
+                  "value": "MIFID2_RTS2"
+                },
+                {
+                  "value": "MIFID2_ISIN"
+                },
+                {
+                  "value": "MIFID2_UPI"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Optional configuration parameter that specifies what you want the response to be enriched with",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      },
+      {
+        "name": "ExerciseFrequency",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Weekly"
+                },
+                {
+                  "value": "Monthly"
+                },
+                {
+                  "value": "Quarterly"
+                },
+                {
+                  "value": "SemiAnnual"
+                },
+                {
+                  "value": "Annual"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Bermudan option exercise frequency",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "ExerciseType",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "European"
+                },
+                {
+                  "value": "American"
+                },
+                {
+                  "value": "Bermudan"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Exercise type",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "ExpiryDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "ExpiryDate description",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "FirstExerciseDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Date of the first exercise",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "ForwardCompounding",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Annual"
+                },
+                {
+                  "value": "Semi Annual"
+                },
+                {
+                  "value": "Continuous"
+                },
+                {
+                  "value": "Money Market"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Rate type",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "ForwardPrice",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Forward price",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "ForwardType",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Implied"
+                },
+                {
+                  "value": "Cost of Carry"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Forward type",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "Gamma",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Gamma",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Gearing",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Gearing",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Id",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Deal identifier",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "InstrumentDescription",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Instrument description",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description"
+      },
+      {
+        "name": "InstrumentLevel",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Strip"
+                },
+                {
+                  "value": "Deal"
+                },
+                {
+                  "value": "Strategy"
+                },
+                {
+                  "value": "Unit"
+                },
+                {
+                  "value": "SubLeg"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Instrument level",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description"
+      },
+      {
+        "name": "InstrumentType",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Instrument type",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description"
+      },
+      {
+        "name": "LastUpdateDatetime",
+        "value": {
+          "type": "DATE_TIME_VAL"
+        },
+        "description": "Initial trade date",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "ListedMode",
+        "value": {
+          "type": "BOOL_VAL"
+        },
+        "description": "Indicates if the strategy or style uses listed options",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "ListedOptionTicker",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Ticker of the listed option",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "LogConfiguration",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Application logs configuration",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      },
+      {
+        "name": "MeanReversionSpeed",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Mean reversion speed",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Model"
+      },
+      {
+        "name": "Model",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Black Scholes Continuous"
+                },
+                {
+                  "value": "Black Scholes Discrete"
+                },
+                {
+                  "value": "Local Volatility"
+                },
+                {
+                  "value": "Trinomial"
+                },
+                {
+                  "value": "Black"
+                },
+                {
+                  "value": "Normal"
+                },
+                {
+                  "value": "Black Scholes"
+                },
+                {
+                  "value": "Lognormal"
+                },
+                {
+                  "value": "Heston"
+                },
+                {
+                  "value": "Time Dependent Heston"
+                },
+                {
+                  "value": "Price Based"
+                },
+                {
+                  "value": "Normal Mean Reversion"
+                },
+                {
+                  "value": "Modified Black Scholes"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Pricing model",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Model"
+      },
+      {
+        "name": "ModifiedDuration",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Modified duration",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Notes",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Personal notes of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "OASDelta",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "OAS Delta for bond deals",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "OverrideExistingDeal",
+        "value": {
+          "type": "BOOL_VAL"
+        },
+        "description": "Override the existing deal or not, default is false",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "PayoffType",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Vanilla"
+                },
+                {
+                  "value": "Forward"
+                },
+                {
+                  "value": "Knockout"
+                },
+                {
+                  "value": "Knockin"
+                },
+                {
+                  "value": "Double Knockout"
+                },
+                {
+                  "value": "Double Knockin"
+                },
+                {
+                  "value": "No Touch"
+                },
+                {
+                  "value": "One Touch"
+                },
+                {
+                  "value": "Double No Touch"
+                },
+                {
+                  "value": "Double One Touch"
+                },
+                {
+                  "value": "Digital"
+                },
+                {
+                  "value": "Digital Knockout"
+                },
+                {
+                  "value": "Digital Knockin"
+                },
+                {
+                  "value": "Digital Double Knockout"
+                },
+                {
+                  "value": "Digital Double Knockin"
+                },
+                {
+                  "value": "Digital Accrual"
+                },
+                {
+                  "value": "Average"
+                },
+                {
+                  "value": "Fader"
+                },
+                {
+                  "value": "Accrual"
+                },
+                {
+                  "value": "Accumulator"
+                },
+                {
+                  "value": "Spot"
+                },
+                {
+                  "value": "Variance Swap"
+                },
+                {
+                  "value": "Warrant"
+                },
+                {
+                  "value": "Forward Start Vanilla"
+                },
+                {
+                  "value": "Dividend Swap"
+                },
+                {
+                  "value": "Volatility Swap"
+                },
+                {
+                  "value": "Contract For Differences"
+                },
+                {
+                  "value": "Cliquet"
+                },
+                {
+                  "value": "Lookback"
+                },
+                {
+                  "value": "Fixed Income"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Style",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Phi",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Phi",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "PortfolioName",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Name of the portfolio where this deal is added",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Position",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Number of shares",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": true,
+        "category": "Contract"
+      },
+      {
+        "name": "PricePercent",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Price expressed as a % of the underlying price",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "PriceShare",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Price expressed per one underlying share",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "PriceTotal",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Total value of the instrument",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Privilege",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "User"
+                },
+                {
+                  "value": "Firm"
+                },
+                {
+                  "value": "Global"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Permission of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "PrivilegedGroup",
+        "value": {
+          "type": "STRING_ARRAY_VAL"
+        },
+        "description": "List of people with whom the deal is shared with",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Rate",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Deposit rate",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "ReferencePrice",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Reference price",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "RepoRate",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Repo rate",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "ReturnSaveParams",
+        "value": {
+          "type": "BOOL_VAL"
+        },
+        "description": "Indicates whether you want SAVE Category params (e.g.: Broker, Counteryparty, etc.) to be returned",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      },
+      {
+        "name": "Rho",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Change in price for a parallel shift up of 100 basis points in the yield curve for a given currency",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "RollDateConvention",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Forward"
+                },
+                {
+                  "value": "Backward"
+                },
+                {
+                  "value": "Forward (End of Month)"
+                },
+                {
+                  "value": "Backward (End of Month)"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Roll date convention",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "SettlementDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Final possible settlement date for the product",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "SolverTarget",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Specifies the parameter to solve for",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Speed",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Third order derivative with respect to spot: speed measures the rate of change in gamma with respect to changes in the underlying price",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Strike",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Solvable strike of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": true,
+        "category": "Contract"
+      },
+      {
+        "name": "StrikeType",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Price"
+                },
+                {
+                  "value": "Yield"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Strike type",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Theta",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Change in total price when the number of days to expiry changes by one day",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Ticker",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Ticker of the deal or underlying",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "TimeValue",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Time value",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Ultima",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Third order derivative with respect to volatility",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "UnderlyingCurrency",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Underlying currency",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "UnderlyingISIN",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "ISIN of the underlying",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "UnderlyingSpotPrice",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Underlying spot price",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "UnderlyingTicker",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Ticker of the underlying",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "UnderlyingType",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Equity"
+                },
+                {
+                  "value": "Private Equity"
+                },
+                {
+                  "value": "Exchange Traded Fund"
+                },
+                {
+                  "value": "Volatility Index"
+                },
+                {
+                  "value": "Dividend Index"
+                },
+                {
+                  "value": "Index"
+                },
+                {
+                  "value": "Volatility Index Future"
+                },
+                {
+                  "value": "Dividend Index Future"
+                },
+                {
+                  "value": "Index Future"
+                },
+                {
+                  "value": "CIX Index"
+                },
+                {
+                  "value": "Newsroom Index"
+                },
+                {
+                  "value": "IDIX9 Index"
+                },
+                {
+                  "value": "Bond Future"
+                },
+                {
+                  "value": "Interest Rate Future"
+                },
+                {
+                  "value": "Equity Future"
+                },
+                {
+                  "value": "Corporate Bond"
+                },
+                {
+                  "value": "Government Bond"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Type of the underlying",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "ValuationDatetime",
+        "value": {
+          "type": "DATE_TIME_VAL"
+        },
+        "description": "Valuation date and time",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Vanna",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Second order derivative with respect to spot and volatility",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Vega",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Change in the deal's price for a shift up of 1 basis point or a shift of 1% in volatility",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "VegaPrice",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Vega price",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "VegaYield",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Vega yield",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Vera",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Second order derivative with respect to volatility and risk free rate",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Veta",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Second order derivative with respect to volatility and time",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Volatility",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Volatility",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": true,
+        "category": "Market"
+      },
+      {
+        "name": "VolatilitySide",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Bid"
+                },
+                {
+                  "value": "Ask"
+                },
+                {
+                  "value": "Mid"
+                },
+                {
+                  "value": "Last"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Volatility side",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "VolatilitySource",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Volatility source",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "Volga",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Second order derivative with respect to volatility",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "YieldVol",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Yield volatility",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "Zomma",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Third order derivative with respect to spot, spot and volatility",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      }
+    ]
+  },
+  "dealDescription": "OVME Vanilla Option style",
+  "dealVersion": "1.6.0"
+}

@@ -1,0 +1,672 @@
+{
+  "returnStatus": {
+    "status": "S_SUCCESS"
+  },
+  "dealType": "IR.FRA",
+  "dealStructure": {
+    "param": [
+      {
+        "name": "BusDayAdjustment",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "No Adjustment"
+                },
+                {
+                  "value": "Ahead (Following)"
+                },
+                {
+                  "value": "Back (Preceding)"
+                },
+                {
+                  "value": "ModifiedFollowing"
+                },
+                {
+                  "value": "ModifiedPreceding"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Code for business day adjustments",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "CentralCounterparty",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "OTC"
+                },
+                {
+                  "value": "CME"
+                },
+                {
+                  "value": "ICE"
+                },
+                {
+                  "value": "IDCG"
+                },
+                {
+                  "value": "LCH"
+                },
+                {
+                  "value": "CMECE"
+                },
+                {
+                  "value": "LCHUS"
+                },
+                {
+                  "value": "JSCC"
+                },
+                {
+                  "value": "EUREX"
+                },
+                {
+                  "value": "HKEX"
+                },
+                {
+                  "value": "SGX"
+                },
+                {
+                  "value": "ASX"
+                },
+                {
+                  "value": "BME"
+                },
+                {
+                  "value": "TBD"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Central clearing counterparty",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Counterparty",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Counterparty of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Currency",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Currency of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "CustomId",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "CustomId",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "DayCount",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "30/360"
+                },
+                {
+                  "value": "ACT/360"
+                },
+                {
+                  "value": "ACT/ACT"
+                },
+                {
+                  "value": "ACT/365"
+                },
+                {
+                  "value": "30/ACT"
+                },
+                {
+                  "value": "30/365"
+                },
+                {
+                  "value": "NL/ACT"
+                },
+                {
+                  "value": "NL/360"
+                },
+                {
+                  "value": "NL/365"
+                },
+                {
+                  "value": "30E/ACT"
+                },
+                {
+                  "value": "30E/360"
+                },
+                {
+                  "value": "30E/365"
+                },
+                {
+                  "value": "30I/ACT"
+                },
+                {
+                  "value": "30I/360"
+                },
+                {
+                  "value": "30I/365"
+                },
+                {
+                  "value": "30U/360"
+                },
+                {
+                  "value": "30U/365"
+                },
+                {
+                  "value": "30U/ACT"
+                },
+                {
+                  "value": "ACT/365.FIXED"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Method used to determine how accrued interest is calculated and how coupon periods are determined",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "DaysBeforeAccrual",
+        "value": {
+          "type": "INT_VAL"
+        },
+        "description": "Days before interest accrual",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Direction",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Borrow"
+                },
+                {
+                  "value": "Lend"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Direction",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "EffectiveDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Date when the instrument takes effect",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "EnrichWith",
+        "value": {
+          "type": "SELECTION_ARRAY_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "MIFID2_ALL"
+                },
+                {
+                  "value": "MIFID2_SUB_CLASS"
+                },
+                {
+                  "value": "MIFID2_RTS22"
+                },
+                {
+                  "value": "MIFID2_RTS23"
+                },
+                {
+                  "value": "MIFID2_RTS2"
+                },
+                {
+                  "value": "MIFID2_ISIN"
+                },
+                {
+                  "value": "MIFID2_UPI"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Optional configuration parameter that specifies what you want the response to be enriched with",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      },
+      {
+        "name": "FRAStyle",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "IMM"
+                },
+                {
+                  "value": "Regular"
+                },
+                {
+                  "value": "Broken Dates"
+                }
+              ]
+            }
+          }
+        },
+        "description": "FRA date generate style",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Fcm",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Futures clearing merchants",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "FcmAccountId",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "FCM Account Id, second part of CCPI FCM",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "FcmClientId",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "FCM Client Id, third part of CCPI FCM",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "FixedRate",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "This is the contract rate for forward/cfd type instruments",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "FlipDirection",
+        "value": {
+          "type": "BOOL_VAL"
+        },
+        "description": "Indicates that the direction of the structure should be flipped so that the resultant structure is the inverse of the original",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      },
+      {
+        "name": "FloatingIndex",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Index used to determine the floating leg payment amounts",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "ForwardStartTenor",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Tenor for FRA",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Id",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Deal identifier",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "IndexTenor",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Tenor of the index",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "InstrumentDescription",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Instrument description",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description"
+      },
+      {
+        "name": "InstrumentLevel",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Strip"
+                },
+                {
+                  "value": "Deal"
+                },
+                {
+                  "value": "Strategy"
+                },
+                {
+                  "value": "Unit"
+                },
+                {
+                  "value": "SubLeg"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Instrument level",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description"
+      },
+      {
+        "name": "InstrumentType",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Instrument type",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description"
+      },
+      {
+        "name": "LegSubtype",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Fixed"
+                },
+                {
+                  "value": "Float"
+                },
+                {
+                  "value": "Inflation"
+                },
+                {
+                  "value": "Asset"
+                },
+                {
+                  "value": "Cap"
+                },
+                {
+                  "value": "Floor"
+                },
+                {
+                  "value": "FRA"
+                },
+                {
+                  "value": "BasketAsset"
+                },
+                {
+                  "value": "Inflation Bond"
+                },
+                {
+                  "value": "CappedFloater"
+                },
+                {
+                  "value": "FlooredFloater"
+                },
+                {
+                  "value": "CollaredFloater"
+                },
+                {
+                  "value": "Inflation Cap"
+                },
+                {
+                  "value": "Inflation Floor"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Type of leg",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "MaturityDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Contract scheduled termination date",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "MifidTradeDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Trade date used in daxenrich to calculate TTM",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      },
+      {
+        "name": "MinimumStubDays",
+        "value": {
+          "type": "INT_VAL"
+        },
+        "description": "Minimum number of days in a valid stub period",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Notes",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Personal notes of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Notional",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Amount associated with the whole transaction",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "OverrideExistingDeal",
+        "value": {
+          "type": "BOOL_VAL"
+        },
+        "description": "Override the existing deal or not, default is false",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "OwnerUuid",
+        "value": {
+          "type": "INT_VAL"
+        },
+        "description": "Owner UUID",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "PeriodDatesAdjustment",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Payment Dates Only"
+                },
+                {
+                  "value": "Payment and Accrual Dates"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Defines to which dates a business day adjustment is applied",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Privilege",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "User"
+                },
+                {
+                  "value": "Firm"
+                },
+                {
+                  "value": "Global"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Permission of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "PrivilegedGroup",
+        "value": {
+          "type": "STRING_ARRAY_VAL"
+        },
+        "description": "List of people with whom the deal is shared with",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "ReferenceDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Reference date used to create security",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      },
+      {
+        "name": "SettlementCalendars",
+        "value": {
+          "type": "STRING_ARRAY_VAL"
+        },
+        "description": "Calendars used to define settlement business dats",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Ticker",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Ticker of the deal or underlying",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "TradeDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Date of the trade",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      }
+    ]
+  }
+}

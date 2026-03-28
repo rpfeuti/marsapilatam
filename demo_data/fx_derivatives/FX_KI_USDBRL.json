@@ -1,0 +1,30 @@
+{
+  "key": "USDBRL",
+  "product_type": "FX_KI",
+  "label": "USD/BRL Knock-In",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "1000R8M0V43QXZR1MR59BY5DYD73E",
+    "AsOfTimestamp": "2026-03-28T19:38:38.984",
+    "DV01": "34.629708135152576",
+    "DelayedEid": "",
+    "Delta": "-303573.627353849",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "106878.32182168307",
+    "ImplVol": "14.80000019073841",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "0.4017996101740256",
+    "MktVal": "21049.477977796854",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-3462.9708135152573",
+    "Security": "1000R8M0V43QXZR1MR59BY5DYD73E",
+    "Theta": "-1029.426792809445",
+    "TrackingId": "0f321e1c-614a-4faf-9817-8c33cdd57290",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "-60206.18162839653",
+    "Vega": "14831.562596245583",
+    "Volga": "1312.4540298532"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "key": "USDCLP",
+  "product_type": "FX_KI",
+  "label": "USD/CLP Knock-In",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "100098A7Z8ACRNJBK05RQWYDJFNP6",
+    "AsOfTimestamp": "2026-03-28T19:38:50.972",
+    "DV01": "7.9764883878594",
+    "DelayedEid": "",
+    "Delta": "-349716.62626849517",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "87.83497546715509",
+    "ImplVol": "15.203278396752296",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "1.3359922277661747",
+    "MktVal": "13359.922277661748",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-797.64883878594",
+    "Security": "100098A7Z8ACRNJBK05RQWYDJFNP6",
+    "Theta": "-205.13312797891263",
+    "TrackingId": "d92aec8e-bb3d-4e81-ad02-c297c35f9549",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "-41.623163256900725",
+    "Vega": "2628.12502378013",
+    "Volga": "150.39259610815859"
+  }
+}

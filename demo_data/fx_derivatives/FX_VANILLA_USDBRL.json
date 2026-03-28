@@ -1,0 +1,30 @@
+{
+  "key": "USDBRL",
+  "product_type": "FX_VANILLA",
+  "label": "USD/BRL Vanilla",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "10008XJM314CCAQ1PYVQHFB317BH3",
+    "AsOfTimestamp": "2026-03-28T19:36:00.825",
+    "DV01": "51.07441111607841",
+    "DelayedEid": "",
+    "Delta": "-386805.96826750564",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "53026.33238696487",
+    "ImplVol": "14.069566998087305",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "1.8674326271198343",
+    "MktVal": "97831.06046955388",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-5107.441111607841",
+    "Security": "10008XJM314CCAQ1PYVQHFB317BH3",
+    "Theta": "-710.9437691178173",
+    "TrackingId": "9afef952-3fc3-4a46-a9ab-d661da18386c",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "-35834.676873069526",
+    "Vega": "9851.049995386202",
+    "Volga": "58.93553686046328"
+  }
+}

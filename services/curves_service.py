@@ -46,7 +46,7 @@ from configs.curves_config import (
 )
 from configs.settings import settings
 
-_SNAPSHOTS_DIR = Path(__file__).resolve().parent.parent / "demo_data"
+_SNAPSHOTS_DIR = Path(__file__).resolve().parent.parent / "demo_data" / "curves"
 
 # Tenor unit → approximate days, and → single-letter abbreviation for labels
 _TENOR_DAYS:  dict[str, int] = {"DAY": 1, "WEEK": 7, "MONTH": 30, "YEAR": 365}
@@ -218,7 +218,7 @@ def _load_snapshot(path: Path, spec: CurveSpec) -> pd.DataFrame:
     if spec.demo_key not in payload:
         raise CurveError(
             f"Key {spec.demo_key!r} missing in {path.name!r}. "
-            "Re-run scripts/download_demo_data.py to regenerate demo snapshots."
+            "Re-run scripts/download_curves_demo_data.py to regenerate demo snapshots."
         )
 
     return pd.DataFrame(payload[spec.demo_key])

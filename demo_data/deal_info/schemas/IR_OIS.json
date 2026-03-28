@@ -1,0 +1,2724 @@
+{
+  "returnStatus": {
+    "status": "S_SUCCESS"
+  },
+  "dealType": "IR.OIS",
+  "dealStructure": {
+    "param": [
+      {
+        "name": "BreakClauseCustomFrequency",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Month(s)"
+                },
+                {
+                  "value": "Year(s)"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Break clause custom frequency when break clause frequency is set to Custom. This is used with BreakClauseCustomNum",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "BreakClauseCustomNum",
+        "value": {
+          "type": "INT_VAL"
+        },
+        "description": "Break clause custom number of custom frequency. Used with BreackClauseCustomFrequency. ",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "BreakClauseDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Break clause unwind date",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "BreakClauseFrequency",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Once"
+                },
+                {
+                  "value": "Annual"
+                },
+                {
+                  "value": "SemiAnnual"
+                },
+                {
+                  "value": "Quarterly"
+                },
+                {
+                  "value": "Monthly"
+                },
+                {
+                  "value": "Custom"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Break clause unwind frequency",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "BreakClauseParty",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Bilateral"
+                },
+                {
+                  "value": "Unilateral Counterparty"
+                },
+                {
+                  "value": "Unilateral Principal"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Break clause unwind party",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "BreakClauseType",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "None"
+                },
+                {
+                  "value": "Mandatory"
+                },
+                {
+                  "value": "Optional"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Break clause unwind type",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "CSACollateralCurrency",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "CSA Collateral Currency for the swap deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Cashflows",
+        "value": {
+          "type": "TABLE_VAL",
+          "valueInfo": {
+            "table": {
+              "axes": [
+                {
+                  "name": "PaymentDate",
+                  "type": "DATE_TIME_ARRAY_VAL"
+                }
+              ],
+              "tableData": [
+                {
+                  "name": "ZeroCouponRateSchedule",
+                  "type": "DOUBLE_VAL"
+                },
+                {
+                  "name": "DiscountFactor",
+                  "type": "DOUBLE_VAL"
+                },
+                {
+                  "name": "CashflowsPayPayment",
+                  "type": "DOUBLE_VAL"
+                },
+                {
+                  "name": "CashflowsRcvPayment",
+                  "type": "DOUBLE_VAL"
+                },
+                {
+                  "name": "CashflowsPaymentAll",
+                  "type": "DOUBLE_VAL"
+                }
+              ]
+            }
+          }
+        },
+        "description": "CDS cashflows",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "CentralCounterparty",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "OTC"
+                },
+                {
+                  "value": "CME"
+                },
+                {
+                  "value": "ICE"
+                },
+                {
+                  "value": "IDCG"
+                },
+                {
+                  "value": "LCH"
+                },
+                {
+                  "value": "CMECE"
+                },
+                {
+                  "value": "LCHUS"
+                },
+                {
+                  "value": "JSCC"
+                },
+                {
+                  "value": "EUREX"
+                },
+                {
+                  "value": "HKEX"
+                },
+                {
+                  "value": "SGX"
+                },
+                {
+                  "value": "ASX"
+                },
+                {
+                  "value": "BME"
+                },
+                {
+                  "value": "TBD"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Central clearing counterparty",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Counterparty",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Counterparty of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "CustomId",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "CustomId",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "CustomId1",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Custom Id1",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "CustomId2",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "CustomId2",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Dv01",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Market value(NPV) sensitivity of the deal to the curve shift",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "EffectiveDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Date when the instrument takes effect",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "EffectiveMaturityDateGeneration",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "None"
+                },
+                {
+                  "value": "IMM"
+                },
+                {
+                  "value": "IMMCME"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Specify date generation method use to set up default effective and maturity date, used to create IMM swap",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "EnrichWith",
+        "value": {
+          "type": "SELECTION_ARRAY_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "MIFID2_ALL"
+                },
+                {
+                  "value": "MIFID2_SUB_CLASS"
+                },
+                {
+                  "value": "MIFID2_RTS22"
+                },
+                {
+                  "value": "MIFID2_RTS23"
+                },
+                {
+                  "value": "MIFID2_RTS2"
+                },
+                {
+                  "value": "MIFID2_ISIN"
+                },
+                {
+                  "value": "MIFID2_UPI"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Optional configuration parameter that specifies what you want the response to be enriched with",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      },
+      {
+        "name": "Fcm",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Futures clearing merchants",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "FcmAccountId",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "FCM Account Id, second part of CCPI FCM",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "FcmClientId",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "FCM Client Id, third part of CCPI FCM",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "FeeSchedule",
+        "value": {
+          "type": "TABLE_VAL",
+          "valueInfo": {
+            "table": {
+              "axes": [
+                {
+                  "name": "FeeSettlementDates",
+                  "type": "DATE_ARRAY_VAL"
+                }
+              ],
+              "tableData": [
+                {
+                  "name": "FeeAmount",
+                  "type": "DOUBLE_VAL"
+                },
+                {
+                  "name": "FeeDirection",
+                  "type": "STRING_VAL"
+                },
+                {
+                  "name": "FeeCurrency",
+                  "type": "STRING_VAL"
+                }
+              ]
+            }
+          }
+        },
+        "description": "FeeSchedule for all deal types",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "FlipDirection",
+        "value": {
+          "type": "BOOL_VAL"
+        },
+        "description": "Indicates that the direction of the structure should be flipped so that the resultant structure is the inverse of the original",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      },
+      {
+        "name": "Folder",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "IRDL folder to save the deal in",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Id",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Deal identifier",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "InstrumentDescription",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Instrument description",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description"
+      },
+      {
+        "name": "InstrumentLevel",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Strip"
+                },
+                {
+                  "value": "Deal"
+                },
+                {
+                  "value": "Strategy"
+                },
+                {
+                  "value": "Unit"
+                },
+                {
+                  "value": "SubLeg"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Instrument level",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description"
+      },
+      {
+        "name": "InstrumentType",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Instrument type",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description"
+      },
+      {
+        "name": "IsCustomizedSchedule",
+        "value": {
+          "type": "BOOL_VAL"
+        },
+        "description": "This flag indicates any customization on accrual schedule dates (start, end, reset and payment), value(notional, coupon, spread or leverage) and cashflows",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description"
+      },
+      {
+        "name": "MACContractType",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "BESPOKE"
+                },
+                {
+                  "value": "MAC SWAP"
+                },
+                {
+                  "value": "Customized MAC SWAP"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Contract type to indicate template/customized MAC swap",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description"
+      },
+      {
+        "name": "MaturityDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Contract scheduled termination date",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "MifidTradeDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Trade date used in daxenrich to calculate TTM",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      },
+      {
+        "name": "MinimumStubDays",
+        "value": {
+          "type": "INT_VAL"
+        },
+        "description": "Minimum number of days in a valid stub period",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Notes",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Personal notes of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "OverrideExistingDeal",
+        "value": {
+          "type": "BOOL_VAL"
+        },
+        "description": "Override the existing deal or not, default is false",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "OwnerUuid",
+        "value": {
+          "type": "INT_VAL"
+        },
+        "description": "Owner UUID",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Premium",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Option premium as a percentage of the Notional",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "PrincipalExchange",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Never"
+                },
+                {
+                  "value": "At Effective Date"
+                },
+                {
+                  "value": "At Maturity Date"
+                },
+                {
+                  "value": "Effect. & Maturity"
+                },
+                {
+                  "value": "All Pmnt Dates"
+                },
+                {
+                  "value": "Rolls & Maturity"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Defines if any how notionals or principals are exchanged in the contract",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Privilege",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "User"
+                },
+                {
+                  "value": "Firm"
+                },
+                {
+                  "value": "Global"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Permission of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "PrivilegedGroup",
+        "value": {
+          "type": "STRING_ARRAY_VAL"
+        },
+        "description": "List of people with whom the deal is shared with",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Pv",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Pv",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "ReferenceDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Reference date used to create security",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      },
+      {
+        "name": "Ticker",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Ticker of the deal or underlying",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "TradeDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Date of the trade",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      }
+    ],
+    "leg": [
+      {
+        "param": [
+          {
+            "name": "AccrualSchedule",
+            "value": {
+              "type": "TABLE_VAL",
+              "valueInfo": {
+                "table": {
+                  "axes": [
+                    {
+                      "name": "AccrualStartDates",
+                      "type": "DATE_ARRAY_VAL"
+                    }
+                  ],
+                  "tableData": [
+                    {
+                      "name": "AccrualEndDate",
+                      "type": "DATE_VAL"
+                    },
+                    {
+                      "name": "PaymentDate",
+                      "type": "DATE_VAL"
+                    },
+                    {
+                      "name": "AmortizationRate",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "AmortizationAmount",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "AmortizationBalance",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "PeriodFixedRate",
+                      "type": "DOUBLE_VAL"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Accrual schedule for swap leg",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "BackStub",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "None"
+                    },
+                    {
+                      "value": "Long"
+                    },
+                    {
+                      "value": "Short"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Type of back stub",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "BackStubStartDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "Back Stub Start Date",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "BusDayAdjustment",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "No Adjustment"
+                    },
+                    {
+                      "value": "Ahead (Following)"
+                    },
+                    {
+                      "value": "Back (Preceding)"
+                    },
+                    {
+                      "value": "ModifiedFollowing"
+                    },
+                    {
+                      "value": "ModifiedPreceding"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Code for business day adjustments",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "CalculationBasis",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Bond Equivalent"
+                    },
+                    {
+                      "value": "Money Market"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Coupon compounding convention",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "Cashflows",
+            "value": {
+              "type": "TABLE_VAL",
+              "valueInfo": {
+                "table": {
+                  "axes": [
+                    {
+                      "name": "PaymentDate",
+                      "type": "DATE_TIME_ARRAY_VAL"
+                    }
+                  ],
+                  "tableData": [
+                    {
+                      "name": "EquivCouponRate",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "ZeroCouponRateSchedule",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "DiscountFactor",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "NetPresentValue",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "CashflowsAccrualStartDates",
+                      "type": "DATE_TIME_VAL"
+                    },
+                    {
+                      "name": "CashflowsAccrualEndDates",
+                      "type": "DATE_TIME_VAL"
+                    },
+                    {
+                      "name": "CashflowsNotionalAll",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "CashflowsPrincipalAll",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "CashflowsPaymentAll",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "CashflowsAccrualDateNumber",
+                      "type": "DOUBLE_VAL"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "CDS cashflows",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Valuation"
+          },
+          {
+            "name": "CompoundingFrequency",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Annual"
+                    },
+                    {
+                      "value": "SemiAnnual"
+                    },
+                    {
+                      "value": "Quarterly"
+                    },
+                    {
+                      "value": "Monthly"
+                    },
+                    {
+                      "value": "Weekly"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Defines the compounding frequency of the contract",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "Currency",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Currency of the deal",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "CustomDateGeneration",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "None"
+                    },
+                    {
+                      "value": "IMM"
+                    },
+                    {
+                      "value": "IMMCME"
+                    },
+                    {
+                      "value": "Nth Business Day"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Customized date generation methods: IMM aligns periods dates to IMM dates",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "CustomDateGenerationNthDay",
+            "value": {
+              "type": "INT_VAL"
+            },
+            "description": "Nth day in month",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "DayCount",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "ACT/ACT"
+                    },
+                    {
+                      "value": "ACT/360"
+                    },
+                    {
+                      "value": "ACT/365"
+                    },
+                    {
+                      "value": "30/ACT"
+                    },
+                    {
+                      "value": "30/360"
+                    },
+                    {
+                      "value": "30/365"
+                    },
+                    {
+                      "value": "NL/ACT"
+                    },
+                    {
+                      "value": "NL/360"
+                    },
+                    {
+                      "value": "NL/365"
+                    },
+                    {
+                      "value": "30E/ACT"
+                    },
+                    {
+                      "value": "30E/360"
+                    },
+                    {
+                      "value": "30E/365"
+                    },
+                    {
+                      "value": "30I/ACT"
+                    },
+                    {
+                      "value": "30I/360"
+                    },
+                    {
+                      "value": "30I/365"
+                    },
+                    {
+                      "value": "30U/ACT"
+                    },
+                    {
+                      "value": "30U/360"
+                    },
+                    {
+                      "value": "30U/365"
+                    },
+                    {
+                      "value": "ACT/365.FIXED"
+                    },
+                    {
+                      "value": "1/1"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Method used to determine how accrued interest is calculated and how coupon periods are determined",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "Direction",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Receive"
+                    },
+                    {
+                      "value": "Pay"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Direction",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "EffectiveDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "Date when the instrument takes effect",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "EffectiveDateAdjustment",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "No Adjustment"
+                    },
+                    {
+                      "value": "Ahead (Following)"
+                    },
+                    {
+                      "value": "Back (Preceding)"
+                    },
+                    {
+                      "value": "ModifiedFollowing"
+                    },
+                    {
+                      "value": "ModifiedPreceding"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Code for effective date adjustments",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FVNotional",
+            "value": {
+              "type": "DOUBLE_VAL"
+            },
+            "description": "Notional at maturity",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FXFixingDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "Foreign Exchange Fixing Date",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FeeDayCount",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "ACT/ACT"
+                    },
+                    {
+                      "value": "ACT/360"
+                    },
+                    {
+                      "value": "ACT/365"
+                    },
+                    {
+                      "value": "30/ACT"
+                    },
+                    {
+                      "value": "30/360"
+                    },
+                    {
+                      "value": "30/365"
+                    },
+                    {
+                      "value": "NL/ACT"
+                    },
+                    {
+                      "value": "NL/360"
+                    },
+                    {
+                      "value": "NL/365"
+                    },
+                    {
+                      "value": "30E/ACT"
+                    },
+                    {
+                      "value": "30E/360"
+                    },
+                    {
+                      "value": "30E/365"
+                    },
+                    {
+                      "value": "30I/ACT"
+                    },
+                    {
+                      "value": "30I/360"
+                    },
+                    {
+                      "value": "30I/365"
+                    },
+                    {
+                      "value": "30U/ACT"
+                    },
+                    {
+                      "value": "30U/360"
+                    },
+                    {
+                      "value": "30U/365"
+                    },
+                    {
+                      "value": "ACT/365.FIXED"
+                    },
+                    {
+                      "value": "1/1"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Fee Day Count",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FeeRate",
+            "value": {
+              "type": "DOUBLE_VAL"
+            },
+            "description": "Fee Rate",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FeeRateFloor",
+            "value": {
+              "type": "DOUBLE_VAL"
+            },
+            "description": "Fee Floor",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FirstPaymentDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "First coupon payment date",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FixedRate",
+            "value": {
+              "type": "DOUBLE_VAL"
+            },
+            "description": "This is the contract rate for forward/cfd type instruments",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": true,
+            "category": "Contract"
+          },
+          {
+            "name": "ForwardStartTenor",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Tenor for FRA",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Configuration"
+          },
+          {
+            "name": "FrontStub",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "None"
+                    },
+                    {
+                      "value": "Long"
+                    },
+                    {
+                      "value": "Short"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Type of front stub",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FrontStubEndDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "Front Stub End Date",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "InstrumentDescription",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Instrument description",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Description"
+          },
+          {
+            "name": "InstrumentLevel",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Strip"
+                    },
+                    {
+                      "value": "Deal"
+                    },
+                    {
+                      "value": "Strategy"
+                    },
+                    {
+                      "value": "Unit"
+                    },
+                    {
+                      "value": "SubLeg"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Instrument level",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Description"
+          },
+          {
+            "name": "InstrumentType",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Instrument type",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Description"
+          },
+          {
+            "name": "InterestCompounding",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Market Standard Fixed Coupon Compound"
+                    },
+                    {
+                      "value": "Simple Fixed Coupon Compound"
+                    },
+                    {
+                      "value": "None"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Interest compounding type",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "IsFxBasedNotional",
+            "value": {
+              "type": "BOOL_VAL"
+            },
+            "description": "Notional is mark-to-market by FX and other leg's notional",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "LegSubtype",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Fixed"
+                    },
+                    {
+                      "value": "Float"
+                    },
+                    {
+                      "value": "Inflation"
+                    },
+                    {
+                      "value": "Asset"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Type of leg",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "MaturityDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "Contract scheduled termination date",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "MaturityTenor",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Maturity of the contract. It is the final possible cash flow date for the contract expressed in Tenor. For example 1Y would mean 1 year, 3M means 3 months etc. \n",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "NextLastPaymentDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "Last coupon payment date prior to the final maturity date coupon payment",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "Notional",
+            "value": {
+              "type": "DOUBLE_VAL"
+            },
+            "description": "Amount associated with the whole transaction",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": true,
+            "category": "Contract"
+          },
+          {
+            "name": "Notionals",
+            "value": {
+              "type": "DOUBLE_ARRAY_VAL"
+            },
+            "description": "Amount associated with the entire deal",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "PayFrequency",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Annual"
+                    },
+                    {
+                      "value": "SemiAnnual"
+                    },
+                    {
+                      "value": "Daily"
+                    },
+                    {
+                      "value": "Quarterly"
+                    },
+                    {
+                      "value": "Monthly"
+                    },
+                    {
+                      "value": "Weekly"
+                    },
+                    {
+                      "value": "At Maturity"
+                    },
+                    {
+                      "value": "28 Days"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Payment frequency",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "PeriodDatesAdjustment",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Payment Dates Only"
+                    },
+                    {
+                      "value": "Payment and Accrual Dates"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Defines to which dates a business day adjustment is applied",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "RollDateConvention",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Forward"
+                    },
+                    {
+                      "value": "Backward"
+                    },
+                    {
+                      "value": "Forward (EndOfMonth)"
+                    },
+                    {
+                      "value": "Backward (EndOfMonth)"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Roll date convention",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "SettlementCalendars",
+            "value": {
+              "type": "STRING_ARRAY_VAL"
+            },
+            "description": "Calendars used to define settlement business dats",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "SettlementLag",
+            "value": {
+              "type": "INT_VAL"
+            },
+            "description": "Delivery delay",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "SettlementLagType",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Business Days"
+                    },
+                    {
+                      "value": "Calendar Days"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Whether delivery delay depends on calendar or business days",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          }
+        ]
+      },
+      {
+        "param": [
+          {
+            "name": "AccrualSchedule",
+            "value": {
+              "type": "TABLE_VAL",
+              "valueInfo": {
+                "table": {
+                  "axes": [
+                    {
+                      "name": "AccrualStartDates",
+                      "type": "DATE_ARRAY_VAL"
+                    }
+                  ],
+                  "tableData": [
+                    {
+                      "name": "AccrualEndDate",
+                      "type": "DATE_VAL"
+                    },
+                    {
+                      "name": "PaymentDate",
+                      "type": "DATE_VAL"
+                    },
+                    {
+                      "name": "ResetDate",
+                      "type": "DATE_VAL"
+                    },
+                    {
+                      "name": "AmortizationRate",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "AmortizationAmount",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "AmortizationBalance",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "PeriodLeverage",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "PeriodSpread",
+                      "type": "DOUBLE_VAL"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Accrual schedule for swap leg",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "BackStub",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "None"
+                    },
+                    {
+                      "value": "Long"
+                    },
+                    {
+                      "value": "Short"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Type of back stub",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "BackStubHighIndex",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "High index used to calculate back stub rate",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "BackStubLowIndex",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Low index used to calculate interpolated rate",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "BackStubStartDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "Back Stub Start Date",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "BusDayAdjustment",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "No Adjustment"
+                    },
+                    {
+                      "value": "Ahead (Following)"
+                    },
+                    {
+                      "value": "Back (Preceding)"
+                    },
+                    {
+                      "value": "ModifiedFollowing"
+                    },
+                    {
+                      "value": "ModifiedPreceding"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Code for business day adjustments",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "Cashflows",
+            "value": {
+              "type": "TABLE_VAL",
+              "valueInfo": {
+                "table": {
+                  "axes": [
+                    {
+                      "name": "PaymentDate",
+                      "type": "DATE_TIME_ARRAY_VAL"
+                    }
+                  ],
+                  "tableData": [
+                    {
+                      "name": "EquivCouponRate",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "ZeroCouponRateSchedule",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "DiscountFactor",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "NetPresentValue",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "CashflowsAccrualStartDates",
+                      "type": "DATE_TIME_VAL"
+                    },
+                    {
+                      "name": "CashflowsAccrualEndDates",
+                      "type": "DATE_TIME_VAL"
+                    },
+                    {
+                      "name": "CashflowsNotionalAll",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "CashflowsPrincipalAll",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "CashflowsPaymentAll",
+                      "type": "DOUBLE_VAL"
+                    },
+                    {
+                      "name": "CashflowsAccrualDateNumber",
+                      "type": "DOUBLE_VAL"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "CDS cashflows",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Valuation"
+          },
+          {
+            "name": "Currency",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Currency of the deal",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "CustomDateGeneration",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "None"
+                    },
+                    {
+                      "value": "IMM"
+                    },
+                    {
+                      "value": "IMMCME"
+                    },
+                    {
+                      "value": "Nth Business Day"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Customized date generation methods: IMM aligns periods dates to IMM dates",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "CustomDateGenerationNthDay",
+            "value": {
+              "type": "INT_VAL"
+            },
+            "description": "Nth day in month",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "DayCount",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "ACT/ACT"
+                    },
+                    {
+                      "value": "ACT/360"
+                    },
+                    {
+                      "value": "ACT/365"
+                    },
+                    {
+                      "value": "30/ACT"
+                    },
+                    {
+                      "value": "30/360"
+                    },
+                    {
+                      "value": "30/365"
+                    },
+                    {
+                      "value": "NL/ACT"
+                    },
+                    {
+                      "value": "NL/360"
+                    },
+                    {
+                      "value": "NL/365"
+                    },
+                    {
+                      "value": "30E/ACT"
+                    },
+                    {
+                      "value": "30E/360"
+                    },
+                    {
+                      "value": "30E/365"
+                    },
+                    {
+                      "value": "30I/ACT"
+                    },
+                    {
+                      "value": "30I/360"
+                    },
+                    {
+                      "value": "30I/365"
+                    },
+                    {
+                      "value": "30U/ACT"
+                    },
+                    {
+                      "value": "30U/360"
+                    },
+                    {
+                      "value": "30U/365"
+                    },
+                    {
+                      "value": "ACT/365.FIXED"
+                    },
+                    {
+                      "value": "1/1"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Method used to determine how accrued interest is calculated and how coupon periods are determined",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "DaysBeforeAccrual",
+            "value": {
+              "type": "INT_VAL"
+            },
+            "description": "Days before interest accrual",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "DaysBeforeAccrualType",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Lookback"
+                    },
+                    {
+                      "value": "BOS"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Days Before Accrual Type",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "Direction",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Receive"
+                    },
+                    {
+                      "value": "Pay"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Direction",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "EffectiveDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "Date when the instrument takes effect",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "EffectiveDateAdjustment",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "No Adjustment"
+                    },
+                    {
+                      "value": "Ahead (Following)"
+                    },
+                    {
+                      "value": "Back (Preceding)"
+                    },
+                    {
+                      "value": "ModifiedFollowing"
+                    },
+                    {
+                      "value": "ModifiedPreceding"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Code for effective date adjustments",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FXFixingDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "Foreign Exchange Fixing Date",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FeeDayCount",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "ACT/ACT"
+                    },
+                    {
+                      "value": "ACT/360"
+                    },
+                    {
+                      "value": "ACT/365"
+                    },
+                    {
+                      "value": "30/ACT"
+                    },
+                    {
+                      "value": "30/360"
+                    },
+                    {
+                      "value": "30/365"
+                    },
+                    {
+                      "value": "NL/ACT"
+                    },
+                    {
+                      "value": "NL/360"
+                    },
+                    {
+                      "value": "NL/365"
+                    },
+                    {
+                      "value": "30E/ACT"
+                    },
+                    {
+                      "value": "30E/360"
+                    },
+                    {
+                      "value": "30E/365"
+                    },
+                    {
+                      "value": "30I/ACT"
+                    },
+                    {
+                      "value": "30I/360"
+                    },
+                    {
+                      "value": "30I/365"
+                    },
+                    {
+                      "value": "30U/ACT"
+                    },
+                    {
+                      "value": "30U/360"
+                    },
+                    {
+                      "value": "30U/365"
+                    },
+                    {
+                      "value": "ACT/365.FIXED"
+                    },
+                    {
+                      "value": "1/1"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Fee Day Count",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FeeRate",
+            "value": {
+              "type": "DOUBLE_VAL"
+            },
+            "description": "Fee Rate",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FeeRateFloor",
+            "value": {
+              "type": "DOUBLE_VAL"
+            },
+            "description": "Fee Floor",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FirstPaymentDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "First coupon payment date",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FixingCalendars",
+            "value": {
+              "type": "STRING_ARRAY_VAL"
+            },
+            "description": "Calendars used for fixing observables",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FloatingIndex",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Index used to determine the floating leg payment amounts",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "ForwardStartTenor",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Tenor for FRA",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Configuration"
+          },
+          {
+            "name": "FrontStub",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "None"
+                    },
+                    {
+                      "value": "Long"
+                    },
+                    {
+                      "value": "Short"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Type of front stub",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FrontStubEndDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "Front Stub End Date",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FrontStubHighIndex",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "High index used to calculate front stub rate",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "FrontStubLowIndex",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Low index used to calculate front stub rate",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "IndexTenor",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Tenor of the index",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "InstrumentDescription",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Instrument description",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Description"
+          },
+          {
+            "name": "InstrumentLevel",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Strip"
+                    },
+                    {
+                      "value": "Deal"
+                    },
+                    {
+                      "value": "Strategy"
+                    },
+                    {
+                      "value": "Unit"
+                    },
+                    {
+                      "value": "SubLeg"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Instrument level",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Description"
+          },
+          {
+            "name": "InstrumentType",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Instrument type",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Description"
+          },
+          {
+            "name": "InterestCompounding",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Flat"
+                    },
+                    {
+                      "value": "IncludeSprd"
+                    },
+                    {
+                      "value": "ExcludeSprd"
+                    },
+                    {
+                      "value": "LinearIncSprd"
+                    },
+                    {
+                      "value": "UnweightedAvg"
+                    },
+                    {
+                      "value": "None"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Interest compounding type",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "IsArrears",
+            "value": {
+              "type": "BOOL_VAL"
+            },
+            "description": "Determines is the reset date of the used in the contract is upfront or in Arrears",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "IsMuniReset",
+            "value": {
+              "type": "BOOL_VAL"
+            },
+            "description": "Resets Muni in SWPM",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "LegSubtype",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Fixed"
+                    },
+                    {
+                      "value": "Float"
+                    },
+                    {
+                      "value": "Inflation"
+                    },
+                    {
+                      "value": "Asset"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Type of leg",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "Leverage",
+            "value": {
+              "type": "DOUBLE_VAL"
+            },
+            "description": "Determines the leverage used for the underlying of the contract. A standard contract has a leverage of 1",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "MaturityDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "Contract scheduled termination date",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "MaturityTenor",
+            "value": {
+              "type": "STRING_VAL"
+            },
+            "description": "Maturity of the contract. It is the final possible cash flow date for the contract expressed in Tenor. For example 1Y would mean 1 year, 3M means 3 months etc. \n",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "NextLastPaymentDate",
+            "value": {
+              "type": "DATE_VAL"
+            },
+            "description": "Last coupon payment date prior to the final maturity date coupon payment",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "Notional",
+            "value": {
+              "type": "DOUBLE_VAL"
+            },
+            "description": "Amount associated with the whole transaction",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "Notionals",
+            "value": {
+              "type": "DOUBLE_ARRAY_VAL"
+            },
+            "description": "Amount associated with the entire deal",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "PayFrequency",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Annual"
+                    },
+                    {
+                      "value": "SemiAnnual"
+                    },
+                    {
+                      "value": "Daily"
+                    },
+                    {
+                      "value": "Quarterly"
+                    },
+                    {
+                      "value": "Monthly"
+                    },
+                    {
+                      "value": "Weekly"
+                    },
+                    {
+                      "value": "At Maturity"
+                    },
+                    {
+                      "value": "28 Days"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Payment frequency",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "PeriodDatesAdjustment",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Payment Dates Only"
+                    },
+                    {
+                      "value": "Payment and Accrual Dates"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Defines to which dates a business day adjustment is applied",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "RateResetCutoffDays",
+            "value": {
+              "type": "INT_VAL"
+            },
+            "description": "Rate Reset Cutoff Days",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "ResetBusDayAdjustment",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "No Adjustment"
+                    },
+                    {
+                      "value": "Ahead (Following)"
+                    },
+                    {
+                      "value": "Back (Preceding)"
+                    },
+                    {
+                      "value": "ModifiedFollowing"
+                    },
+                    {
+                      "value": "ModifiedPreceding"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Reset Business Day Adjustment",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "ResetFrequency",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Annual"
+                    },
+                    {
+                      "value": "SemiAnnual"
+                    },
+                    {
+                      "value": "Daily"
+                    },
+                    {
+                      "value": "Quarterly"
+                    },
+                    {
+                      "value": "Monthly"
+                    },
+                    {
+                      "value": "Weekly"
+                    },
+                    {
+                      "value": "At Maturity"
+                    },
+                    {
+                      "value": "28 Days"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Reset frequency",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "Resets",
+            "value": {
+              "type": "TABLE_VAL",
+              "valueInfo": {
+                "table": {
+                  "axes": [
+                    {
+                      "name": "ResetScheduleDate",
+                      "type": "DATE_TIME_ARRAY_VAL"
+                    }
+                  ],
+                  "tableData": [
+                    {
+                      "name": "ResetScheduleRate",
+                      "type": "DOUBLE_VAL"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Reset rate table",
+            "mode": "OUTPUT",
+            "solvableTarget": false,
+            "category": "Valuation"
+          },
+          {
+            "name": "RollDateConvention",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Forward"
+                    },
+                    {
+                      "value": "Backward"
+                    },
+                    {
+                      "value": "Forward (EndOfMonth)"
+                    },
+                    {
+                      "value": "Backward (EndOfMonth)"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Roll date convention",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "SettlementCalendars",
+            "value": {
+              "type": "STRING_ARRAY_VAL"
+            },
+            "description": "Calendars used to define settlement business dats",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "SettlementLag",
+            "value": {
+              "type": "INT_VAL"
+            },
+            "description": "Delivery delay",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "SettlementLagApply",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Principal and Coupon"
+                    },
+                    {
+                      "value": "Coupon"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Pay Delay Apply",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "SettlementLagType",
+            "value": {
+              "type": "SELECTION_VAL",
+              "valueInfo": {
+                "selection": {
+                  "items": [
+                    {
+                      "value": "Business Days"
+                    },
+                    {
+                      "value": "Calendar Days"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Whether delivery delay depends on calendar or business days",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": false,
+            "category": "Contract"
+          },
+          {
+            "name": "Spread",
+            "value": {
+              "type": "DOUBLE_VAL"
+            },
+            "description": "Spread",
+            "mode": "INPUT_OUTPUT",
+            "solvableTarget": true,
+            "category": "Contract"
+          }
+        ]
+      }
+    ]
+  }
+}

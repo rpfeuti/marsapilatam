@@ -1,0 +1,30 @@
+{
+  "key": "USDPEN",
+  "product_type": "FX_VANILLA",
+  "label": "USD/PEN Vanilla",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "1000LPFLQY66TADNJND40ZAC7037B",
+    "AsOfTimestamp": "2026-03-28T19:35:49.256",
+    "DV01": "12.149088616548015",
+    "DelayedEid": "",
+    "Delta": "-476819.06935914245",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "23617.32351573237",
+    "ImplVol": "9.5232997898782",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "1.7325715125952272",
+    "MktVal": "17325.715125952273",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-1214.9088616548015",
+    "Security": "1000LPFLQY66TADNJND40ZAC7037B",
+    "Theta": "-107.20521685654914",
+    "TrackingId": "46d3cd90-313f-40e3-8bff-21bdae1b0f2c",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "-1770.1446441912099",
+    "Vega": "1975.7900905621818",
+    "Volga": "0.8055839083968666"
+  }
+}

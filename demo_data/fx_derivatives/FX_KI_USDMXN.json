@@ -1,0 +1,30 @@
+{
+  "key": "USDMXN",
+  "product_type": "FX_KI",
+  "label": "USD/MXN Knock-In",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "1000CZXLHATWHY5TM200QTZKZ84XF",
+    "AsOfTimestamp": "2026-03-28T19:38:13.844",
+    "DV01": "157.59533940751777",
+    "DelayedEid": "",
+    "Delta": "-399392.46713954903",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "162532.60416381923",
+    "ImplVol": "12.579999923710137",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "0.39476578357515846",
+    "MktVal": "71526.82279441581",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-15759.533940751777",
+    "Security": "1000CZXLHATWHY5TM200QTZKZ84XF",
+    "Theta": "-3670.279554883702",
+    "TrackingId": "f6089ac1-4145-4792-98ab-e92853091c22",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "-88507.2481902724",
+    "Vega": "66659.3120608859",
+    "Volga": "5890.402692565714"
+  }
+}

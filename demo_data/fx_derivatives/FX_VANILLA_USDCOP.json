@@ -1,0 +1,30 @@
+{
+  "key": "USDCOP",
+  "product_type": "FX_VANILLA",
+  "label": "USD/COP Vanilla",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "1000LAJ510ZAVW0GHDBH0VPCLGXQ7",
+    "AsOfTimestamp": "2026-03-28T19:35:22.658",
+    "DV01": "9.71285905951142",
+    "DelayedEid": "",
+    "Delta": "-381203.6082496417",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "13.2505869480095",
+    "ImplVol": "15.224460505277884",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "1.9750761854649679",
+    "MktVal": "19750.761854649678",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-971.2859059511419",
+    "Security": "1000LAJ510ZAVW0GHDBH0VPCLGXQ7",
+    "Theta": "-149.0321888844846",
+    "TrackingId": "456bc6a8-ad55-4be1-b1cc-76945ecda6d0",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "-6576.2827087049955",
+    "Vega": "1869.0626735616397",
+    "Volga": "11.402784075638452"
+  }
+}

@@ -1,0 +1,1273 @@
+{
+  "returnStatus": {
+    "status": "S_SUCCESS"
+  },
+  "dealType": "FX.VA",
+  "dealStructure": {
+    "param": [
+      {
+        "name": "Aega",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Sticky vega - P&L from a 1% inrease in the ATM vol",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"AEGA\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_AEGA\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CallPut",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Call"
+                },
+                {
+                  "value": "Put"
+                }
+              ],
+              "property": [
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "description": "Call or Put",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"CALL_PUT_SWITCH\",\r\n    \"Level\": \"Leg\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CallPutCurrency",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Call/Put Currency",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"CURRENCY_CALL_PUT_SWITCH\",\r\n    \"Level\": \"Strategy\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Counterparty",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Counterparty of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "CustomId",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "CustomId",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Delta",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Change in the deals's price for a 1% change in a given underlying asset price",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"DELTA\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_DELTA\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Description",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Description of the product",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Direction",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Buy"
+                },
+                {
+                  "value": "Sell"
+                }
+              ],
+              "property": [
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "description": "Direction",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"DIRECTION\",\r\n    \"Level\": \"Leg\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DomesticCurrency",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Domestic currency",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"BASE_CURRENCY\",\r\n    \"Level\": \"Deal\",\r\n    \"FcdMktFieldId\": \"FCD_COMMODITY_CURRENCY\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DomesticDepoRate",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Deposit rate in domestic currency",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"DEPOSIT_BASE\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdMktFieldId\": \"FCD_DEPO2_MMKT\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "ExerciseType",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "European"
+                },
+                {
+                  "value": "American"
+                }
+              ],
+              "property": [
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "description": "Exercise type",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"EXERCISE_SWITCH\",\r\n    \"Level\": \"Leg\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "ExpiryCutTime",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Expiry cut-off time and cut location",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"CUT_REGION\",\r\n    \"Level\": \"Strategy\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "ExpiryDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "ExpiryDate description",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"DATE_EXPIRATION\",\r\n    \"Level\": \"Leg\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "ForeignCurrency",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Foreign currency",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"COMMODITY_CURRENCY\",\r\n    \"Level\": \"Deal\",\r\n    \"FcdMktFieldId\": \"FCD_BASE_CURRENCY\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "ForeignDepoRate",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Deposit rate in foreign currency",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"DEPOSIT_COMMODITY\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdMktFieldId\": \"FCD_DEPO1_MMKT\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Forward",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Forward price or rate",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"FORWARD\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdMktFieldId\": \"FCD_FORWARD_PRICE\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "ForwardPoints",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Number of basis points added to or subtracted from the spot price to determine the forward rate",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"FORWARD_POINTS\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdMktFieldId\": \"FCD_FORWARD_POINTS\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Gamma",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Gamma",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"GAMMA\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_GAMMA\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Hedge",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Hedge consists of taking an offsetting position in a related security",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"HEDGE\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_HEDGE\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Id",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Deal identifier",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "InstrumentDescription",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Instrument description",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"constant\": {\r\n    \"value\": \"Vanilla\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "InstrumentId",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Id according to the InstrumentLevel",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "InstrumentLevel",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Strip"
+                },
+                {
+                  "value": "Deal"
+                },
+                {
+                  "value": "Strategy"
+                },
+                {
+                  "value": "Unit"
+                },
+                {
+                  "value": "SubLeg"
+                }
+              ],
+              "property": [
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "description": "Instrument level",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"constant\": {\r\n    \"value\": \"Unit\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "InstrumentType",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Instrument type",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Description",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"constant\": {\r\n    \"value\": \"FX.VA\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "MarketType",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Onshore"
+                },
+                {
+                  "value": "Offshore"
+                },
+                {
+                  "value": "BM&F Onshore"
+                },
+                {
+                  "value": "OTC Onshore"
+                }
+              ],
+              "property": [
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "description": "Market Switch for Currency",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"MARKET_SWITCH\",\r\n    \"Level\": \"Leg\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Notes",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Personal notes of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Notional",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Amount associated with the whole transaction",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": true,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"NOTIONAL\",\r\n    \"Level\": \"Leg\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "NotionalCurrency",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Currency of the notional",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"CURRENCY_NOTIONAL_SWITCH\",\r\n    \"Level\": \"Strategy\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "OverrideExistingDeal",
+        "value": {
+          "type": "BOOL_VAL"
+        },
+        "description": "Override the existing deal or not, default is false",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Phi",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Phi",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"PHI\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_PHI\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Premium",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Option premium as a percentage of the Notional",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"PREMIUM_MID\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_PREMIUM\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "PremiumCurrency",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Currency used to calculate the premium",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"CURRENCY_PREMIUM_SWITCH\",\r\n    \"Level\": \"Deal\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "PremiumDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Date on which the option premium is paid",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"DATE_SETTLE\",\r\n    \"Level\": \"Deal\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_PREMIUM_DATE\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "PricePercent",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Price expressed as a % of the underlying price",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"PRICE_MID\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_PRICE_PCT\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "PricePip",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Options price in pip",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"PRICE_MID\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_PRICE_PIP\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "PricingSide",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Inicate the pricing side of bprice. In the future, shall be the pricing setting category",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"PRICING_VIEW\",\r\n    \"Level\": \"Screen\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Privilege",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "User"
+                },
+                {
+                  "value": "Firm"
+                },
+                {
+                  "value": "Global"
+                }
+              ],
+              "property": [
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "description": "Permission of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "RateSide",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Bid"
+                },
+                {
+                  "value": "Mid"
+                },
+                {
+                  "value": "Ask"
+                }
+              ],
+              "property": [
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "description": " Indicate the rate side of a price leg i.e. whether it represents bid, mid or ask results",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"PRICING_VIEW\",\r\n    \"Level\": \"Deal\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Rega",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "P&L from a 1% increase in the 25D Risk Reversal",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"REGA\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_REGA\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Rho",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Change in price for a parallel shift up of 100 basis points in the yield curve for a given currency",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"RHO\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_RHO\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sega",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "P&L from a 1% increase in the 25D Butterfly",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"SEGA\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_SEGA\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "SettlementCurrency",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Settlement currency if settlement type is cash",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"SETTLEMENT_CURRENCY\",\r\n    \"Level\": \"Strategy\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "SettlementDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Final possible settlement date for the product",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"DATE_DELIVERY\",\r\n    \"Level\": \"Leg\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "SettlementType",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Physical"
+                },
+                {
+                  "value": "Cash"
+                }
+              ],
+              "property": [
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                },
+                {
+                  "name": "METADATA",
+                  "value": {
+                    "stringVal": "{}"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "description": "Type of settlement, cash or physical",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"SETTLEMENT_TYPE\",\r\n    \"Level\": \"Strategy\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Spot",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Spot is the current price of the underlying",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"SPOT\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdMktFieldId\": \"FCD_SPOT_PRICE\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "StickyDelta",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Volatility-adjusted delta takes the volatility smile into account when calculating a delta",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"StickyDelta\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_STICKY_DELTA\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "StrategyId",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Strategy identifier",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Strike",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Solvable strike of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": true,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"STRIKE\",\r\n    \"Level\": \"Leg\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Theta",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Change in total price when the number of days to expiry changes by one day",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"THETA\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_THETA\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "TradeDatetime",
+        "value": {
+          "type": "DATE_TIME_VAL"
+        },
+        "description": "Trade Date and time with timezone information encoded",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "UnderlyingTicker",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Ticker of the underlying",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"ASSET\",\r\n    \"Level\": \"Leg\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "UnderlyingType",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Type of the underlying",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"UNDERLYING_TYPE\",\r\n    \"Level\": \"Leg\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "ValuationDatetime",
+        "value": {
+          "type": "DATE_TIME_VAL"
+        },
+        "description": "Valuation date and time",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"DATE_TIME_TRADE\",\r\n    \"Level\": \"Deal\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Vanna",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Second order derivative with respect to spot and volatility",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"VANNA\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_VANNA\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Vega",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Change in the deal's price for a shift up of 1 basis point or a shift of 1% in volatility",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"VEGA\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_VEGA\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Volatility",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Volatility",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": true,
+        "category": "Market",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"VOL\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_CALCRT_FX017\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "VolatilitySpread",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Volatility spread between ATM bid and ask for the relevant maturity of the option",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Market",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"VOL_SPREAD\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdMktFieldId\": \"FCD_VOL_SPREAD\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Volga",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Second order derivative with respect to volatility",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation",
+        "property": [
+          {
+            "name": "METADATA",
+            "value": {
+              "stringVal": "{\r\n  \"dynamic\": {\r\n    \"FieldId\": \"VOMMA\",\r\n    \"Level\": \"Leg\",\r\n    \"FcdValFieldId\": \"FCD_PARAM_VOMMA\"\r\n  }\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "EnrichWith",
+        "value": {
+          "type": "SELECTION_ARRAY_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "MIFID2_ALL"
+                },
+                {
+                  "value": "MIFID2_SUB_CLASS"
+                },
+                {
+                  "value": "MIFID2_RTS22"
+                },
+                {
+                  "value": "MIFID2_RTS23"
+                }
+              ]
+            }
+          }
+        },
+        "description": "",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      }
+    ]
+  }
+}

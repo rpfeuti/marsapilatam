@@ -44,9 +44,9 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
     # app.py — home page
     # ------------------------------------------------------------------
     "app.title": {
-        "EN": "Bloomberg MARS API — LatAm",
-        "PT": "Bloomberg MARS API — LatAm",
-        "ES": "Bloomberg MARS API — LatAm",
+        "EN": "🪐🔴🌍 Bloomberg MARS API — LatAm 🌍🔴🪐",
+        "PT": "🪐🔴🌍 Bloomberg MARS API — LatAm 🌍🔴🪐",
+        "ES": "🪐🔴🌍 Bloomberg MARS API — LatAm 🌍🔴🪐",
     },
     "app.subtitle": {
         "EN": "**MARS** (Multi-Asset Risk System) API demo for Latin America markets. "
@@ -341,9 +341,9 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "ES": "Info de Deals",
     },
     "dealinfo.title": {
-        "EN": "Deal Information",
-        "PT": "Informações de Deals",
-        "ES": "Información de Deals",
+        "EN": "📃 Deal Information",
+        "PT": "📃 Informações de Deals",
+        "ES": "📃 Información de Deals",
     },
     "dealinfo.caption": {
         "EN": "Browse deal types, schemas, and terms & conditions via the Bloomberg MARS API.",

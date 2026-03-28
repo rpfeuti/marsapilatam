@@ -72,7 +72,22 @@ def fetch_curve(_svc: XMarketCurveService, query: CurveQuery, market_date: date 
 
 
 # ---------------------------------------------------------------------------
-# Sidebar controls
+# UI helpers
+# ---------------------------------------------------------------------------
+
+
+def _lrow(label: str, ratio: tuple[int, int] = (1, 2)) -> st.delta_generator.DeltaGenerator:
+    """Render a label in the left mini-column, return the right mini-column for the widget."""
+    c_lbl, c_inp = st.columns(ratio)
+    c_lbl.markdown(
+        f"<p style='margin-top:8px;font-size:0.85em;color:#aaa'>{label}</p>",
+        unsafe_allow_html=True,
+    )
+    return c_inp
+
+
+# ---------------------------------------------------------------------------
+# Curve controls (main page)
 # ---------------------------------------------------------------------------
 
 _demo_ids   = {c.curve_id for c in DEMO_CURVES}
@@ -82,53 +97,52 @@ _labels_map = (
     else CURVES_BY_LABEL
 )
 
-with st.sidebar:
-    st.header(t("curves.sidebar_header"))
+_labels        = list(_labels_map.keys())
+_default_label = next((lbl for lbl in _labels if "USD.SOFR" in lbl), _labels[0])
 
-    _labels        = list(_labels_map.keys())
-    _default_label = next((lbl for lbl in _labels if "USD.SOFR" in lbl), _labels[0])
-    curve_label = st.selectbox(
-        t("curves.curve_label"),
-        options=_labels,
-        index=_labels.index(_default_label),
+col_params, col_dates = st.columns(2)
+
+with col_params:
+    st.markdown(f"**{t('curves.sidebar_header')}**")
+
+    curve_label = _lrow(t("curves.curve_label")).selectbox(
+        "", options=_labels, index=_labels.index(_default_label),
         help=t("curves.curve_help_demo") if IS_DEMO else t("curves.curve_help"),
+        label_visibility="collapsed",
     )
     curve_id = _labels_map[curve_label]
-    st.caption(t("curves.curve_id_caption", curve_id=curve_id))
 
-    market_date = st.date_input(
-        t("curves.market_date_label"),
-        value=date(2026, 3, 18) if IS_DEMO else date.today(),
-        disabled=IS_DEMO,
-    )
-    as_of = st.date_input(
-        t("curves.curve_date_label"),
-        value=date(2026, 3, 18) if IS_DEMO else date.today(),
-        disabled=IS_DEMO,
+    curve_type: CurveType = _lrow(t("curves.curve_type_label")).selectbox(
+        "", options=CURVE_TYPES, label_visibility="collapsed",
     )
 
-    curve_type: CurveType = st.selectbox(
-        t("curves.curve_type_label"),
-        options=CURVE_TYPES,
+    side = _lrow(t("curves.side_label")).selectbox(
+        "", options=CURVE_SIDES, disabled=IS_DEMO, label_visibility="collapsed",
     )
-
-    side = st.selectbox(t("curves.side_label"), CURVE_SIDES, disabled=IS_DEMO)
 
     is_raw = curve_type == CurveType.RAW
-    interpolation_label = st.selectbox(
-        t("curves.interpolation_label"),
-        list(INTERPOLATION_METHODS.keys()),
-        disabled=is_raw,
+    interpolation_label = _lrow(t("curves.interpolation_label")).selectbox(
+        "", options=list(INTERPOLATION_METHODS.keys()),
+        disabled=is_raw, label_visibility="collapsed",
     )
     interpolation = INTERPOLATION_METHODS[interpolation_label]
 
-    interval = st.selectbox(
-        t("curves.interval_label"),
-        INTERPOLATION_INTERVALS,
-        disabled=is_raw,
-        help=t("curves.interval_help"),
+    interval = _lrow(t("curves.interval_label")).selectbox(
+        "", options=INTERPOLATION_INTERVALS,
+        disabled=is_raw, help=t("curves.interval_help"),
+        label_visibility="collapsed",
     )
 
+with col_dates:
+    st.markdown(f"**{t('curves.curve_id_caption', curve_id=curve_id)}**")
+
+    as_of = _lrow(t("curves.curve_date_label")).date_input(
+        "", value=date(2026, 3, 18) if IS_DEMO else date.today(),
+        disabled=IS_DEMO, key="curves_as_of", label_visibility="collapsed",
+    )
+    market_date = as_of
+
+    st.markdown("")
     run = st.button(t("curves.button_load"), type="primary", use_container_width=True)
 
     if IS_DEMO:

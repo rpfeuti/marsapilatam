@@ -1,0 +1,30 @@
+{
+  "key": "USDPEN",
+  "product_type": "FX_RR",
+  "label": "USD/PEN Risk Reversal",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "1000M6NA970S625CJJ5H4GA8ND931",
+    "AsOfTimestamp": "2026-03-28T19:37:07.462",
+    "DV01": "42.460439425116576",
+    "DelayedEid": "",
+    "Delta": "-1666458.1064696286",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "3925.7137255720068",
+    "ImplVol": "13.067792351005094",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "2203.813363339381",
+    "MktVal": "2203.813363339381",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-4246.043942511657",
+    "Security": "1000M6NA970S625CJJ5H4GA8ND931",
+    "Theta": "-88.71497284360906",
+    "TrackingId": "e6c95867-fae2-4cf0-8f6a-9d53e21dcdc6",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "43282.49715586081",
+    "Vega": "955.815824325473",
+    "Volga": "-134.9520976588514"
+  }
+}

@@ -1,0 +1,834 @@
+{
+  "returnStatus": {
+    "status": "S_SUCCESS"
+  },
+  "dealType": "CR.CDSI",
+  "dealStructure": {
+    "param": [
+      {
+        "name": "Accrued",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Accrual payment",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "AccruedDays",
+        "value": {
+          "type": "INT_VAL"
+        },
+        "description": "Accrual payment days",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "BusDayAdjustment",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "None"
+                },
+                {
+                  "value": "Back (Preceding)"
+                },
+                {
+                  "value": "Ahead (Following)"
+                },
+                {
+                  "value": "Modified Following"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Code for business day adjustments",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "CDSModel",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "ISDA Standard Upfront (I)"
+                },
+                {
+                  "value": "ISDA Fair Value (V)"
+                },
+                {
+                  "value": "Bloomberg Fair Value (B)"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Model used to calculate the price",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Model"
+      },
+      {
+        "name": "Calendars",
+        "value": {
+          "type": "STRING_ARRAY_VAL"
+        },
+        "description": "Holiday calendars used for business day computations",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "CashAmount",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Cash settlement payment amount",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "CashCalculateDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Cash calculate date",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "CashSettleDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Cash settlement date",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Cashflows",
+        "value": {
+          "type": "TABLE_VAL",
+          "valueInfo": {
+            "table": {
+              "axes": [
+                {
+                  "name": "PaymentDates",
+                  "type": "DATE_ARRAY_VAL"
+                }
+              ],
+              "tableData": [
+                {
+                  "name": "ActualPayment",
+                  "type": "DOUBLE_VAL"
+                },
+                {
+                  "name": "DiscountFactor",
+                  "type": "DOUBLE_VAL"
+                },
+                {
+                  "name": "SurvivalProbability",
+                  "type": "DOUBLE_VAL"
+                },
+                {
+                  "name": "DiscountedPayment",
+                  "type": "DOUBLE_VAL"
+                }
+              ]
+            }
+          }
+        },
+        "description": "CDS cashflows",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "CdsDefaultProbability",
+        "value": {
+          "type": "TABLE_VAL",
+          "valueInfo": {
+            "table": {
+              "axes": [
+                {
+                  "name": "CdsCurveTerm",
+                  "type": "DATE_ARRAY_VAL"
+                }
+              ],
+              "tableData": [
+                {
+                  "name": "CdsCurveSpread",
+                  "type": "DOUBLE_VAL"
+                },
+                {
+                  "name": "CdsCurveDefaultProbability",
+                  "type": "DOUBLE_VAL"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Cds Default Probability",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Market"
+      },
+      {
+        "name": "CentralCounterparty",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "CME"
+                },
+                {
+                  "value": "ICE"
+                },
+                {
+                  "value": "ICEE"
+                },
+                {
+                  "value": "LCE"
+                },
+                {
+                  "value": "LCH"
+                },
+                {
+                  "value": "OTC"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Central clearing counterparty",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Counterparty",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Counterparty of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "CustomId",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "CustomId",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "DateGenerationMethod",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Forward"
+                },
+                {
+                  "value": "Backward"
+                },
+                {
+                  "value": "Quarterly Maturity IMM (I)"
+                },
+                {
+                  "value": "Monthly Maturity IMM (MMR)"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Date Generation Method\n",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "DayCount",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "ACT/360"
+                },
+                {
+                  "value": "ACT/ACT"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Method used to determine how accrued interest is calculated and how coupon periods are determined",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "DefaultExposure",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Default exposure : (1 - deal recovery rate) * notional - principal",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Direction",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Buy"
+                },
+                {
+                  "value": "Sell"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Direction",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "DollarValue",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Dollar value",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Dv01",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Market value(NPV) sensitivity of the deal to the curve shift",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "EffectiveDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Date when the instrument takes effect",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "EnrichWith",
+        "value": {
+          "type": "SELECTION_ARRAY_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "MIFID2_ALL"
+                },
+                {
+                  "value": "MIFID2_SUB_CLASS"
+                },
+                {
+                  "value": "MIFID2_RTS22"
+                },
+                {
+                  "value": "MIFID2_RTS23"
+                },
+                {
+                  "value": "MIFID2_RTS2"
+                },
+                {
+                  "value": "MIFID2_ISIN"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Optional configuration parameter that specifies what you want the response to be enriched with",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Configuration"
+      },
+      {
+        "name": "FeeLegValue",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Fee leg value",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "FirstPaymentDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "First coupon payment date",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "FixedRate",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "This is the contract rate for forward/cfd type instruments",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "IndexBloombergId",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "CDS index bloomberg id",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "IndexName",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Reference index name",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "IndexNotionalFactor",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "CDS Index Notional Factor",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "IndexProductCode",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Index Product Code",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "IndexSector",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "CDS Index Sector",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "IndexSeries",
+        "value": {
+          "type": "INT_VAL"
+        },
+        "description": "Index Series",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "IndexSubSector",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "CDS Index SubSector",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "IndexTermUnit",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "CDS Index Term Unit",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "IndexTermValue",
+        "value": {
+          "type": "INT_VAL"
+        },
+        "description": "CDS Index Term Value",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "IndexVersion",
+        "value": {
+          "type": "INT_VAL"
+        },
+        "description": "Index Version",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "MTM",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Mark to market value",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "MarkitIndexName",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Markit Index Name",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "MaturityDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Contract scheduled termination date",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "NextLastPaymentDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Last coupon payment date prior to the final maturity date coupon payment",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "NextRollDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Next Roll Date",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Notional",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Amount associated with the whole transaction",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "NotionalCurrency",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Currency of the notional",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "PayFrequency",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "Annual"
+                },
+                {
+                  "value": "Semi Annual"
+                },
+                {
+                  "value": "Quarterly"
+                },
+                {
+                  "value": "Monthly"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Payment frequency",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "PortfolioName",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Name of the portfolio where this deal is added",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "Price",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Clean Dollar Price which is calculated as [1+(Principal Value/Notional)]*100",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Principal",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Cash Amount minus the accrued",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Privilege",
+        "value": {
+          "type": "SELECTION_VAL",
+          "valueInfo": {
+            "selection": {
+              "items": [
+                {
+                  "value": "User"
+                },
+                {
+                  "value": "Firm"
+                },
+                {
+                  "value": "Global"
+                }
+              ]
+            }
+          }
+        },
+        "description": "Permission of the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "PrivilegedGroup",
+        "value": {
+          "type": "STRING_ARRAY_VAL"
+        },
+        "description": "List of people with whom the deal is shared with",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "ProtectionLegValue",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Value of protection leg",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "RecoveryRate",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Recovery rate",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "RecoveryRisk",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Recovery rate risk based on 1% shift",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "RedPairCode",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Nine-character unique identifier for a bond reference obligation. The RED Pair Code field displays the standard reference obligation SRO RED pair code when available",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "ReplacementSpread",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Spread that prices the credit default swap to par",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "RiskyAnnuity",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Present value of a one basis point annual coupon stream for the life of the contract",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "RollMonths",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Roll Months",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "Series",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Series that identifies securities with the same ticker and maturity. You can use up to five characters. Note: You do not have to specify a series if the swap's ticker, fixed coupon, and/or maturity are unique",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "SpreadDv01",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Change in Market Value when the par spread curve is increased by one basis point (.01%)",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      },
+      {
+        "name": "Ticker",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Ticker of the deal or underlying",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Save"
+      },
+      {
+        "name": "TradeDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Date of the trade",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "TradePrice",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Trade price",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "TradeSpread",
+        "value": {
+          "type": "DOUBLE_VAL"
+        },
+        "description": "Market spread from the CDS curve, i.e., the value that the market thinks you should be paying for the deal",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "UnderlyingTicker",
+        "value": {
+          "type": "STRING_VAL"
+        },
+        "description": "Ticker of the underlying",
+        "mode": "INPUT_OUTPUT",
+        "solvableTarget": false,
+        "category": "Contract"
+      },
+      {
+        "name": "ValuationDate",
+        "value": {
+          "type": "DATE_VAL"
+        },
+        "description": "Date used for all accrued interest and present value calculations. ",
+        "mode": "OUTPUT",
+        "solvableTarget": false,
+        "category": "Valuation"
+      }
+    ]
+  }
+}

@@ -147,7 +147,7 @@ def _render_results(result: DerivativeResult, spot: float = 0.0) -> None:
     cols[4].metric(t("deriv.result_delta"),       _fmt(m.get("Delta", ""), 4))
     cols[5].metric(t("deriv.result_gamma"),       _fmt(m.get("Gamma", ""), 6))
 
-    cols2 = st.columns(5)
+    cols2 = st.columns(6)
     cols2[0].metric(t("deriv.result_vega"),  _fmt(m.get("Vega", ""), 2))
     cols2[1].metric(t("deriv.result_theta"), _fmt(m.get("Theta", ""), 2))
     cols2[2].metric(t("deriv.result_rho"),   _fmt(m.get("Rho", ""), 2))
@@ -248,7 +248,7 @@ def _render_vanilla_form(tab_key: str) -> tuple[DerivativeQuery | None, float]:
 
 
 def _render_rr_form(tab_key: str) -> tuple[DerivativeQuery | None, float]:
-    col_sel, _ = st.columns(2)
+    col_sel, _, _ = st.columns(3)
     with col_sel:
         template_label = _lrow(t("deriv.template_label")).selectbox(
             "", options=FX_RR_LABELS, key=f"{tab_key}_template",

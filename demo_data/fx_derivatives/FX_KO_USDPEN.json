@@ -1,0 +1,30 @@
+{
+  "key": "USDPEN",
+  "product_type": "FX_KO",
+  "label": "USD/PEN Knock-Out",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "1000QWPSGFKH0ZNXPC574JB0B1S24",
+    "AsOfTimestamp": "2026-03-28T19:39:43.974",
+    "DV01": "15.134875566029354",
+    "DelayedEid": "",
+    "Delta": "-598194.8593981927",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "27640.515637238826",
+    "ImplVol": "9.657535633308486",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "1.7328482343915423",
+    "MktVal": "17328.482343915424",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-1513.4875566029355",
+    "Security": "1000QWPSGFKH0ZNXPC574JB0B1S24",
+    "Theta": "-108.14950003488059",
+    "TrackingId": "ae5a2919-e413-40c2-9a00-38657a4f7522",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "3311.025741849011",
+    "Vega": "2005.3677882937895",
+    "Volga": "-43.76289136049918"
+  }
+}

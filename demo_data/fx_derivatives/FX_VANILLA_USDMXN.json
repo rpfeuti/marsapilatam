@@ -1,0 +1,30 @@
+{
+  "key": "USDMXN",
+  "product_type": "FX_VANILLA",
+  "label": "USD/MXN Vanilla",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "100083WBMA29A1D3N1SNCY5T4Z0YE",
+    "AsOfTimestamp": "2026-03-28T19:35:36.378",
+    "DV01": "234.9202946589634",
+    "DelayedEid": "",
+    "Delta": "-519573.16466802725",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "61657.062866840504",
+    "ImplVol": "12.76694150541604",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "2.5957505677275785",
+    "MktVal": "470318.85386542446",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-23492.02946589634",
+    "Security": "100083WBMA29A1D3N1SNCY5T4Z0YE",
+    "Theta": "-2386.6457032250473",
+    "TrackingId": "ca8987dc-8771-4d96-be3a-fd6fe48619c3",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "32834.85593102087",
+    "Vega": "35591.27333398729",
+    "Volga": "-0.8183115674067822"
+  }
+}

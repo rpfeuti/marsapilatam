@@ -1,9 +1,9 @@
 """
 Download demo data for all 3 curve types (Raw, Zero Coupon, Discount Factor)
-for all demo curves and save them as multi-type JSON snapshots to demo_data/.
+for all demo curves and save them as multi-type JSON snapshots to demo_data/curves/.
 
 Run from the project root with live Bloomberg credentials in .env:
-    python scripts/download_demo_data.py
+    python scripts/download_curves_demo_data.py
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ from configs.settings import settings
 from services.curves_service import CurveQuery, XMarketCurveService
 
 CURVE_DATE    = date(2026, 3, 18)
-DEMO_DATA_DIR = Path(__file__).resolve().parent.parent / "demo_data"
+DEMO_DATA_DIR = Path(__file__).resolve().parent.parent / "demo_data" / "curves"
 
 # Monthly date grid from day after CURVE_DATE up to CURVE_SIZE days out
 _step: timedelta      = timedelta(days=30)

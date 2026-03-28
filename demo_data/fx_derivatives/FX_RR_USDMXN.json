@@ -1,0 +1,30 @@
+{
+  "key": "USDMXN",
+  "product_type": "FX_RR",
+  "label": "USD/MXN Risk Reversal",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "10003XG3ZG4F6BFDJDMZV0KYDH9LB",
+    "AsOfTimestamp": "2026-03-28T19:36:53.986",
+    "DV01": "705.1698989446116",
+    "DelayedEid": "",
+    "Delta": "-1559624.1123193454",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "-4336.244085880113",
+    "ImplVol": "15.220629695811617",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "186216.04859114694",
+    "MktVal": "186216.04859114694",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-70516.98989446116",
+    "Security": "10003XG3ZG4F6BFDJDMZV0KYDH9LB",
+    "Theta": "-1092.6611209802795",
+    "TrackingId": "1b8be7ba-2dbb-46e7-b50b-24df67f0df64",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "649970.9448988076",
+    "Vega": "6784.309973070209",
+    "Volga": "-993.3871420705806"
+  }
+}

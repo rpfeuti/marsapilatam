@@ -18,8 +18,10 @@ The ``_FX_TICKERS`` mapping captures the ``invert`` flag for each currency.
 
 from __future__ import annotations
 
+import json
 import logging
 import time
+from pathlib import Path
 
 from bloomberg.blpapi_client import BlpapiClient
 from bloomberg.exceptions import BlpapiError
@@ -42,7 +44,7 @@ _FX_TICKERS: dict[str, tuple[str, bool]] = {
 _TTL_SECS = 3600  # re-fetch at most once per hour
 
 # Fallback rates used in demo mode (no terminal) or when the BLPAPI call fails.
-_DEMO_RATES: dict[str, float] = {
+_HARDCODED_RATES: dict[str, float] = {
     "COP": 4_300.0,
     "BRL": 5.70,
     "MXN": 17.20,
@@ -51,6 +53,21 @@ _DEMO_RATES: dict[str, float] = {
     "EUR": 0.92,
     "USD": 1.0,
 }
+
+_FX_RATES_PATH = Path(__file__).resolve().parent.parent / "demo_data" / "fx_derivatives" / "fx_rates.json"
+
+
+def _load_demo_rates() -> dict[str, float]:
+    """Load rates from demo_data/fx_rates.json, falling back to hardcoded values."""
+    if _FX_RATES_PATH.exists():
+        try:
+            return json.loads(_FX_RATES_PATH.read_text(encoding="utf-8"))
+        except Exception as exc:
+            log.warning("Failed to load %s: %s — using hardcoded rates.", _FX_RATES_PATH.name, exc)
+    return dict(_HARDCODED_RATES)
+
+
+_DEMO_RATES: dict[str, float] = _load_demo_rates()
 
 
 class FxRateService:

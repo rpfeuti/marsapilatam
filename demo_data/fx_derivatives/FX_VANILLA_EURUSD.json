@@ -1,0 +1,30 @@
+{
+  "key": "EURUSD",
+  "product_type": "FX_VANILLA",
+  "label": "EUR/USD Vanilla",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "1000J1RS5XNWC36PQLN596369GTA7",
+    "AsOfTimestamp": "2026-03-28T19:35:08.614",
+    "DV01": "-15.889240236671313",
+    "DelayedEid": "",
+    "Delta": "564844.2090523128",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "103545.31317123328",
+    "ImplVol": "7.523555451184628",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "1.799251394384172",
+    "MktVal": "20707.584297967434",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "1588.9240236671312",
+    "Security": "1000J1RS5XNWC36PQLN596369GTA7",
+    "Theta": "-90.69013547883878",
+    "TrackingId": "076c8089-c61e-47b9-80a3-8a378304c596",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "-7971.490509106757",
+    "Vega": "2263.4183278506475",
+    "Volga": "6.835605070561418"
+  }
+}

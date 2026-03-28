@@ -8,15 +8,6 @@ import streamlit as st
 
 from configs.i18n import t
 
-st.markdown(
-    "<style>"
-    "[data-testid='stMainBlockContainer'] { padding-top: 1rem; }"
-    "[data-testid='stMainBlockContainer'] h1 { margin-bottom: 0.2rem; }"
-    "[data-testid='stMainBlockContainer'] hr { margin: 0.5rem 0; }"
-    "</style>",
-    unsafe_allow_html=True,
-)
-
 st.title(t("app.title"))
 st.markdown(t("app.subtitle"))
 st.caption(t("app.nav_prompt"))

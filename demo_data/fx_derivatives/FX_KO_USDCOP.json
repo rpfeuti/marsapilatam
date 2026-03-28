@@ -1,0 +1,30 @@
+{
+  "key": "USDCOP",
+  "product_type": "FX_KO",
+  "label": "USD/COP Knock-Out",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "1000P9H4Z948W8C4PKY419TP126XD",
+    "AsOfTimestamp": "2026-03-28T19:39:17.368",
+    "DV01": "9.952410009352183",
+    "DelayedEid": "",
+    "Delta": "-417277.04318509426",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "15.56282990234617",
+    "ImplVol": "15.698915579765693",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "1.9226974390679386",
+    "MktVal": "19226.974390679385",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-995.2410009352183",
+    "Security": "1000P9H4Z948W8C4PKY419TP126XD",
+    "Theta": "-131.45163754466336",
+    "TrackingId": "690877f9-fc2b-49b1-ade9-782fbdfe7eba",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "-2.1637165473748294",
+    "Vega": "1673.0133424934315",
+    "Volga": "-32.73975328015383"
+  }
+}

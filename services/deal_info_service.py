@@ -4,11 +4,15 @@ Deal Information service — browse deal types and inspect deal schemas.
 Wraps two MARS API endpoints:
   GET /marswebapi/v1/dealType    — list all supported deal type strings
   GET /marswebapi/v1/dealSchema  — retrieve full parameter schema for a deal type
+
+In demo mode, loads pre-saved JSON snapshots from demo_data/deal_info/.
 """
 
 from __future__ import annotations
 
+import json
 import logging
+from pathlib import Path
 from typing import Any
 
 from bloomberg.exceptions import MarsApiError
@@ -47,6 +51,9 @@ _DEMO_DEAL_TYPES: list[tuple[str, str]] = [
 ]
 
 
+_DEMO_DATA_DIR = Path(__file__).resolve().parent.parent / "demo_data" / "deal_info"
+
+
 class DealInfoService:
     """Thin wrapper around MarsClient for deal-type and deal-schema queries."""
 
@@ -58,10 +65,10 @@ class DealInfoService:
         deal type supported by the MARS API.
 
         The API returns entries like ``"IR.OIS:Overnight Index Swap"``.
-        Falls back to ``_DEMO_DEAL_TYPES`` in demo mode.
+        Falls back to demo snapshots or ``_DEMO_DEAL_TYPES`` in demo mode.
         """
         if self._client is None:
-            return list(_DEMO_DEAL_TYPES)
+            return self._load_demo_deal_types()
         try:
             resp = self._client.send(
                 "GET", "/marswebapi/v1/dealType", {"voidName": ""},
@@ -78,10 +85,10 @@ class DealInfoService:
                 else:
                     pairs.append((entry.strip(), ""))
             pairs = [(c, d) for c, d in pairs if c not in _LEGACY_DEAL_TYPES]
-            return sorted(pairs) or list(_DEMO_DEAL_TYPES)
+            return sorted(pairs) or self._load_demo_deal_types()
         except Exception as exc:
             log.warning("Failed to fetch deal types: %s", exc)
-            return list(_DEMO_DEAL_TYPES)
+            return self._load_demo_deal_types()
 
     def fetch_deal_schema(self, deal_type: str) -> dict[str, Any]:
         """Return the full ``schemaResponse`` dict for *deal_type*.
@@ -91,7 +98,7 @@ class DealInfoService:
         for ``"S_FAILURE"`` to detect unsupported deal types.
         """
         if self._client is None:
-            return {}
+            return self._load_demo_schema(deal_type)
         resp = self._client.send(
             "GET", "/marswebapi/v1/dealSchema", {"tail": deal_type},
         )
@@ -102,3 +109,29 @@ class DealInfoService:
         if settings.demo_mode:
             return cls(client=None)
         return cls(client=MarsClient(settings))
+
+    # ------------------------------------------------------------------
+    # Demo data loaders
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _load_demo_deal_types() -> list[tuple[str, str]]:
+        path = _DEMO_DATA_DIR / "deal_types.json"
+        if path.exists():
+            try:
+                raw = json.loads(path.read_text(encoding="utf-8"))
+                return [(code, desc) for code, desc in raw]
+            except Exception as exc:
+                log.warning("Failed to load demo deal types: %s", exc)
+        return list(_DEMO_DEAL_TYPES)
+
+    @staticmethod
+    def _load_demo_schema(deal_type: str) -> dict[str, Any]:
+        filename = deal_type.replace(".", "_") + ".json"
+        path = _DEMO_DATA_DIR / "schemas" / filename
+        if path.exists():
+            try:
+                return json.loads(path.read_text(encoding="utf-8"))
+            except Exception as exc:
+                log.warning("Failed to load demo schema %s: %s", filename, exc)
+        return {}

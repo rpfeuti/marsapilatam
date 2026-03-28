@@ -6,7 +6,7 @@ Architecture:
     DerivativeResult        — dataclass holding pricing metrics (greeks, premium, etc.)
     DerivativeRepository    — structural Protocol (interface)
     DerivativeLiveRepository — live Bloomberg MARS implementation (structure + price, no solve)
-    DerivativeDemoRepository — offline stub (no pre-saved snapshots yet)
+    DerivativeDemoRepository — offline repository loading JSON snapshots from demo_data/
     DerivativePricingService — thin orchestrator with from_settings() factory
 
 Supports four MARS deal types:
@@ -18,9 +18,11 @@ Supports four MARS deal types:
 
 from __future__ import annotations
 
+import json
 import logging
 from dataclasses import dataclass, field
 from datetime import date
+from pathlib import Path
 from typing import Any, Protocol
 
 from bloomberg import pricing_result as pr
@@ -299,13 +301,25 @@ class DerivativeLiveRepository:
 
 
 class DerivativeDemoRepository:
-    """Offline stub — demo snapshots for FX derivatives are not yet available."""
+    """Offline repository — loads pre-saved JSON snapshots from demo_data/fx_derivatives/."""
+
+    def __init__(self, data_dir: Path) -> None:
+        self._data_dir = data_dir
 
     def price(self, query: DerivativeQuery) -> DerivativeResult:
-        return DerivativeResult(
-            error="Demo data is not yet available for FX derivatives. "
-                  "Connect a Bloomberg MARS API account to price live."
-        )
+        filename = f"{query.product_type}_{query.key}.json"
+        path = self._data_dir / filename
+        if not path.exists():
+            return DerivativeResult(
+                error=f"Demo snapshot not found: {filename}. "
+                      "Run scripts/download_fx_deriv_demo_data.py to generate it."
+            )
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            return DerivativeResult(metrics=payload["metrics"])
+        except Exception as exc:
+            log.warning("Failed to load demo snapshot %s: %s", filename, exc)
+            return DerivativeResult(error=f"Failed to load demo snapshot: {exc}")
 
 
 # ===========================================================================
@@ -333,6 +347,7 @@ class DerivativePricingService:
     @classmethod
     def from_settings(cls) -> DerivativePricingService:
         if settings.demo_mode:
-            return cls(DerivativeDemoRepository(), client=None)
+            data_dir = Path(__file__).resolve().parent.parent / "demo_data" / "fx_derivatives"
+            return cls(DerivativeDemoRepository(data_dir), client=None)
         client = MarsClient(settings)
         return cls(DerivativeLiveRepository(client), client=client)

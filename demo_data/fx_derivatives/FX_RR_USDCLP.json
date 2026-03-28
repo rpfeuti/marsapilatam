@@ -1,0 +1,30 @@
+{
+  "key": "USDCLP",
+  "product_type": "FX_RR",
+  "label": "USD/CLP Risk Reversal",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "10000WTGZ84PGAG2NY1LFY0HYBVR6",
+    "AsOfTimestamp": "2026-03-28T19:37:34.147",
+    "DV01": "37.10850391290567",
+    "DelayedEid": "",
+    "Delta": "-1456409.0245387708",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "6.160105164883744",
+    "ImplVol": "16.040129214348724",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "-6761.954230550808",
+    "MktVal": "-6761.954230550808",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-3710.850391290567",
+    "Security": "10000WTGZ84PGAG2NY1LFY0HYBVR6",
+    "Theta": "-39.354687072374745",
+    "TrackingId": "c6785ebe-8c91-439b-b0c5-c50e34ca0764",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "26421.61649027159",
+    "Vega": "341.6982062092877",
+    "Volga": "-27.694568639335102"
+  }
+}

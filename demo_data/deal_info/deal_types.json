@@ -1,0 +1,838 @@
+[
+  [
+    "BLAN",
+    "BLAN Script"
+  ],
+  [
+    "BS",
+    "Basket Option"
+  ],
+  [
+    "CM.AVERAGESWAP",
+    "Commodity Average Swap"
+  ],
+  [
+    "CM.BULLETSWAP",
+    "OVML Bullet Swap"
+  ],
+  [
+    "CM.FWD",
+    "Forward"
+  ],
+  [
+    "CM.SWAP",
+    "Swap"
+  ],
+  [
+    "CM.VA",
+    "Vanilla"
+  ],
+  [
+    "CR.CDS",
+    "CDS singlename standard contract"
+  ],
+  [
+    "CR.CDS.ABS",
+    "CDS singlename on abs"
+  ],
+  [
+    "CR.CDS.LCDS",
+    "CDS singlename on LCDS"
+  ],
+  [
+    "CR.CDSI",
+    "CDS index"
+  ],
+  [
+    "CR.CDSO.INDEX",
+    "CDS OPTION on INDEX"
+  ],
+  [
+    "CR.CDSO.SN",
+    "CDS Option on singlename"
+  ],
+  [
+    "CR.TRS.BBGBARC",
+    "Barclays Index TRS"
+  ],
+  [
+    "CR.TRS.IBOXX",
+    "Iboxx TRS"
+  ],
+  [
+    "CUSIP",
+    "Existing deal ID"
+  ],
+  [
+    "CUSTOM.FX",
+    "Custom multileg strategy"
+  ],
+  [
+    "DIVA.FX",
+    "OVML Digital Vanilla"
+  ],
+  [
+    "EQ.ACCR",
+    "OVME Accrual style"
+  ],
+  [
+    "EQ.ACCU",
+    "OVME Accumulator style"
+  ],
+  [
+    "EQ.AVG",
+    "OVME Average style"
+  ],
+  [
+    "EQ.BDC",
+    "OVME Barrier Discount Certificate strategy"
+  ],
+  [
+    "EQ.BSC",
+    "OVME Bonus Certificate strategy"
+  ],
+  [
+    "EQ.CBC",
+    "OVME Capped Bonus Certificate strategy"
+  ],
+  [
+    "EQ.CFD",
+    "OVME CFD style"
+  ],
+  [
+    "EQ.CLQ",
+    "OVME Cliquet style"
+  ],
+  [
+    "EQ.DACCR",
+    "OVME Digital Accrual style"
+  ],
+  [
+    "EQ.DIDKI",
+    "OVME Digital Double Knockin style"
+  ],
+  [
+    "EQ.DIDKO",
+    "OVME Digital Double Knockout style"
+  ],
+  [
+    "EQ.DIKI",
+    "OVME Digital Knockin style"
+  ],
+  [
+    "EQ.DIKO",
+    "OVME Digital Knockout style"
+  ],
+  [
+    "EQ.DIVA",
+    "OVME Digital style"
+  ],
+  [
+    "EQ.DKI",
+    "OVME Double Knockin style"
+  ],
+  [
+    "EQ.DKO",
+    "OVME Double Knockout style"
+  ],
+  [
+    "EQ.DNT",
+    "OVME Double No Touch style"
+  ],
+  [
+    "EQ.DOT",
+    "OVME Double One Touch style"
+  ],
+  [
+    "EQ.DSC",
+    "OVME Discount Certificate strategy"
+  ],
+  [
+    "EQ.DVSW",
+    "OVME Dividend Swap style"
+  ],
+  [
+    "EQ.ELN",
+    "OVME ELN, Hong Kong/Singapore Market strategy"
+  ],
+  [
+    "EQ.ELN.APAC",
+    "ELN APAC"
+  ],
+  [
+    "EQ.FA",
+    "OVME Fader style"
+  ],
+  [
+    "EQ.FCN.APAC.LIGHT",
+    "Fixed Coupon Note Light"
+  ],
+  [
+    "EQ.FS",
+    "OVME Forward Start style"
+  ],
+  [
+    "EQ.FWD",
+    "OVME Forward style"
+  ],
+  [
+    "EQ.IR",
+    "OVME Fixed Income style"
+  ],
+  [
+    "EQ.KI",
+    "OVME Knockin style"
+  ],
+  [
+    "EQ.KO",
+    "OVME Knockout style"
+  ],
+  [
+    "EQ.LKBK",
+    "OVME Lookback style"
+  ],
+  [
+    "EQ.NT",
+    "OVME No Touch style"
+  ],
+  [
+    "EQ.OPC",
+    "OVME Outperformance Certificate strategy"
+  ],
+  [
+    "EQ.OT",
+    "OVME One Touch style"
+  ],
+  [
+    "EQ.SPOT",
+    "OVME Spot style"
+  ],
+  [
+    "EQ.SW",
+    "OVME Equity Swap strategy"
+  ],
+  [
+    "EQ.TWC",
+    "OVME Twin-Win Certificate strategy"
+  ],
+  [
+    "EQ.VA",
+    "OVME Vanilla Option style"
+  ],
+  [
+    "EQ.VLSW",
+    "OVME Volatility Swap style"
+  ],
+  [
+    "EQ.VS",
+    "OVME Variance Swap style"
+  ],
+  [
+    "EQ.WRNT",
+    "OVME Warrant style"
+  ],
+  [
+    "EUWAX.EQ.BRC",
+    "EUWAX Barrier Reverse Convertible"
+  ],
+  [
+    "EUWAX.EQ.RC",
+    "EUSIPA Classified reverse convertible"
+  ],
+  [
+    "FWD.CMDTY",
+    "OVML Forward Commodity Option"
+  ],
+  [
+    "FWD.FX",
+    "OVML Forward FX Option"
+  ],
+  [
+    "FX.CP",
+    "Call Put Spread"
+  ],
+  [
+    "FX.DIVA",
+    "Digital"
+  ],
+  [
+    "FX.FWD",
+    "Forward"
+  ],
+  [
+    "FX.KI",
+    "Knockin"
+  ],
+  [
+    "FX.KO",
+    "Knockout"
+  ],
+  [
+    "FX.RR",
+    "Risk Reversal"
+  ],
+  [
+    "FX.SD",
+    "Straddle"
+  ],
+  [
+    "FX.SN",
+    "Strangle"
+  ],
+  [
+    "FX.SWAP",
+    "Swap"
+  ],
+  [
+    "FX.VA",
+    "Vanilla"
+  ],
+  [
+    "GENERIC",
+    "DLIB template that allows the creation of deals based on free text. Note that the free text can be a valid DLIB script."
+  ],
+  [
+    "GFI.PHOENIX",
+    "Memory Phoenix Custom Autocall"
+  ],
+  [
+    "IR.CAP",
+    "Cap"
+  ],
+  [
+    "IR.CAPFLT",
+    "Capped Floater"
+  ],
+  [
+    "IR.COLFLT",
+    "Collared Floater"
+  ],
+  [
+    "IR.CS",
+    "Cancellable Swap"
+  ],
+  [
+    "IR.CUSTOM",
+    "Custom multi-leg swap"
+  ],
+  [
+    "IR.FLFL",
+    "Basis Swap"
+  ],
+  [
+    "IR.FLFL.FFSOFR",
+    "Fed Funds vs SOFR"
+  ],
+  [
+    "IR.FLFL.OISB",
+    "OIS vs RFR"
+  ],
+  [
+    "IR.FLR",
+    "Floor"
+  ],
+  [
+    "IR.FLRFLT",
+    "Floored Floater"
+  ],
+  [
+    "IR.FRA",
+    "FRA"
+  ],
+  [
+    "IR.FXFL",
+    "Fixed Float Swap"
+  ],
+  [
+    "IR.FXFX",
+    "Fixed Fixed Swap"
+  ],
+  [
+    "IR.GENERIC",
+    "Generic Structure"
+  ],
+  [
+    "IR.ILCAP",
+    "Inflation Cap"
+  ],
+  [
+    "IR.ILFL",
+    "ZC Inflation Basis Swap"
+  ],
+  [
+    "IR.ILFLBOND",
+    "Inflation Bond Swap (Float)"
+  ],
+  [
+    "IR.ILFLR",
+    "Inflation Floor"
+  ],
+  [
+    "IR.ILFLYOY",
+    "YoY Inflation Basis Swap"
+  ],
+  [
+    "IR.ILFX",
+    "ZC Inflation Swap"
+  ],
+  [
+    "IR.ILFXBOND",
+    "Inflation bond swap"
+  ],
+  [
+    "IR.ILFXYOY",
+    "YoY Inflation Swap"
+  ],
+  [
+    "IR.LOAN.CANC",
+    "Loan (Fixed, Cancellable)"
+  ],
+  [
+    "IR.LOAN.FIX",
+    "Loan (Fixed)"
+  ],
+  [
+    "IR.LOAN.FLT",
+    "Loan (Float)"
+  ],
+  [
+    "IR.LOIS",
+    "OIS Basis Swap"
+  ],
+  [
+    "IR.LOIS.RFR",
+    "Libor vs RFR"
+  ],
+  [
+    "IR.LOIS.SOFR",
+    "Libor vs SOFR"
+  ],
+  [
+    "IR.NDIRS",
+    "Non-Deliverable Fixed Float Swap"
+  ],
+  [
+    "IR.NDOIS",
+    "Non-Deliverable Overnight Index Swap"
+  ],
+  [
+    "IR.NDS",
+    "Non-Deliverable XCCY Fixed Float Swap"
+  ],
+  [
+    "IR.NDSFL",
+    "Non-Deliverable XCCY Basis Swap"
+  ],
+  [
+    "IR.NDSFX",
+    "Non-Deliverable XCCY Fixed Fixed Swap"
+  ],
+  [
+    "IR.OIS",
+    "Overnight Index Swap"
+  ],
+  [
+    "IR.OIS.RFR",
+    "Fixed vs RFR"
+  ],
+  [
+    "IR.OIS.SOFR",
+    "Fixed vs SOFR"
+  ],
+  [
+    "IR.OV",
+    "Swaption"
+  ],
+  [
+    "IR.OV.FSS",
+    "Forward Start Swaption"
+  ],
+  [
+    "IR.TRS",
+    "Total Return Swap"
+  ],
+  [
+    "IR.TRSFX",
+    "Total Return Swap"
+  ],
+  [
+    "IR.ZERO",
+    "Zero Coupon Swap"
+  ],
+  [
+    "KI.FX",
+    "Knockin FX Option"
+  ],
+  [
+    "KO.FX",
+    "OVML Knockout FX Option"
+  ],
+  [
+    "LISTED",
+    "Listed Security by Various Types of Identifier"
+  ],
+  [
+    "SWAP.CMDTY",
+    "Commodity Swap"
+  ],
+  [
+    "SWAP.FX",
+    "OVML FX Swap"
+  ],
+  [
+    "UPLOAD_TEST",
+    "Blan template upload test deal"
+  ],
+  [
+    "VA.CMDTY",
+    "OVML Vanilla Commodity Option"
+  ],
+  [
+    "VA.FX",
+    "OVML FX Vanilla Option"
+  ],
+  [
+    "XA.ACCB",
+    "Autocallable Contingent Coupon Barrier Note"
+  ],
+  [
+    "XA.AIM.BLOB",
+    "AIM BLOB"
+  ],
+  [
+    "XA.ASB",
+    "Asian Basket Option"
+  ],
+  [
+    "XA.BCN",
+    "Bonus Certificate Note"
+  ],
+  [
+    "XA.BERM",
+    "Cancellable Fixed-Float Swap"
+  ],
+  [
+    "XA.BERMXCCY",
+    "Cancellable Cross Currency Swap"
+  ],
+  [
+    "XA.BERN",
+    "Buffered Enhanced Return Note"
+  ],
+  [
+    "XA.BRA",
+    "Callable Buffer Range Accrual"
+  ],
+  [
+    "XA.BRLPH",
+    "Phoenix (Brazil)"
+  ],
+  [
+    "XA.BTW",
+    "Buffer Twin Win Note"
+  ],
+  [
+    "XA.BUFF",
+    "Buffered Note"
+  ],
+  [
+    "XA.CAPFLT",
+    "Capped Floater"
+  ],
+  [
+    "XA.CMSCO",
+    "CMS Contingent Option"
+  ],
+  [
+    "XA.COLFLT",
+    "Collared Floater"
+  ],
+  [
+    "XA.CORVOLSWAP",
+    "Corridor Variance Swap"
+  ],
+  [
+    "XA.CP",
+    "Capital Protected Note"
+  ],
+  [
+    "XA.DD",
+    "FX Dual Digitals"
+  ],
+  [
+    "XA.DDHYBRID",
+    "Dual Digitals CMS"
+  ],
+  [
+    "XA.DLIB.LKBK",
+    "Lookback Option"
+  ],
+  [
+    "XA.EQ.BS",
+    "Weighted Basket Option"
+  ],
+  [
+    "XA.EQ.BUFF",
+    "Participation Buffer Note"
+  ],
+  [
+    "XA.EQ.CLIQUET.DLIB",
+    "Cliquet Option"
+  ],
+  [
+    "XA.EQ.CPSPRD",
+    "Vanilla Option Spread"
+  ],
+  [
+    "XA.EQ.DIG",
+    "Continuous Digital Option"
+  ],
+  [
+    "XA.EQ.ELN.APAC.LIGHT",
+    "ELN APAC Light"
+  ],
+  [
+    "XA.EQ.FCN.APAC",
+    "FCN APAC"
+  ],
+  [
+    "XA.EQ.KOELN.APAC.LIGHT",
+    "Knock-Out ELN APAC Light"
+  ],
+  [
+    "XA.EQ.LZDAC",
+    "Lizard Autocallable"
+  ],
+  [
+    "XA.EQ.TIMER",
+    "Timer Option"
+  ],
+  [
+    "XA.EQ.VANILLA",
+    "Equity Vanilla Option"
+  ],
+  [
+    "XA.EQ.VARCP",
+    "Volatility Contingent Option"
+  ],
+  [
+    "XA.EQ.VOLS",
+    "Volatility Swap"
+  ],
+  [
+    "XA.FLEXFWD",
+    "FX Flexi Forward"
+  ],
+  [
+    "XA.FLRFLT",
+    "Floored Floater"
+  ],
+  [
+    "XA.FX.ACCU.APAC",
+    "FX Accumulator APAC"
+  ],
+  [
+    "XA.FX.COLLAR",
+    "FX Collar template"
+  ],
+  [
+    "XA.FX.DCD",
+    "FX Dual Currency Deposits"
+  ],
+  [
+    "XA.FX.EXTBAR",
+    "External Barrier"
+  ],
+  [
+    "XA.FX.FORWARD",
+    "FX Forward"
+  ],
+  [
+    "XA.FX.KOFWD",
+    "FX KO Forward"
+  ],
+  [
+    "XA.FX.LVS",
+    "Leveraged Volatility Swap"
+  ],
+  [
+    "XA.FX.NDF",
+    "FX Non-Deliverable Forwards"
+  ],
+  [
+    "XA.FX.ONETOUCH",
+    "FX One Touch"
+  ],
+  [
+    "XA.FX.PTARF.LHC",
+    "Pivot TARF for APAC"
+  ],
+  [
+    "XA.FX.SWAP",
+    "FX Swap"
+  ],
+  [
+    "XA.FX.VANILLA",
+    "FX Vanilla Option"
+  ],
+  [
+    "XA.FX.VOLKO",
+    "Volatility Contingent Option"
+  ],
+  [
+    "XA.FX.WFXBO",
+    "FX Weighted Basket Option"
+  ],
+  [
+    "XA.FX.WORSTOF",
+    "FX Worst of Options"
+  ],
+  [
+    "XA.FXCO",
+    "FX Contingent Option"
+  ],
+  [
+    "XA.FXFADEIN",
+    "FX Fade In"
+  ],
+  [
+    "XA.HY.BKCC",
+    "FX Contingent Basket Option"
+  ],
+  [
+    "XA.HY.OVCO",
+    "Equity Contingent Swaption"
+  ],
+  [
+    "XA.IR.CACCR",
+    "Cancellable Accreting Swap"
+  ],
+  [
+    "XA.IR.CAPFLOOR",
+    "IR Caps and Floors"
+  ],
+  [
+    "XA.IR.CLS",
+    "Cancellable Leveraged Steepner"
+  ],
+  [
+    "XA.IR.CMSSPRDCF",
+    "CMS Spread Cap Floor"
+  ],
+  [
+    "XA.IR.COLLAR",
+    "IR Collar"
+  ],
+  [
+    "XA.IR.FLIP",
+    "Flip Flop"
+  ],
+  [
+    "XA.IR.FXFL",
+    "Fixed Float IRS"
+  ],
+  [
+    "XA.IR.FXFLAMORT",
+    "Amortized FXFL swap template"
+  ],
+  [
+    "XA.IR.FXFLZF",
+    "Swap Zero Floor"
+  ],
+  [
+    "XA.IR.KIKO",
+    "Swap KIKO"
+  ],
+  [
+    "XA.IR.KOKO",
+    "Swap KOKO"
+  ],
+  [
+    "XA.IR.MPSWAP",
+    "Multi Phase Swaps"
+  ],
+  [
+    "XA.IR.OV",
+    "Bermudan Swaption"
+  ],
+  [
+    "XA.IR.RACL",
+    "Cancellable Range Accrual"
+  ],
+  [
+    "XA.IR.RTCH",
+    "Ratchet Swap"
+  ],
+  [
+    "XA.IR.SPREAD",
+    "Swap Spread"
+  ],
+  [
+    "XA.IR.VS",
+    "Volatility Swap"
+  ],
+  [
+    "XA.KOACCU",
+    "FX Accumulator"
+  ],
+  [
+    "XA.KOCAP",
+    "KI KO Cap"
+  ],
+  [
+    "XA.MPH",
+    "Memory Coupon Phoenix"
+  ],
+  [
+    "XA.PTARF",
+    "Pivot TARF"
+  ],
+  [
+    "XA.RATESBLOB",
+    "Rates Structured Blob"
+  ],
+  [
+    "XA.SAC",
+    "Standard Autocallable"
+  ],
+  [
+    "XA.SFT",
+    "Structured product"
+  ],
+  [
+    "XA.SPH",
+    "Standard Phoenix"
+  ],
+  [
+    "XA.SRC",
+    "Standard Reverse Convertible"
+  ],
+  [
+    "XA.STRBLOB",
+    "Structured BLOB"
+  ],
+  [
+    "XA.TERN",
+    "Trigger Enhanced Return Note"
+  ],
+  [
+    "XA.TRA",
+    "Callable Trigger Range Accrual"
+  ],
+  [
+    "XA.TTW",
+    "Trigger Twin Win Note"
+  ],
+  [
+    "XA.VARSWAP",
+    "Variance swap"
+  ],
+  [
+    "XA.VOLSWAP",
+    "Volatility Swap"
+  ],
+  [
+    "XA.WAC",
+    "Autocallable on Weighted Basket"
+  ]
+]

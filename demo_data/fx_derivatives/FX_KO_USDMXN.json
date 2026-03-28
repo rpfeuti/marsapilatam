@@ -1,0 +1,30 @@
+{
+  "key": "USDMXN",
+  "product_type": "FX_KO",
+  "label": "USD/MXN Knock-Out",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "1000JPY00CK77XX9QG8AKXF8WAGME",
+    "AsOfTimestamp": "2026-03-28T19:39:31.145",
+    "DV01": "272.83038930135746",
+    "DelayedEid": "",
+    "Delta": "-610984.7281885946",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "69287.477782233",
+    "ImplVol": "12.579999923710137",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "2.5739371259574826",
+    "MktVal": "466366.51997798437",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-27283.038930135746",
+    "Security": "1000JPY00CK77XX9QG8AKXF8WAGME",
+    "Theta": "-2240.9778917124495",
+    "TrackingId": "9ef5028a-6d4e-4367-ada1-e68966930ba4",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "7215.701303962221",
+    "Vega": "33361.7844323413",
+    "Volga": "-927.5466871806703"
+  }
+}

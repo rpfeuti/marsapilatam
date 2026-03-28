@@ -12,7 +12,10 @@ st.set_page_config(
 )
 
 st.markdown(
-    "<style>html, body, [class*='st-'] { font-size: 1.25rem; }</style>",
+    "<style>"
+    "html, body, [class*='st-'] { font-size: 1.25rem; }"
+    "[data-testid='stMainBlockContainer'] { padding-top: 2rem; }"
+    "</style>",
     unsafe_allow_html=True,
 )
 

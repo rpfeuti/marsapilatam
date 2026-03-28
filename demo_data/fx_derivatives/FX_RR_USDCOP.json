@@ -1,0 +1,30 @@
+{
+  "key": "USDCOP",
+  "product_type": "FX_RR",
+  "label": "USD/COP Risk Reversal",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "1000WYNRPQG6SW4QL53BHLJ6M0V48",
+    "AsOfTimestamp": "2026-03-28T19:36:39.870",
+    "DV01": "36.060923487768314",
+    "DelayedEid": "",
+    "Delta": "-1415294.3089285414",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "4.116276119852831",
+    "ImplVol": "16.535999749004716",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "-29516.49527947521",
+    "MktVal": "-29516.49527947521",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "-3606.0923487768314",
+    "Security": "1000WYNRPQG6SW4QL53BHLJ6M0V48",
+    "Theta": "-91.7006764709998",
+    "TrackingId": "e0540b49-5dd5-4a59-8ca2-c8a814430c33",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "23230.317623752544",
+    "Vega": "781.4969087150921",
+    "Volga": "-70.26918200460703"
+  }
+}

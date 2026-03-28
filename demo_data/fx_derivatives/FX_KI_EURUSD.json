@@ -1,0 +1,30 @@
+{
+  "key": "EURUSD",
+  "product_type": "FX_KI",
+  "label": "EUR/USD Knock-In",
+  "valuation_date": "2026-03-26",
+  "metrics": {
+    "BloombergDealID": "1000QH7C5KKLQ1HRN9WZ1DYR3FBZC",
+    "AsOfTimestamp": "2026-03-28T19:37:47.141",
+    "DV01": "-0.0018975151939893157",
+    "DelayedEid": "",
+    "Delta": "45.19690053545284",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "Gamma": "-35.26581520816025",
+    "ImplVol": "7.389999866485657",
+    "MarketDataDate": "2026-03-26",
+    "MktPx": "6.341717982242567e-05",
+    "MktVal": "0.7298683225762971",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Rho": "0.18975151939893156",
+    "Security": "1000QH7C5KKLQ1HRN9WZ1DYR3FBZC",
+    "Theta": "-0.02766952550492152",
+    "TrackingId": "eae28975-c1c4-4298-ad77-fa79e16db7bf",
+    "ValuationDate": "2026-03-26",
+    "Vanna": "44.512903867339524",
+    "Vega": "0.7807996608670384",
+    "Volga": "0.7139990532933264"
+  }
+}
