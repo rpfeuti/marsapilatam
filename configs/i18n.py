@@ -90,9 +90,9 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "ES": "Estructurar, valorar y resolver swaps de tasas de interés (back-end SWPM)",
     },
     "app.demo_fx": {
-        "EN": "Price FX vanilla options with full greeks (OVML back-end)",
-        "PT": "Precificar opções de câmbio vanilla com gregas completas (back-end OVML)",
-        "ES": "Valorar opciones FX vainilla con griegas completas (back-end OVML)",
+        "EN": "Price FX vanilla, barriers, and structures with full greeks (OVML back-end)",
+        "PT": "Precificar vanilla, barreiras e estruturas FX com gregas completas (back-end OVML)",
+        "ES": "Valorar vanilla, barreras y estructuras FX con griegas completas (back-end OVML)",
     },
     "app.demo_portfolio": {
         "EN": "Price an entire Bloomberg portfolio",
@@ -108,6 +108,16 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "EN": "Build a par rate curve with concurrent async requests",
         "PT": "Construir uma curva de taxa par com requisições assíncronas paralelas",
         "ES": "Construir una curva de tasa par con solicitudes asíncronas concurrentes",
+    },
+    "app.demo_stress": {
+        "EN": "Run stress test scenarios on portfolios and single deals",
+        "PT": "Executar cenários de teste de estresse em portfólios e deals individuais",
+        "ES": "Ejecutar escenarios de prueba de estrés en portafolios y operaciones individuales",
+    },
+    "app.demo_krr": {
+        "EN": "Key Rate Risk — DV01 decomposition by tenor bucket",
+        "PT": "Risco por Vértice — decomposição do DV01 por bucket de prazo",
+        "ES": "Riesgo por Vértice — descomposición del DV01 por bucket de plazo",
     },
     "app.resources_header": {
         "EN": "### Resources",
@@ -415,6 +425,51 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "PT": "Carregando tipos de deal…",
         "ES": "Cargando tipos de operación…",
     },
+    "dealinfo.info_idle": {
+        "EN": "Select a deal type above and click **Load schema** to inspect its parameters.",
+        "PT": "Selecione um tipo de deal acima e clique em **Carregar schema** para inspecionar os parâmetros.",
+        "ES": "Seleccione un tipo de operación arriba y haga clic en **Cargar esquema** para inspeccionar los parámetros.",
+    },
+    "dealinfo.types_available": {
+        "EN": "{n} deal types available",
+        "PT": "{n} tipos de deal disponíveis",
+        "ES": "{n} tipos de operación disponibles",
+    },
+    "common.yes": {
+        "EN": "Yes",
+        "PT": "Sim",
+        "ES": "Sí",
+    },
+    "nav.deal_info": {
+        "EN": "Deal Information",
+        "PT": "Informações de Deals",
+        "ES": "Información de Deals",
+    },
+    "nav.fx_options": {
+        "EN": "FX Options",
+        "PT": "Opções de Câmbio",
+        "ES": "Opciones FX",
+    },
+    "nav.portfolio": {
+        "EN": "Portfolio",
+        "PT": "Portfólio",
+        "ES": "Portafolio",
+    },
+    "nav.swaps_async": {
+        "EN": "Swaps Async",
+        "PT": "Swaps Assíncronos",
+        "ES": "Swaps Asíncronos",
+    },
+    "nav.stress_testing": {
+        "EN": "Stress Testing",
+        "PT": "Teste de Estresse",
+        "ES": "Prueba de Estrés",
+    },
+    "nav.krr": {
+        "EN": "Key Rate Risk",
+        "PT": "Risco por Vértice",
+        "ES": "Riesgo por Vértice",
+    },
 
     # ------------------------------------------------------------------
     # swaps page
@@ -628,6 +683,228 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "EN": "No pricing result returned. Check your inputs.",
         "PT": "Nenhum resultado retornado. Verifique os parâmetros.",
         "ES": "No se obtuvo resultado. Verifique los parámetros.",
+    },
+
+    # ------------------------------------------------------------------
+    # derivatives page — FX Derivatives
+    # ------------------------------------------------------------------
+    "deriv.page_title": {
+        "EN": "FX Derivatives",
+        "PT": "Derivativos FX",
+        "ES": "Derivados FX",
+    },
+    "deriv.title": {
+        "EN": "📊 FX Derivatives",
+        "PT": "📊 Derivativos FX",
+        "ES": "📊 Derivados FX",
+    },
+    "deriv.caption": {
+        "EN": "Structure and price FX options via the Bloomberg MARS API (OVML back-end).",
+        "PT": "Estruture e precifique opções de câmbio via a Bloomberg MARS API (back-end OVML).",
+        "ES": "Estructure y valore opciones FX vía Bloomberg MARS API (back-end OVML).",
+    },
+    "deriv.tab_vanilla": {
+        "EN": "FX Vanilla",
+        "PT": "FX Vanilla",
+        "ES": "FX Vanilla",
+    },
+    "deriv.tab_rr": {
+        "EN": "Risk Reversal",
+        "PT": "Risk Reversal",
+        "ES": "Risk Reversal",
+    },
+    "deriv.tab_barrier": {
+        "EN": "FX Barriers",
+        "PT": "Barreiras FX",
+        "ES": "Barreras FX",
+    },
+    "deriv.template_label": {
+        "EN": "Currency pair",
+        "PT": "Par de moedas",
+        "ES": "Par de divisas",
+    },
+    "deriv.template_help": {
+        "EN": "Select a currency pair to pre-fill the form. "
+              "You can override any value before pricing.",
+        "PT": "Selecione um par de moedas para preencher o formulário. "
+              "Altere qualquer valor antes de precificar.",
+        "ES": "Seleccione un par de divisas para rellenar el formulario. "
+              "Puede cambiar cualquier valor antes de valorar.",
+    },
+    "deriv.direction_label": {
+        "EN": "Direction",
+        "PT": "Direção",
+        "ES": "Dirección",
+    },
+    "deriv.call_put_label": {
+        "EN": "Call / Put",
+        "PT": "Call / Put",
+        "ES": "Call / Put",
+    },
+    "deriv.notional_label": {
+        "EN": "Notional",
+        "PT": "Nocional",
+        "ES": "Nocional",
+    },
+    "deriv.notional_ccy_label": {
+        "EN": "Notional ccy",
+        "PT": "Moeda nocional",
+        "ES": "Moneda nocional",
+    },
+    "deriv.underlying_label": {
+        "EN": "Underlying",
+        "PT": "Subjacente",
+        "ES": "Subyacente",
+    },
+    "deriv.strike_label": {
+        "EN": "Strike",
+        "PT": "Strike",
+        "ES": "Strike",
+    },
+    "deriv.expiry_label": {
+        "EN": "Expiry date",
+        "PT": "Data de vencimento",
+        "ES": "Fecha de vencimiento",
+    },
+    "deriv.exercise_type_label": {
+        "EN": "Exercise type",
+        "PT": "Tipo de exercício",
+        "ES": "Tipo de ejercicio",
+    },
+    "deriv.barrier_type_label": {
+        "EN": "Barrier type",
+        "PT": "Tipo de barreira",
+        "ES": "Tipo de barrera",
+    },
+    "deriv.barrier_dir_label": {
+        "EN": "Barrier direction",
+        "PT": "Direção da barreira",
+        "ES": "Dirección de barrera",
+    },
+    "deriv.barrier_level_label": {
+        "EN": "Barrier level",
+        "PT": "Nível da barreira",
+        "ES": "Nivel de barrera",
+    },
+    "deriv.barrier_product_label": {
+        "EN": "Barrier product",
+        "PT": "Produto de barreira",
+        "ES": "Producto de barrera",
+    },
+    "deriv.leg1_header": {
+        "EN": "Leg 1",
+        "PT": "Perna 1",
+        "ES": "Pata 1",
+    },
+    "deriv.leg2_header": {
+        "EN": "Leg 2",
+        "PT": "Perna 2",
+        "ES": "Pata 2",
+    },
+    "deriv.deal_terms_header": {
+        "EN": "Deal Terms",
+        "PT": "Termos do Deal",
+        "ES": "Términos del Deal",
+    },
+    "deriv.valuation_header": {
+        "EN": "Valuation Settings",
+        "PT": "Configurações de Valoração",
+        "ES": "Configuración de Valoración",
+    },
+    "deriv.valuation_date_label": {
+        "EN": "Valuation date",
+        "PT": "Data de valoração",
+        "ES": "Fecha de valoración",
+    },
+    "deriv.curve_date_label": {
+        "EN": "Curve date",
+        "PT": "Data da curva",
+        "ES": "Fecha de curva",
+    },
+    "deriv.button_price": {
+        "EN": "Price",
+        "PT": "Precificar",
+        "ES": "Valorar",
+    },
+    "deriv.spinner_session": {
+        "EN": "Starting deal session…",
+        "PT": "Iniciando sessão de deals…",
+        "ES": "Iniciando sesión de deals…",
+    },
+    "deriv.spinner_pricing": {
+        "EN": "Pricing derivative…",
+        "PT": "Precificando derivativo…",
+        "ES": "Valorando derivado…",
+    },
+    "deriv.info_idle": {
+        "EN": "Configure the derivative above and click **Price** to run the calculation.",
+        "PT": "Configure o derivativo acima e clique em **Precificar** para calcular.",
+        "ES": "Configure el derivado arriba y haga clic en **Valorar** para calcular.",
+    },
+    "deriv.error_pricing": {
+        "EN": "Pricing error: {error}",
+        "PT": "Erro de precificação: {error}",
+        "ES": "Error de valoración: {error}",
+    },
+    "deriv.error_structuring": {
+        "EN": "Structuring error: {error}",
+        "PT": "Erro de estruturação: {error}",
+        "ES": "Error de estructuración: {error}",
+    },
+    "deriv.warning_no_result": {
+        "EN": "No pricing result returned. Check your inputs.",
+        "PT": "Nenhum resultado retornado. Verifique os parâmetros.",
+        "ES": "No se obtuvo resultado. Verifique los parámetros.",
+    },
+    "deriv.result_premium": {
+        "EN": "Premium (%)",
+        "PT": "Prêmio (%)",
+        "ES": "Prima (%)",
+    },
+    "deriv.result_delta": {
+        "EN": "Delta",
+        "PT": "Delta",
+        "ES": "Delta",
+    },
+    "deriv.result_gamma": {
+        "EN": "Gamma",
+        "PT": "Gamma",
+        "ES": "Gamma",
+    },
+    "deriv.result_vega": {
+        "EN": "Vega",
+        "PT": "Vega",
+        "ES": "Vega",
+    },
+    "deriv.result_theta": {
+        "EN": "Theta",
+        "PT": "Theta",
+        "ES": "Theta",
+    },
+    "deriv.result_rho": {
+        "EN": "Rho",
+        "PT": "Rho",
+        "ES": "Rho",
+    },
+    "deriv.result_implied_vol": {
+        "EN": "Impl. Vol (%)",
+        "PT": "Vol Impl. (%)",
+        "ES": "Vol Impl. (%)",
+    },
+    "deriv.result_spot": {
+        "EN": "Spot",
+        "PT": "Spot",
+        "ES": "Spot",
+    },
+    "deriv.result_forward": {
+        "EN": "Forward",
+        "PT": "Forward",
+        "ES": "Forward",
+    },
+    "deriv.result_npv": {
+        "EN": "NPV",
+        "PT": "VPL",
+        "ES": "VPN",
     },
 }
 

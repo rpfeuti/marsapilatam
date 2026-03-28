@@ -28,12 +28,13 @@ from configs.settings import settings
 log = logging.getLogger(__name__)
 
 # Bloomberg tickers and inversion flag for USD cross rates.
-# invert=True  → PX_LAST is foreign-per-USD, so rate = 1 / PX_LAST
-# invert=False → PX_LAST is already units-of-local per USD
+# invert=True  → PX_LAST is USD-per-foreign (e.g. EURUSD), so rate = 1 / PX_LAST
+# invert=False → PX_LAST is already units-of-local per USD (e.g. USDCOP)
 _FX_TICKERS: dict[str, tuple[str, bool]] = {
     "COP": ("USDCOP Curncy", False),
     "BRL": ("USDBRL Curncy", False),
     "MXN": ("USDMXN Curncy", False),
+    "PEN": ("USDPEN Curncy", False),
     "CLP": ("USDCLP Curncy", False),
     "EUR": ("EURUSD Curncy", True),   # EURUSD = USD per EUR → invert to get EUR per USD
 }
@@ -45,6 +46,7 @@ _DEMO_RATES: dict[str, float] = {
     "COP": 4_300.0,
     "BRL": 5.70,
     "MXN": 17.20,
+    "PEN": 3.72,
     "CLP": 960.0,
     "EUR": 0.92,
     "USD": 1.0,
@@ -126,7 +128,10 @@ class FxRateService:
         """Fetch all FX rates in a single batched bdp() call and update cache."""
         tickers = [ticker for ticker, _ in _FX_TICKERS.values()]
         try:
-            assert self._client is not None
+            if self._client is None:
+                self._rates = dict(_DEMO_RATES)
+                self._fetched_at = time.monotonic()
+                return
             raw = self._client.bdp(tickers, ["PX_LAST"])
         except BlpapiError as exc:
             log.warning("FX rate fetch failed (%s) — using demo fallback rates.", exc)
@@ -147,6 +152,6 @@ class FxRateService:
             except (TypeError, ValueError, ZeroDivisionError):
                 log.warning("Invalid PX_LAST value for %s: %r", ticker, px)
 
-        self._rates      = rates or dict(_DEMO_RATES)
+        self._rates      = rates if len(rates) > 1 else dict(_DEMO_RATES)
         self._fetched_at = time.monotonic()
         log.debug("FX rates refreshed — %d currencies loaded.", len(self._rates))

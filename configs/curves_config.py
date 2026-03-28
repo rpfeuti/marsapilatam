@@ -162,7 +162,7 @@ FLOAT_INDICES: list[str] = [
     "CLICP",
     "COOVIBR",
     "ESTRON",
-    "MXIBTIIE",
+    "MXIBTIEF",
     "SOFRRATE",
 ]
 

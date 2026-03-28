@@ -133,13 +133,22 @@ XCCY_SWAP_SPECS: dict[str, SwapSpec] = {
         base_currency="USD",    fx_ticker="USDCLP",
         leg1_forward_curve="S490", leg1_discount_curve="S490",
     ),
+    "USDPEN": SwapSpec(
+        label="USD/PEN NDS",    deal_type="IR.NDS",
+        currency="USD",         float_index="SOFRRATE",
+        notional=10_000_000,    default_tenor="5Y",
+        pay_frequency="Quarterly", day_count="ACT/360",
+        forward_curve="S490",   discount_curve="S490",
+        base_currency="PEN",    fx_ticker="USDPEN",
+        leg1_forward_curve="S374", leg1_discount_curve="S374",
+    ),
     "USDEUR": SwapSpec(
         label="USD/EUR NDS",    deal_type="IR.NDS",
         currency="EUR",         float_index="ESTRON",
         notional=10_000_000,    default_tenor="5Y",
         pay_frequency="Annual", day_count="ACT/360",
         forward_curve="S514",   discount_curve="S514",
-        base_currency="USD",    fx_ticker="USDEUR",
+        base_currency="USD",    fx_ticker="EURUSD",
         leg1_forward_curve="S490", leg1_discount_curve="S490",
     ),
 }
@@ -195,5 +204,6 @@ XCCY_DEMO_SNAPSHOTS: list[SwapDemoSnapshot] = [
     SwapDemoSnapshot("USDBRL", "XCCY", "5Y", "USDBRL_5Y.json"),
     SwapDemoSnapshot("USDMXN", "XCCY", "5Y", "USDMXN_5Y.json"),
     SwapDemoSnapshot("USDCLP", "XCCY", "5Y", "USDCLP_5Y.json"),
+    SwapDemoSnapshot("USDPEN", "XCCY", "5Y", "USDPEN_5Y.json"),
     SwapDemoSnapshot("USDEUR", "XCCY", "5Y", "USDEUR_5Y.json"),
 ]

@@ -35,12 +35,12 @@ _SVC_VERSION = "5"
 
 
 @st.cache_resource(show_spinner=t("dealinfo.spinner_types"))
-def _get_service(_v: str = _SVC_VERSION) -> DealInfoService:
+def _get_service(v: str = _SVC_VERSION) -> DealInfoService:
     return DealInfoService.from_settings()
 
 
 @st.cache_data(ttl=3600, show_spinner=t("dealinfo.spinner_types"))
-def _get_deal_types(_v: str = _SVC_VERSION) -> list[tuple[str, str]]:
+def _get_deal_types(v: str = _SVC_VERSION) -> list[tuple[str, str]]:
     return _get_service().fetch_deal_types()
 
 
@@ -69,7 +69,7 @@ def _params_to_df(params: list[dict]) -> pd.DataFrame:
             t("dealinfo.col_name"):        p.get("name", ""),
             t("dealinfo.col_type"):        val_type,
             t("dealinfo.col_mode"):        p.get("mode", ""),
-            t("dealinfo.col_solvable"):    "Yes" if p.get("solvableTarget") else "",
+            t("dealinfo.col_solvable"):    t("common.yes") if p.get("solvableTarget") else "",
             t("dealinfo.col_category"):    p.get("category", ""),
             t("dealinfo.col_description"): p.get("description", ""),
             t("dealinfo.col_allowed"):     allowed,
@@ -95,14 +95,14 @@ with col_sel:
         index=default_idx,
     )
     selected_type = type_codes[type_labels.index(selected_label)]
-    st.caption(f"{len(deal_types)} deal types available")
+    st.caption(t("dealinfo.types_available", n=len(deal_types)))
     load_clicked = st.button(
         t("dealinfo.btn_load"),
         type="primary",
     )
 
 if not load_clicked:
-    st.info(t("dealinfo.no_params"))
+    st.info(t("dealinfo.info_idle"))
     st.stop()
 
 if IS_DEMO:

@@ -30,7 +30,8 @@ _PAGES = [
     {"file": "pages/home.py",      "title_key": "nav.home",            "icon": "🏠", "default": True},
     {"file": "pages/curves.py",    "title_key": "curves.page_title",   "icon": "📈"},
     {"file": "pages/deal_info.py", "title_key": "dealinfo.page_title", "icon": "📃"},
-    {"file": "pages/swaps.py",     "title_key": "swaps.page_title",    "icon": "💱"},
+    {"file": "pages/swaps.py",        "title_key": "swaps.page_title",  "icon": "💱"},
+    {"file": "pages/fx_derivatives.py", "title_key": "deriv.page_title", "icon": "📊"},
 ]
 
 pg = st.navigation([

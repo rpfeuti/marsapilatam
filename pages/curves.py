@@ -67,7 +67,7 @@ def get_service(market_date: date) -> XMarketCurveService:
 
 
 @st.cache_data(show_spinner=t("curves.spinner_download"))
-def fetch_curve(_svc: XMarketCurveService, query: CurveQuery) -> pd.DataFrame:
+def fetch_curve(_svc: XMarketCurveService, query: CurveQuery, market_date: date | None = None) -> pd.DataFrame:
     return _svc.get_curve(query)
 
 
@@ -179,7 +179,7 @@ query = CurveQuery(
 
 try:
     svc = get_service(market_date)
-    df  = fetch_curve(svc, query)
+    df  = fetch_curve(svc, query, market_date=market_date)
 except CurveError as e:
     st.error(t("curves.error_curve", error=e))
     st.stop()

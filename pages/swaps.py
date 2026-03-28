@@ -12,6 +12,7 @@ Two tabs:
 
 from __future__ import annotations
 
+import calendar
 from datetime import date
 from typing import Literal
 
@@ -68,7 +69,7 @@ _SVC_VERSION = "2"
 
 
 @st.cache_resource(show_spinner=t("swaps.spinner_session"))
-def get_service(_v: str = _SVC_VERSION) -> SwapPricingService:
+def get_service(v: str = _SVC_VERSION) -> SwapPricingService:
     return SwapPricingService.from_settings()
 
 
@@ -110,7 +111,9 @@ def _curve_selectbox(label: str, default_id: str, key: str) -> str:
 def _tenor_to_maturity(effective: date, tenor: str) -> date:
     years_map = {"1Y": 1, "2Y": 2, "3Y": 3, "5Y": 5, "7Y": 7, "10Y": 10}
     years = years_map.get(tenor, 5)
-    return date(effective.year + years, effective.month, effective.day)
+    target_year = effective.year + years
+    day = min(effective.day, calendar.monthrange(target_year, effective.month)[1])
+    return date(target_year, effective.month, day)
 
 
 def _lrow(label: str, ratio: tuple[int, int] = (1, 2)) -> st.delta_generator.DeltaGenerator:
@@ -277,9 +280,13 @@ def _render_swap_form(
             label_visibility="collapsed",
         )
 
-        # XCCY: Leg 2 has its own editable notional in local currency
+        # XCCY: Leg 2 has its own editable notional converted via FX spot
         if is_xccy:
-            _fx_default = _fx.default_leg2_notional(notional, leg2_ccy)
+            if leg1_ccy == "USD":
+                _fx_default = _fx.default_leg2_notional(notional, leg2_ccy)
+            else:
+                _rate = _fx.get_rate(leg1_ccy)
+                _fx_default = round(notional / _rate) if _rate and _rate > 0 else notional
             leg2_notional = _lrow(t("swaps.notional_label")).number_input(
                 "",
                 value=float(spec.leg2_notional) if spec.leg2_notional > 0 else float(_fx_default),

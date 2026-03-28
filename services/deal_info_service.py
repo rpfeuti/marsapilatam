@@ -79,7 +79,7 @@ class DealInfoService:
                     pairs.append((entry.strip(), ""))
             pairs = [(c, d) for c, d in pairs if c not in _LEGACY_DEAL_TYPES]
             return sorted(pairs) or list(_DEMO_DEAL_TYPES)
-        except (MarsApiError, Exception) as exc:
+        except Exception as exc:
             log.warning("Failed to fetch deal types: %s", exc)
             return list(_DEMO_DEAL_TYPES)
 

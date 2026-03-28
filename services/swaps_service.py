@@ -16,6 +16,7 @@ those belong entirely in the repository implementations.
 from __future__ import annotations
 
 import json
+import logging
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
@@ -178,7 +179,7 @@ def _build_structure_body(
     effective:  date,
     maturity:   date,
 ) -> dict[str, Any]:
-    """Construct the full structureRequest body for the MARS API.
+    """Construct the full dealStructureOverride body for the MARS API.
 
     For XCCY swaps (``spec.base_currency`` is set):
       * Leg 1 = base currency (USD), notional = query.notional
@@ -379,7 +380,9 @@ class SwapLiveRepository:
                     raw = solve_resp["results"][0]["solveResponse"]
                     par_rate = _parse_par_rate(raw)
                 except (KeyError, IndexError):
-                    pass
+                    logging.getLogger(__name__).warning(
+                        "Failed to extract par rate from solve response: %s", solve_resp,
+                    )
 
         return SwapResult(metrics=metrics, par_rate=par_rate)
 

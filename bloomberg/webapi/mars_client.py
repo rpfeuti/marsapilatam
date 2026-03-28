@@ -95,12 +95,28 @@ class MarsClient:
     def __del__(self) -> None:
         """Close all open sessions on garbage collection."""
         try:
+            if self._xmarket_session_id:
+                self.send("DELETE", f"/marswebapi/v1/dataSessions/{self._xmarket_session_id}")
             if self._market_data_session_id:
                 self.send("DELETE", f"/marswebapi/v1/sessions/{self._market_data_session_id}")
             if self._session_id:
                 self.send("DELETE", f"/marswebapi/v1/sessions/{self._session_id}")
         except Exception:
             pass  # best-effort cleanup
+
+    def __enter__(self) -> MarsClient:
+        return self
+
+    def __exit__(self, *_: object) -> None:
+        try:
+            if self._xmarket_session_id:
+                self.send("DELETE", f"/marswebapi/v1/dataSessions/{self._xmarket_session_id}")
+            if self._market_data_session_id:
+                self.send("DELETE", f"/marswebapi/v1/sessions/{self._market_data_session_id}")
+            if self._session_id:
+                self.send("DELETE", f"/marswebapi/v1/sessions/{self._session_id}")
+        except Exception:
+            pass
 
     # ------------------------------------------------------------------
     # Public properties
@@ -178,6 +194,8 @@ class MarsClient:
 
     async def __aexit__(self, *_: object) -> None:
         try:
+            if self._xmarket_session_id:
+                await self._dispatch_async("DELETE", f"/marswebapi/v1/dataSessions/{self._xmarket_session_id}")
             if self._market_data_session_id:
                 sid = self._market_data_session_id
                 await self._dispatch_async("DELETE", f"/marswebapi/v1/sessions/{sid}")
@@ -290,6 +308,8 @@ class MarsClient:
 
         # Pattern 4: uploadResponse still in progress (error code 104)
         if upload.get("error", {}).get("errorCode") == 104:
+            if current_id is None:
+                raise MarsApiError("Server returned 'still processing' (code 104) without a retrieval ID.")
             return current_id, True
 
         return current_id, False
@@ -346,7 +366,10 @@ class MarsClient:
         try:
             response = self._dispatch("GET", "/marswebapi/v1/scenarios/12345")
         except MarsApiError as exc:
-            raise IpNotWhitelistedError(str(exc)) from exc
+            msg = str(exc)
+            if "403" in msg or "401" in msg or "whitelist" in msg.lower():
+                raise IpNotWhitelistedError(msg) from exc
+            raise
         errors = response.get("errors", [])
         if errors:
             detail = errors[0].get("detail", str(errors[0]))

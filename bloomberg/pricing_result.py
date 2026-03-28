@@ -31,18 +31,6 @@ class PricingField(BaseModel):
         return ""
 
 
-class CashflowItem(BaseModel):
-    paymentType: str
-    paymentDate: str
-    currency: str
-    amount: float | str
-
-
-class ScenarioResult(BaseModel):
-    scenarioId: str
-    fields: dict[str, str] = {}
-
-
 class SecurityResult(BaseModel):
     bloomberg_deal_id: str = ""
     portfolio: str = ""
@@ -95,22 +83,22 @@ def _parse_security(raw: dict[str, Any]) -> SecurityResult:
 
     if "portfolioSourceDetails" in raw:
         psd = raw["portfolioSourceDetails"]
-        result.portfolio = f"{psd['portfolioSource']}:{psd['portfolioName']}"
+        result.portfolio = f"{psd.get('portfolioSource', '')}:{psd.get('portfolioName', '')}"
 
     if "cashflowResult" in raw:
         result.cashflows = [
             {
-                "paymentType": str(cf["paymentType"]),
-                "paymentDate": cf["paymentDate"],
-                "currency": cf["currency"],
-                "amount": cf["amount"],
+                "paymentType": str(cf.get("paymentType", "")),
+                "paymentDate": cf.get("paymentDate", ""),
+                "currency": cf.get("currency", ""),
+                "amount": cf.get("amount", 0),
             }
             for cf in raw["cashflowResult"]
         ]
 
     if "scenarioResult" in raw:
         for sr in raw["scenarioResult"]:
-            scenario_id = sr["scenario"]["scenarioId"]
+            scenario_id = sr.get("scenario", {}).get("scenarioId", "")
             fields = _parse_pricing_fields(sr.get("pricingResult", []))
             result.scenarios.append({scenario_id: fields})
 

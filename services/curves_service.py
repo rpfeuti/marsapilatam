@@ -123,7 +123,7 @@ def _enrich_tenors(df: pd.DataFrame) -> pd.DataFrame:
     Only acts on Raw Curve data (which carries a maturityTenor column).
     Returns the DataFrame unchanged for Zero Coupon and Discount Factor.
     """
-    if "maturityTenor" not in df.columns:
+    if "maturityTenor" not in df.columns or df.empty:
         return df
 
     decoded            = df["maturityTenor"].apply(_decode_tenor)
