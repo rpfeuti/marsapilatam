@@ -31,6 +31,8 @@ class Settings(BaseSettings):
     )
     bbg_uuid: int = Field(default=0, description="Bloomberg user UUID")
     bbg_host: str = Field(default="https://api.bloomberg.com", description="MARS API base URL")
+    blpapi_host: str = Field(default="localhost", description="Bloomberg Desktop API host")
+    blpapi_port: int = Field(default=8194,        description="Bloomberg Desktop API port")
 
     @property
     def demo_mode(self) -> bool:

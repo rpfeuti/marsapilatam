@@ -7,32 +7,40 @@ alwaysApply: true
 
 ## Stack
 
-- **Python 3.10+**, `httpx`, `pydantic-settings`, `streamlit`, `plotly`, `pandas`
+- **Python 3.10+**, `pydantic-settings`, `streamlit`, `plotly`, `pandas`, `blpapi`
 - **Linter/formatter**: `ruff` (line length 110, target py311)
 - **Auth**: HS256 JWT generated in `bloomberg/webapi/bbg_jwt.py`
 
 ## Layer Architecture
 
 ```
-bloomberg/webapi/mars_client.py   ← low-level HTTP + JWT + session management
-services/curves_service.py        ← XMarket curve downloads (supports demo mode)
+bloomberg/webapi/mars_client.py   ← low-level HTTP + JWT + session management (MARS REST API)
+bloomberg/blpapi_client.py        ← Bloomberg Desktop API wrapper (localhost:8194, bdp() method)
+bloomberg/exceptions.py           ← MarsApiError hierarchy + BlpapiError
+services/curves_service.py        ← XMarket curve downloads via MARS (supports demo mode)
+services/fx_service.py            ← USD cross-rate fetching via BlpapiClient + demo fallback
+services/swaps_service.py         ← swap deal structure + pricing + solve (OIS, XCCY/NDS)
 services/security_service.py      ← deal structure + price + solve + save
 services/portfolio_service.py     ← portfolio pricing
 services/risk_service.py          ← Key Rate Risk (KRR)
 instruments/swap.py               ← Pydantic model → MARS params
 instruments/fx_option.py
 instruments/equity_option.py
-configs/settings.py               ← credentials + constants (pydantic-settings)
+configs/settings.py               ← credentials + constants (pydantic-settings); includes blpapi_host/blpapi_port
 configs/i18n.py                   ← UI translations EN/PT/ES
-configs/curves_catalog.py         ← 248-entry XMarket curve catalog
-pages/1_📈_Curves.py              ← Streamlit UI pages
+configs/curves_catalog.py         ← 248-entry XMarket curve catalog (CURVES_BY_ID / CURVES_BY_LABEL)
+configs/swaps_config.py           ← SwapSpec dataclass + swap templates per deal type
+pages/swaps.py                    ← Swap pricing UI (OIS + XCCY tabs, per-leg curves, inline labels)
+pages/1_📈_Curves.py              ← Curves viewer UI
 app.py                            ← Streamlit home page
-demo_data/                        ← pre-saved JSON curve snapshots for demo mode
+demo_data/                        ← pre-saved JSON snapshots for offline/demo mode
 ```
 
 ## Key Conventions
 
-- **Demo mode**: `settings.demo_mode` is `True` when no Bloomberg credentials are set. Services must handle this gracefully — `CurvesService` loads from `demo_data/`.
+- **Demo mode**: `settings.demo_mode` is `True` when no Bloomberg credentials are set. All services must handle this gracefully — `CurvesService` loads from `demo_data/`, `FxRateService` uses `_DEMO_RATES`.
+- **Market data sources**: Curves → MARS API (`MarsClient`). FX rates and reference data → BLPAPI (`BlpapiClient`). **No third-party REST APIs** — see `bloomberg-only.mdc`.
+- **FX rates**: `FxRateService.from_settings()` returns a live `BlpapiClient`-backed instance or a demo instance. Tickers follow `USDXXX Curncy` convention; EUR is inverted (`EURUSD Curncy`).
 - **Credentials**: Never hardcode. Always read from `.env` via `pydantic-settings`. `.env` is gitignored.
 - **Structure requests**: Use `"tail"` + `"dealStructureOverride"` body format (NOT `"structureRequest"`).
 - **DayCount**: Use MARS notation (`"ACT/365"`, `"ACT/360"`) not long-form.

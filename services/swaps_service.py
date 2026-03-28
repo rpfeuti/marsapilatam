@@ -37,9 +37,20 @@ _PRICING_FIELDS = [
     "MktVal", "DV01", "PV01", "MktPx", "AccruedInterest",
 ]
 
-_TENOR_YEARS: dict[str, int] = {
-    "1Y": 1, "2Y": 2, "3Y": 3, "5Y": 5, "7Y": 7, "10Y": 10,
+# Fallback solve targets used in demo mode or when the API call fails.
+# The dealSchema endpoint reports solvableTarget=true fields as "FixedRate",
+# "Notional", "Spread", but the solve endpoint uses "Coupon" (alias for
+# "FixedRate").  We store the solve-friendly names here and apply the same
+# mapping in fetch_solvable_fields.
+_DEMO_SOLVABLE: dict[str, list[str]] = {
+    "IR.OIS":      ["Coupon", "Spread"],
+    "IR.OIS.SOFR": ["Coupon", "Spread"],
+    "IR.OIS.RFR":  ["Coupon", "Spread"],
+    "IR.NDS":      ["Coupon", "Spread"],
 }
+
+# Schema field name → solve endpoint name
+_SOLVE_NAME_MAP: dict[str, str] = {"FixedRate": "Coupon"}
 
 
 # ===========================================================================
@@ -60,19 +71,22 @@ class SwapQuery:
     key:            str
     swap_type:      Literal["OIS", "XCCY"]
     direction:      Literal["Receive", "Pay"]
-    tenor:          str
+    effective_date: date
+    maturity_date:  date
     valuation_date: date
     curve_date:     date
     notional:       float
-    discount_curve: str
     forward_curve:  str
-    csa_ccy:        str
-    coll_curve:     str
-    float_index:    str    = ""
-    pay_frequency:  str    = ""
-    day_count:      str    = ""
-    fixed_rate:     float | None = None  # None = solve for par rate
-    solve_for:      str    = "Coupon"   # field to solve when fixed_rate is None
+    discount_curve:      str          = ""
+    float_index:         str          = ""
+    pay_frequency:       str          = ""
+    day_count:           str          = ""
+    fixed_rate:          float | None = None   # None = solve for par rate
+    spread:              float        = 0.0    # floating leg spread in bp
+    solve_for:           str          = "Coupon"
+    leg1_forward_curve:  str          = ""     # XCCY: Leg 1 (base ccy) forward/projection curve
+    leg1_discount_curve: str          = ""     # XCCY: Leg 1 (base ccy) discount curve
+    leg2_notional:       float        = 0.0    # XCCY: Leg 2 notional in local ccy; 0 = auto
 
 
 @dataclass
@@ -104,12 +118,6 @@ class SwapRepository(Protocol):
 # ===========================================================================
 
 
-def _maturity_from_tenor(effective: date, tenor: str) -> date:
-    """Compute the maturity date from an effective date and a tenor string."""
-    years = _TENOR_YEARS.get(tenor, 5)
-    return date(effective.year + years, effective.month, effective.day)
-
-
 def _build_leg_params(
     direction:      str,
     notional:       float,
@@ -120,6 +128,7 @@ def _build_leg_params(
     float_index:    str | None,
     pay_frequency:  str,
     day_count:      str,
+    spread:         float = 0.0,
 ) -> list[dict[str, Any]]:
     """Build MARS param list for a single swap leg.
 
@@ -156,6 +165,8 @@ def _build_leg_params(
         params.append(_dbl("FixedRate", fixed_rate))
     if float_index:
         params.append(_str("FloatingIndex", float_index))
+    if spread:
+        params.append(_dbl("Spread", spread))
 
     return params
 
@@ -196,7 +207,7 @@ def _build_structure_body(
     )
     leg2 = _build_leg_params(
         direction=opposite,
-        notional=query.notional,
+        notional=query.leg2_notional if query.leg2_notional >= 1 else query.notional,
         currency=leg2_ccy,
         effective=effective,
         maturity=maturity,
@@ -204,13 +215,10 @@ def _build_structure_body(
         float_index=query.float_index or spec.float_index,
         pay_frequency=freq,
         day_count=dc,
+        spread=query.spread,
     )
 
     deal_params: list[dict[str, Any]] = []
-    if query.csa_ccy:
-        deal_params.append(
-            {"name": "CSACollateralCurrency", "value": {"stringVal": query.csa_ccy}},
-        )
 
     return {
         "sessionId": session_id,
@@ -223,24 +231,38 @@ def _build_structure_body(
 
 
 def _build_pricing_body(
-    deal_handle: str,
-    session_id:  str,
-    valuation:   date,
-    curve_date:  date,
+    deal_handle:    str,
+    session_id:     str,
+    valuation:      date,
+    curve_date:     date,
+    discount_overrides: dict[str, str] | None = None,
 ) -> dict[str, Any]:
-    """Construct the securitiesPricingRequest body."""
+    """Construct the securitiesPricingRequest body.
+
+    *discount_overrides* maps currency codes to Bloomberg curve IDs and injects
+    ``interestRateCurveOverrides`` so each leg is discounted with the chosen
+    curve.  The projection curve is handled automatically by
+    ``useBbgRecommendedSettings`` together with the FloatingIndex in the deal
+    structure.
+    """
+    security: dict[str, Any] = {"identifier": {"dealHandle": deal_handle}, "position": 1}
+    if discount_overrides:
+        security["marketDataOverrides"] = {
+            "interestRateCurveOverrides": [
+                {"category": "DISCOUNT_CURVE", "currency": ccy, "overrideCurveId": curve_id}
+                for ccy, curve_id in discount_overrides.items()
+            ]
+        }
     return {
         "securitiesPricingRequest": {
             "pricingParameter": {
-                "valuationDate":            str(valuation),
-                "marketDataDate":           str(curve_date),
-                "dealSession":              session_id,
-                "requestedField":           _PRICING_FIELDS,
+                "valuationDate":             str(valuation),
+                "marketDataDate":            str(curve_date),
+                "dealSession":               session_id,
+                "requestedField":            _PRICING_FIELDS,
                 "useBbgRecommendedSettings": True,
             },
-            "security": [
-                {"identifier": {"dealHandle": deal_handle}, "position": 1}
-            ],
+            "security": [security],
         }
     }
 
@@ -254,9 +276,9 @@ def _build_solve_body(
 ) -> dict[str, Any]:
     """Construct the solveRequest body to find the target field (NPV = 0).
 
-    Coupon and FixedRate target Leg 1; Spread targets Leg 2.
+    Coupon targets Leg 1; Spread targets Leg 2.
     """
-    leg_map = {"Coupon": 1, "FixedRate": 1, "Spread": 2}
+    leg_map = {"Coupon": 1, "Spread": 2}
     return {
         "solveRequest": {
             "identifier":    {"dealHandle": deal_handle},
@@ -297,8 +319,8 @@ class SwapLiveRepository:
         specs = OIS_SWAP_SPECS if query.swap_type == "OIS" else XCCY_SWAP_SPECS
         spec  = specs[query.key]
 
-        effective = query.valuation_date
-        maturity  = _maturity_from_tenor(effective, query.tenor)
+        effective = query.effective_date
+        maturity  = query.maturity_date
 
         # --- Structure ---
         struc_body = _build_structure_body(
@@ -323,8 +345,15 @@ class SwapLiveRepository:
             raise StructuringError(msg)
 
         # --- Price ---
+        discount_overrides: dict[str, str] = {}
+        if spec.base_currency and query.leg1_discount_curve:
+            discount_overrides[spec.base_currency] = query.leg1_discount_curve
+        if query.discount_curve:
+            discount_overrides[spec.currency] = query.discount_curve
+
         price_body = _build_pricing_body(
-            deal_handle, self._client.session_id, query.valuation_date, query.curve_date
+            deal_handle, self._client.session_id, query.valuation_date, query.curve_date,
+            discount_overrides=discount_overrides or None,
         )
         price_resp = self._client.send("POST", "/marswebapi/v1/securitiesPricing", price_body)
 
@@ -362,7 +391,7 @@ class SwapDemoRepository:
         self._dir = snapshots_dir
 
     def price(self, query: SwapQuery) -> SwapResult:
-        filename = f"{query.key}_{query.tenor}.json"
+        filename = f"{query.key}_5Y.json"
         path     = self._dir / filename
 
         if not path.exists():
@@ -401,12 +430,58 @@ class SwapPricingService:
         svc = SwapPricingService(repository=MyMockRepository())
     """
 
-    def __init__(self, repository: SwapRepository) -> None:
-        self._repo = repository
+    def __init__(self, repository: SwapRepository, client: MarsClient | None = None) -> None:
+        self._repo   = repository
+        self._client = client
 
     def price(self, query: SwapQuery) -> SwapResult:
         """Price the swap described by *query* and return the result."""
         return self._repo.price(query)
+
+    def _fetch_deal_structure(self, deal_type: str) -> dict:
+        """Call ``GET /marswebapi/v1/dealSchema`` and return the ``dealStructure`` dict."""
+        if self._client is None:
+            return {}
+        resp = self._client.send("GET", "/marswebapi/v1/dealSchema", {"tail": deal_type})
+        return resp.get("schemaResponse", {}).get("dealStructure", {})
+
+    def fetch_leg_params(self, deal_type: str) -> list[dict]:
+        """Return the full list of leg parameter definitions from the deal schema."""
+        try:
+            return self._fetch_deal_structure(deal_type).get("leg", [])
+        except Exception:
+            return []
+
+    def fetch_solvable_fields(self, deal_type: str) -> list[str]:
+        """Return the list of solvable-target field names for *deal_type*.
+
+        Calls ``GET /marswebapi/v1/dealSchema`` and collects every parameter
+        (deal-level and per-leg) whose ``solvableTarget`` flag is ``true``.
+        Schema names are mapped to solve-endpoint names via ``_SOLVE_NAME_MAP``
+        (e.g. ``FixedRate`` → ``Coupon``).  ``Notional`` is excluded since
+        it is rarely a useful solve target.
+        Falls back to ``_DEMO_SOLVABLE`` when running in demo mode or when the
+        API call fails.
+        """
+        if self._client is None:
+            return list(_DEMO_SOLVABLE.get(deal_type, ["Coupon"]))
+        try:
+            structure = self._fetch_deal_structure(deal_type)
+            solvable: list[str] = []
+            for p in structure.get("param", []):
+                if p.get("solvableTarget"):
+                    name = _SOLVE_NAME_MAP.get(p["name"], p["name"])
+                    if name != "Notional" and name not in solvable:
+                        solvable.append(name)
+            for leg in structure.get("leg", []):
+                for p in leg.get("param", []):
+                    if p.get("solvableTarget"):
+                        name = _SOLVE_NAME_MAP.get(p["name"], p["name"])
+                        if name != "Notional" and name not in solvable:
+                            solvable.append(name)
+            return solvable or list(_DEMO_SOLVABLE.get(deal_type, ["Coupon"]))
+        except Exception:
+            return list(_DEMO_SOLVABLE.get(deal_type, ["Coupon"]))
 
     @classmethod
     def from_settings(cls) -> SwapPricingService:
@@ -417,5 +492,6 @@ class SwapPricingService:
         SwapLiveRepository backed by a live MarsClient otherwise.
         """
         if settings.demo_mode:
-            return cls(SwapDemoRepository(_SNAPSHOTS_DIR))
-        return cls(SwapLiveRepository(MarsClient(settings)))
+            return cls(SwapDemoRepository(_SNAPSHOTS_DIR), client=None)
+        client = MarsClient(settings)
+        return cls(SwapLiveRepository(client), client=client)

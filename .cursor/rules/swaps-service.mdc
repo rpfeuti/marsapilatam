@@ -1,0 +1,74 @@
+---
+description: Service layer conventions for swap pricing (services/swaps_service.py)
+globs: services/swaps_service.py, services/*.py, configs/swaps_config.py
+alwaysApply: false
+---
+
+# Swaps Service Conventions
+
+## Repository pattern
+
+`SwapPricingService` owns two repository implementations:
+
+| Class | Mode | Backend |
+|-------|------|---------|
+| `SwapLiveRepository` | live | MARS REST API via `MarsClient` |
+| `SwapDemoRepository` | demo | JSON snapshots under `demo_data/` |
+
+Always instantiate via `SwapPricingService.from_settings()` — it selects the correct
+repository and injects the `MarsClient` for live solve-target fetching.
+
+## `SwapQuery` fields
+
+```python
+@dataclass
+class SwapQuery:
+    deal_type:    str
+    maturity_date: date   # not tenor string — user edits directly
+    effective:    date
+    notional:     float
+    leg2_notional: float
+    currency:     str
+    solve_for:    str
+    discount_curve_id:  str
+    forward_curve_id:   str
+    leg1_discount_id:   str
+    collateral_currency: str
+    csa_rate:     float
+```
+
+## Solvable fields
+
+Fetch dynamically from `GET /marswebapi/v1/dealSchema?tail={deal_type}`.  
+Response lives at `schemaResponse.dealStructure`.  
+Filter on `solvableTarget == true` (NOT `usage`).  
+On failure or demo mode, fall back to `_DEMO_SOLVABLE[deal_type]`.
+
+```python
+# ❌ BAD — hardcoded list
+solve_options = ["Coupon", "Spread"]
+
+# ✅ GOOD — dynamic fetch with demo fallback
+solve_options = svc.fetch_solvable_fields(deal_type)
+```
+
+## Deal structure body
+
+Use `"tail"` + `"dealStructureOverride"` format — never `"structureRequest"`.
+
+```python
+body = {
+    "tail": deal_type,
+    "dealStructureOverride": {...},
+}
+```
+
+## Curve IDs
+
+Always use `S{number}` format (e.g. `"S329"` for COP OIS).  
+Curve IDs must exist in `configs/curves_catalog.py` (`CURVES_BY_ID`).
+
+## Demo snapshots
+
+Filenames follow `{currency}_{tenor}.json` convention (e.g. `COP_5Y.json`).  
+When a demo snapshot is not found for an exact query, fall back to `_5Y.json`.

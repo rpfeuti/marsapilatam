@@ -323,14 +323,14 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
     # swaps page
     # ------------------------------------------------------------------
     "swaps.page_title": {
-        "EN": "IR Swaps",
-        "PT": "Swaps de Juros",
-        "ES": "Swaps de Tasas",
+        "EN": "Swaps",
+        "PT": "Swaps",
+        "ES": "Swaps",
     },
     "swaps.title": {
-        "EN": "💱 IR Swaps — OIS & XCCY",
-        "PT": "💱 Swaps de Juros — OIS e XCCY",
-        "ES": "💱 Swaps de Tasas — OIS y XCCY",
+        "EN": "💱 Swaps — OIS & XCCY",
+        "PT": "💱 Swaps — OIS e XCCY",
+        "ES": "💱 Swaps — OIS y XCCY",
     },
     "swaps.caption": {
         "EN": "Structure and price interest rate swaps via the Bloomberg MARS API.",
@@ -412,6 +412,11 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "PT": "Índice flutuante",
         "ES": "Índice variable",
     },
+    "swaps.spread_label": {
+        "EN": "Spread (bp)",
+        "PT": "Spread (bp)",
+        "ES": "Spread (bp)",
+    },
     "swaps.pay_freq_label": {
         "EN": "Pay frequency",
         "PT": "Frequência de pagamento",
@@ -448,9 +453,9 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "ES": "Curva de descuento",
     },
     "swaps.forward_curve_label": {
-        "EN": "Forward curve",
-        "PT": "Curva forward",
-        "ES": "Curva forward",
+        "EN": "Proj. curve",
+        "PT": "Curva proj.",
+        "ES": "Curva proj.",
     },
     "swaps.solve_for_label": {
         "EN": "Solve for",
@@ -501,6 +506,11 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "EN": "Accrued",
         "PT": "Acruado",
         "ES": "Devengado",
+    },
+    "swaps.result_premium": {
+        "EN": "Premium (%)",
+        "PT": "Prêmio (%)",
+        "ES": "Prima (%)",
     },
     "swaps.info_idle": {
         "EN": "Configure the swap above and click **Price swap** to run the calculation.",

@@ -39,6 +39,7 @@ CURVES_CATALOG: list[CurveEntry] = [
     {"profile": "BGN.3m",                   "currency": "BGN", "curve_id": "S183", "description": "Bulgarian Lev Swap vs 3m"},
     {"profile": "BHD.3m",                   "currency": "BHD", "curve_id": "S316", "description": "Bahrain Dinar Swap vs 3m"},
     {"profile": "BRL.BM&F Pre x DI",        "currency": "BRL", "curve_id": "S89",  "description": "BM&F Pre x DI"},
+    {"profile": "BRL.CDI.Disc",             "currency": "BRL", "curve_id": "S304", "description": "Brazilian Real CDI Discount"},
     {"profile": "BRL.Offsh. Pre x DI",      "currency": "BRL", "curve_id": "S388", "description": "Offsh. Pre x DI"},
     {"profile": "CAD.1m",                   "currency": "CAD", "curve_id": "S330", "description": "Canada Dollar Swap vs 1m"},
     {"profile": "CAD.3m",                   "currency": "CAD", "curve_id": "S4",   "description": "Canada Dollar Swap vs 3m"},
@@ -59,6 +60,7 @@ CURVES_CATALOG: list[CurveEntry] = [
     {"profile": "CLP.6m",                   "currency": "CLP", "curve_id": "S193", "description": "CLP Fixed x Camara Swap"},
     {"profile": "CLP.Basis.6m.USD.6m",      "currency": "CLP", "curve_id": "S194", "description": "CLP 6m vs USD 6m Basis Swap"},
     {"profile": "CLP.CCS.6m",               "currency": "CLP", "curve_id": "S521", "description": "CLP (vs USD 6M)"},
+    {"profile": "CLP.OIS.Disc",             "currency": "CLP", "curve_id": "S423", "description": "Chilean Peso OIS Discount"},
     {"profile": "CNH.3m.IRS",               "currency": "CNH", "curve_id": "S368", "description": "CNH IRS 3M Curve"},
     {"profile": "CNH.Basis.3m.USD.3m",      "currency": "CNH", "curve_id": "S369", "description": "CNH vs. USD Basis"},
     {"profile": "CNH.CCS.3m",               "currency": "CNH", "curve_id": "S326", "description": "CNH/USD CCS Onshore Curve"},
@@ -81,6 +83,7 @@ CURVES_CATALOG: list[CurveEntry] = [
     {"profile": "COP.Basis.3m.USD.3m",      "currency": "COP", "curve_id": "S192", "description": "COP 3m vs USD 3m Basis Swap"},
     {"profile": "COP.NDCCS.3m",             "currency": "COP", "curve_id": "S191", "description": "COP/USD CCS Non-Deliverable Swap"},
     {"profile": "COP.OIS",                  "currency": "COP", "curve_id": "S329", "description": "Colombian Peso Overnight Swap (OIS)"},
+    {"profile": "COP.OIS.Disc",             "currency": "COP", "curve_id": "S438", "description": "Colombian Peso OIS Discount"},
     {"profile": "CZK.3m",                   "currency": "CZK", "curve_id": "S319", "description": "Czech Koruna Swap vs 3m"},
     {"profile": "CZK.6m",                   "currency": "CZK", "curve_id": "S320", "description": "Czech Koruna Swap vs 6m"},
     {"profile": "CZK.6m.3mFRA",             "currency": "CZK", "curve_id": "S37",  "description": "Czech Koruna Swap vs 6m (3mFRA)"},
@@ -102,6 +105,7 @@ CURVES_CATALOG: list[CurveEntry] = [
     {"profile": "EUR.Fixing.6m.ISDA",       "currency": "EUR", "curve_id": "S261", "description": "EUR ISDA Fixing Swap"},
     {"profile": "EUR.OIS",                  "currency": "EUR", "curve_id": "S133", "description": "Euro Overnight Swap (OIS)"},
     {"profile": "EUR.OIS.ESTR",             "currency": "EUR", "curve_id": "S514", "description": "Euro Overnight Swap (OIS) ESTR"},
+    {"profile": "EUR.OIS.ESTR.Disc",        "currency": "EUR", "curve_id": "S403", "description": "Euro OIS ESTR Discount"},
     {"profile": "GBP.12m",                  "currency": "GBP", "curve_id": "S315", "description": "British Pound Swap vs 12m"},
     {"profile": "GBP.1m",                   "currency": "GBP", "curve_id": "S223", "description": "British Pound Swap vs 1m"},
     {"profile": "GBP.3m",                   "currency": "GBP", "curve_id": "S222", "description": "British Pound Swap vs 3m"},
@@ -165,6 +169,7 @@ CURVES_CATALOG: list[CurveEntry] = [
     {"profile": "MXN.1m",                   "currency": "MXN", "curve_id": "S83",  "description": "Mexican Peso Swap vs 1m"},
     {"profile": "MXN.Basis.1m.USD.1m",      "currency": "MXN", "curve_id": "S151", "description": "MXN 1m vs USD 1m Basis Swap"},
     {"profile": "MXN.OIS",                  "currency": "MXN", "curve_id": "S364", "description": "Mexican OIS"},
+    {"profile": "MXN.OIS.Disc",             "currency": "MXN", "curve_id": "S428", "description": "Mexican Peso OIS Discount"},
     {"profile": "MXN.OIS.TIIE",             "currency": "MXN", "curve_id": "S583", "description": "Mexican OIS (TIIE 28d)"},
     {"profile": "MYR.3m",                   "currency": "MYR", "curve_id": "S39",  "description": "Malaysian Ringgit Onshore Swap vs 3m"},
     {"profile": "MYR.Basis.3m.USD.3m",      "currency": "MYR", "curve_id": "S150", "description": "MYR 3m vs USD 3m Basis Swap"},
@@ -261,6 +266,7 @@ CURVES_CATALOG: list[CurveEntry] = [
     {"profile": "USD.Muni.Swaps",           "currency": "USD", "curve_id": "S43",  "description": "US Dollar Muni Swap"},
     {"profile": "USD.OIS",                  "currency": "USD", "curve_id": "S42",  "description": "US Dollar Overnight Swap (OIS)"},
     {"profile": "USD.SOFR",                 "currency": "USD", "curve_id": "S490", "description": "US Dollar SOFR (vs Fixed)"},
+    {"profile": "USD.SOFR.Disc",            "currency": "USD", "curve_id": "S400", "description": "US Dollar SOFR Discount (CSA)"},
     {"profile": "VND.3m",                   "currency": "VND", "curve_id": "S196", "description": "Vietnam Dong Swap vs 3m"},
     {"profile": "VND.CCS.6m.ND",            "currency": "VND", "curve_id": "S214", "description": "VND/USD NDF CSS Swap"},
     {"profile": "ZAR.3m",                   "currency": "ZAR", "curve_id": "S18",  "description": "South African Rand Swap vs 3m"},
@@ -272,7 +278,7 @@ CURVES_CATALOG: list[CurveEntry] = [
 
 # label → curve_id mapping for Streamlit selectbox
 CURVES_BY_LABEL: dict[str, str] = {
-    f"{e['profile']} ({e['currency']}) — {e['description']}": e["curve_id"]
+    f"{e['profile']} ({e['currency']})": e["curve_id"]
     for e in CURVES_CATALOG
 }
 

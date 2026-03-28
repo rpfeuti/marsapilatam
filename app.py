@@ -11,6 +11,11 @@ st.set_page_config(
     layout="wide",
 )
 
+st.markdown(
+    "<style>html, body, [class*='st-'] { font-size: 1.25rem; }</style>",
+    unsafe_allow_html=True,
+)
+
 # Language selector and connection status appear on every page via the sidebar
 with st.sidebar:
     lang_selector()

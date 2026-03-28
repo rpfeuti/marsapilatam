@@ -1,0 +1,38 @@
+---
+description: Never guess MARS deal field names — always verify against the dealSchema endpoint
+alwaysApply: true
+---
+
+# MARS Deal Fields — No Guessing
+
+**NEVER guess field names** when building `dealStructureOverride` payloads for the MARS API.
+
+## Rule
+
+Before adding or modifying any parameter in a `dealStructureOverride` body (deal-level or per-leg), you MUST verify the exact parameter `name` and `value` type against the deal schema:
+
+```
+GET /marswebapi/v1/dealSchema   body: {"tail": "<deal_type>"}
+```
+
+Parse the response `dealStructure.leg[].param[]` (and `dealStructure.param[]` for deal-level fields) to find:
+1. The exact `name` string (case-sensitive)
+2. The value type key (`doubleVal`, `stringVal`, `selectionVal`, `dateVal`, etc.)
+3. The `usage` field (`SOLVABLE`, `INPUT`, etc.)
+
+## Wrong vs. Right
+
+```python
+# ❌ FORBIDDEN — guessing field name and value type
+params.append({"name": "Spread", "value": {"doubleVal": 100.0}})
+
+# ✅ CORRECT — verified against dealSchema response first
+# 1. Call GET /marswebapi/v1/dealSchema with {"tail": "IR.OIS"}
+# 2. Find the parameter in dealStructure.leg[1].param[] → name, value type
+# 3. Use the exact name and matching value constructor
+params.append({"name": "<verified_name>", "value": {"<verified_type>": 100.0}})
+```
+
+## Implementation
+
+Use `SwapPricingService.fetch_leg_params(deal_type)` or call the endpoint directly to inspect the schema before writing override code.

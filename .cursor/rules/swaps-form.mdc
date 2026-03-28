@@ -1,0 +1,65 @@
+---
+description: UI patterns for the swaps pricing form (pages/swaps.py)
+globs: pages/swaps.py
+alwaysApply: false
+---
+
+# Swaps Form UI Conventions
+
+## Inline-left labels (`_lrow`)
+
+**All** form inputs must render their label to the left, inline with the widget.  
+Use `_lrow()` + `label_visibility="collapsed"` — never put a label above an input.
+
+```python
+# ❌ BAD — label renders above
+st.selectbox("Curve", options=..., key=...)
+
+# ✅ GOOD — label renders to the left
+_lrow("Curve").selectbox("", options=..., key=..., label_visibility="collapsed")
+```
+
+`_lrow` signature: `def _lrow(label: str, ratio: tuple[int, int] = (1, 2)) -> DeltaGenerator`
+
+## Widget keys
+
+Every template-dependent widget key must start with `fk = f"{tab_key}_{spec_key}"` so
+switching templates forces Streamlit to mount a fresh widget.
+
+```python
+# ❌ BAD — same key across templates means value never resets
+st.selectbox("...", key=f"{tab_key}_maturity")
+
+# ✅ GOOD — template switch changes the key, widget resets
+st.selectbox("...", key=f"{fk}_maturity")
+```
+
+Display-only (disabled) widgets must embed their current value in the key to avoid
+`StreamlitDuplicateElementId` and ensure dynamic re-renders:
+
+```python
+st.text_input("", value=effective, key=f"{tab_key}_effective_leg2_{effective}", disabled=True, ...)
+```
+
+## Curves (`_curve_selectbox`)
+
+Always use `_curve_selectbox(label, default_id, key)` — never inline a curve selectbox.
+
+Layout: **two** curve columns per leg (Leg 1 and Leg 2), matching the XCCY pattern.  
+OIS and XCCY must use the same per-leg layout.
+
+## Solve-for dropdown
+
+Fetch targets dynamically via `_get_solve_targets(deal_type)` — never hardcode lists.
+
+```python
+_solve_targets = _get_solve_targets(spec.deal_type)
+solve_for = _lrow(t("swaps.solve_for_label")).selectbox(
+    "", options=_solve_targets, key=f"{fk}_solve_for", label_visibility="collapsed"
+)
+```
+
+## Service cache invalidation
+
+When changing `SwapPricingService`, increment `_SVC_VERSION` in `pages/swaps.py`
+to bust the `@st.cache_resource` instance.

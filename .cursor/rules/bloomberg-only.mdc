@@ -1,0 +1,38 @@
+---
+description: Enforce Bloomberg-only market data sources — no third-party REST APIs
+alwaysApply: true
+---
+
+# Bloomberg-Only Market Data
+
+**All market data must come exclusively from Bloomberg.** Third-party REST APIs are forbidden.
+
+## Data Sources by Type
+
+| Data type | Source | Class |
+|-----------|--------|-------|
+| Curves, pricing, deal structure | MARS REST API | `MarsClient` (`bloomberg/mars_client.py`) |
+| Spot prices, FX rates, reference data | Desktop API (BLPAPI) | `BlpapiClient` (`bloomberg/blpapi_client.py`) |
+| Offline / demo mode | Hardcoded fallback constants | `_DEMO_RATES`, `_DEMO_SOLVABLE`, `demo_data/` |
+
+## Rules
+
+- **NEVER** call any non-Bloomberg URL (e.g. `open.er-api.com`, `api.exchangeratesapi.io`, any third-party REST API) for market data.
+- **NEVER** install `requests`, `httpx`, or similar libraries for market data purposes.
+- FX spot rates → `BlpapiClient.bdp(["USDXXX Curncy"], ["PX_LAST"])` via `FxRateService.from_settings()`.
+- Yield curves → MARS XMarket endpoint via `CurvesService`.
+- Demo mode must always work offline — use hardcoded fallback values, never an external API fallback.
+
+## Wrong vs. Right
+
+```python
+# ❌ FORBIDDEN
+import httpx
+r = httpx.get("https://open.er-api.com/v6/latest/USD")
+rate = r.json()["rates"]["COP"]
+
+# ✅ CORRECT
+from services.fx_service import FxRateService
+fx = FxRateService.from_settings()
+rate = fx.get_rate("COP")
+```

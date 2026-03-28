@@ -23,3 +23,11 @@ class CurveError(MarsApiError):
 
 class StructuringError(MarsApiError):
     """Raised when a deal structuring request fails."""
+
+
+class BlpapiError(Exception):
+    """Raised when the Bloomberg Desktop API (BLPAPI) session or request fails.
+
+    Kept separate from MarsApiError because BLPAPI uses a different transport
+    (native C++ SDK / localhost:8194) rather than the MARS REST API.
+    """

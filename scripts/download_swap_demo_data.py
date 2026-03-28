@@ -55,18 +55,23 @@ def download_all() -> None:
                 key=key,
                 swap_type=swap_type,
                 direction="Receive",
-                tenor=DEMO_TENOR,
+                effective_date=VALUATION_DATE,
+                maturity_date=date(
+                    VALUATION_DATE.year + int(DEMO_TENOR.rstrip("Y")),
+                    VALUATION_DATE.month,
+                    VALUATION_DATE.day,
+                ),
                 valuation_date=VALUATION_DATE,
                 curve_date=CURVE_DATE,
                 notional=spec.notional,
-                discount_curve=spec.discount_curve,
                 forward_curve=spec.forward_curve,
-                csa_ccy=spec.csa_ccy,
-                coll_curve=spec.coll_curve,
+                discount_curve=spec.discount_curve,
                 float_index=spec.float_index,
                 pay_frequency=spec.pay_frequency,
                 day_count=spec.day_count,
-                fixed_rate=None,  # solve for par rate
+                fixed_rate=None,
+                leg1_forward_curve=spec.leg1_forward_curve,
+                leg1_discount_curve=spec.leg1_discount_curve,
             )
             result = svc.price(query)
 
