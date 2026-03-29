@@ -40,7 +40,7 @@ from configs.krr_config import (
     KRR_DEFINITION_ID,
     KRR_DEFINITION_NAME,
 )
-from configs.settings import settings
+from configs.settings import DEMO_DATE, settings
 from services.risk_service import KrrResult, KrrService
 
 # ---------------------------------------------------------------------------
@@ -53,7 +53,7 @@ st.caption(t("krr.caption"))
 IS_DEMO = settings.demo_mode
 
 if IS_DEMO:
-    st.warning(t("common.demo_banner"), icon="🔒")
+    st.warning(t("common.demo_banner", date=DEMO_DATE), icon="🔒")
 
 # ---------------------------------------------------------------------------
 # Cached service

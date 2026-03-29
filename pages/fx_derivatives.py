@@ -71,7 +71,7 @@ st.caption(t("deriv.caption"))
 IS_DEMO = settings.demo_mode
 
 if IS_DEMO:
-    st.warning(t("common.demo_banner"), icon="🔒")
+    st.warning(t("common.demo_banner", date=DEMO_DATE), icon="🔒")
 
 # ---------------------------------------------------------------------------
 # Cached service

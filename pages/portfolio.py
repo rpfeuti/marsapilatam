@@ -34,7 +34,7 @@ import streamlit as st
 from bloomberg.exceptions import IpNotWhitelistedError, MarsApiError
 from configs.i18n import t
 from configs.portfolio_config import MARS_API_FIELDS, PORTFOLIO_NAME
-from configs.settings import settings
+from configs.settings import DEMO_DATE, settings
 from services.portfolio_service import (
     PortfolioPricingService,
     PortfolioResult,
@@ -50,7 +50,7 @@ st.caption(t("portfolio.caption"))
 IS_DEMO = settings.demo_mode
 
 if IS_DEMO:
-    st.warning(t("common.demo_banner"), icon="🔒")
+    st.warning(t("common.demo_banner", date=DEMO_DATE), icon="🔒")
 
 # ---------------------------------------------------------------------------
 # Cached service

@@ -31,7 +31,7 @@ import pandas as pd
 import streamlit as st
 
 from configs.i18n import t
-from configs.settings import settings
+from configs.settings import DEMO_DATE, settings
 from services.deal_info_service import DealInfoService
 
 # ---------------------------------------------------------------------------
@@ -44,7 +44,7 @@ st.caption(t("dealinfo.caption"))
 IS_DEMO = settings.demo_mode
 
 if IS_DEMO:
-    st.warning(t("common.demo_banner"), icon="🔒")
+    st.warning(t("common.demo_banner", date=DEMO_DATE), icon="🔒")
 
 # ---------------------------------------------------------------------------
 # Cached service
@@ -220,7 +220,7 @@ if not load_clicked:
     st.stop()
 
 if IS_DEMO:
-    st.warning(t("common.demo_banner"), icon="🔒")
+    st.warning(t("common.demo_banner", date=DEMO_DATE), icon="🔒")
     st.stop()
 
 # ---------------------------------------------------------------------------

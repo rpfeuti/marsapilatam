@@ -168,11 +168,11 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "ES": "Idioma",
     },
     "common.demo_banner": {
-        "EN": "**Demo Mode** — displaying pre-loaded market data (2026-03-18). "
+        "EN": "**Demo Mode** — displaying pre-loaded market data ({date}). "
               "Connect a Bloomberg MARS API account to access live data for any curve and date.",
-        "PT": "**Modo Demo** — exibindo dados de mercado pré-carregados (2026-03-18). "
+        "PT": "**Modo Demo** — exibindo dados de mercado pré-carregados ({date}). "
               "Conecte uma conta Bloomberg MARS API para acessar dados ao vivo de qualquer curva e data.",
-        "ES": "**Modo Demo** — mostrando datos de mercado precargados (2026-03-18). "
+        "ES": "**Modo Demo** — mostrando datos de mercado precargados ({date}). "
               "Conecte una cuenta de Bloomberg MARS API para acceder a datos en vivo de cualquier curva y fecha.",
     },
     "common.demo_cta_sidebar": {
@@ -331,9 +331,9 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "ES": "Fecha",
     },
     "curves.demo_date_tag": {
-        "EN": "  |  Demo — 2026-03-18",
-        "PT": "  |  Demo — 2026-03-18",
-        "ES": "  |  Demo — 2026-03-18",
+        "EN": "  |  Demo — 2026-03-27",
+        "PT": "  |  Demo — 2026-03-27",
+        "ES": "  |  Demo — 2026-03-27",
     },
     "curves.table_header": {
         "EN": "Curve data  —  {n} points",

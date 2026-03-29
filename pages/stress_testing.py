@@ -35,7 +35,7 @@ import streamlit as st
 
 from bloomberg.exceptions import IpNotWhitelistedError, MarsApiError
 from configs.i18n import t
-from configs.settings import settings
+from configs.settings import DEMO_DATE, settings
 from configs.stress_config import (
     DEFAULT_DEAL_ID,
     DEFAULT_PORTFOLIO_NAME,
@@ -55,7 +55,7 @@ st.caption(t("stress.caption"))
 IS_DEMO = settings.demo_mode
 
 if IS_DEMO:
-    st.warning(t("common.demo_banner"), icon="🔒")
+    st.warning(t("common.demo_banner", date=DEMO_DATE), icon="🔒")
 
 # ---------------------------------------------------------------------------
 # Cached service
