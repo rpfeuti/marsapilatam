@@ -219,10 +219,6 @@ if not load_clicked:
         st.markdown(_API_DOCS)
     st.stop()
 
-if IS_DEMO:
-    st.warning(t("common.demo_banner", date=DEMO_DATE), icon="🔒")
-    st.stop()
-
 # ---------------------------------------------------------------------------
 # Fetch and display schema
 # ---------------------------------------------------------------------------
@@ -232,7 +228,10 @@ with st.spinner(t("dealinfo.spinner")):
     schema_resp = svc.fetch_deal_schema(selected_type)
 
 if not schema_resp:
-    st.error(t("dealinfo.no_params"))
+    if IS_DEMO:
+        st.warning(t("dealinfo.demo_schema_unavailable"), icon="🔒")
+    else:
+        st.error(t("dealinfo.no_params"))
     st.stop()
 
 status = schema_resp.get("returnStatus", {})

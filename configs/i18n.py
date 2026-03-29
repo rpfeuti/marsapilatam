@@ -394,6 +394,11 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "PT": "Nenhum parâmetro encontrado.",
         "ES": "No se encontraron parámetros.",
     },
+    "dealinfo.demo_schema_unavailable": {
+        "EN": "Schema not available in demo mode. Pre-loaded schemas: CR.CDS, CR.CDSI, EQ.VA, FX.FWD, FX.VA, IR.FLFL, IR.FRA, IR.FXFL, IR.NDS, IR.OIS, IR.OIS.RFR, IR.OIS.SOFR, IR.OV, IR.ZERO.",
+        "PT": "Schema não disponível no modo demo. Schemas pré-carregados: CR.CDS, CR.CDSI, EQ.VA, FX.FWD, FX.VA, IR.FLFL, IR.FRA, IR.FXFL, IR.NDS, IR.OIS, IR.OIS.RFR, IR.OIS.SOFR, IR.OV, IR.ZERO.",
+        "ES": "Schema no disponible en modo demo. Schemas precargados: CR.CDS, CR.CDSI, EQ.VA, FX.FWD, FX.VA, IR.FLFL, IR.FRA, IR.FXFL, IR.NDS, IR.OIS, IR.OIS.RFR, IR.OIS.SOFR, IR.OV, IR.ZERO.",
+    },
     "dealinfo.col_name": {
         "EN": "Name",
         "PT": "Nome",
