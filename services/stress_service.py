@@ -411,8 +411,8 @@ class StressDemoRepository:
         valuation_date: date,
     ) -> StressResult:
         base = {
-            "MktVal": "0.00",
-            "DV01": "21345.75",
+            "MktValPortCcy": "0.00",
+            "DV01PortCcy": "21345.75",
         }
         outputs: list[ScenarioOutput] = []
         for sc in scenarios:
@@ -424,8 +424,8 @@ class StressDemoRepository:
                 name=sc.name,
                 tenor_shifts=sc.tenor_shifts,
                 metrics={
-                    "MktVal": f"{mtm:.2f}",
-                    "DV01": f"{21345.75 * (1 - abs(factor) * 0.02):.2f}",
+                    "MktValPortCcy": f"{mtm:.2f}",
+                    "DV01PortCcy": f"{21345.75 * (1 - abs(factor) * 0.02):.2f}",
                     "Delta": "0.00",
                 },
             ))
@@ -438,8 +438,8 @@ class StressDemoRepository:
         valuation_date: date,
     ) -> StressResult:
         base = {
-            "MktVal": "0.00",
-            "DV01": "4523.15",
+            "MktValPortCcy": "0.00",
+            "DV01PortCcy": "4523.15",
             "PV01": "4510.00",
             "MktPx": "100.00",
             "AccruedInterest": "1250.00",
@@ -447,7 +447,6 @@ class StressDemoRepository:
         }
         outputs: list[ScenarioOutput] = []
         for sc in scenarios:
-            # Derive a representative average shift for demo purposes.
             shifts = list(sc.tenor_shifts.values())
             avg_bp = sum(shifts) / len(shifts) if shifts else 0.0
             factor = avg_bp / 100.0
@@ -456,8 +455,8 @@ class StressDemoRepository:
                 name=sc.name,
                 tenor_shifts=sc.tenor_shifts,
                 metrics={
-                    "MktVal": f"{mtm:.2f}",
-                    "DV01": f"{4523.15 * (1 - abs(factor) * 0.02):.2f}",
+                    "MktValPortCcy": f"{mtm:.2f}",
+                    "DV01PortCcy": f"{4523.15 * (1 - abs(factor) * 0.02):.2f}",
                     "PV01": f"{4510.00 * (1 - abs(factor) * 0.02):.2f}",
                     "Delta": "0.00",
                 },
