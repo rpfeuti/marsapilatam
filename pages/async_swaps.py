@@ -167,7 +167,7 @@ def _interpolate_s490(df: pd.DataFrame, date_col: str, val_col: str, target: dat
         if not before:
             return float(after[0][1])
         if not after:
-            return float(before[-1][1])
+            return None  # Target is beyond data range — don't extrapolate flat
         d1, v1 = before[-1]
         d2, v2 = after[0]
         span = (d2 - d1).days
