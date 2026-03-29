@@ -129,6 +129,16 @@ def _parse_security(raw: dict[str, Any]) -> SecurityResult:
 # ---------------------------------------------------------------------------
 
 
+def get_security_results(response: dict[str, Any]) -> list[dict[str, Any]]:
+    """Extract the list of raw securityResult dicts from a pricing response."""
+    return _get_security_results(response)
+
+
+def parse_security(raw: dict[str, Any]) -> SecurityResult:
+    """Parse a single raw securityResult dict into a SecurityResult."""
+    return _parse_security(raw)
+
+
 def to_records(response: dict[str, Any]) -> list[dict[str, str]]:
     """
     Parse a MARS pricing response into a list of flat dicts (one per security).

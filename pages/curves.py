@@ -169,11 +169,138 @@ with col_dates:
         st.markdown(t("common.demo_cta_sidebar"))
 
 # ---------------------------------------------------------------------------
+# MARS API capabilities reference
+# ---------------------------------------------------------------------------
+
+_API_DOCS = """
+## Bloomberg MARS API — Interest Rate Curves Analytics
+
+Bloomberg's Multi-Asset Risk System (MARS) provides enterprise programmatic access to Bloomberg's
+complete suite of Interest Rate Curves — the same curves that power pricing, risk, and valuation
+workflows on the Bloomberg Terminal. While standard enterprise channels deliver fixed, standardized
+data sets in predefined formats, MARS API exposes a fully customizable channel: users can specify
+any curve, any output type, any date grid, and any interpolation method, and receive results in
+real-time or for any historical date. Curves downloaded via MARS API can be directly used to
+override Bloomberg standard curves in downstream pricing and scenario analysis workflows under
+the same license — making them a foundational input for consistent, end-to-end quantitative workflows.
+
+### Why MARS API for curves vs alternatives
+
+| Feature | Curves Toolkit (CTK / Excel) | MARS API |
+|---|---|---|
+| Swap Curves | Yes | Yes |
+| Cross-Currency Basis Curves | Yes | Yes |
+| Treasury Curves | No | Yes |
+| Sovereign Curves | No | Yes |
+| Sector & Issuer Curves | No | Yes |
+| Collateral / CSA Curves | No | Yes |
+| Ultimate Forward Rate (UFR) | No | Yes |
+| Enterprise programmatic channel | No | Yes |
+| Override curves in pricing workflows | No | Yes |
+| Custom interpolation & tenor grids | Limited | Yes |
+| Historical back-dating | Limited | Yes |
+| Integration with scenario analysis | No | Yes |
+
+### Supported curve types
+
+**Swap Curves** — OIS and IBOR-based interest rate swap curves, used to discount and project
+cash flows for interest rate derivatives. Available for all major currencies including USD (SOFR),
+EUR (ESTR), GBP (SONIA), COP, BRL, MXN, CLP, and many others.
+
+**Cross-Currency Basis Curves** — Capture the funding cost differential between two currencies.
+Essential for pricing cross-currency swaps, XCCY basis products, and FX-hedged bond analysis.
+
+**Treasury Curves** — Government bond benchmark curves, used as risk-free reference rates for
+spread calculations, relative value analysis, and regulatory capital computations.
+
+**Sovereign Curves** — Curves for sovereign issuers, used in credit risk, spread analysis,
+and emerging market pricing across Latin America, EMEA, and Asia.
+
+**Sector & Issuer Curves** — Corporate sector or individual issuer-specific curves, enabling
+accurate credit spread analysis and relative value comparisons within a peer group.
+
+**Collateral Curves (CSA)** — CSA-adjusted discount curves accounting for collateral posting
+agreements under ISDA terms. Required for correct OIS-discounted derivatives pricing where
+the CSA specifies a specific collateral currency or rate index.
+
+**Ultimate Forward Rate (UFR) Curves** — Extrapolated long-end curves following Solvency II /
+EIOPA methodology, used for discounting insurance liabilities and regulatory capital calculations
+where observable market data is unavailable beyond the Last Liquid Point.
+
+### Output types
+
+**Raw (par rates)** — The rates at the actual instrument maturities used to construct the curve
+(deposits, futures, FRAs, swaps). Useful for understanding the input instruments and their
+quoted rates at each tenor.
+
+**Zero Coupon (spot rates)** — Bootstrapped zero rates, interpolated at any set of requested
+dates. Zero rates are the foundation for discounting individual cash flows and computing
+forward rates between any two dates.
+
+**Discount Factors** — Present value factors derived from zero rates, interpolated at any date.
+Used directly in cash flow valuation and duration calculations.
+
+### Endpoint
+
+**`POST /marswebapi/v1/dataDownload`**
+
+Download a curve snapshot for any XMarket curve, specifying the output type, market side,
+and optionally a custom date grid for interpolated outputs.
+
+```json
+{
+  "dataDownloadRequest": {
+    "header": {
+      "type": "XMarket",
+      "curveId": "S329",
+      "side": "Mid"
+    },
+    "curveAttributes": {
+      "curveType": "ZeroCoupon"
+    },
+    "requestedDates": [
+      "2026-01-15", "2026-06-15", "2027-01-15", "2028-01-15",
+      "2030-01-15", "2035-01-15", "2040-01-15", "2050-01-15"
+    ]
+  }
+}
+```
+
+### Key request parameters
+
+| Parameter | Required | Description |
+|---|---|---|
+| `curveId` | Yes | XMarket curve identifier (e.g. `S329` for COP OIS, `S50` for USD SOFR) |
+| `side` | Yes | `Mid`, `Bid`, or `Ask` |
+| `curveType` | Yes | `Raw`, `ZeroCoupon`, or `DiscountFactor` |
+| `requestedDates` | No | Custom date array for interpolated zero / discount factor outputs |
+| `valuationDate` | No | Historical back-date — retrieve the curve as it was on any past date |
+
+### Typical use cases
+
+- **Swap pricing** — download the discount and projection curves for a currency and override
+  the default curves in a `securitiesPricingRequest` for custom pricing scenarios
+- **ALM / liability duration** — retrieve monthly zero-coupon curves to discount insurance or
+  pension liability cash flows at each reporting date
+- **Curve history** — pull the same curve at multiple historical dates to analyse rate movements,
+  shifts in the term structure, and basis dynamics over time
+- **Regulatory reporting** — download UFR-extrapolated curves for Solvency II technical
+  provision discounting or EIOPA stress testing
+- **Model calibration** — extract discount factors and forward rates as inputs to proprietary
+  valuation models or to validate third-party pricing systems against Bloomberg data
+- **Cross-currency analysis** — download both a domestic OIS curve and the XCCY basis curve
+  to compute the all-in cross-currency funding cost for a structured transaction
+"""
+
+# ---------------------------------------------------------------------------
 # Guard: stop until the user clicks Load
 # ---------------------------------------------------------------------------
 
 if not run:
     st.info(t("curves.info_idle"))
+    st.divider()
+    with st.expander("About the MARS API", expanded=True):
+        st.markdown(_API_DOCS)
     st.stop()
 
 if not IS_DEMO and not is_raw and as_of >= market_date + timedelta(days=CURVE_SIZE):
@@ -297,3 +424,7 @@ st.dataframe(df_display, use_container_width=True, height=400)
 if IS_DEMO:
     st.divider()
     st.info(t("common.demo_cta_bottom"), icon="ℹ️")
+
+st.divider()
+with st.expander("About the MARS API", expanded=True):
+    st.markdown(_API_DOCS)

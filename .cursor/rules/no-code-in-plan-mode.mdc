@@ -1,0 +1,40 @@
+---
+description: NEVER write code, edit files, or run non-readonly commands while in Plan mode
+alwaysApply: true
+---
+
+# NEVER Code in Plan Mode
+
+When Plan mode is active, you are **strictly forbidden** from:
+
+- Writing or editing ANY file (code, config, i18n, rules — anything)
+- Running any shell command that modifies state (kill processes, clear cache, start apps, pip install, etc.)
+- Creating or deleting files
+- Making git commits
+
+## What you CAN do in Plan mode
+
+- Read files (Read, Glob, Grep)
+- Read terminal output
+- Ask the user questions (AskQuestion)
+- Create or update the plan (CreatePlan)
+- Search the web (WebSearch)
+
+## Even if the user asks you to code in Plan mode
+
+If the user says "build it", "implement", "go ahead", "do it", or any variation while Plan mode
+is still active, you MUST:
+
+1. **REFUSE** to write any code
+2. **TELL the user**: "You need to switch to Agent mode first. I cannot write code in Plan mode."
+3. **WAIT** for the mode to actually change to Agent mode before touching any file
+
+No exceptions. No shortcuts. No "the user clearly wants me to code so I'll just do it."
+
+## Rule
+
+- ❌ NEVER write a single line of code while Plan mode is active
+- ❌ NEVER run shell commands that modify state while Plan mode is active
+- ❌ NEVER assume "build it" means you can ignore Plan mode restrictions
+- ✅ ONLY read, search, and plan until Agent mode is active
+- ✅ ALWAYS tell the user to switch to Agent mode before you can code

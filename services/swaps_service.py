@@ -405,6 +405,41 @@ class SwapLiveRepository:
 
         return SwapResult(metrics=metrics, par_rate=par_rate)
 
+    def save_deal(self, query: SwapQuery) -> str:
+        """Structure a temporary deal, then save it permanently via PATCH.
+
+        1. POST /marswebapi/v1/deals/temporary  → dealHandle
+        2. PATCH /marswebapi/v1/deals/temporary/{dealHandle} with saveRequest
+        Returns the permanent deal ID.
+        """
+        specs = OIS_SWAP_SPECS if query.swap_type == "OIS" else XCCY_SWAP_SPECS
+        spec = specs[query.key]
+
+        struc_body = _build_structure_body(
+            query, spec, self._client.session_id,
+            query.effective_date, query.maturity_date,
+        )
+        struc_resp = self._client.send("POST", "/marswebapi/v1/deals/temporary", struc_body)
+
+        if "error" in struc_resp:
+            raise StructuringError(struc_resp.get("error_description", str(struc_resp["error"])))
+        try:
+            deal_handle = struc_resp["results"][0]["structureResponse"]["dealHandle"]
+        except (KeyError, IndexError) as exc:
+            raise StructuringError(f"Unexpected structure response: {struc_resp}") from exc
+
+        save_resp = self._client.send(
+            "PATCH",
+            f"/marswebapi/v1/deals/temporary/{deal_handle}",
+            {},
+        )
+        if "error" in save_resp:
+            raise StructuringError(save_resp.get("error_description", str(save_resp["error"])))
+        try:
+            return save_resp["results"][0]["saveResponse"]["dealId"]
+        except (KeyError, IndexError):
+            return deal_handle
+
 
 class SwapDemoRepository:
     """Offline swap data source backed by pre-saved JSON snapshots."""
@@ -459,6 +494,12 @@ class SwapPricingService:
     def price(self, query: SwapQuery) -> SwapResult:
         """Price the swap described by *query* and return the result."""
         return self._repo.price(query)
+
+    def save_deal(self, query: SwapQuery) -> str:
+        """Save the deal permanently on Bloomberg and return the deal ID."""
+        if not isinstance(self._repo, SwapLiveRepository):
+            raise StructuringError("Save is only available in live mode.")
+        return self._repo.save_deal(query)
 
     def _fetch_deal_structure(self, deal_type: str) -> dict:
         """Call ``GET /marswebapi/v1/dealSchema`` and return the ``dealStructure`` dict."""

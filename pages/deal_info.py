@@ -120,8 +120,103 @@ with col_sel:
         type="primary",
     )
 
+# ---------------------------------------------------------------------------
+# MARS API capabilities reference
+# ---------------------------------------------------------------------------
+
+_API_DOCS = """
+## Bloomberg MARS API — Deal Schemas & Structuring
+
+Bloomberg MARS supports pricing and risk analytics for every major asset class — interest rate
+derivatives, FX options, inflation swaps, credit default swaps, equity derivatives, mortgages,
+and more. Every deal type in MARS has a fully documented parameter schema accessible via the API:
+field names, value types, usage modes, and enumeration values. This is the same schema engine that
+drives Bloomberg's Excel toolkits (Swap Toolkit, Derivative Toolkit) and the SWPM, OVML, and DLIB
+Terminal functions. Making schemas available via API means developers can programmatically discover
+valid deal structures, validate payloads before sending them to the pricing engine, and build
+client-facing structuring interfaces without any dependency on the Bloomberg Terminal.
+
+### Why deal schemas matter
+
+When building integrations with the MARS pricing engine, every `dealStructureOverride` payload must
+use exactly the right field names, value type keys, and enumeration strings — there is no tolerance
+for guessing. The `/dealSchema` endpoint is the authoritative source for all of this, enabling:
+
+- **Discovery** — find out which parameters exist for any deal type across IR, FX, credit, equity
+- **Validation** — check that your override payloads use the correct field names before sending
+- **Solvable field identification** — know which parameters the engine can solve for
+  (e.g. find the par rate that makes MktVal = 0, or the notional that targets a given DV01)
+- **Enumeration browsing** — see all allowed values for selection fields like day count,
+  frequency, stub convention, and compounding type
+- **Schema-driven UI** — build dynamic forms that adapt to the selected deal type automatically
+
+### Asset classes and deal types (sample)
+
+| Asset Class | Example deal types |
+|---|---|
+| Interest Rates | `IR.OIS`, `IR.XCCY`, `IR.IRS`, `IR.BASIS`, `IR.NDS`, `IR.INFLATION` |
+| FX | `FX.VANILLAOPT`, `FX.BARRIER`, `FX.DIGITAL`, `FX.FORWARD`, `FX.SWAP` |
+| Credit | `CREDIT.CDS`, `CREDIT.CDX`, `CREDIT.TOTALRETURNSWAP` |
+| Equity | `EQ.VANILLAOPT`, `EQ.BARRIER`, `EQ.TOTALRETURNSWAP` |
+| Mortgages | `MORTGAGE.FIXEDRATE`, `MORTGAGE.ARM` |
+
+### Endpoints
+
+---
+
+**`GET /marswebapi/v1/dealType`** — List all supported deal type strings
+
+No request body required. Returns an array of all deal type strings available in MARS.
+Use these strings as the `tail` parameter in `/dealSchema` and as the `tail` field in
+`dealStructureOverride` payloads.
+
+---
+
+**`GET /marswebapi/v1/dealSchema`** — Retrieve the full parameter schema for a deal type
+
+```json
+{ "tail": "IR.OIS" }
+```
+
+Returns `dealStructure.param[]` (deal-level fields) and `dealStructure.leg[].param[]` (per-leg fields).
+
+### Parameter object structure
+
+Each parameter in the schema response has the following fields:
+
+| Field | Description |
+|---|---|
+| `name` | **Exact** parameter name to use in `dealStructureOverride` — case-sensitive |
+| `value` | Object with one key identifying the value type (see value types below) |
+| `usage` | `INPUT` — must be provided to structure the deal; `SOLVABLE` — can be a solve target |
+| `description` | Human-readable label displayed in Bloomberg Terminal |
+| `default` | Default value applied by MARS if the parameter is omitted |
+
+### Parameter value types
+
+| Type key | Used for | Example |
+|---|---|---|
+| `doubleVal` | Numeric values: notional, rate, spread, strike | `{ "doubleVal": 10000000 }` |
+| `stringVal` | Dates as strings, curve IDs, free text | `{ "stringVal": "2031-03-29" }` |
+| `selectionVal` | Enumerated choices with a fixed list of valid values | `{ "selectionVal": { "value": "ACT/360" } }` |
+| `dateVal` | Structured date objects | `{ "dateVal": { "year": 2031, "month": 3, "day": 29 } }` |
+| `intVal` | Integer values | `{ "intVal": 2 }` |
+
+### How to use schema data to build a pricing payload
+
+1. Call `GET /dealSchema` with `{ "tail": "IR.OIS" }`
+2. Find the parameters you want to override in `dealStructure.leg[].param[]`
+3. Note the exact `name` string and the value type key in `value`
+4. Construct your `dealStructureOverride` using those exact names and type keys
+5. Send the override to `POST /deals/temporary` to structure the deal in-memory
+6. Pass the returned `bloombergDealId` to `POST /securitiesPricing` to price it
+"""
+
 if not load_clicked:
     st.info(t("dealinfo.info_idle"))
+    st.divider()
+    with st.expander("About the MARS API", expanded=True):
+        st.markdown(_API_DOCS)
     st.stop()
 
 if IS_DEMO:
@@ -188,3 +283,7 @@ for i, leg in enumerate(legs, start=1):
         use_container_width=True,
         hide_index=True,
     )
+
+st.divider()
+with st.expander("About the MARS API", expanded=True):
+    st.markdown(_API_DOCS)

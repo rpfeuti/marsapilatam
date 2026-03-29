@@ -40,10 +40,10 @@ st.markdown(
     f"| 📃 {t('nav.deal_info')} | {t('app.demo_dealinfo')} |\n"
     f"| 💱 {t('swaps.page_title')} | {t('app.demo_swaps')} |\n"
     f"| 📊 {t('deriv.page_title')} | {t('app.demo_fx')} |\n"
-    f"| 🏦 {t('nav.portfolio')} | {t('app.demo_portfolio')} {t('app.coming_soon')} |\n"
-    f"| 🚀 {t('nav.swaps_async')} | {t('app.demo_async')} {t('app.coming_soon')} |\n"
-    f"| 🧪 {t('nav.stress_testing')} | {t('app.demo_stress')} {t('app.coming_soon')} |\n"
-    f"| 📐 {t('nav.krr')} | {t('app.demo_krr')} {t('app.coming_soon')} |"
+    f"| 🏦 {t('nav.portfolio')} | {t('app.demo_portfolio')} |\n"
+    f"| 🧪 {t('nav.stress_testing')} | {t('app.demo_stress')} |\n"
+    f"| 📐 {t('nav.krr')} | {t('app.demo_krr')} |\n"
+    f"| 🚀 {t('nav.swaps_async')} | {t('app.demo_async')} {t('app.coming_soon')} |"
 )
 
 st.markdown("---")

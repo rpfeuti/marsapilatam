@@ -1,0 +1,37 @@
+---
+description: Always test API calls directly before writing application code
+alwaysApply: true
+---
+
+# Test the API Before Building
+
+Before implementing any new service method or fixing an API integration bug, **run a direct Python test script** against the live API to verify the exact request/response shape.
+
+## How
+
+1. Write a throwaway `_tmp_test.py` script using `MarsClient` directly
+2. Run it: `python _tmp_test.py`
+3. Inspect the full JSON response — check field names, nesting, error codes
+4. Delete the script
+5. Only then write or fix the service code
+
+## Why
+
+- The swagger and docs are often wrong or incomplete (e.g. `PV01` is invalid in `scenarioParameter.requestedField`, `setting: {}` is required but not in swagger)
+- A 30-second live test prevents hours of guessing and wastes the user's API credits
+- Response shapes are frequently wrapped differently than documented (e.g. `scenarioResponse.createScenarioResponse.scenarioId`)
+
+## Example
+
+```python
+# _tmp_test.py — always delete after use
+from bloomberg.webapi.mars_client import MarsClient
+from configs.settings import settings
+import json
+
+client = MarsClient(settings)
+resp = client.send("POST", "/marswebapi/v1/scenarios", body)
+print(json.dumps(resp, indent=2))
+```
+
+**Never guess field names or response structures. Test first, code second.**

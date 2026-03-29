@@ -318,6 +318,38 @@ class DerivativeLiveRepository:
         metrics = records[0] if records else {}
         return DerivativeResult(metrics=metrics)
 
+    def save_deal(self, query: DerivativeQuery) -> str:
+        """Structure a temporary deal, then save it permanently via PATCH.
+
+        1. POST /marswebapi/v1/deals/temporary  → dealHandle
+        2. PATCH /marswebapi/v1/deals/temporary/{dealHandle} with saveRequest
+        Returns the permanent deal ID.
+        """
+        specs = _SPECS_BY_PRODUCT.get(query.product_type, FX_VANILLA_SPECS)
+        spec = specs[query.key]
+
+        struc_body = _build_structure_body(query, spec, self._client.session_id)
+        struc_resp = self._client.send("POST", "/marswebapi/v1/deals/temporary", struc_body)
+
+        if "error" in struc_resp:
+            raise StructuringError(struc_resp.get("error_description", str(struc_resp["error"])))
+        try:
+            deal_handle = struc_resp["results"][0]["structureResponse"]["dealHandle"]
+        except (KeyError, IndexError) as exc:
+            raise StructuringError(f"Unexpected structure response: {struc_resp}") from exc
+
+        save_resp = self._client.send(
+            "PATCH",
+            f"/marswebapi/v1/deals/temporary/{deal_handle}",
+            {},
+        )
+        if "error" in save_resp:
+            raise StructuringError(save_resp.get("error_description", str(save_resp["error"])))
+        try:
+            return save_resp["results"][0]["saveResponse"]["dealId"]
+        except (KeyError, IndexError):
+            return deal_handle
+
 
 class DerivativeDemoRepository:
     """Offline repository — loads pre-saved JSON snapshots from demo_data/fx_derivatives/."""
@@ -362,6 +394,12 @@ class DerivativePricingService:
 
     def price(self, query: DerivativeQuery) -> DerivativeResult:
         return self._repo.price(query)
+
+    def save_deal(self, query: DerivativeQuery) -> str:
+        """Save the deal permanently on Bloomberg and return the deal ID."""
+        if not isinstance(self._repo, DerivativeLiveRepository):
+            raise StructuringError("Save is only available in live mode.")
+        return self._repo.save_deal(query)
 
     @classmethod
     def from_settings(cls) -> DerivativePricingService:

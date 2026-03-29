@@ -37,7 +37,7 @@ from typing import Literal
 
 import streamlit as st
 
-from bloomberg.exceptions import IpNotWhitelistedError, PricingError, StructuringError
+from bloomberg.exceptions import IpNotWhitelistedError, MarsApiError, PricingError, StructuringError
 from configs.curves_catalog import CURVES_BY_LABEL
 from configs.i18n import t
 from configs.settings import settings
@@ -84,7 +84,7 @@ _fx: FxRateService = st.session_state["_fx_service"]
 # Bump this constant whenever SwapPricingService gains new methods / changes
 # its public API. Streamlit uses it as part of the cache key, ensuring the
 # resource is re-created rather than served from a stale hot-reload cache.
-_SVC_VERSION = "2"
+_SVC_VERSION = "3"
 
 
 @st.cache_resource(show_spinner=t("swaps.spinner_session"))
@@ -420,11 +420,25 @@ def _render_swap_form(
             key=f"{tab_key}_price_btn",
         )
 
+        if not IS_DEMO:
+            save_clicked = st.button(
+                t("common.button_save_deal"),
+                use_container_width=True,
+                key=f"{tab_key}_save_btn",
+            )
+        else:
+            save_clicked = False
+
+        _ss_deal_id = f"_saved_deal_id_{tab_key}"
+        _saved_id = st.session_state.get(_ss_deal_id)
+        if _saved_id:
+            st.success(t("common.save_success", deal_id=_saved_id))
+
         if IS_DEMO:
             st.divider()
             st.markdown(t("common.demo_cta_sidebar"))
 
-    if not price_clicked:
+    if not price_clicked and not save_clicked:
         return None
 
     # Parse optional fixed rate
@@ -438,7 +452,7 @@ def _render_swap_form(
 
     spread: float = float(spread_val)
 
-    return SwapQuery(
+    query = SwapQuery(
         key=spec_key,
         swap_type=swap_type,
         direction=direction,
@@ -458,6 +472,19 @@ def _render_swap_form(
         leg1_discount_curve=leg1_discount_id,
         leg2_notional=leg2_notional,
     )
+
+    if save_clicked:
+        try:
+            svc = get_service()
+            with st.spinner(t("common.spinner_saving")):
+                deal_id = svc.save_deal(query)
+            st.session_state[_ss_deal_id] = deal_id
+            st.rerun()
+        except (StructuringError, MarsApiError) as e:
+            st.error(t("common.save_error", error=e))
+        return None
+
+    return query
 
 
 # ---------------------------------------------------------------------------
@@ -560,3 +587,140 @@ with tab_xccy:
 if IS_DEMO:
     st.divider()
     st.info(t("common.demo_cta_bottom"), icon="ℹ️")
+
+# ---------------------------------------------------------------------------
+# MARS API capabilities reference
+# ---------------------------------------------------------------------------
+
+_API_DOCS = """
+## Bloomberg MARS API — Interest Rate Swap Pricing & Structuring
+
+MARS API provides the same pricing and risk engine that powers Bloomberg's Swap Toolkit (STK) and
+the SWPM Terminal function. Interest rate swap deals can be structured in-memory with full parameter
+control, priced to mark-to-market, and solved for target values such as par rate or spread — all
+programmatically, without saving anything to the Bloomberg Terminal. Because both the STK toolkit and
+the MARS API call the same pricing engine, results are fully consistent: front office analytics
+align with middle and back office reporting, eliminating the model risk that arises from using
+different pricing systems across the firm.
+
+MARS API supports response times as short as 2–5 minutes for large books, and can deliver pricing
+results over SAPI, B-PIPE, or RESTful Web API depending on the client's infrastructure and SLA.
+
+### Key capabilities
+
+- **Structure in-memory** — create an OIS, XCCY/NDS, or vanilla IRS deal with full per-leg
+  parameter override, without saving to the Bloomberg Terminal
+- **Price to MktVal** — mark-to-market in deal currency or portfolio currency
+- **Risk metrics** — DV01 (dollar value of a basis point), PV01, accrued interest, convexity
+- **Solve for targets** — ask the engine to find the fixed rate or spread that satisfies
+  a given condition (e.g. MktVal = 0 for par rate, or DV01 = target for hedge ratio)
+- **Multi-currency** — COP, BRL, MXN, CLP, PEN, USD, EUR, GBP, JPY and more
+- **Custom curve overrides** — override the discount or projection curve per leg using any
+  XMarket curve ID (e.g. use a CSA-specific curve for collateralized trades)
+- **Cashflow schedule** — request the full projected cashflow schedule as part of the response
+- **Historical pricing** — back-date the valuation to any past date for P&L attribution or
+  audit purposes
+
+### Supported deal types
+
+| Type | Description |
+|---|---|
+| `IR.OIS` | Overnight Index Swap — fixed vs OIS floating leg, single currency |
+| `IR.XCCY` | Cross-Currency Swap — USD vs local currency, floating vs floating |
+| `IR.NDS` | Non-Deliverable Swap — settled in USD, referencing a local rate index |
+| `IR.IRS` | Vanilla Interest Rate Swap — fixed vs IBOR floating |
+| `IR.BASIS` | Basis Swap — floating vs floating, same or different currencies |
+
+### Workflow
+
+**Step 1 — Inspect the schema (once per deal type)**
+
+```
+GET /marswebapi/v1/dealSchema
+Body: { "tail": "IR.OIS" }
+```
+
+Returns all valid field names, value type keys, and solvable targets. Always verify field
+names here — never guess. See the Deal Info page for full schema details.
+
+---
+
+**Step 2 — Structure the deal in-memory**
+
+**`POST /marswebapi/v1/deals/temporary`**
+
+```json
+{
+  "tail": "IR.OIS",
+  "dealStructureOverride": {
+    "leg": [
+      {
+        "legId": 1,
+        "param": [
+          { "name": "Notional",       "value": { "doubleVal": 10000000 } },
+          { "name": "Currency",       "value": { "selectionVal": { "value": "COP" } } },
+          { "name": "Tenor",          "value": { "stringVal": "5Y" } },
+          { "name": "FixedRate",      "value": { "doubleVal": 0.08 } },
+          { "name": "DayCount",       "value": { "selectionVal": { "value": "ACT/365" } } },
+          { "name": "PayFrequency",   "value": { "selectionVal": { "value": "Quarterly" } } }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Returns a temporary `bloombergDealId` to reference in pricing. Temporary deals are automatically
+discarded — they are never stored on the Terminal.
+
+---
+
+**Step 3 — Price or solve**
+
+**`POST /marswebapi/v1/securitiesPricing`**
+
+```json
+{
+  "securitiesPricingRequest": {
+    "pricingParameter": {
+      "valuationDate": "2026-03-29",
+      "requestedField": ["MktVal", "MktValPortCcy", "DV01", "PV01", "AccruedInterest"]
+    },
+    "security": [
+      { "identifier": { "bloombergDealId": "<temp-deal-id>" }, "position": 1 }
+    ]
+  }
+}
+```
+
+To solve for par rate, add `solvableParameter` specifying the target field (`MktVal = 0`)
+and the field to solve for (`FixedRate`).
+
+### Key `pricingParameter` fields
+
+| Parameter | Required | Description |
+|---|---|---|
+| `valuationDate` | Yes | Pricing date |
+| `requestedField` | Yes | Array of output fields |
+| `marketDataDate` | No | Override market data date (defaults to `valuationDate`) |
+| `portfolioCurrency` | No | Currency for `MktValPortCcy`, `DV01PortCcy` fields |
+| `dealSession` | No | Reuse a cached deal session for improved performance |
+| `cashflow` | No | Include projected cashflow schedule in response |
+
+### Commonly requested fields
+
+| Field | Description |
+|---|---|
+| `MktVal` | Mark-to-market in deal currency |
+| `MktValPortCcy` | Mark-to-market in portfolio currency |
+| `DV01` | Dollar value of 1 basis point (deal currency) |
+| `DV01PortCcy` | DV01 in portfolio currency |
+| `PV01` | Present value of 1 basis point |
+| `AccruedInterest` | Accrued interest since last coupon |
+| `MktPx` | Clean price |
+| `Delta` | Price sensitivity to underlying rate |
+"""
+
+st.divider()
+with st.expander("About the MARS API", expanded=True):
+    st.markdown(_API_DOCS)

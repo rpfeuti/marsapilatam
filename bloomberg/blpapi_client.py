@@ -46,6 +46,7 @@ IN THE SOFTWARE.
 from __future__ import annotations
 
 import logging
+from datetime import date
 from typing import Any
 
 import blpapi
@@ -90,6 +91,55 @@ def _parse_refdata_event(event: blpapi.Event, result: dict[str, dict[str, Any]])
             for j in range(fields_el.numElements()):
                 fld_el = fields_el.getElement(j)
                 result[ticker][str(fld_el.name())] = fld_el.getValue()
+
+
+def _parse_bds_event(
+    event: blpapi.Event,
+    field: str,
+    result: list[dict[str, Any]],
+) -> None:
+    """Walk a PARTIAL_RESPONSE or RESPONSE event for a single bulk-data field.
+
+    Appends one dict per array row to *result*.  Each dict maps the sub-field
+    name (e.g. ``"Member Ticker and Exchange Code"``) to its scalar value.
+    """
+    for msg in event:
+        if not msg.hasElement("securityData"):
+            continue
+        sec_data = msg.getElement("securityData")
+        for i in range(sec_data.numValues()):
+            sec_el = sec_data.getValueAsElement(i)
+
+            if sec_el.hasElement("securityError"):
+                err = sec_el.getElement("securityError")
+                log.warning("BLPAPI security error in bds: %s", err)
+                continue
+
+            if not sec_el.hasElement("fieldData"):
+                continue
+
+            fd = sec_el.getElement("fieldData")
+            if not fd.hasElement(field):
+                continue
+
+            arr_el = fd.getElement(field)
+            if not arr_el.isArray():
+                try:
+                    result.append({field: arr_el.getValue()})
+                except Exception:
+                    pass
+                continue
+
+            for j in range(arr_el.numValues()):
+                row_el = arr_el.getValueAsElement(j)
+                row: dict[str, Any] = {}
+                for k in range(row_el.numElements()):
+                    sub = row_el.getElement(k)
+                    try:
+                        row[str(sub.name())] = sub.getValue()
+                    except Exception:
+                        pass
+                result.append(row)
 
 
 class BlpapiClient:
@@ -172,6 +222,154 @@ class BlpapiClient:
                 )
 
         log.debug("BDP response received — %d securities returned", len(result))
+        return result
+
+    def bdh(
+        self,
+        securities: list[str],
+        fields: list[str],
+        as_of_date: date,
+    ) -> dict[str, dict[str, Any]]:
+        """Historical data request for a single date — equivalent to Excel BDH().
+
+        Sends a ``HistoricalDataRequest`` with startDate == endDate == *as_of_date*
+        and returns a dict in the same shape as :meth:`bdp` so callers can use
+        both interchangeably::
+
+            {ticker: {field: value}}
+
+        Args:
+            securities: Bloomberg tickers.
+            fields:     Bloomberg field names (must support historical data).
+            as_of_date: The exact date to fetch data for.
+
+        Returns:
+            ``{ticker: {field: value}}`` — missing securities or dates are
+            omitted rather than raising an exception (logged as warnings).
+
+        Raises:
+            BlpapiError: On ``REQUEST_STATUS`` failure or timeout.
+        """
+        date_str = as_of_date.strftime("%Y%m%d")
+
+        service = self._session.getService(_REFDATA_SERVICE)
+        request = service.createRequest("HistoricalDataRequest")
+
+        for sec in securities:
+            request.getElement("securities").appendValue(sec)
+        for fld in fields:
+            request.getElement("fields").appendValue(fld)
+
+        request.set("startDate", date_str)
+        request.set("endDate",   date_str)
+        request.set("periodicitySelection", "DAILY")
+
+        log.debug("Sending BDH request — %d securities, date=%s", len(securities), date_str)
+        self._session.sendRequest(request)
+
+        result: dict[str, dict[str, Any]] = {}
+        done = False
+        while not done:
+            event = self._session.nextEvent(timeout=_REQUEST_TIMEOUT)
+            etype = event.eventType()
+
+            if etype in (blpapi.Event.PARTIAL_RESPONSE, blpapi.Event.RESPONSE):
+                for msg in event:
+                    if not msg.hasElement("securityData"):
+                        continue
+                    sec_data = msg.getElement("securityData")
+                    ticker   = sec_data.getElementAsString("security")
+
+                    if sec_data.hasElement("securityError"):
+                        log.warning("BLPAPI BDH security error for %s", ticker)
+                        continue
+
+                    if not sec_data.hasElement("fieldData"):
+                        continue
+
+                    field_data = sec_data.getElement("fieldData")
+                    row_dict: dict[str, Any] = {}
+                    for i in range(field_data.numValues()):
+                        pt = field_data.getValueAsElement(i)
+                        for fld in fields:
+                            if pt.hasElement(fld):
+                                try:
+                                    row_dict[fld] = pt.getElementAsFloat(fld)
+                                except Exception:
+                                    try:
+                                        row_dict[fld] = pt.getElement(fld).getValue()
+                                    except Exception:
+                                        pass
+                    if row_dict:
+                        result[ticker] = row_dict
+                    else:
+                        log.warning("No data returned by BDH for %s on %s", ticker, date_str)
+
+            if etype == blpapi.Event.RESPONSE:
+                done = True
+            elif etype == blpapi.Event.REQUEST_STATUS:
+                messages = list(event)
+                detail   = str(messages[0]) if messages else "unknown"
+                raise BlpapiError(f"BLPAPI historical request failed: {detail}")
+            elif etype == blpapi.Event.TIMEOUT:
+                raise BlpapiError(
+                    f"BLPAPI historical request timed out after {_REQUEST_TIMEOUT / 1000:.0f}s"
+                )
+
+        log.debug("BDH response received — %d securities returned", len(result))
+        return result
+
+    def bds(self, security: str, field: str) -> list[dict[str, Any]]:
+        """Bulk data request for one security + field — equivalent to Excel BDS().
+
+        Returns a list of dicts, one per array row.  Each dict maps sub-field
+        names to their scalar values.  Useful for array-valued fields such as
+        ``INDX_MEMBERS``, ``CURVE_MEMBERS``, etc.
+
+        Example::
+
+            rows = client.bds("YCSW0490 Index", "INDX_MEMBERS")
+            # [{"Member Ticker and Exchange Code": "USOSFR1Z BGN Curncy"}, ...]
+
+        Args:
+            security: Bloomberg ticker.
+            field:    Bulk field name (must return a sequence, not a scalar).
+
+        Returns:
+            List of row dicts — empty list if the field is not applicable.
+
+        Raises:
+            BlpapiError: On ``REQUEST_STATUS`` failure or timeout.
+        """
+        service = self._session.getService(_REFDATA_SERVICE)
+        request = service.createRequest("ReferenceDataRequest")
+        request.getElement("securities").appendValue(security)
+        request.getElement("fields").appendValue(field)
+
+        log.debug("Sending BDS request — %s / %s", security, field)
+        self._session.sendRequest(request)
+
+        result: list[dict[str, Any]] = []
+        done = False
+        while not done:
+            event = self._session.nextEvent(timeout=_REQUEST_TIMEOUT)
+            etype = event.eventType()
+
+            if etype in (blpapi.Event.PARTIAL_RESPONSE, blpapi.Event.RESPONSE):
+                _parse_bds_event(event, field, result)
+
+            if etype == blpapi.Event.RESPONSE:
+                done = True
+            elif etype == blpapi.Event.REQUEST_STATUS:
+                messages = list(event)
+                detail   = str(messages[0]) if messages else "unknown"
+                raise BlpapiError(f"BLPAPI request failed: {detail}")
+            elif etype == blpapi.Event.TIMEOUT:
+                raise BlpapiError(
+                    f"BLPAPI request timed out after {_REQUEST_TIMEOUT / 1000:.0f}s"
+                )
+
+        log.debug("BDS response received — %d rows", len(result))
         return result
 
     # ------------------------------------------------------------------

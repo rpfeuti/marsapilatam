@@ -925,6 +925,664 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "PT": "VPL",
         "ES": "VPN",
     },
+
+    # ------------------------------------------------------------------
+    # common — save deal
+    # ------------------------------------------------------------------
+    "common.button_save_deal": {
+        "EN": "Save Deal on Bloomberg",
+        "PT": "Salvar Deal na Bloomberg",
+        "ES": "Guardar Deal en Bloomberg",
+    },
+    "common.spinner_saving": {
+        "EN": "Saving deal…",
+        "PT": "Salvando deal…",
+        "ES": "Guardando deal…",
+    },
+    "common.save_success": {
+        "EN": "Deal saved — ID: **{deal_id}**",
+        "PT": "Deal salvo — ID: **{deal_id}**",
+        "ES": "Deal guardado — ID: **{deal_id}**",
+    },
+    "common.save_error": {
+        "EN": "Failed to save deal: {error}",
+        "PT": "Falha ao salvar deal: {error}",
+        "ES": "Error al guardar deal: {error}",
+    },
+
+    # ------------------------------------------------------------------
+    # Portfolio page
+    # ------------------------------------------------------------------
+    "portfolio.page_title": {
+        "EN": "Portfolio",
+        "PT": "Portfólio",
+        "ES": "Portafolio",
+    },
+    "portfolio.title": {
+        "EN": "🏦 Portfolio Pricing",
+        "PT": "🏦 Precificação de Portfólio",
+        "ES": "🏦 Valoración de Portafolio",
+    },
+    "portfolio.caption": {
+        "EN": "Price existing Bloomberg portfolios and view "
+              "risk metrics via the MARS API.",
+        "PT": "Precifique portfólios Bloomberg existentes e "
+              "visualize métricas de risco via a API MARS.",
+        "ES": "Valore portafolios Bloomberg existentes y "
+              "visualice métricas de riesgo vía la API MARS.",
+    },
+    "portfolio.price_btn": {
+        "EN": "Price Portfolio",
+        "PT": "Precificar Portfólio",
+        "ES": "Valorar Portafolio",
+    },
+    "portfolio.pricing_spinner": {
+        "EN": "Pricing portfolio…",
+        "PT": "Precificando portfólio…",
+        "ES": "Valorando portafolio…",
+    },
+    "portfolio.summary_header": {
+        "EN": "Portfolio Summary",
+        "PT": "Resumo do Portfólio",
+        "ES": "Resumen del Portafolio",
+    },
+    "portfolio.total_mtm": {
+        "EN": "Total MtM (USD)",
+        "PT": "MtM Total (USD)",
+        "ES": "MtM Total (USD)",
+    },
+    "portfolio.total_dv01": {
+        "EN": "Total DV01",
+        "PT": "DV01 Total",
+        "ES": "DV01 Total",
+    },
+    "portfolio.total_pv01": {
+        "EN": "Total PV01",
+        "PT": "PV01 Total",
+        "ES": "PV01 Total",
+    },
+    "portfolio.total_vega": {
+        "EN": "Total Vega",
+        "PT": "Vega Total",
+        "ES": "Vega Total",
+    },
+    "portfolio.total_delta": {
+        "EN": "Total Delta",
+        "PT": "Delta Total",
+        "ES": "Delta Total",
+    },
+    "portfolio.deal_count": {
+        "EN": "Deal Count",
+        "PT": "Qtd. de Deals",
+        "ES": "Cant. de Deals",
+    },
+    "portfolio.select_label": {
+        "EN": "Select Portfolio",
+        "PT": "Selecionar Portfólio",
+        "ES": "Seleccionar Portafolio",
+    },
+    "portfolio.deals_header": {
+        "EN": "Portfolio Deals",
+        "PT": "Deals do Portfólio",
+        "ES": "Deals del Portafolio",
+    },
+    "portfolio.select_columns": {
+        "EN": "Visible columns",
+        "PT": "Colunas visíveis",
+        "ES": "Columnas visibles",
+    },
+
+    # -----------------------------------------------------------------------
+    # Stress Testing
+    # -----------------------------------------------------------------------
+
+    "stress.page_title": {
+        "EN": "Stress Testing",
+        "PT": "Teste de Estresse",
+        "ES": "Prueba de Estrés",
+    },
+    "stress.title": {
+        "EN": "Stress Testing",
+        "PT": "Teste de Estresse",
+        "ES": "Prueba de Estrés",
+    },
+    "stress.caption": {
+        "EN": "Run interest rate shocks on a single deal or portfolio, run one or multiple scenarios like the sample below",
+        "PT": "Execute choques de taxa de juros em um deal individual ou carteira, execute um ou múltiplos cenários como o exemplo abaixo",
+        "ES": "Ejecute choques de tasa de interés en un deal individual o cartera, ejecute uno o múltiples escenarios como el ejemplo a continuación",
+    },
+    "stress.deal_label": {
+        "EN": "Bloomberg Deal ID",
+        "PT": "ID do Deal Bloomberg",
+        "ES": "ID del Deal Bloomberg",
+    },
+    "stress.scenarios_header": {
+        "EN": "IRRBB Scenarios Sample",
+        "PT": "Amostra de Cenários IRRBB",
+        "ES": "Muestra de Escenarios IRRBB",
+    },
+    "stress.grid_caption": {
+        "EN": "Edit basis-point shifts per tenor and scenario. Sort by any scenario column. Use ↺ Reset to restore tenor order.",
+        "PT": "Edite os choques em pontos-base por vértice e cenário. Ordene por qualquer coluna. Use ↺ Reset para restaurar a ordem dos vértices.",
+        "ES": "Edite los choques en puntos básicos por tenor y escenario. Ordene por cualquier columna. Use ↺ Reset para restaurar el orden de tenores.",
+    },
+    "stress.run_btn": {
+        "EN": "Run Stress Test",
+        "PT": "Executar Teste de Estresse",
+        "ES": "Ejecutar Prueba de Estrés",
+    },
+    "stress.running_spinner": {
+        "EN": "Creating scenarios and pricing...",
+        "PT": "Criando cenários e precificando...",
+        "ES": "Creando escenarios y valorando...",
+    },
+    "stress.base_case": {
+        "EN": "Deal Base Case",
+        "PT": "Caso Base do Deal",
+        "ES": "Caso Base del Deal",
+    },
+    "stress.results_header": {
+        "EN": "Deal Stress Test Results",
+        "PT": "Resultados do Teste de Estresse do Deal",
+        "ES": "Resultados de la Prueba de Estrés del Deal",
+    },
+    "stress.col_scenario": {
+        "EN": "Scenario",
+        "PT": "Cenário",
+        "ES": "Escenario",
+    },
+    "stress.col_shift": {
+        "EN": "Shift (bp)",
+        "PT": "Choque (bp)",
+        "ES": "Choque (bp)",
+    },
+    "stress.col_mtm": {
+        "EN": "MtM (Port. Ccy)",
+        "PT": "MtM (Moeda Carteira)",
+        "ES": "MtM (Mon. Cartera)",
+    },
+    "stress.col_delta_mtm": {
+        "EN": "Delta MtM",
+        "PT": "Delta MtM",
+        "ES": "Delta MtM",
+    },
+    "stress.col_dv01": {
+        "EN": "DV01 (Port. Ccy)",
+        "PT": "DV01 (Moeda Carteira)",
+        "ES": "DV01 (Mon. Cartera)",
+    },
+    "stress.col_pv01": {
+        "EN": "PV01",
+        "PT": "PV01",
+        "ES": "PV01",
+    },
+    "stress.chart_title": {
+        "EN": "MtM Change by Scenario",
+        "PT": "Variação do MtM por Cenário",
+        "ES": "Cambio del MtM por Escenario",
+    },
+    "stress.error": {
+        "EN": "Stress test failed: {error}",
+        "PT": "Teste de estresse falhou: {error}",
+        "ES": "Prueba de estrés falló: {error}",
+    },
+    "stress.no_results": {
+        "EN": "No scenario results returned",
+        "PT": "Nenhum resultado de cenário retornado",
+        "ES": "No se devolvieron resultados de escenarios",
+    },
+    "stress.base_mtm": {
+        "EN": "MtM (Port. Ccy)",
+        "PT": "MtM (Moeda Carteira)",
+        "ES": "MtM (Mon. Cartera)",
+    },
+    "stress.base_dv01": {
+        "EN": "DV01 (Port. Ccy)",
+        "PT": "DV01 (Moeda Carteira)",
+        "ES": "DV01 (Mon. Cartera)",
+    },
+    "stress.base_pv01": {
+        "EN": "Base PV01",
+        "PT": "PV01 Base",
+        "ES": "PV01 Base",
+    },
+    "stress.base_price": {
+        "EN": "Price",
+        "PT": "Preço",
+        "ES": "Precio",
+    },
+    "stress.tab_deal": {
+        "EN": "Single Deal",
+        "PT": "Deal Individual",
+        "ES": "Operación Individual",
+    },
+    "stress.tab_portfolio": {
+        "EN": "Portfolio",
+        "PT": "Carteira",
+        "ES": "Cartera",
+    },
+    "stress.portfolio_label": {
+        "EN": "Portfolio Name",
+        "PT": "Nome da Carteira",
+        "ES": "Nombre de la Cartera",
+    },
+    "stress.portfolio_run_btn": {
+        "EN": "Run Portfolio Stress Test",
+        "PT": "Executar Teste de Estresse da Carteira",
+        "ES": "Ejecutar Prueba de Estrés de la Cartera",
+    },
+    "stress.portfolio_spinner": {
+        "EN": "Creating scenarios and pricing portfolio...",
+        "PT": "Criando cenários e precificando a carteira...",
+        "ES": "Creando escenarios y valorando la cartera...",
+    },
+    "stress.portfolio_base_case": {
+        "EN": "Portfolio Base Case (Aggregated)",
+        "PT": "Caso Base da Carteira (Agregado)",
+        "ES": "Caso Base de la Cartera (Agregado)",
+    },
+    "stress.portfolio_results_header": {
+        "EN": "Portfolio Stress Results",
+        "PT": "Resultados do Teste de Estresse da Carteira",
+        "ES": "Resultados de la Prueba de Estrés de la Cartera",
+    },
+    "stress.portfolio_chart_title": {
+        "EN": "Portfolio MtM Change by Scenario",
+        "PT": "Variação do MtM da Carteira por Cenário",
+        "ES": "Cambio del MtM de la Cartera por Escenario",
+    },
+
+    # ------------------------------------------------------------------
+    # KRR page
+    # ------------------------------------------------------------------
+    "krr.page_title": {
+        "EN": "Key Rate Risk",
+        "PT": "Risco por Vértice",
+        "ES": "Riesgo por Vértice",
+    },
+    "krr.title": {
+        "EN": "📐 Key Rate Risk (KRR)",
+        "PT": "📐 Risco por Vértice (KRR)",
+        "ES": "📐 Riesgo por Vértice (KRR)",
+    },
+    "krr.caption": {
+        "EN": "DV01 decomposition by tenor bucket, per curve, for a single deal or an entire portfolio.",
+        "PT": "Decomposição do DV01 por vértice de prazo, por curva, para um deal ou toda uma carteira.",
+        "ES": "Descomposición del DV01 por vértice de plazo, por curva, para un deal o toda una cartera.",
+    },
+    "krr.krr_def_label": {
+        "EN": "KRR Greek Definition ID",
+        "PT": "ID da Definição KRR (Greek Definition ID)",
+        "ES": "ID de Definición KRR (Greek Definition ID)",
+    },
+    "krr.krr_def_help": {
+        "EN": "Bloomberg MARS: Settings → User Settings → Key Rate Risk → Greek Definition ID",
+        "PT": "Bloomberg MARS: Settings → User Settings → Key Rate Risk → Greek Definition ID",
+        "ES": "Bloomberg MARS: Settings → User Settings → Key Rate Risk → Greek Definition ID",
+    },
+    "krr.deal_label": {
+        "EN": "Deal ID (Bloomberg Deal ID)",
+        "PT": "ID do Deal (Bloomberg Deal ID)",
+        "ES": "ID del Deal (Bloomberg Deal ID)",
+    },
+    "krr.portfolio_label": {
+        "EN": "Portfolio Name",
+        "PT": "Nome da Carteira",
+        "ES": "Nombre de la Cartera",
+    },
+    "krr.run_deal_btn": {
+        "EN": "Run Deal KRR",
+        "PT": "Calcular KRR do Deal",
+        "ES": "Calcular KRR del Deal",
+    },
+    "krr.run_portfolio_btn": {
+        "EN": "Run Portfolio KRR",
+        "PT": "Calcular KRR da Carteira",
+        "ES": "Calcular KRR de la Cartera",
+    },
+    "krr.deal_spinner": {
+        "EN": "Calculating KRR for deal...",
+        "PT": "Calculando KRR do deal...",
+        "ES": "Calculando KRR del deal...",
+    },
+    "krr.portfolio_spinner": {
+        "EN": "Calculating KRR for portfolio...",
+        "PT": "Calculando KRR da carteira...",
+        "ES": "Calculando KRR de la cartera...",
+    },
+    "krr.deal_results_header": {
+        "EN": "Deal KRR Results",
+        "PT": "Resultados KRR do Deal",
+        "ES": "Resultados KRR del Deal",
+    },
+    "krr.portfolio_results_header": {
+        "EN": "Portfolio KRR Results (Aggregated)",
+        "PT": "Resultados KRR da Carteira (Agregado)",
+        "ES": "Resultados KRR de la Cartera (Agregado)",
+    },
+    "krr.chart_title": {
+        "EN": "DV01 by Tenor — {curve_label}",
+        "PT": "DV01 por Vértice — {curve_label}",
+        "ES": "DV01 por Vértice — {curve_label}",
+    },
+    "krr.col_tenor": {
+        "EN": "Tenor",
+        "PT": "Vértice",
+        "ES": "Vértice",
+    },
+    "krr.col_dv01": {
+        "EN": "DV01",
+        "PT": "DV01",
+        "ES": "DV01",
+    },
+    "krr.total_dv01": {
+        "EN": "Total DV01",
+        "PT": "DV01 Total",
+        "ES": "DV01 Total",
+    },
+    "krr.deal_count": {
+        "EN": "Deals",
+        "PT": "Deals",
+        "ES": "Deals",
+    },
+    "krr.no_results": {
+        "EN": "No KRR results to display.",
+        "PT": "Nenhum resultado KRR para exibir.",
+        "ES": "No hay resultados KRR para mostrar.",
+    },
+    "krr.error": {
+        "EN": "KRR error: {error}",
+        "PT": "Erro KRR: {error}",
+        "ES": "Error KRR: {error}",
+    },
+    "krr.deal_header": {
+        "EN": "Deal: {label}",
+        "PT": "Deal: {label}",
+        "ES": "Deal: {label}",
+    },
+    "krr.curve_header": {
+        "EN": "Curve: {label}",
+        "PT": "Curva: {label}",
+        "ES": "Curva: {label}",
+    },
+    # -------------------------------------------------------------------------
+    # Async Swaps — SOFR curve bootstrap
+    # -------------------------------------------------------------------------
+    "async_swaps.page_title": {
+        "EN": "Async Swaps",
+        "PT": "Swaps Assíncronos",
+        "ES": "Swaps Asíncronos",
+    },
+    "async_swaps.title": {
+        "EN": "SOFR Curve Bootstrap",
+        "PT": "Bootstrap da Curva SOFR",
+        "ES": "Bootstrap de la Curva SOFR",
+    },
+    "async_swaps.caption": {
+        "EN": "Build a zero curve from your own par rates. MARS structures SOFR OIS swaps "
+              "concurrently to extract exact payment schedules; Python bootstraps the zero rates.",
+        "PT": "Construa uma curva zero a partir das suas próprias taxas par. O MARS estrutura "
+              "swaps SOFR OIS de forma concorrente para extrair os cronogramas exatos; "
+              "o Python faz o bootstrap das taxas zero.",
+        "ES": "Construya una curva cero a partir de sus propias tasas par. MARS estructura "
+              "swaps SOFR OIS de forma concurrente para extraer los cronogramas exactos; "
+              "Python hace el bootstrap de las tasas cero.",
+    },
+    "async_swaps.section_inputs": {
+        "EN": "Par Rate Inputs",
+        "PT": "Taxas Par de Entrada",
+        "ES": "Tasas Par de Entrada",
+    },
+    "async_swaps.label_valuation_date": {
+        "EN": "Valuation / Effective Date",
+        "PT": "Data de Avaliação / Início",
+        "ES": "Fecha de Valoración / Inicio",
+    },
+    "async_swaps.label_tenor": {
+        "EN": "Tenor",
+        "PT": "Prazo",
+        "ES": "Plazo",
+    },
+    "async_swaps.label_par_rate": {
+        "EN": "Par Rate (%)",
+        "PT": "Taxa Par (%)",
+        "ES": "Tasa Par (%)",
+    },
+    "async_swaps.label_include": {
+        "EN": "Include",
+        "PT": "Incluir",
+        "ES": "Incluir",
+    },
+    "async_swaps.button_bootstrap": {
+        "EN": "Bootstrap Curve",
+        "PT": "Fazer Bootstrap",
+        "ES": "Construir Curva",
+    },
+    "async_swaps.spinner_schedules": {
+        "EN": "Structuring {n} SOFR OIS swaps in parallel via MARS API…",
+        "PT": "Estruturando {n} swaps SOFR OIS em paralelo via MARS API…",
+        "ES": "Estructurando {n} swaps SOFR OIS en paralelo via MARS API…",
+    },
+    "async_swaps.spinner_bootstrap": {
+        "EN": "Bootstrapping zero curve…",
+        "PT": "Calculando curva zero…",
+        "ES": "Calculando curva cero…",
+    },
+    "async_swaps.spinner_s490": {
+        "EN": "Fetching S490 from Bloomberg…",
+        "PT": "Buscando S490 na Bloomberg…",
+        "ES": "Obteniendo S490 de Bloomberg…",
+    },
+    "async_swaps.tab_zero_rates": {
+        "EN": "Zero Rates",
+        "PT": "Taxas Zero",
+        "ES": "Tasas Cero",
+    },
+    "async_swaps.tab_discount_factors": {
+        "EN": "Discount Factors",
+        "PT": "Fatores de Desconto",
+        "ES": "Factores de Descuento",
+    },
+    "async_swaps.tab_detail": {
+        "EN": "Detail Table",
+        "PT": "Tabela Detalhada",
+        "ES": "Tabla Detallada",
+    },
+    "async_swaps.chart_zero_title": {
+        "EN": "SOFR Zero Rates — Bootstrapped vs S490",
+        "PT": "Taxas Zero SOFR — Bootstrap vs S490",
+        "ES": "Tasas Cero SOFR — Bootstrap vs S490",
+    },
+    "async_swaps.chart_df_title": {
+        "EN": "SOFR Discount Factors — Bootstrapped vs S490",
+        "PT": "Fatores de Desconto SOFR — Bootstrap vs S490",
+        "ES": "Factores de Descuento SOFR — Bootstrap vs S490",
+    },
+    "async_swaps.chart_x_label": {
+        "EN": "Maturity (years)",
+        "PT": "Vencimento (anos)",
+        "ES": "Vencimiento (años)",
+    },
+    "async_swaps.chart_y_zero": {
+        "EN": "Zero Rate (%)",
+        "PT": "Taxa Zero (%)",
+        "ES": "Tasa Cero (%)",
+    },
+    "async_swaps.chart_y_df": {
+        "EN": "Discount Factor",
+        "PT": "Fator de Desconto",
+        "ES": "Factor de Descuento",
+    },
+    "async_swaps.legend_bootstrap": {
+        "EN": "Bootstrapped (yours)",
+        "PT": "Bootstrap (seu)",
+        "ES": "Bootstrap (tuyo)",
+    },
+    "async_swaps.legend_par": {
+        "EN": "Par rates (input)",
+        "PT": "Taxas par (entrada)",
+        "ES": "Tasas par (entrada)",
+    },
+    "async_swaps.legend_s490": {
+        "EN": "S490 — Bloomberg",
+        "PT": "S490 — Bloomberg",
+        "ES": "S490 — Bloomberg",
+    },
+    "async_swaps.col_tenor": {
+        "EN": "Tenor",
+        "PT": "Prazo",
+        "ES": "Plazo",
+    },
+    "async_swaps.col_maturity": {
+        "EN": "Maturity Date",
+        "PT": "Data de Vencimento",
+        "ES": "Fecha de Vencimiento",
+    },
+    "async_swaps.col_days": {
+        "EN": "Days",
+        "PT": "Dias",
+        "ES": "Días",
+    },
+    "async_swaps.col_par_rate": {
+        "EN": "Par Rate (%)",
+        "PT": "Taxa Par (%)",
+        "ES": "Tasa Par (%)",
+    },
+    "async_swaps.col_df_ours": {
+        "EN": "P(0,T) Bootstrap",
+        "PT": "P(0,T) Bootstrap",
+        "ES": "P(0,T) Bootstrap",
+    },
+    "async_swaps.col_df_s490": {
+        "EN": "P(0,T) S490",
+        "PT": "P(0,T) S490",
+        "ES": "P(0,T) S490",
+    },
+    "async_swaps.col_z_ours": {
+        "EN": "Zero Rate Bootstrap (%)",
+        "PT": "Taxa Zero Bootstrap (%)",
+        "ES": "Tasa Cero Bootstrap (%)",
+    },
+    "async_swaps.col_z_s490": {
+        "EN": "Zero Rate S490 (%)",
+        "PT": "Taxa Zero S490 (%)",
+        "ES": "Tasa Cero S490 (%)",
+    },
+    "async_swaps.col_diff_z": {
+        "EN": "Diff (bps)",
+        "PT": "Dif. (bps)",
+        "ES": "Dif. (bps)",
+    },
+    "async_swaps.info_idle": {
+        "EN": "Enter par rates and click **Bootstrap Curve** to build your zero curve.",
+        "PT": "Insira as taxas par e clique em **Fazer Bootstrap** para construir sua curva zero.",
+        "ES": "Ingrese las tasas par y haga clic en **Construir Curva** para construir su curva cero.",
+    },
+    "async_swaps.warning_s490_unavailable": {
+        "EN": "S490 comparison unavailable in demo mode.",
+        "PT": "Comparação com S490 indisponível no modo demo.",
+        "ES": "Comparación con S490 no disponible en modo demo.",
+    },
+    "async_swaps.error_structuring": {
+        "EN": "Structuring error: {error}",
+        "PT": "Erro de estruturação: {error}",
+        "ES": "Error de estructuración: {error}",
+    },
+    "async_swaps.error_s490": {
+        "EN": "Could not fetch S490: {error}",
+        "PT": "Não foi possível buscar S490: {error}",
+        "ES": "No se pudo obtener S490: {error}",
+    },
+    "async_swaps.note_methodology": {
+        "EN": "**Methodology** — For each tenor, MARS structures a temporary `IR.OIS.SOFR` swap "
+              "and returns the fixed-leg `AccrualSchedule` (payment dates + ACT/360 year fractions). "
+              "No Bloomberg curve is used in the bootstrap itself. Zero rates use continuous "
+              "compounding ACT/365, the same convention as S490.",
+        "PT": "**Metodologia** — Para cada prazo, o MARS estrutura um swap `IR.OIS.SOFR` temporário "
+              "e retorna o `AccrualSchedule` da perna fixa (datas de pagamento + frações de ano ACT/360). "
+              "Nenhuma curva Bloomberg é usada no bootstrap. As taxas zero usam capitalização contínua "
+              "ACT/365, a mesma convenção do S490.",
+        "ES": "**Metodología** — Para cada plazo, MARS estructura un swap `IR.OIS.SOFR` temporal "
+              "y devuelve el `AccrualSchedule` de la pata fija (fechas de pago + fracciones ACT/360). "
+              "No se usa ninguna curva Bloomberg en el bootstrap. Las tasas cero usan capitalización "
+              "continua ACT/365, la misma convención que S490.",
+    },
+    "async_swaps.docs_title": {
+        "EN": "Documentation",
+        "PT": "Documentação",
+        "ES": "Documentación",
+    },
+    "async_swaps.docs_walkthrough_header": {
+        "EN": "Step-by-Step Walkthrough",
+        "PT": "Passo a Passo",
+        "ES": "Paso a Paso",
+    },
+    "async_swaps.docs_glossary_header": {
+        "EN": "Variable Glossary",
+        "PT": "Glossário de Variáveis",
+        "ES": "Glosario de Variables",
+    },
+    "async_swaps.docs_settlement_header": {
+        "EN": "T+2 Settlement Bridge",
+        "PT": "Ponte de Liquidação T+2",
+        "ES": "Puente de Liquidación T+2",
+    },
+    "async_swaps.docs_math_header": {
+        "EN": "Bootstrap Mathematics — Deriving P(0,T) from NPV = 0",
+        "PT": "Matemática do Bootstrap — Derivando P(0,T) de NPV = 0",
+        "ES": "Matemáticas del Bootstrap — Derivando P(0,T) de NPV = 0",
+    },
+    "async_swaps.docs_interpolation_header": {
+        "EN": "Log-linear Interpolation = Step-Forward (Cont)",
+        "PT": "Interpolação Log-linear = Step-Forward (Cont)",
+        "ES": "Interpolación Log-lineal = Step-Forward (Cont)",
+    },
+    "async_swaps.docs_oneday_header": {
+        "EN": "1D Special Case — Not Bootstrapped as a Swap",
+        "PT": "Caso Especial 1D — Não Bootstrapped como Swap",
+        "ES": "Caso Especial 1D — No Bootstrappeado como Swap",
+    },
+    "async_swaps.docs_zerorates_header": {
+        "EN": "Zero Rate Conversion",
+        "PT": "Conversão de Taxa Zero",
+        "ES": "Conversión de Tasa Cero",
+    },
+    "async_swaps.docs_tickers_header": {
+        "EN": "Par Rate Sources (BLPAPI)",
+        "PT": "Fontes de Taxas Par (BLPAPI)",
+        "ES": "Fuentes de Tasas Par (BLPAPI)",
+    },
+    "async_swaps.docs_calendar_header": {
+        "EN": "Calendar Engine",
+        "PT": "Motor de Calendário",
+        "ES": "Motor de Calendario",
+    },
+    "async_swaps.docs_calendar_body": {
+        "EN": (
+            "In **live mode**, each tenor's fixed-leg accrual schedule is obtained by structuring "
+            "a temporary `IR.OIS.SOFR` deal via the Bloomberg MARS API. All 33 tenor calls run "
+            "concurrently via `asyncio.gather` — MARS is used purely as a **calendar engine** "
+            "(no pricing, no Bloomberg curve). "
+            "In **demo mode**, schedules are loaded from a pre-saved snapshot "
+            "(`demo_data/sofr_schedules.json`) — no API calls required."
+        ),
+        "PT": (
+            "No **modo ao vivo**, o cronograma de acumulação da perna fixa de cada prazo é obtido "
+            "estruturando um deal temporário `IR.OIS.SOFR` via MARS API da Bloomberg. Todas as 33 "
+            "chamadas de prazo são executadas simultaneamente via `asyncio.gather` — o MARS é usado "
+            "puramente como um **motor de calendário** (sem precificação, sem curva Bloomberg). "
+            "No **modo demo**, os cronogramas são carregados de um snapshot pré-salvo "
+            "(`demo_data/sofr_schedules.json`) — sem chamadas de API."
+        ),
+        "ES": (
+            "En **modo en vivo**, el cronograma de acumulación de la pata fija de cada plazo se "
+            "obtiene estructurando un deal temporal `IR.OIS.SOFR` a través de la MARS API de Bloomberg. "
+            "Las 33 llamadas de plazo se ejecutan concurrentemente mediante `asyncio.gather` — MARS se "
+            "usa puramente como un **motor de calendario** (sin valoración, sin curva Bloomberg). "
+            "En **modo demo**, los cronogramas se cargan desde un snapshot pre-guardado "
+            "(`demo_data/sofr_schedules.json`) — sin llamadas a la API."
+        ),
+    },
 }
 
 

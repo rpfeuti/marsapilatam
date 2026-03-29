@@ -34,7 +34,7 @@ from datetime import date
 
 import streamlit as st
 
-from bloomberg.exceptions import IpNotWhitelistedError, PricingError, StructuringError
+from bloomberg.exceptions import IpNotWhitelistedError, MarsApiError, PricingError, StructuringError
 from configs.derivatives_config import (
     FX_BARRIER_DIRS_KI,
     FX_BARRIER_DIRS_KO,
@@ -77,7 +77,7 @@ if IS_DEMO:
 # Cached service
 # ---------------------------------------------------------------------------
 
-_SVC_VERSION = "1"
+_SVC_VERSION = "2"
 
 
 @st.cache_resource(show_spinner=t("deriv.spinner_session"))
@@ -245,20 +245,39 @@ def _render_vanilla_form(tab_key: str) -> tuple[DerivativeQuery | None, float]:
             key=f"{tab_key}_price_btn",
         )
 
+        if not IS_DEMO:
+            save_clicked = st.button(
+                t("common.button_save_deal"), use_container_width=True,
+                key=f"{tab_key}_save_btn",
+            )
+        else:
+            save_clicked = False
+
+        _ss_deal_id = f"_saved_deal_id_{tab_key}"
+        _saved_id = st.session_state.get(_ss_deal_id)
+        if _saved_id:
+            st.success(t("common.save_success", deal_id=_saved_id))
+
         if IS_DEMO:
             st.divider()
             st.markdown(t("common.demo_cta_sidebar"))
 
-    if not price_clicked:
-        return None, spot
-
-    return DerivativeQuery(
+    query = DerivativeQuery(
         key=spec_key, product_type="FX_VANILLA",
         direction=direction, call_put=call_put,
         notional=notional, strike=strike,
         expiry_date=expiry, valuation_date=valuation_date,
         curve_date=curve_date, exercise_type=exercise_type,
-    ), spot
+    )
+
+    if save_clicked:
+        _save_derivative(query, _ss_deal_id)
+        return None, spot
+
+    if not price_clicked:
+        return None, spot
+
+    return query, spot
 
 
 # ---------------------------------------------------------------------------
@@ -358,14 +377,24 @@ def _render_rr_form(tab_key: str) -> tuple[DerivativeQuery | None, float]:
             key=f"{tab_key}_price_btn",
         )
 
+        if not IS_DEMO:
+            save_clicked = st.button(
+                t("common.button_save_deal"), use_container_width=True,
+                key=f"{tab_key}_save_btn",
+            )
+        else:
+            save_clicked = False
+
+        _ss_deal_id = f"_saved_deal_id_{tab_key}"
+        _saved_id = st.session_state.get(_ss_deal_id)
+        if _saved_id:
+            st.success(t("common.save_success", deal_id=_saved_id))
+
         if IS_DEMO:
             st.divider()
             st.markdown(t("common.demo_cta_sidebar"))
 
-    if not price_clicked:
-        return None, spot
-
-    return DerivativeQuery(
+    query = DerivativeQuery(
         key=spec_key, product_type="FX_RR",
         direction=direction, call_put=call_put,
         notional=notional, strike=strike1,
@@ -373,7 +402,16 @@ def _render_rr_form(tab_key: str) -> tuple[DerivativeQuery | None, float]:
         curve_date=curve_date, exercise_type=exercise_type,
         leg2_call_put=opposite_cp, leg2_strike=strike2,
         leg2_direction=opposite_dir,
-    ), spot
+    )
+
+    if save_clicked:
+        _save_derivative(query, _ss_deal_id)
+        return None, spot
+
+    if not price_clicked:
+        return None, spot
+
+    return query, spot
 
 
 # ---------------------------------------------------------------------------
@@ -462,14 +500,24 @@ def _render_barrier_form(tab_key: str) -> tuple[DerivativeQuery | None, float]:
             key=f"{tab_key}_price_btn",
         )
 
+        if not IS_DEMO:
+            save_clicked = st.button(
+                t("common.button_save_deal"), use_container_width=True,
+                key=f"{tab_key}_save_btn",
+            )
+        else:
+            save_clicked = False
+
+        _ss_deal_id = f"_saved_deal_id_{tab_key}"
+        _saved_id = st.session_state.get(_ss_deal_id)
+        if _saved_id:
+            st.success(t("common.save_success", deal_id=_saved_id))
+
         if IS_DEMO:
             st.divider()
             st.markdown(t("common.demo_cta_sidebar"))
 
-    if not price_clicked:
-        return None, spot
-
-    return DerivativeQuery(
+    query = DerivativeQuery(
         key=spec_key, product_type=product_type,
         direction=direction, call_put=call_put,
         notional=notional, strike=strike,
@@ -477,12 +525,33 @@ def _render_barrier_form(tab_key: str) -> tuple[DerivativeQuery | None, float]:
         curve_date=curve_date,
         barrier_direction=barrier_dir, barrier_level=barrier_level,
         barrier_type=barrier_type,
-    ), spot
+    )
+
+    if save_clicked:
+        _save_derivative(query, _ss_deal_id)
+        return None, spot
+
+    if not price_clicked:
+        return None, spot
+
+    return query, spot
 
 
 # ---------------------------------------------------------------------------
 # Error handler wrapper
 # ---------------------------------------------------------------------------
+
+
+def _save_derivative(query: DerivativeQuery, ss_key: str) -> None:
+    """Save deal on Bloomberg and store the ID in session state, then rerun."""
+    try:
+        svc = _get_service()
+        with st.spinner(t("common.spinner_saving")):
+            deal_id = svc.save_deal(query)
+        st.session_state[ss_key] = deal_id
+        st.rerun()
+    except (StructuringError, MarsApiError) as e:
+        st.error(t("common.save_error", error=e))
 
 
 def _price_and_render(tab_key: str, query: DerivativeQuery | None, spot: float = 0.0) -> None:
@@ -531,3 +600,126 @@ with tab_rr:
 if IS_DEMO:
     st.divider()
     st.info(t("common.demo_cta_bottom"), icon="ℹ️")
+
+# ---------------------------------------------------------------------------
+# MARS API capabilities reference
+# ---------------------------------------------------------------------------
+
+_API_DOCS = """
+## Bloomberg MARS API — FX Derivatives Pricing & Greeks
+
+MARS API provides programmatic access to Bloomberg's OVML pricing engine — the same engine that
+powers the OVML Terminal function and Bloomberg's Derivative Toolkit (DTK). OVML covers a
+comprehensive spectrum of FX derivatives, from vanilla European and American options through to
+barrier, digital, and Asian structures. The engine uses consistent volatility surface construction
+and a single market data snapshot for all calculations, which eliminates pricing inconsistencies
+that arise when combining results from multiple vendors or models.
+
+The MARS Multi-Asset Risk System is built on Bloomberg's world-class pricing library and uses one
+centralized market data and settings framework. This means that FX option Greeks computed via
+MARS API are fully consistent with swap DV01s, equity deltas, and other risk metrics across the
+same portfolio — enabling accurate cross-asset risk aggregation at the book level.
+
+### Key capabilities
+
+- **Structure in-memory** — create any FX vanilla or exotic option with full parameter override,
+  without saving to the Bloomberg Terminal or consuming any deal storage quota
+- **Price with OVML** — mark-to-market, clean price (premium as % of notional), and intrinsic value
+- **Full Greeks suite** — Delta, Gamma, Vega, Theta, Rho — consistent with Terminal OVML outputs
+- **Volatility surface** — Bloomberg constructs and applies the vol surface automatically;
+  no manual surface input required
+- **Exotic structures** — barrier options (knock-in / knock-out), digital / binary options,
+  Asian options, compound options, and more via the same endpoint
+- **Multi-currency** — any Bloomberg-supported currency pair
+- **Security-level overrides** — override strike, notional, expiry, barrier level, and vol
+  surface at the security level for what-if analysis
+
+### FX derivative types (sample)
+
+| Deal type | Description |
+|---|---|
+| `FX.VANILLAOPT` | European or American call / put on a currency pair |
+| `FX.BARRIER` | Knock-in or knock-out single barrier option |
+| `FX.DOUBLEBAR` | Double barrier option (knock-in / knock-out both directions) |
+| `FX.DIGITAL` | Cash-or-nothing or asset-or-nothing digital option |
+| `FX.ASIAN` | Asian (average rate) option |
+| `FX.COMPOUND` | Option on an option |
+| `FX.FORWARD` | FX forward contract |
+| `FX.SWAP` | FX swap (near leg + far leg) |
+
+### Workflow
+
+**Step 1 — Structure the option in-memory**
+
+**`POST /marswebapi/v1/deals/temporary`**
+
+```json
+{
+  "tail": "FX.VANILLAOPT",
+  "dealStructureOverride": {
+    "param": [
+      { "name": "CallPut",        "value": { "selectionVal": { "value": "Call" } } },
+      { "name": "BuySell",        "value": { "selectionVal": { "value": "Buy" } } },
+      { "name": "Notional",       "value": { "doubleVal": 1000000 } },
+      { "name": "StrikeRate",     "value": { "doubleVal": 1.12 } },
+      { "name": "ExpiryDate",     "value": { "stringVal": "2026-09-29" } },
+      { "name": "UnderlyingPair", "value": { "stringVal": "EURUSD" } },
+      { "name": "Exercise",       "value": { "selectionVal": { "value": "European" } } }
+    ]
+  }
+}
+```
+
+Returns a temporary `bloombergDealId` for use in pricing. The deal is held in-memory only.
+
+---
+
+**Step 2 — Price and compute Greeks**
+
+**`POST /marswebapi/v1/securitiesPricing`**
+
+```json
+{
+  "securitiesPricingRequest": {
+    "pricingParameter": {
+      "valuationDate": "2026-03-29",
+      "requestedField": ["MktVal", "MktPx", "Delta", "Gamma", "Vega", "Theta", "Rho"]
+    },
+    "security": [
+      { "identifier": { "bloombergDealId": "<temp-deal-id>" }, "position": 1 }
+    ]
+  }
+}
+```
+
+### Greeks reference
+
+| Greek | Field name | Description |
+|---|---|---|
+| Delta | `Delta` | Rate of change of option MktVal with respect to a 1% move in the underlying spot rate |
+| Gamma | `Gamma` | Rate of change of Delta with respect to a 1% move in spot — convexity of the option |
+| Vega | `Vega` | Sensitivity to a 1% (100bp) change in implied volatility |
+| Theta | `Theta` | Time decay — change in MktVal per calendar day as expiry approaches |
+| Rho | `Rho` | Sensitivity to a 1bp parallel shift in interest rates |
+
+### Security-level overrides for what-if analysis
+
+Override parameters at the individual security level without re-structuring the deal:
+
+```json
+"security": [
+  {
+    "identifier": { "bloombergDealId": "<temp-deal-id>" },
+    "position": 1,
+    "marketPrice": 1.15
+  }
+]
+```
+
+Market data overrides (IR discount curve, vol cube) can also be specified at the security level
+to analyse how the option price and Greeks change under different market data assumptions.
+"""
+
+st.divider()
+with st.expander("About the MARS API", expanded=True):
+    st.markdown(_API_DOCS)
