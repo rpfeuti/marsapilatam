@@ -51,5 +51,6 @@ st.markdown(
     f"**Resources**\n\n"
     "- Bloomberg Terminal: `BDEV<GO>`, `RISK<GO>`, `EAPI<GO>`, `SWPM<GO>`, `OVML<GO>`, `ICVS<GO>`, `DLIB<GO>`\n"
     "- [Bloomberg MARS API documentation]"
-    "(https://developer.bloomberg.com/pages/apis/marsapi/reference)"
+    "(https://developer.bloomberg.com/pages/apis/marsapi/reference)\n"
+    "- [Source code on GitHub](https://github.com/rpfeuti/marsapilatam)"
 )
