@@ -15,7 +15,7 @@ The script refreshes:
   - demo_data/swaps/            (6 OIS + 6 XCCY, 5Y tenor)
   - demo_data/fx_derivatives/   (4 product types × 6 currency pairs)
   - demo_data/fx_derivatives/fx_rates.json
-  - demo_data/sofr_schedules.json
+  - demo_data/bootstrap/sofr_schedules.json
 """
 
 from __future__ import annotations
@@ -57,7 +57,7 @@ from services.swaps_service import SwapLiveRepository, SwapQuery  # noqa: E402
 DEMO_CURVES_DIR  = PROJECT_ROOT / "demo_data" / "curves"
 DEMO_SWAPS_DIR   = PROJECT_ROOT / "demo_data" / "swaps"
 DEMO_FX_DIR      = PROJECT_ROOT / "demo_data" / "fx_derivatives"
-SOFR_SCHED_PATH  = PROJECT_ROOT / "demo_data" / "sofr_schedules.json"
+SOFR_SCHED_PATH  = PROJECT_ROOT / "demo_data" / "bootstrap" / "sofr_schedules.json"
 
 
 # ---------------------------------------------------------------------------

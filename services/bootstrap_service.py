@@ -545,7 +545,7 @@ class BootstrapService:
       - Calls bootstrap_zero_curve() with user par rates + MARS-sourced schedules.
 
     Demo mode:
-      - Loads pre-saved schedules from demo_data/sofr_schedules.json (no API calls).
+      - Loads pre-saved schedules from demo_data/bootstrap/sofr_schedules.json (no API calls).
       - Bootstrap uses the same algorithm as live mode.
     """
 
@@ -616,11 +616,11 @@ class BootstrapService:
         tenors:         list[str],
         valuation_date: date,
     ) -> dict[str, TenorSchedule]:
-        """Load pre-saved SOFR OIS schedules from demo_data/sofr_schedules.json."""
+        """Load pre-saved SOFR OIS schedules from demo_data/bootstrap/sofr_schedules.json."""
         import json
         from pathlib import Path
 
-        path = Path(__file__).parent.parent / "demo_data" / "sofr_schedules.json"
+        path = Path(__file__).parent.parent / "demo_data" / "bootstrap" / "sofr_schedules.json"
         raw  = json.loads(path.read_text())["schedules"]
 
         result: dict[str, TenorSchedule] = {}

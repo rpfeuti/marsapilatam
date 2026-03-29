@@ -1564,7 +1564,7 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
             "concurrently via `asyncio.gather` — MARS is used purely as a **calendar engine** "
             "(no pricing, no Bloomberg curve). "
             "In **demo mode**, schedules are loaded from a pre-saved snapshot "
-            "(`demo_data/sofr_schedules.json`) — no API calls required."
+            "(`demo_data/bootstrap/sofr_schedules.json`) — no API calls required."
         ),
         "PT": (
             "No **modo ao vivo**, o cronograma de acumulação da perna fixa de cada prazo é obtido "
@@ -1572,7 +1572,7 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
             "chamadas de prazo são executadas simultaneamente via `asyncio.gather` — o MARS é usado "
             "puramente como um **motor de calendário** (sem precificação, sem curva Bloomberg). "
             "No **modo demo**, os cronogramas são carregados de um snapshot pré-salvo "
-            "(`demo_data/sofr_schedules.json`) — sem chamadas de API."
+            "(`demo_data/bootstrap/sofr_schedules.json`) — sem chamadas de API."
         ),
         "ES": (
             "En **modo en vivo**, el cronograma de acumulación de la pata fija de cada plazo se "
@@ -1580,7 +1580,7 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
             "Las 33 llamadas de plazo se ejecutan concurrentemente mediante `asyncio.gather` — MARS se "
             "usa puramente como un **motor de calendario** (sin valoración, sin curva Bloomberg). "
             "En **modo demo**, los cronogramas se cargan desde un snapshot pre-guardado "
-            "(`demo_data/sofr_schedules.json`) — sin llamadas a la API."
+            "(`demo_data/bootstrap/sofr_schedules.json`) — sin llamadas a la API."
         ),
     },
 }
