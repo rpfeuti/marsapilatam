@@ -109,8 +109,8 @@ _SOFR_OIS_TICKERS: dict[str, str] = {
 # Ordered tenor list — same sequence as YCSW0490 plus overnight anchor.
 SOFR_TENORS: list[str] = list(_SOFR_OIS_TICKERS.keys())
 
-# Live market snapshot (2026-03-29) used as demo fallback and editor defaults.
-# Source: YCSW0490 INDX_MEMBERS PX_LAST + SOFRRATE Index PX_LAST.
+# Live market snapshot (2026-03-27) used as demo fallback and editor defaults.
+# Source: YCSW0490 INDX_MEMBERS bdh PX_LAST 2026-03-27 + SOFRRATE Index (1D from prior day).
 SOFR_DEFAULT_PAR_RATES: dict[str, float] = {
     "1D":  3.6500,
     "1W":  3.6694,
@@ -133,10 +133,10 @@ SOFR_DEFAULT_PAR_RATES: dict[str, float] = {
     "3Y":  3.6823,
     "4Y":  3.6895,
     "5Y":  3.7260,
-    "6Y":  3.7178,
-    "7Y":  3.7634,
-    "8Y":  3.8069,
-    "9Y":  3.8501,
+    "6Y":  3.7718,
+    "7Y":  3.8185,
+    "8Y":  3.8627,
+    "9Y":  3.9060,
     "10Y": 3.9488,
     "12Y": 4.0308,
     "15Y": 4.1319,

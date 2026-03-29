@@ -51,7 +51,7 @@ from configs.curves_config import (
     CurveType,
 )
 from configs.i18n import t
-from configs.settings import settings
+from configs.settings import DEMO_DATE, settings
 from services.curves_service import CurveQuery, XMarketCurveService
 
 # ---------------------------------------------------------------------------
@@ -156,7 +156,7 @@ with col_dates:
     st.markdown(f"**{t('curves.curve_id_caption', curve_id=curve_id)}**")
 
     as_of = _lrow(t("curves.curve_date_label")).date_input(
-        "", value=date(2026, 3, 18) if IS_DEMO else date.today(),
+        "", value=DEMO_DATE if IS_DEMO else date.today(),
         disabled=IS_DEMO, key="curves_as_of", label_visibility="collapsed",
     )
     market_date = as_of

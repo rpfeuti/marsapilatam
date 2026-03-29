@@ -26,6 +26,8 @@ IN THE SOFTWARE.
 
 from __future__ import annotations
 
+from datetime import date
+
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -60,3 +62,7 @@ class Settings(BaseSettings):
 
 
 settings = Settings()  # type: ignore[call-arg]
+
+# Reference date used for all demo-mode displays.
+# All demo_data/ snapshots were captured for this date.
+DEMO_DATE = date(2026, 3, 27)

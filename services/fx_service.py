@@ -42,7 +42,6 @@ import logging
 import time
 from pathlib import Path
 
-from bloomberg.blpapi_client import BlpapiClient
 from bloomberg.exceptions import BlpapiError
 from configs.settings import settings
 
@@ -101,7 +100,7 @@ class FxRateService:
     without any network activity.
     """
 
-    def __init__(self, client: BlpapiClient | None = None) -> None:
+    def __init__(self, client: object | None = None) -> None:
         self._client     = client
         self._rates:     dict[str, float] = {}
         self._fetched_at: float           = 0.0
@@ -148,6 +147,7 @@ class FxRateService:
         if settings.demo_mode:
             return cls(client=None)
         try:
+            from bloomberg.blpapi_client import BlpapiClient
             client = BlpapiClient(host=settings.blpapi_host, port=settings.blpapi_port)
             return cls(client=client)
         except BlpapiError as exc:

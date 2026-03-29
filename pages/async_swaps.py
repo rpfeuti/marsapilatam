@@ -42,7 +42,7 @@ import streamlit as st
 from bloomberg.exceptions import IpNotWhitelistedError, MarsApiError, StructuringError
 from configs.curves_config import CurveType
 from configs.i18n import t
-from configs.settings import settings
+from configs.settings import DEMO_DATE, settings
 from services.bootstrap_service import (
     SOFR_DEFAULT_PAR_RATES,
     SOFR_TENORS,
@@ -96,7 +96,7 @@ col_date, _, _ = st.columns(3)
 with col_date:
     valuation_date: date = st.date_input(
         t("async_swaps.label_valuation_date"),
-        value=date(2026, 3, 27) if IS_DEMO else date.today(),
+        value=DEMO_DATE if IS_DEMO else date.today(),
         disabled=IS_DEMO,
     )  # type: ignore[assignment]
 

@@ -49,7 +49,12 @@ import logging
 from datetime import date
 from typing import Any
 
-import blpapi
+try:
+    import blpapi
+    _BLPAPI_AVAILABLE = True
+except ImportError:
+    blpapi = None  # type: ignore[assignment]
+    _BLPAPI_AVAILABLE = False
 
 from bloomberg.exceptions import BlpapiError
 
@@ -153,6 +158,11 @@ class BlpapiClient:
     """
 
     def __init__(self, host: str = _DEFAULT_HOST, port: int = _DEFAULT_PORT) -> None:
+        if not _BLPAPI_AVAILABLE:
+            raise BlpapiError(
+                "blpapi package is not installed. "
+                "BlpapiClient is not available in this environment."
+            )
         opts = blpapi.SessionOptions()
         opts.setServerAddress(host, port, 0)
         self._session = blpapi.Session(opts)

@@ -7,7 +7,7 @@
         "accrual_end": "2026-04-01",
         "payment_date": "2026-04-03",
         "day_count": 1,
-        "year_fraction": 0.00277778
+        "year_fraction": 0.002777777777777778
       }
     ],
     "1W": [
@@ -16,7 +16,7 @@
         "accrual_end": "2026-04-07",
         "payment_date": "2026-04-09",
         "day_count": 7,
-        "year_fraction": 0.01944444
+        "year_fraction": 0.019444444444444445
       }
     ],
     "2W": [
@@ -25,7 +25,7 @@
         "accrual_end": "2026-04-14",
         "payment_date": "2026-04-16",
         "day_count": 14,
-        "year_fraction": 0.03888889
+        "year_fraction": 0.03888888888888889
       }
     ],
     "3W": [
@@ -34,7 +34,7 @@
         "accrual_end": "2026-04-21",
         "payment_date": "2026-04-23",
         "day_count": 21,
-        "year_fraction": 0.05833333
+        "year_fraction": 0.058333333333333334
       }
     ],
     "1M": [
@@ -43,7 +43,7 @@
         "accrual_end": "2026-04-30",
         "payment_date": "2026-05-04",
         "day_count": 30,
-        "year_fraction": 0.08333333
+        "year_fraction": 0.08333333333333333
       }
     ],
     "2M": [
@@ -52,7 +52,7 @@
         "accrual_end": "2026-05-29",
         "payment_date": "2026-06-02",
         "day_count": 59,
-        "year_fraction": 0.16388889
+        "year_fraction": 0.1638888888888889
       }
     ],
     "3M": [
@@ -61,7 +61,7 @@
         "accrual_end": "2026-06-30",
         "payment_date": "2026-07-02",
         "day_count": 91,
-        "year_fraction": 0.25277778
+        "year_fraction": 0.25277777777777777
       }
     ],
     "4M": [
@@ -70,7 +70,7 @@
         "accrual_end": "2026-07-31",
         "payment_date": "2026-08-04",
         "day_count": 122,
-        "year_fraction": 0.33888889
+        "year_fraction": 0.3388888888888889
       }
     ],
     "5M": [
@@ -88,7 +88,7 @@
         "accrual_end": "2026-09-30",
         "payment_date": "2026-10-02",
         "day_count": 183,
-        "year_fraction": 0.50833333
+        "year_fraction": 0.5083333333333333
       }
     ],
     "7M": [
@@ -97,7 +97,7 @@
         "accrual_end": "2026-10-30",
         "payment_date": "2026-11-03",
         "day_count": 213,
-        "year_fraction": 0.59166667
+        "year_fraction": 0.5916666666666667
       }
     ],
     "8M": [
@@ -106,7 +106,7 @@
         "accrual_end": "2026-11-30",
         "payment_date": "2026-12-02",
         "day_count": 244,
-        "year_fraction": 0.67777778
+        "year_fraction": 0.6777777777777778
       }
     ],
     "9M": [
@@ -115,7 +115,7 @@
         "accrual_end": "2026-12-31",
         "payment_date": "2027-01-05",
         "day_count": 275,
-        "year_fraction": 0.76388889
+        "year_fraction": 0.7638888888888888
       }
     ],
     "10M": [
@@ -124,7 +124,7 @@
         "accrual_end": "2027-01-29",
         "payment_date": "2027-02-02",
         "day_count": 304,
-        "year_fraction": 0.84444444
+        "year_fraction": 0.8444444444444444
       }
     ],
     "11M": [
@@ -133,7 +133,7 @@
         "accrual_end": "2027-02-26",
         "payment_date": "2027-03-02",
         "day_count": 332,
-        "year_fraction": 0.92222222
+        "year_fraction": 0.9222222222222223
       }
     ],
     "1Y": [
@@ -142,7 +142,7 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       }
     ],
     "18M": [
@@ -151,14 +151,14 @@
         "accrual_end": "2026-09-30",
         "payment_date": "2026-10-02",
         "day_count": 183,
-        "year_fraction": 0.50833333
+        "year_fraction": 0.5083333333333333
       },
       {
         "accrual_start": "2026-09-30",
         "accrual_end": "2027-09-30",
         "payment_date": "2027-10-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       }
     ],
     "2Y": [
@@ -167,14 +167,14 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       }
     ],
     "3Y": [
@@ -183,21 +183,21 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       }
     ],
     "4Y": [
@@ -206,28 +206,28 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       }
     ],
     "5Y": [
@@ -236,35 +236,35 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2030-03-29",
         "accrual_end": "2031-03-31",
         "payment_date": "2031-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       }
     ],
     "6Y": [
@@ -273,42 +273,42 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2030-03-29",
         "accrual_end": "2031-03-31",
         "payment_date": "2031-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2031-03-31",
         "accrual_end": "2032-03-31",
         "payment_date": "2032-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       }
     ],
     "7Y": [
@@ -317,49 +317,49 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2030-03-29",
         "accrual_end": "2031-03-31",
         "payment_date": "2031-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2031-03-31",
         "accrual_end": "2032-03-31",
         "payment_date": "2032-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2032-03-31",
         "accrual_end": "2033-03-31",
         "payment_date": "2033-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       }
     ],
     "8Y": [
@@ -368,56 +368,56 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2030-03-29",
         "accrual_end": "2031-03-31",
         "payment_date": "2031-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2031-03-31",
         "accrual_end": "2032-03-31",
         "payment_date": "2032-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2032-03-31",
         "accrual_end": "2033-03-31",
         "payment_date": "2033-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2033-03-31",
         "accrual_end": "2034-03-31",
         "payment_date": "2034-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       }
     ],
     "9Y": [
@@ -426,63 +426,63 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2030-03-29",
         "accrual_end": "2031-03-31",
         "payment_date": "2031-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2031-03-31",
         "accrual_end": "2032-03-31",
         "payment_date": "2032-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2032-03-31",
         "accrual_end": "2033-03-31",
         "payment_date": "2033-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2033-03-31",
         "accrual_end": "2034-03-31",
         "payment_date": "2034-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2034-03-31",
         "accrual_end": "2035-03-30",
         "payment_date": "2035-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       }
     ],
     "10Y": [
@@ -491,70 +491,70 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2030-03-29",
         "accrual_end": "2031-03-31",
         "payment_date": "2031-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2031-03-31",
         "accrual_end": "2032-03-31",
         "payment_date": "2032-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2032-03-31",
         "accrual_end": "2033-03-31",
         "payment_date": "2033-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2033-03-31",
         "accrual_end": "2034-03-31",
         "payment_date": "2034-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2034-03-31",
         "accrual_end": "2035-03-30",
         "payment_date": "2035-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2035-03-30",
         "accrual_end": "2036-03-31",
         "payment_date": "2036-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       }
     ],
     "12Y": [
@@ -563,84 +563,84 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2030-03-29",
         "accrual_end": "2031-03-31",
         "payment_date": "2031-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2031-03-31",
         "accrual_end": "2032-03-31",
         "payment_date": "2032-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2032-03-31",
         "accrual_end": "2033-03-31",
         "payment_date": "2033-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2033-03-31",
         "accrual_end": "2034-03-31",
         "payment_date": "2034-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2034-03-31",
         "accrual_end": "2035-03-30",
         "payment_date": "2035-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2035-03-30",
         "accrual_end": "2036-03-31",
         "payment_date": "2036-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2036-03-31",
         "accrual_end": "2037-03-31",
         "payment_date": "2037-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2037-03-31",
         "accrual_end": "2038-03-31",
         "payment_date": "2038-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       }
     ],
     "15Y": [
@@ -649,105 +649,105 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2030-03-29",
         "accrual_end": "2031-03-31",
         "payment_date": "2031-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2031-03-31",
         "accrual_end": "2032-03-31",
         "payment_date": "2032-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2032-03-31",
         "accrual_end": "2033-03-31",
         "payment_date": "2033-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2033-03-31",
         "accrual_end": "2034-03-31",
         "payment_date": "2034-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2034-03-31",
         "accrual_end": "2035-03-30",
         "payment_date": "2035-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2035-03-30",
         "accrual_end": "2036-03-31",
         "payment_date": "2036-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2036-03-31",
         "accrual_end": "2037-03-31",
         "payment_date": "2037-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2037-03-31",
         "accrual_end": "2038-03-31",
         "payment_date": "2038-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2038-03-31",
         "accrual_end": "2039-03-31",
         "payment_date": "2039-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2039-03-31",
         "accrual_end": "2040-03-30",
         "payment_date": "2040-04-03",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2040-03-30",
         "accrual_end": "2041-03-29",
         "payment_date": "2041-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       }
     ],
     "20Y": [
@@ -756,140 +756,140 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2030-03-29",
         "accrual_end": "2031-03-31",
         "payment_date": "2031-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2031-03-31",
         "accrual_end": "2032-03-31",
         "payment_date": "2032-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2032-03-31",
         "accrual_end": "2033-03-31",
         "payment_date": "2033-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2033-03-31",
         "accrual_end": "2034-03-31",
         "payment_date": "2034-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2034-03-31",
         "accrual_end": "2035-03-30",
         "payment_date": "2035-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2035-03-30",
         "accrual_end": "2036-03-31",
         "payment_date": "2036-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2036-03-31",
         "accrual_end": "2037-03-31",
         "payment_date": "2037-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2037-03-31",
         "accrual_end": "2038-03-31",
         "payment_date": "2038-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2038-03-31",
         "accrual_end": "2039-03-31",
         "payment_date": "2039-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2039-03-31",
         "accrual_end": "2040-03-30",
         "payment_date": "2040-04-03",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2040-03-30",
         "accrual_end": "2041-03-29",
         "payment_date": "2041-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2041-03-29",
         "accrual_end": "2042-03-31",
         "payment_date": "2042-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2042-03-31",
         "accrual_end": "2043-03-31",
         "payment_date": "2043-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2043-03-31",
         "accrual_end": "2044-03-31",
         "payment_date": "2044-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2044-03-31",
         "accrual_end": "2045-03-31",
         "payment_date": "2045-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2045-03-31",
         "accrual_end": "2046-03-30",
         "payment_date": "2046-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       }
     ],
     "25Y": [
@@ -898,175 +898,175 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2030-03-29",
         "accrual_end": "2031-03-31",
         "payment_date": "2031-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2031-03-31",
         "accrual_end": "2032-03-31",
         "payment_date": "2032-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2032-03-31",
         "accrual_end": "2033-03-31",
         "payment_date": "2033-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2033-03-31",
         "accrual_end": "2034-03-31",
         "payment_date": "2034-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2034-03-31",
         "accrual_end": "2035-03-30",
         "payment_date": "2035-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2035-03-30",
         "accrual_end": "2036-03-31",
         "payment_date": "2036-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2036-03-31",
         "accrual_end": "2037-03-31",
         "payment_date": "2037-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2037-03-31",
         "accrual_end": "2038-03-31",
         "payment_date": "2038-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2038-03-31",
         "accrual_end": "2039-03-31",
         "payment_date": "2039-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2039-03-31",
         "accrual_end": "2040-03-30",
         "payment_date": "2040-04-03",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2040-03-30",
         "accrual_end": "2041-03-29",
         "payment_date": "2041-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2041-03-29",
         "accrual_end": "2042-03-31",
         "payment_date": "2042-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2042-03-31",
         "accrual_end": "2043-03-31",
         "payment_date": "2043-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2043-03-31",
         "accrual_end": "2044-03-31",
         "payment_date": "2044-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2044-03-31",
         "accrual_end": "2045-03-31",
         "payment_date": "2045-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2045-03-31",
         "accrual_end": "2046-03-30",
         "payment_date": "2046-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2046-03-30",
         "accrual_end": "2047-03-29",
         "payment_date": "2047-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2047-03-29",
         "accrual_end": "2048-03-31",
         "payment_date": "2048-04-02",
         "day_count": 368,
-        "year_fraction": 1.02222222
+        "year_fraction": 1.0222222222222221
       },
       {
         "accrual_start": "2048-03-31",
         "accrual_end": "2049-03-31",
         "payment_date": "2049-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2049-03-31",
         "accrual_end": "2050-03-31",
         "payment_date": "2050-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2050-03-31",
         "accrual_end": "2051-03-31",
         "payment_date": "2051-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       }
     ],
     "30Y": [
@@ -1075,210 +1075,210 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2030-03-29",
         "accrual_end": "2031-03-31",
         "payment_date": "2031-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2031-03-31",
         "accrual_end": "2032-03-31",
         "payment_date": "2032-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2032-03-31",
         "accrual_end": "2033-03-31",
         "payment_date": "2033-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2033-03-31",
         "accrual_end": "2034-03-31",
         "payment_date": "2034-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2034-03-31",
         "accrual_end": "2035-03-30",
         "payment_date": "2035-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2035-03-30",
         "accrual_end": "2036-03-31",
         "payment_date": "2036-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2036-03-31",
         "accrual_end": "2037-03-31",
         "payment_date": "2037-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2037-03-31",
         "accrual_end": "2038-03-31",
         "payment_date": "2038-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2038-03-31",
         "accrual_end": "2039-03-31",
         "payment_date": "2039-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2039-03-31",
         "accrual_end": "2040-03-30",
         "payment_date": "2040-04-03",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2040-03-30",
         "accrual_end": "2041-03-29",
         "payment_date": "2041-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2041-03-29",
         "accrual_end": "2042-03-31",
         "payment_date": "2042-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2042-03-31",
         "accrual_end": "2043-03-31",
         "payment_date": "2043-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2043-03-31",
         "accrual_end": "2044-03-31",
         "payment_date": "2044-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2044-03-31",
         "accrual_end": "2045-03-31",
         "payment_date": "2045-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2045-03-31",
         "accrual_end": "2046-03-30",
         "payment_date": "2046-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2046-03-30",
         "accrual_end": "2047-03-29",
         "payment_date": "2047-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2047-03-29",
         "accrual_end": "2048-03-31",
         "payment_date": "2048-04-02",
         "day_count": 368,
-        "year_fraction": 1.02222222
+        "year_fraction": 1.0222222222222221
       },
       {
         "accrual_start": "2048-03-31",
         "accrual_end": "2049-03-31",
         "payment_date": "2049-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2049-03-31",
         "accrual_end": "2050-03-31",
         "payment_date": "2050-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2050-03-31",
         "accrual_end": "2051-03-31",
         "payment_date": "2051-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2051-03-31",
         "accrual_end": "2052-03-29",
         "payment_date": "2052-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2052-03-29",
         "accrual_end": "2053-03-31",
         "payment_date": "2053-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2053-03-31",
         "accrual_end": "2054-03-31",
         "payment_date": "2054-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2054-03-31",
         "accrual_end": "2055-03-31",
         "payment_date": "2055-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2055-03-31",
         "accrual_end": "2056-03-31",
         "payment_date": "2056-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       }
     ],
     "40Y": [
@@ -1287,280 +1287,280 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2030-03-29",
         "accrual_end": "2031-03-31",
         "payment_date": "2031-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2031-03-31",
         "accrual_end": "2032-03-31",
         "payment_date": "2032-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2032-03-31",
         "accrual_end": "2033-03-31",
         "payment_date": "2033-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2033-03-31",
         "accrual_end": "2034-03-31",
         "payment_date": "2034-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2034-03-31",
         "accrual_end": "2035-03-30",
         "payment_date": "2035-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2035-03-30",
         "accrual_end": "2036-03-31",
         "payment_date": "2036-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2036-03-31",
         "accrual_end": "2037-03-31",
         "payment_date": "2037-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2037-03-31",
         "accrual_end": "2038-03-31",
         "payment_date": "2038-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2038-03-31",
         "accrual_end": "2039-03-31",
         "payment_date": "2039-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2039-03-31",
         "accrual_end": "2040-03-30",
         "payment_date": "2040-04-03",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2040-03-30",
         "accrual_end": "2041-03-29",
         "payment_date": "2041-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2041-03-29",
         "accrual_end": "2042-03-31",
         "payment_date": "2042-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2042-03-31",
         "accrual_end": "2043-03-31",
         "payment_date": "2043-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2043-03-31",
         "accrual_end": "2044-03-31",
         "payment_date": "2044-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2044-03-31",
         "accrual_end": "2045-03-31",
         "payment_date": "2045-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2045-03-31",
         "accrual_end": "2046-03-30",
         "payment_date": "2046-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2046-03-30",
         "accrual_end": "2047-03-29",
         "payment_date": "2047-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2047-03-29",
         "accrual_end": "2048-03-31",
         "payment_date": "2048-04-02",
         "day_count": 368,
-        "year_fraction": 1.02222222
+        "year_fraction": 1.0222222222222221
       },
       {
         "accrual_start": "2048-03-31",
         "accrual_end": "2049-03-31",
         "payment_date": "2049-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2049-03-31",
         "accrual_end": "2050-03-31",
         "payment_date": "2050-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2050-03-31",
         "accrual_end": "2051-03-31",
         "payment_date": "2051-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2051-03-31",
         "accrual_end": "2052-03-29",
         "payment_date": "2052-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2052-03-29",
         "accrual_end": "2053-03-31",
         "payment_date": "2053-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2053-03-31",
         "accrual_end": "2054-03-31",
         "payment_date": "2054-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2054-03-31",
         "accrual_end": "2055-03-31",
         "payment_date": "2055-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2055-03-31",
         "accrual_end": "2056-03-31",
         "payment_date": "2056-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2056-03-31",
         "accrual_end": "2057-03-30",
         "payment_date": "2057-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2057-03-30",
         "accrual_end": "2058-03-29",
         "payment_date": "2058-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2058-03-29",
         "accrual_end": "2059-03-31",
         "payment_date": "2059-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2059-03-31",
         "accrual_end": "2060-03-31",
         "payment_date": "2060-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2060-03-31",
         "accrual_end": "2061-03-31",
         "payment_date": "2061-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2061-03-31",
         "accrual_end": "2062-03-31",
         "payment_date": "2062-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2062-03-31",
         "accrual_end": "2063-03-30",
         "payment_date": "2063-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2063-03-30",
         "accrual_end": "2064-03-31",
         "payment_date": "2064-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2064-03-31",
         "accrual_end": "2065-03-31",
         "payment_date": "2065-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2065-03-31",
         "accrual_end": "2066-03-31",
         "payment_date": "2066-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       }
     ],
     "50Y": [
@@ -1569,350 +1569,350 @@
         "accrual_end": "2027-03-31",
         "payment_date": "2027-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2027-03-31",
         "accrual_end": "2028-03-31",
         "payment_date": "2028-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2028-03-31",
         "accrual_end": "2029-03-30",
         "payment_date": "2029-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2029-03-30",
         "accrual_end": "2030-03-29",
         "payment_date": "2030-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2030-03-29",
         "accrual_end": "2031-03-31",
         "payment_date": "2031-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2031-03-31",
         "accrual_end": "2032-03-31",
         "payment_date": "2032-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2032-03-31",
         "accrual_end": "2033-03-31",
         "payment_date": "2033-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2033-03-31",
         "accrual_end": "2034-03-31",
         "payment_date": "2034-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2034-03-31",
         "accrual_end": "2035-03-30",
         "payment_date": "2035-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2035-03-30",
         "accrual_end": "2036-03-31",
         "payment_date": "2036-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2036-03-31",
         "accrual_end": "2037-03-31",
         "payment_date": "2037-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2037-03-31",
         "accrual_end": "2038-03-31",
         "payment_date": "2038-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2038-03-31",
         "accrual_end": "2039-03-31",
         "payment_date": "2039-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2039-03-31",
         "accrual_end": "2040-03-30",
         "payment_date": "2040-04-03",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2040-03-30",
         "accrual_end": "2041-03-29",
         "payment_date": "2041-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2041-03-29",
         "accrual_end": "2042-03-31",
         "payment_date": "2042-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2042-03-31",
         "accrual_end": "2043-03-31",
         "payment_date": "2043-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2043-03-31",
         "accrual_end": "2044-03-31",
         "payment_date": "2044-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2044-03-31",
         "accrual_end": "2045-03-31",
         "payment_date": "2045-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2045-03-31",
         "accrual_end": "2046-03-30",
         "payment_date": "2046-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2046-03-30",
         "accrual_end": "2047-03-29",
         "payment_date": "2047-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2047-03-29",
         "accrual_end": "2048-03-31",
         "payment_date": "2048-04-02",
         "day_count": 368,
-        "year_fraction": 1.02222222
+        "year_fraction": 1.0222222222222221
       },
       {
         "accrual_start": "2048-03-31",
         "accrual_end": "2049-03-31",
         "payment_date": "2049-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2049-03-31",
         "accrual_end": "2050-03-31",
         "payment_date": "2050-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2050-03-31",
         "accrual_end": "2051-03-31",
         "payment_date": "2051-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2051-03-31",
         "accrual_end": "2052-03-29",
         "payment_date": "2052-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2052-03-29",
         "accrual_end": "2053-03-31",
         "payment_date": "2053-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2053-03-31",
         "accrual_end": "2054-03-31",
         "payment_date": "2054-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2054-03-31",
         "accrual_end": "2055-03-31",
         "payment_date": "2055-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2055-03-31",
         "accrual_end": "2056-03-31",
         "payment_date": "2056-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2056-03-31",
         "accrual_end": "2057-03-30",
         "payment_date": "2057-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2057-03-30",
         "accrual_end": "2058-03-29",
         "payment_date": "2058-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2058-03-29",
         "accrual_end": "2059-03-31",
         "payment_date": "2059-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2059-03-31",
         "accrual_end": "2060-03-31",
         "payment_date": "2060-04-02",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2060-03-31",
         "accrual_end": "2061-03-31",
         "payment_date": "2061-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2061-03-31",
         "accrual_end": "2062-03-31",
         "payment_date": "2062-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2062-03-31",
         "accrual_end": "2063-03-30",
         "payment_date": "2063-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2063-03-30",
         "accrual_end": "2064-03-31",
         "payment_date": "2064-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2064-03-31",
         "accrual_end": "2065-03-31",
         "payment_date": "2065-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2065-03-31",
         "accrual_end": "2066-03-31",
         "payment_date": "2066-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2066-03-31",
         "accrual_end": "2067-03-31",
         "payment_date": "2067-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2067-03-31",
         "accrual_end": "2068-03-30",
         "payment_date": "2068-04-03",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2068-03-30",
         "accrual_end": "2069-03-29",
         "payment_date": "2069-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2069-03-29",
         "accrual_end": "2070-03-31",
         "payment_date": "2070-04-02",
         "day_count": 367,
-        "year_fraction": 1.01944444
+        "year_fraction": 1.0194444444444444
       },
       {
         "accrual_start": "2070-03-31",
         "accrual_end": "2071-03-31",
         "payment_date": "2071-04-02",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2071-03-31",
         "accrual_end": "2072-03-31",
         "payment_date": "2072-04-04",
         "day_count": 366,
-        "year_fraction": 1.01666667
+        "year_fraction": 1.0166666666666666
       },
       {
         "accrual_start": "2072-03-31",
         "accrual_end": "2073-03-31",
         "payment_date": "2073-04-04",
         "day_count": 365,
-        "year_fraction": 1.01388889
+        "year_fraction": 1.0138888888888888
       },
       {
         "accrual_start": "2073-03-31",
         "accrual_end": "2074-03-30",
         "payment_date": "2074-04-03",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2074-03-30",
         "accrual_end": "2075-03-29",
         "payment_date": "2075-04-02",
         "day_count": 364,
-        "year_fraction": 1.01111111
+        "year_fraction": 1.011111111111111
       },
       {
         "accrual_start": "2075-03-29",
         "accrual_end": "2076-03-31",
         "payment_date": "2076-04-02",
         "day_count": 368,
-        "year_fraction": 1.02222222
+        "year_fraction": 1.0222222222222221
       }
     ]
   }

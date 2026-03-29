@@ -40,7 +40,7 @@ import streamlit as st
 from bloomberg.exceptions import IpNotWhitelistedError, MarsApiError, PricingError, StructuringError
 from configs.curves_catalog import CURVES_BY_LABEL
 from configs.i18n import t
-from configs.settings import settings
+from configs.settings import DEMO_DATE, settings
 from configs.swaps_config import (
     OIS_BY_LABEL,
     OIS_LABELS,
@@ -230,13 +230,13 @@ def _render_swap_form(
         )
         effective = _lrow(t("swaps.effective_label")).date_input(
             "",
-            value=date.today() if not IS_DEMO else date(2026, 3, 26),
+            value=date.today() if not IS_DEMO else DEMO_DATE,
             disabled=IS_DEMO,
             key=f"{tab_key}_effective",
             label_visibility="collapsed",
         )
         _default_maturity = _tenor_to_maturity(
-            date.today() if not IS_DEMO else date(2026, 3, 26),
+            date.today() if not IS_DEMO else DEMO_DATE,
             spec.default_tenor,
         )
         maturity = _lrow(t("swaps.maturity_label")).date_input(
@@ -392,14 +392,14 @@ def _render_swap_form(
 
         curve_date = _lrow(t("swaps.curve_date_label")).date_input(
             "",
-            value=date(2026, 3, 26) if IS_DEMO else date.today(),
+            value=DEMO_DATE if IS_DEMO else date.today(),
             disabled=IS_DEMO,
             key=f"{tab_key}_curve_date",
             label_visibility="collapsed",
         )
         valuation_date = _lrow(t("swaps.valuation_date_label")).date_input(
             "",
-            value=date(2026, 3, 26) if IS_DEMO else date.today(),
+            value=DEMO_DATE if IS_DEMO else date.today(),
             disabled=IS_DEMO,
             key=f"{tab_key}_valuation_date",
             label_visibility="collapsed",

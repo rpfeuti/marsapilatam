@@ -1,0 +1,28 @@
+{
+  "key": "USDPEN",
+  "swap_type": "XCCY",
+  "label": "USD/PEN NDS",
+  "tenor": "5Y",
+  "valuation_date": "2026-03-27",
+  "par_rate": 61.830661,
+  "metrics": {
+    "BloombergDealID": "3000J4M4J39RTK9XHJPSPGV3X26JA",
+    "AccruedInterest": "0",
+    "AsOfTimestamp": "2026-03-29T17:39:09.803",
+    "DV01": "1058.3867936145048",
+    "DelayedEid": "",
+    "ErrorCode": "0",
+    "ErrorMessage": "",
+    "MarketDataDate": "2026-03-27",
+    "MktPx": "-121.69979023498362",
+    "MktVal": "-7830540.146215384",
+    "PV01": "1266.4493648293694",
+    "Position": "1",
+    "RealtimeEid": "",
+    "Security": "3000J4M4J39RTK9XHJPSPGV3X26JA",
+    "Ticker": "/NDS",
+    "TrackingId": "5836114a-33f8-4bca-922b-8da9418d7a96",
+    "UniqueID": "CO",
+    "ValuationDate": "2026-03-27"
+  }
+}

@@ -47,3 +47,6 @@ htmlcov/
 
 # Bloomberg BLPAPI SDK source
 blpapi-*/
+
+# Streamlit secrets (actual credentials — never commit)
+.streamlit/secrets.toml

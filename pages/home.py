@@ -43,7 +43,7 @@ st.markdown(
     f"| 🏦 {t('nav.portfolio')} | {t('app.demo_portfolio')} |\n"
     f"| 🧪 {t('nav.stress_testing')} | {t('app.demo_stress')} |\n"
     f"| 📐 {t('nav.krr')} | {t('app.demo_krr')} |\n"
-    f"| 🚀 {t('nav.swaps_async')} | {t('app.demo_async')} {t('app.coming_soon')} |"
+    f"| 🚀 {t('nav.swaps_async')} | {t('app.demo_async')} |"
 )
 
 st.markdown("---")

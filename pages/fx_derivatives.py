@@ -57,7 +57,7 @@ from configs.derivatives_config import (
 )
 from configs.derivatives_config import FxDerivativeSpec
 from configs.i18n import t
-from configs.settings import settings
+from configs.settings import DEMO_DATE, settings
 from services.fx_derivatives_service import DerivativePricingService, DerivativeQuery, DerivativeResult
 from services.fx_service import FxRateService
 
@@ -124,7 +124,7 @@ def _lrow(label: str, ratio: tuple[int, int] = (1, 2)) -> st.delta_generator.Del
 
 def _default_expiry(tenor: str = "3M") -> date:
     """Compute a default expiry date from today (or demo date) plus tenor."""
-    base = date(2026, 3, 26) if IS_DEMO else date.today()
+    base = DEMO_DATE if IS_DEMO else date.today()
     months_map = {"1M": 1, "3M": 3, "6M": 6, "1Y": 12}
     months = months_map.get(tenor, 3)
     target_month = base.month + months
@@ -231,11 +231,11 @@ def _render_vanilla_form(tab_key: str) -> tuple[DerivativeQuery | None, float]:
         st.markdown(f"**{t('deriv.valuation_header')}**")
 
         curve_date = _lrow(t("deriv.curve_date_label")).date_input(
-            "", value=date(2026, 3, 26) if IS_DEMO else date.today(), disabled=IS_DEMO,
+            "", value=DEMO_DATE if IS_DEMO else date.today(), disabled=IS_DEMO,
             key=f"{tab_key}_curve_date", label_visibility="collapsed",
         )
         valuation_date = _lrow(t("deriv.valuation_date_label")).date_input(
-            "", value=date(2026, 3, 26) if IS_DEMO else date.today(), disabled=IS_DEMO,
+            "", value=DEMO_DATE if IS_DEMO else date.today(), disabled=IS_DEMO,
             key=f"{tab_key}_val_date", label_visibility="collapsed",
         )
 
@@ -363,11 +363,11 @@ def _render_rr_form(tab_key: str) -> tuple[DerivativeQuery | None, float]:
         st.markdown(f"**{t('deriv.valuation_header')}**")
 
         curve_date = _lrow(t("deriv.curve_date_label")).date_input(
-            "", value=date(2026, 3, 26) if IS_DEMO else date.today(), disabled=IS_DEMO,
+            "", value=DEMO_DATE if IS_DEMO else date.today(), disabled=IS_DEMO,
             key=f"{tab_key}_curve_date", label_visibility="collapsed",
         )
         valuation_date = _lrow(t("deriv.valuation_date_label")).date_input(
-            "", value=date(2026, 3, 26) if IS_DEMO else date.today(), disabled=IS_DEMO,
+            "", value=DEMO_DATE if IS_DEMO else date.today(), disabled=IS_DEMO,
             key=f"{tab_key}_val_date", label_visibility="collapsed",
         )
 
@@ -486,11 +486,11 @@ def _render_barrier_form(tab_key: str) -> tuple[DerivativeQuery | None, float]:
         st.markdown(f"**{t('deriv.valuation_header')}**")
 
         curve_date = _lrow(t("deriv.curve_date_label")).date_input(
-            "", value=date(2026, 3, 26) if IS_DEMO else date.today(), disabled=IS_DEMO,
+            "", value=DEMO_DATE if IS_DEMO else date.today(), disabled=IS_DEMO,
             key=f"{tab_key}_curve_date", label_visibility="collapsed",
         )
         valuation_date = _lrow(t("deriv.valuation_date_label")).date_input(
-            "", value=date(2026, 3, 26) if IS_DEMO else date.today(), disabled=IS_DEMO,
+            "", value=DEMO_DATE if IS_DEMO else date.today(), disabled=IS_DEMO,
             key=f"{tab_key}_val_date", label_visibility="collapsed",
         )
 
