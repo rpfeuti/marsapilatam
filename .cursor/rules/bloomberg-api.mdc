@@ -1,0 +1,91 @@
+---
+description: Bloomberg API rules — data sources, MARS deal fields, and BLPAPI field lookup
+alwaysApply: true
+---
+
+# Bloomberg API Rules
+
+## Bloomberg-Only Market Data
+
+**All market data must come exclusively from Bloomberg.** Third-party REST APIs are forbidden.
+
+| Data type | Source | Class |
+|-----------|--------|-------|
+| Curves, pricing, deal structure | MARS REST API | `MarsClient` (`bloomberg/mars_client.py`) |
+| Spot prices, FX rates, reference data | Desktop API (BLPAPI) | `BlpapiClient` (`bloomberg/blpapi_client.py`) |
+| Offline / demo mode | Hardcoded fallback constants | `_DEMO_RATES`, `_DEMO_SOLVABLE`, `demo_data/` |
+
+- **NEVER** call any non-Bloomberg URL for market data
+- **NEVER** install `requests`, `httpx`, or similar libraries for market data purposes
+- FX spot rates → `BlpapiClient.bdp(["USDXXX Curncy"], ["PX_LAST"])` via `FxRateService.from_settings()`
+- Yield curves → MARS XMarket endpoint via `CurvesService`
+- Demo mode must always work offline — use hardcoded fallback values
+
+```python
+# ❌ FORBIDDEN
+r = httpx.get("https://open.er-api.com/v6/latest/USD")
+
+# ✅ CORRECT
+from services.fx_service import FxRateService
+rate = FxRateService.from_settings().get_rate("COP")
+```
+
+## MARS Deal Fields — No Guessing
+
+**NEVER guess field names** in `dealStructureOverride` payloads. Before adding/modifying any parameter,
+verify the exact `name` and value type against the schema:
+
+```
+GET /marswebapi/v1/dealSchema   body: {"tail": "<deal_type>"}
+```
+
+Parse `dealStructure.leg[].param[]` (and `dealStructure.param[]` for deal-level) to find:
+1. The exact `name` string (case-sensitive)
+2. The value type key (`doubleVal`, `stringVal`, `selectionVal`, `dateVal`, etc.)
+3. The `usage` field (`SOLVABLE`, `INPUT`, etc.)
+
+```python
+# ❌ FORBIDDEN — guessing
+params.append({"name": "Spread", "value": {"doubleVal": 100.0}})
+
+# ✅ CORRECT — verified against dealSchema first
+params.append({"name": "<verified_name>", "value": {"<verified_type>": 100.0}})
+```
+
+Use `SwapPricingService.fetch_leg_params(deal_type)` or call the endpoint directly before coding.
+
+## BLPAPI Field Names — No Guessing
+
+BLPAPI has a built-in field search service (`//blp/apiflds`). **NEVER guess field names.**
+
+Before using any unconfirmed BLPAPI field, run a field search:
+
+```python
+# _tmp_test.py — delete after use
+import blpapi
+opts = blpapi.SessionOptions()
+opts.setServerAddress("localhost", 8194, 0)
+session = blpapi.Session(opts)
+session.start()
+session.openService("//blp/apiflds")
+service = session.getService("//blp/apiflds")
+
+req = service.createRequest("FieldSearchRequest")
+req.set("searchSpec", "cash flow")
+req.getElement("properties").setElement("fieldType", "Static")  # or "RealTime"
+session.sendRequest(req)
+while True:
+    event = session.nextEvent(5000)
+    for msg in event: print(msg)
+    if event.eventType() == blpapi.Event.RESPONSE: break
+session.stop()
+```
+
+Then confirm the field returns data on a real ticker before writing service code:
+
+```python
+client.bds("USOSFR10 BGN Curncy", "<CONFIRMED_FIELD_NAME>")
+```
+
+- ❌ NEVER use `bds(ticker, "FIELD")` or `bdp(ticker, ["FIELD"])` without live confirmation
+- ✅ ALWAYS use `//blp/apiflds` FieldSearchRequest first, then confirm bulk vs. scalar

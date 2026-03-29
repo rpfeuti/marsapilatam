@@ -1,0 +1,104 @@
+---
+description: Conventions for the swaps pricing feature — service layer and form UI
+globs: pages/swaps.py, services/swaps_service.py, services/*.py, configs/swaps_config.py
+alwaysApply: false
+---
+
+# Swaps Feature Conventions
+
+## Service Layer (`services/swaps_service.py`)
+
+### Repository pattern
+
+`SwapPricingService` owns two repositories:
+
+| Class | Mode | Backend |
+|-------|------|---------|
+| `SwapLiveRepository` | live | MARS REST API via `MarsClient` |
+| `SwapDemoRepository` | demo | JSON snapshots under `demo_data/` |
+
+Always instantiate via `SwapPricingService.from_settings()`.
+
+### `SwapQuery` fields
+
+```python
+@dataclass
+class SwapQuery:
+    deal_type:    str
+    maturity_date: date   # not tenor string — user edits directly
+    effective:    date
+    notional:     float
+    leg2_notional: float
+    currency:     str
+    solve_for:    str
+    discount_curve_id:  str
+    forward_curve_id:   str
+    leg1_discount_id:   str
+    collateral_currency: str
+    csa_rate:     float
+```
+
+### Solvable fields
+
+Fetch dynamically from `GET /marswebapi/v1/dealSchema?tail={deal_type}`.
+Filter on `solvableTarget == true`. Fall back to `_DEMO_SOLVABLE[deal_type]` on failure.
+
+```python
+# ❌ BAD — hardcoded
+solve_options = ["Coupon", "Spread"]
+# ✅ GOOD — dynamic with demo fallback
+solve_options = svc.fetch_solvable_fields(deal_type)
+```
+
+### Deal structure body
+
+Use `"tail"` + `"dealStructureOverride"` — never `"structureRequest"`.
+
+### Curve IDs
+
+Always use `S{number}` format (e.g. `"S329"`). IDs must exist in `configs/curves_catalog.py`.
+
+### Demo snapshots
+
+Filenames follow `{currency}_{tenor}.json` (e.g. `COP_5Y.json`). Fall back to `_5Y.json` when not found.
+
+---
+
+## Form UI (`pages/swaps.py`)
+
+### Inline-left labels (`_lrow`)
+
+**All** form inputs must render their label to the left using `_lrow()` + `label_visibility="collapsed"`.
+
+```python
+# ❌ BAD — label renders above
+st.selectbox("Curve", options=..., key=...)
+# ✅ GOOD — label renders to the left
+_lrow("Curve").selectbox("", options=..., key=..., label_visibility="collapsed")
+```
+
+`_lrow` signature: `def _lrow(label: str, ratio: tuple[int, int] = (1, 2)) -> DeltaGenerator`
+
+### Widget keys
+
+Every template-dependent key must start with `fk = f"{tab_key}_{spec_key}"` so switching
+templates forces Streamlit to mount a fresh widget.
+
+Display-only (disabled) widgets must embed their current value in the key:
+```python
+st.text_input("", value=effective, key=f"{tab_key}_effective_leg2_{effective}", disabled=True, ...)
+```
+
+### Curves (`_curve_selectbox`)
+
+Always use `_curve_selectbox(label, default_id, key)`. Layout: two curve columns per leg
+(Leg 1 and Leg 2). OIS and XCCY must use the same per-leg layout.
+
+### Solve-for dropdown
+
+Fetch targets dynamically via `_get_solve_targets(deal_type)` — never hardcode lists.
+
+### Service cache invalidation
+
+When changing `SwapPricingService`, increment `_SVC_VERSION` in `pages/swaps.py`
+to bust the `@st.cache_resource` instance.

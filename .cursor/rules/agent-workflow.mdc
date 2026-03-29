@@ -1,0 +1,69 @@
+---
+description: Agent workflow rules — Plan mode restrictions, app restarts, reading docs, and API testing protocol
+alwaysApply: true
+---
+
+# Agent Workflow Rules
+
+## NEVER Code in Plan Mode
+
+When Plan mode is active, you are **strictly forbidden** from writing/editing files, running
+state-modifying shell commands, creating/deleting files, or making git commits.
+
+You CAN: read files, read terminal output, use AskQuestion, update the plan, search the web.
+
+If the user says "build it", "implement", "go ahead", or any variation while Plan mode is active:
+1. **REFUSE** to write any code
+2. Say: "You need to switch to Agent mode first. I cannot write code in Plan mode."
+3. Wait for Agent mode before touching any file.
+
+## Restart the App Yourself
+
+Whenever a fix requires restarting the Streamlit app, **do it yourself** — never tell the user to do it.
+
+```powershell
+# 1. Kill Python
+Get-Process python -ErrorAction SilentlyContinue | Stop-Process -Force
+# 2. Clear cache
+Get-ChildItem -Path . -Recurse -Filter "__pycache__" -Directory | Remove-Item -Recurse -Force
+# 3. Restart
+python -m streamlit run app.py
+```
+
+Wait ~8 seconds and verify `Local URL:` appears in the terminal output.
+
+- ❌ NEVER say "kill and restart the app" to the user
+- ✅ ALWAYS run the shell commands yourself
+
+## Read the Docs Before Asking
+
+Project docs live at `docs/mars_api_examples.md` and `docs/marsapi_swagger.json`.
+
+**ALWAYS read these files BEFORE asking the user about:**
+- API request/response body formats, field names, endpoint paths, parameter syntax
+- `shiftWhat`, `shiftMode`, `shiftValue` expressions for SHOC scenarios
+- Any Bloomberg MARS API behaviour
+
+If the docs don't contain the answer, state what was checked and what is still unclear — do NOT ask speculatively.
+
+## Test the API Before Building
+
+Before implementing any new service method or fixing an API integration bug, **run a direct test script** first.
+
+```python
+# _tmp_test.py — always delete after use
+from bloomberg.webapi.mars_client import MarsClient
+from configs.settings import settings
+import json
+
+client = MarsClient(settings)
+resp = client.send("POST", "/marswebapi/v1/scenarios", body)
+print(json.dumps(resp, indent=2))
+```
+
+1. Write the throwaway `_tmp_test.py`, run it, inspect the full JSON response
+2. Delete the script
+3. Only then write or fix the service code
+
+The swagger and docs are often wrong (e.g. `PV01` is invalid in `scenarioParameter.requestedField`,
+`setting: {}` is required but absent from swagger). Test first, code second.
