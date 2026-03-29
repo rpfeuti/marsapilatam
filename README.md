@@ -26,6 +26,7 @@ An open-source Python/Streamlit application built on top of the **Bloomberg MARS
 - [Demo Data](#demo-data)
 - [Scripts](#scripts)
 - [Deployment — Streamlit Cloud](#deployment--streamlit-cloud)
+- [Bloomberg MARS API](#bloomberg-mars-api)
 - [Dependencies](#dependencies)
 - [License](#license)
 
@@ -652,6 +653,42 @@ All scripts read credentials from `.env` and exit with an error if `settings.dem
 
 The `blpapi` package is not in `requirements.txt` and is never imported at module level, so deployment succeeds without the Bloomberg Terminal SDK.
 
+### Deploying to AWS / Azure / GCP
+
+Since the MARS API is a pure HTTPS REST service, this app (or any Python client built on `MarsClient`) runs on any cloud provider. The pattern is the same across platforms:
+
+**1. Pass credentials as environment variables**
+
+```bash
+BBG_CLIENT_ID=your_client_id
+BBG_CLIENT_SECRET=your_client_secret
+BBG_UUID=12345678
+BBG_HOST=https://api.bloomberg.com
+```
+
+**2. Whitelist your server's outbound IP with Bloomberg**
+
+Contact your Bloomberg representative or [Ricardo Pfeuti](mailto:rpfeuti4@bloomberg.net) to add your cloud instance IP to the MARS API allowlist. For dynamic IPs, use a NAT Gateway (AWS), a static outbound IP on Azure/GCP, or a fixed egress proxy.
+
+**3. Platform-specific notes**
+
+| Platform | Recommended service | Notes |
+|---|---|---|
+| **AWS** | ECS Fargate / Lambda / EC2 | Store credentials in Secrets Manager; use NAT Gateway for a fixed outbound IP |
+| **Azure** | Container Apps / AKS / App Service | Store in Key Vault; use NAT Gateway or Azure Firewall for fixed egress |
+| **GCP** | Cloud Run / GKE / Compute Engine | Store in Secret Manager; use Cloud NAT for fixed outbound IP |
+| **Docker (any)** | `docker run -e BBG_CLIENT_ID=... -e BBG_CLIENT_SECRET=... -e BBG_UUID=...` | Works anywhere with outbound HTTPS |
+
+```dockerfile
+# Minimal Dockerfile
+FROM python:3.11-slim
+WORKDIR /app
+COPY . .
+RUN pip install -r requirements.txt
+EXPOSE 8501
+CMD ["streamlit", "run", "app.py", "--server.headless=true"]
+```
+
 ---
 
 ## Dependencies
@@ -677,6 +714,29 @@ plotly>=5.20           # Interactive charts
 ## Bloomberg MARS API
 
 This project uses the [Bloomberg MARS API](https://www.bloomberg.com/professional/product/multi-asset-risk-system/) — a professional-grade pricing, risk, and market data system available to Bloomberg Terminal subscribers.
+
+### Why MARS API is ideal for Cloud deployments
+
+Unlike Bloomberg's Desktop API (BLPAPI), which requires a local Bloomberg Terminal and is limited to on-premises machines, **the MARS REST API is a pure HTTPS service** — making it a natural fit for any cloud environment:
+
+| | Bloomberg Desktop API (BLPAPI) | Bloomberg MARS REST API |
+|---|---|---|
+| **Transport** | TCP socket to localhost:8194 | HTTPS to `api.bloomberg.com` |
+| **Terminal required** | ✅ Yes — must run on the Terminal machine | ❌ No — works from any server |
+| **Cloud compatible** | ❌ No | ✅ Yes — AWS, Azure, GCP, any container |
+| **Authentication** | Session-based (logged-in Terminal user) | HS256 JWT (client ID + secret) |
+| **IP whitelisting** | Not required | Required (contact Bloomberg support) |
+| **Scaling** | Single machine | Horizontally scalable (stateless REST) |
+
+This means you can price swaps, pull curves, and run risk from:
+
+- **AWS Lambda / ECS / EC2** — containerised Python microservices
+- **Azure Functions / AKS** — event-driven or batch pricing pipelines
+- **Google Cloud Run / GKE** — auto-scaled API backends
+- **Streamlit Cloud / Heroku / Railway** — lightweight dashboards like this one
+- **Jupyter on SageMaker / Vertex AI** — quantitative research notebooks
+
+The only prerequisite is that your outbound IP is whitelisted by Bloomberg. Once whitelisted, credentials (`BBG_CLIENT_ID`, `BBG_CLIENT_SECRET`, `BBG_UUID`) are passed as environment variables — no Terminal, no local SDK, no VPN required.
 
 Key endpoints used:
 
