@@ -64,7 +64,42 @@ class Settings(BaseSettings):
         return not self.bbg_client_id or not self.bbg_client_secret or self.bbg_uuid == 0
 
 
-settings = Settings()  # type: ignore[call-arg]
+def _overlay_streamlit_secrets(base: Settings) -> Settings:
+    """Fill empty fields from Streamlit Cloud secrets (never committed to git)."""
+    try:
+        import streamlit as st
+
+        secrets = st.secrets
+    except Exception:
+        return base
+
+    def _get(name: str) -> str:
+        try:
+            value = secrets.get(name, "")
+        except Exception:
+            return ""
+        return str(value).strip() if value is not None else ""
+
+    updates: dict[str, str | int] = {}
+    if not base.xai_api_key and _get("XAI_API_KEY"):
+        updates["xai_api_key"] = _get("XAI_API_KEY")
+    if _get("XAI_MODEL"):
+        updates["xai_model"] = _get("XAI_MODEL")
+    if not base.bbg_client_id and _get("BBG_CLIENT_ID"):
+        updates["bbg_client_id"] = _get("BBG_CLIENT_ID")
+    if not base.bbg_client_secret and _get("BBG_CLIENT_SECRET"):
+        updates["bbg_client_secret"] = _get("BBG_CLIENT_SECRET")
+    uuid_raw = _get("BBG_UUID")
+    if base.bbg_uuid == 0 and uuid_raw.isdigit():
+        updates["bbg_uuid"] = int(uuid_raw)
+    if _get("BBG_HOST"):
+        updates["bbg_host"] = _get("BBG_HOST")
+    if not updates:
+        return base
+    return base.model_copy(update=updates)
+
+
+settings = _overlay_streamlit_secrets(Settings())  # type: ignore[call-arg]
 
 # Reference date used for all demo-mode displays.
 # All demo_data/ snapshots were captured for this date.

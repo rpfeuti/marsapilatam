@@ -126,6 +126,7 @@ class ChatService:
     def from_settings(cls) -> ChatService:
         if not settings.xai_api_key:
             raise RuntimeError(
-                "XAI_API_KEY não configurado. Adicione XAI_API_KEY=... no arquivo .env"
+                "XAI_API_KEY não configurado. Adicione XAI_API_KEY no .env local "
+                "ou em App settings → Secrets no Streamlit Cloud."
             )
         return cls(api_key=settings.xai_api_key, model=settings.xai_model)

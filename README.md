@@ -644,8 +644,12 @@ All scripts read credentials from `.env` and exit with an error if `settings.dem
 4. Under **Advanced settings → Secrets**, leave all Bloomberg fields empty — the app will run in demo mode automatically:
 
 ```toml
-# No secrets required for demo mode.
-# To enable live pricing, add:
+# No Bloomberg secrets required for demo mode.
+# To enable the Risk Assistant, add:
+# XAI_API_KEY = "xai-..."
+# XAI_MODEL   = "grok-3"
+#
+# To enable live MARS pricing, also add:
 # BBG_CLIENT_ID     = "..."
 # BBG_CLIENT_SECRET = "..."
 # BBG_UUID          = 12345678
