@@ -50,14 +50,16 @@ with st.sidebar:
 
 # Declarative page registry — add a new page by appending one dict here
 _PAGES = [
-    {"file": "pages/home.py",      "title_key": "nav.home",            "icon": "🏠", "default": True},
-    {"file": "pages/curves.py",    "title_key": "curves.page_title",   "icon": "📈"},
-    {"file": "pages/deal_info.py", "title_key": "dealinfo.page_title", "icon": "📃"},
-    {"file": "pages/swaps.py",        "title_key": "swaps.page_title",  "icon": "💱"},
-    {"file": "pages/fx_derivatives.py", "title_key": "deriv.page_title", "icon": "📊"},
-    {"file": "pages/portfolio.py",      "title_key": "portfolio.page_title", "icon": "🏦"},
-    {"file": "pages/stress_testing.py",  "title_key": "nav.stress_testing",   "icon": "🔬"},
-    {"file": "pages/krr.py",             "title_key": "krr.page_title",        "icon": "📐"},
+    {"file": "pages/home.py",            "title_key": "nav.home",               "icon": "🏠", "default": True},
+    {"file": "pages/risk_assistant.py",  "title_key": "chat.page_title",        "icon": "✨"},
+    {"file": "pages/curves.py",          "title_key": "curves.page_title",      "icon": "📈"},
+    {"file": "pages/deal_info.py",       "title_key": "dealinfo.page_title",    "icon": "📃"},
+    {"file": "pages/swaps.py",           "title_key": "swaps.page_title",       "icon": "💱"},
+    {"file": "pages/sofr_swap.py",       "title_key": "sofr.page_title",        "icon": "💵"},
+    {"file": "pages/fx_derivatives.py",  "title_key": "deriv.page_title",       "icon": "📊"},
+    {"file": "pages/portfolio.py",       "title_key": "portfolio.page_title",   "icon": "🏦"},
+    {"file": "pages/stress_testing.py",  "title_key": "nav.stress_testing",     "icon": "🔬"},
+    {"file": "pages/krr.py",             "title_key": "krr.page_title",         "icon": "📐"},
     {"file": "pages/async_swaps.py",     "title_key": "async_swaps.page_title", "icon": "🔗"},
 ]
 

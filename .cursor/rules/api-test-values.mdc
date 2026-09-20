@@ -1,0 +1,40 @@
+---
+description: Never test APIs (MARS, BLPAPI, or otherwise) using fabricated/guessed values
+alwaysApply: true
+---
+
+# Never Test APIs With Unknown Values
+
+When writing a throwaway `_tmp_test.py` / `_tmp_instrument.py` to test an API call, every
+**value** in the request (tickers, deal IDs, ISINs, currency pairs, dates, security identifiers,
+scenario names, etc.) must be a value you have **confirmed exists** — never a value you invented
+or assumed.
+
+## Rule
+
+- ❌ **NEVER** type a ticker, deal ID, ISIN, or identifier from memory/guesswork just to "see if it works"
+- ❌ **NEVER** assume a currency pair, tenor, or reference entity is supported without checking
+- ✅ **ALWAYS** source test values from one of:
+  1. A real prior API response (e.g. a deal ID just returned by `save_deal()`)
+  2. Project reference data (`demo_data/`, `configs/*.py`, `docs/mars_api_examples.md`)
+  3. A lookup/search call against the API itself (reference data endpoint, `//blp/apiflds`, security search) run *before* the real test
+  4. A value the user explicitly gave you
+
+```python
+# ❌ FORBIDDEN — deal ID guessed, ticker guessed
+deal_id = "SLNCRZ6K Corp"          # never confirmed this exists
+client.bdp(["USDXYZ Curncy"], ["PX_LAST"])  # made-up currency pair
+
+# ✅ CORRECT — confirm first, then use
+deal_id = svc.save_deal(query)     # real ID from a real response
+ticker = fx_service.resolve_ticker("BRL")  # verified via lookup, not guessed
+```
+
+## If you don't know a valid value
+
+1. Search the codebase/docs (`configs/`, `demo_data/`, `docs/mars_api_examples.md`) for a known-good example
+2. Run a lookup/search request against the API to find a real one
+3. If still unknown, **ask the user** for a concrete value instead of guessing
+
+This applies on top of (not instead of) the existing "No Guessing" rules for field *names* in
+`bloomberg-api.mdc` — this rule covers the request *values*, not just field names.

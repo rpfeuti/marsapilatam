@@ -47,6 +47,7 @@ from bloomberg.webapi import MarsClient
 from configs.settings import settings
 from configs.swaps_config import (
     OIS_SWAP_SPECS,
+    XCCY_NDSFX_SPECS,
     XCCY_SWAP_SPECS,
     SwapSpec,
 )
@@ -67,6 +68,7 @@ _DEMO_SOLVABLE: dict[str, list[str]] = {
     "IR.OIS.SOFR": ["Coupon", "Spread"],
     "IR.OIS.RFR":  ["Coupon", "Spread"],
     "IR.NDS":      ["Coupon", "Spread"],
+    "IR.NDSFX":    ["Coupon", "Spread"],
 }
 
 # Schema field name → solve endpoint name
@@ -85,11 +87,11 @@ class SwapQuery:
 
     Frozen + hashable so it can be used directly as an st.cache_data key.
     The key identifies which SwapSpec to look up (e.g. "COP" or "USDCOP").
-    swap_type distinguishes the spec dictionary to use ("OIS" or "XCCY").
+    swap_type selects the spec dictionary ("OIS", "XCCY" / IR.NDS, or "NDSFX" / IR.NDSFX).
     """
 
     key:            str
-    swap_type:      Literal["OIS", "XCCY"]
+    swap_type:      Literal["OIS", "XCCY", "NDSFX"]
     direction:      Literal["Receive", "Pay"]
     effective_date: date
     maturity_date:  date
@@ -104,18 +106,21 @@ class SwapQuery:
     fixed_rate:          float | None = None   # None = solve for par rate
     spread:              float        = 0.0    # floating leg spread in bp
     solve_for:           str          = "Coupon"
+    solve_for_leg:       int          = 1      # NDSFX: 2 = solve FixedRate on local leg (CLP, …)
     leg1_forward_curve:  str          = ""     # XCCY: Leg 1 (base ccy) forward/projection curve
     leg1_discount_curve: str          = ""     # XCCY: Leg 1 (base ccy) discount curve
     leg2_notional:       float        = 0.0    # XCCY: Leg 2 notional in local ccy; 0 = auto
-
+    ndsfx_leg2_fixed_rate: float | None = None  # IR.NDSFX: set to MARS solve double to persist leg-2 FixedRate on save
 
 @dataclass
 class SwapResult:
     """Holds the pricing output for a single swap."""
 
-    metrics:  dict[str, str] = field(default_factory=dict)
-    par_rate: float | None   = None
-    error:    str | None     = None
+    metrics:     dict[str, str] = field(default_factory=dict)
+    par_rate:    float | None   = None
+    solve_raw:   float | None   = None  # MARS solveResult.value.doubleVal (before display scaling)
+    deal_handle: str | None     = None  # temporary dealHandle — reusable for scenario/stress pricing
+    error:       str | None     = None
 
     @property
     def ok(self) -> bool:
@@ -191,6 +196,79 @@ def _build_leg_params(
     return params
 
 
+def _specs_for_query(query: SwapQuery) -> dict[str, SwapSpec]:
+    """Resolve the spec map for *query* (OIS, XCCY IR.NDS, or IR.NDSFX)."""
+    if query.swap_type == "OIS":
+        return OIS_SWAP_SPECS
+    if query.swap_type == "NDSFX":
+        return XCCY_NDSFX_SPECS
+    return XCCY_SWAP_SPECS
+
+
+def _build_ndsfx_structure_body(
+    query: SwapQuery,
+    spec: SwapSpec,
+    session_id: str,
+    effective: date,
+    maturity: date,
+) -> dict[str, Any]:
+    """IR.NDSFX: fixed vs fixed (no FloatingIndex on either leg)."""
+    if not spec.base_currency:
+        raise StructuringError("NDSFX spec must define base_currency.")
+
+    opposite = "Pay" if query.direction == "Receive" else "Receive"
+    freq     = query.pay_frequency or spec.pay_frequency
+    # Bond conventions (query) apply to USD leg only; local leg uses market spec (e.g. CLP ACT/360).
+    leg1_dc = query.day_count or spec.day_count
+    leg2_dc = spec.day_count
+
+    leg1_ccy = spec.base_currency
+    leg2_ccy = spec.currency
+
+    leg1_fixed = float(query.fixed_rate) if query.fixed_rate is not None else 0.01
+    leg2_fixed = (
+        float(query.ndsfx_leg2_fixed_rate)
+        if query.ndsfx_leg2_fixed_rate is not None
+        else 0.01
+    )
+
+    leg1_notional = query.notional
+    leg2_notional = query.leg2_notional if query.leg2_notional >= 1 else query.notional
+
+    leg1 = _build_leg_params(
+        direction=query.direction,
+        notional=leg1_notional,
+        currency=leg1_ccy,
+        effective=effective,
+        maturity=maturity,
+        fixed_rate=leg1_fixed,
+        float_index=None,
+        pay_frequency=freq,
+        day_count=leg1_dc,
+    )
+    leg2 = _build_leg_params(
+        direction=opposite,
+        notional=leg2_notional,
+        currency=leg2_ccy,
+        effective=effective,
+        maturity=maturity,
+        fixed_rate=leg2_fixed,
+        float_index=None,
+        pay_frequency=freq,
+        day_count=leg2_dc,
+        spread=0.0,
+    )
+
+    return {
+        "sessionId": session_id,
+        "tail": spec.deal_type,
+        "dealStructureOverride": {
+            "param": [],
+            "leg": [{"param": leg1}, {"param": leg2}],
+        },
+    }
+
+
 def _build_structure_body(
     query:     SwapQuery,
     spec:      SwapSpec,
@@ -206,6 +284,9 @@ def _build_structure_body(
     For OIS swaps both legs use ``spec.currency`` and ``query.notional``.
     The MARS API handles FX conversion internally for NDS deals.
     """
+    if spec.deal_type == "IR.NDSFX":
+        return _build_ndsfx_structure_body(query, spec, session_id, effective, maturity)
+
     opposite = "Pay" if query.direction == "Receive" else "Receive"
     freq     = query.pay_frequency or spec.pay_frequency
     dc       = query.day_count or spec.day_count
@@ -213,6 +294,16 @@ def _build_structure_body(
     is_xccy  = bool(spec.base_currency)
     leg1_ccy = spec.base_currency if is_xccy else spec.currency
     leg2_ccy = spec.currency
+
+    # XCCY: USD (or base) leg may follow bond conventions; local float leg follows template spec.
+    if is_xccy:
+        leg1_freq = query.pay_frequency or spec.pay_frequency
+        leg1_dc   = query.day_count or spec.day_count
+        leg2_freq = spec.pay_frequency
+        leg2_dc   = spec.day_count
+    else:
+        leg1_freq = leg2_freq = freq
+        leg1_dc = leg2_dc = dc
 
     leg1 = _build_leg_params(
         direction=query.direction,
@@ -222,8 +313,8 @@ def _build_structure_body(
         maturity=maturity,
         fixed_rate=query.fixed_rate if query.fixed_rate is not None else 0.0,
         float_index=None,
-        pay_frequency=freq,
-        day_count=dc,
+        pay_frequency=leg1_freq,
+        day_count=leg1_dc,
     )
     leg2 = _build_leg_params(
         direction=opposite,
@@ -233,8 +324,8 @@ def _build_structure_body(
         maturity=maturity,
         fixed_rate=None,
         float_index=query.float_index or spec.float_index,
-        pay_frequency=freq,
-        day_count=dc,
+        pay_frequency=leg2_freq,
+        day_count=leg2_dc,
         spread=query.spread,
     )
 
@@ -293,18 +384,21 @@ def _build_solve_body(
     valuation:   date,
     curve_date:  date,
     solve_for:   str = "Coupon",
+    solve_for_leg: int | None = None,
 ) -> dict[str, Any]:
     """Construct the solveRequest body to find the target field (NPV = 0).
 
-    Coupon targets Leg 1; Spread targets Leg 2.
+    Coupon targets Leg 1; Spread targets Leg 2.  *solve_for_leg* overrides when set
+    (e.g. NDSFX solves FixedRate on leg 2).
     """
     leg_map = {"Coupon": 1, "Spread": 2}
+    leg = solve_for_leg if solve_for_leg is not None else leg_map.get(solve_for, 1)
     return {
         "solveRequest": {
             "identifier":    {"dealHandle": deal_handle},
             "input":         {"name": "Premium", "value": {"doubleVal": 0}},
             "solveFor":      solve_for,
-            "solveForLeg":   leg_map.get(solve_for, 1),
+            "solveForLeg":   leg,
             "valuationDate": str(valuation),
             "dealSession":   session_id,
             "marketDataDate": str(curve_date),
@@ -315,13 +409,43 @@ def _build_solve_body(
 def _parse_par_rate(solve_response: dict[str, Any]) -> float | None:
     """Extract the solved value from a solveResponse dict.
 
-    Bloomberg MARS uses the key "solveResult" (not "solvedValue").
+    Primary shape: ``solveResult.value.doubleVal``. Some responses omit the outer
+    ``solveResult`` wrapper or nest ``value`` differently — try fallbacks.
     """
-    try:
-        val = solve_response["solveResult"]["value"]["doubleVal"]
-        return float(val)
-    except (KeyError, TypeError, ValueError):
+    if not isinstance(solve_response, dict):
         return None
+
+    def _from_value_obj(v: Any) -> float | None:
+        if not isinstance(v, dict):
+            return None
+        raw = v.get("doubleVal")
+        if raw is None:
+            return None
+        try:
+            return float(raw)
+        except (TypeError, ValueError):
+            return None
+
+    sr = solve_response.get("solveResult")
+    if isinstance(sr, dict):
+        v = sr.get("value")
+        out = _from_value_obj(v)
+        if out is not None:
+            return out
+
+    v = solve_response.get("value")
+    out = _from_value_obj(v)
+    if out is not None:
+        return out
+
+    # Rare: doubleVal at top level
+    raw = solve_response.get("doubleVal")
+    if raw is not None:
+        try:
+            return float(raw)
+        except (TypeError, ValueError):
+            pass
+    return None
 
 
 # ===========================================================================
@@ -336,7 +460,7 @@ class SwapLiveRepository:
         self._client = client
 
     def price(self, query: SwapQuery) -> SwapResult:
-        specs = OIS_SWAP_SPECS if query.swap_type == "OIS" else XCCY_SWAP_SPECS
+        specs = _specs_for_query(query)
         spec  = specs[query.key]
 
         effective = query.effective_date
@@ -385,25 +509,54 @@ class SwapLiveRepository:
         records = pr.to_records(price_resp)
         metrics = records[0] if records else {}
 
-        # --- Solve for par rate (if no fixed rate provided) ---
+        # --- Solve for par rate ---
+        # XCCY IR.NDS: solve when no fixed_rate (par on float leg).
+        # IR.NDSFX: solve local FixedRate (leg 2) when USD leg has YTM (fixed_rate set).
+        # XCCY IR.NDS + fixed_rate set + solve_for Spread: par spread on float leg (leg 2) for NPV=0.
         par_rate: float | None = None
-        if query.fixed_rate is None:
+        solve_raw: float | None = None
+        need_solve = False
+        if query.swap_type == "NDSFX":
+            need_solve = query.fixed_rate is not None
+        elif query.swap_type == "XCCY" and query.fixed_rate is not None and query.solve_for == "Spread":
+            need_solve = True
+        elif query.fixed_rate is None:
+            need_solve = True
+
+        if need_solve:
             solve_body = _build_solve_body(
                 deal_handle, self._client.session_id,
                 query.valuation_date, query.curve_date,
                 solve_for=query.solve_for,
+                solve_for_leg=query.solve_for_leg if query.swap_type == "NDSFX" else None,
             )
             solve_resp = self._client.send("POST", "/marswebapi/v1/securitiesPricing", solve_body)
             if "error" not in solve_resp:
                 try:
-                    raw = solve_resp["results"][0]["solveResponse"]
-                    par_rate = _parse_par_rate(raw)
+                    first = solve_resp["results"][0]
                 except (KeyError, IndexError):
+                    first = {}
+                raw = first.get("solveResponse")
+                if raw is None and isinstance(first.get("pricingResultResponse"), dict):
+                    # Some MARS builds return solve output under pricingResultResponse
+                    prr = first["pricingResultResponse"]
+                    extra = prr.get("additionalResult") or []
+                    for p in extra:
+                        if not isinstance(p, dict):
+                            continue
+                        val = p.get("value")
+                        if isinstance(val, dict) and "doubleVal" in val:
+                            raw = {"value": val}
+                            break
+                if raw is not None:
+                    par_rate = _parse_par_rate(raw if isinstance(raw, dict) else {})
+                    solve_raw = par_rate
+                if par_rate is None:
                     logging.getLogger(__name__).warning(
                         "Failed to extract par rate from solve response: %s", solve_resp,
                     )
 
-        return SwapResult(metrics=metrics, par_rate=par_rate)
+        return SwapResult(metrics=metrics, par_rate=par_rate, solve_raw=solve_raw, deal_handle=deal_handle)
 
     def save_deal(self, query: SwapQuery) -> str:
         """Structure a temporary deal, then save it permanently via PATCH.
@@ -412,7 +565,7 @@ class SwapLiveRepository:
         2. PATCH /marswebapi/v1/deals/temporary/{dealHandle} with saveRequest
         Returns the permanent deal ID.
         """
-        specs = OIS_SWAP_SPECS if query.swap_type == "OIS" else XCCY_SWAP_SPECS
+        specs = _specs_for_query(query)
         spec = specs[query.key]
 
         struc_body = _build_structure_body(
@@ -448,7 +601,16 @@ class SwapDemoRepository:
         self._dir = snapshots_dir
 
     def price(self, query: SwapQuery) -> SwapResult:
-        filename = f"{query.key}_5Y.json"
+        if query.swap_type == "NDSFX":
+            filename = f"{query.key}_NDSFX_5Y.json"
+        elif (
+            query.swap_type == "XCCY"
+            and query.solve_for == "Spread"
+            and query.fixed_rate is not None
+        ):
+            filename = f"{query.key}_NDS_SPREAD.json"
+        else:
+            filename = f"{query.key}_5Y.json"
         path     = self._dir / filename
 
         if not path.exists():
@@ -461,8 +623,10 @@ class SwapDemoRepository:
         metrics  = payload.get("metrics", {})
         par_rate_raw = payload.get("par_rate")
         par_rate = float(par_rate_raw) if par_rate_raw is not None else None
+        sr_raw = payload.get("solve_raw")
+        solve_raw = float(sr_raw) if sr_raw is not None else par_rate
 
-        return SwapResult(metrics=metrics, par_rate=par_rate)
+        return SwapResult(metrics=metrics, par_rate=par_rate, solve_raw=solve_raw)
 
 
 # ===========================================================================

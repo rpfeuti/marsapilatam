@@ -36,6 +36,7 @@ st.markdown(
     f"**{t('app.demos_header').strip('#').strip()}**\n\n"
     f"| {t('app.table_page')} | {t('app.table_desc')} |\n"
     f"|---|---|\n"
+    f"| ✨ {t('chat.page_title')} | {t('app.demo_chat')} |\n"
     f"| 📈 {t('curves.page_title')} | {t('app.demo_curves')} |\n"
     f"| 📃 {t('nav.deal_info')} | {t('app.demo_dealinfo')} |\n"
     f"| 💱 {t('swaps.page_title')} | {t('app.demo_swaps')} |\n"

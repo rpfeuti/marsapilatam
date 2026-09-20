@@ -1,0 +1,33 @@
+---
+description: When user asks to create/structure/save an instrument, run a throwaway script using the existing service, save the deal, and return the Bloomberg deal ID in chat.
+alwaysApply: true
+---
+
+# Instrument Create — Script-Only Protocol
+
+When the user asks to **criar, estruturar, salvar ou precificar** any financial instrument
+(swap, NDS, NDF, NDSFX, bond asset swap, OIS, XCCY, etc.) WITHOUT explicitly requesting
+a new UI feature or service:
+
+1. Write a throwaway `_tmp_instrument.py` using the **existing service layer**
+2. Use `SwapPricingService.from_settings()` (or `BondReferenceService`, etc.)
+3. Call `.save_deal(query)` — returns the permanent Bloomberg deal ID
+4. Run the script, capture the deal ID
+5. Return the deal ID in the chat response
+6. Delete `_tmp_instrument.py` immediately after
+
+```python
+# ✅ CORRECT pattern
+from services.swaps_service import SwapPricingService, SwapQuery
+from datetime import date
+
+svc = SwapPricingService.from_settings()
+query = SwapQuery(deal_type="IR.NDS", ...)
+deal_id = svc.save_deal(query)
+print(f"Deal ID: {deal_id}")
+```
+
+❌ NEVER create a new service, page, or config for a one-off instrument request  
+❌ NEVER call MarsClient directly — always use the service layer  
+✅ ALWAYS delete the script after running  
+✅ ALWAYS return the Bloomberg deal ID in chat

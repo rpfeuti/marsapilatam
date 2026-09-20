@@ -172,6 +172,69 @@ XCCY_SWAP_SPECS: dict[str, SwapSpec] = {
     ),
 }
 
+
+# ---------------------------------------------------------------------------
+# NDSFX — fixed vs fixed (asset swap: USD YTM vs local fixed par CLP/COP/…)
+# Same curves/indices as XCCY; used by Risk Assistant `price_asset_swap` only.
+# ---------------------------------------------------------------------------
+
+XCCY_NDSFX_SPECS: dict[str, SwapSpec] = {
+    "USDCOP": SwapSpec(
+        label="USD/COP NDSFX",  deal_type="IR.NDSFX",
+        currency="COP",         float_index="COOVIBR",
+        notional=10_000_000,    default_tenor="5Y",
+        pay_frequency="Annual", day_count="ACT/360",
+        forward_curve="S329",   discount_curve="S329",
+        base_currency="USD",    fx_ticker="USDCOP",
+        leg1_forward_curve="S490", leg1_discount_curve="S490",
+    ),
+    "USDBRL": SwapSpec(
+        label="USD/BRL NDSFX",  deal_type="IR.NDSFX",
+        currency="BRL",         float_index="BZDIOVRA",
+        notional=10_000_000,    default_tenor="5Y",
+        pay_frequency="At Maturity", day_count="",
+        forward_curve="S89",    discount_curve="S89",
+        base_currency="USD",    fx_ticker="USDBRL",
+        leg1_forward_curve="S490", leg1_discount_curve="S490",
+    ),
+    "USDMXN": SwapSpec(
+        label="USD/MXN NDSFX",  deal_type="IR.NDSFX",
+        currency="MXN",         float_index="MXIBTIEF",
+        notional=10_000_000,    default_tenor="5Y",
+        pay_frequency="Monthly", day_count="ACT/360",
+        forward_curve="S583",   discount_curve="S583",
+        base_currency="USD",    fx_ticker="USDMXN",
+        leg1_forward_curve="S490", leg1_discount_curve="S490",
+    ),
+    "USDCLP": SwapSpec(
+        label="USD/CLP NDSFX",  deal_type="IR.NDSFX",
+        currency="CLP",         float_index="CLICP",
+        notional=10_000_000,    default_tenor="5Y",
+        pay_frequency="SemiAnnual", day_count="ACT/360",
+        forward_curve="S193",   discount_curve="S193",
+        base_currency="USD",    fx_ticker="USDCLP",
+        leg1_forward_curve="S490", leg1_discount_curve="S490",
+    ),
+    "USDPEN": SwapSpec(
+        label="USD/PEN NDSFX",  deal_type="IR.NDSFX",
+        currency="USD",         float_index="SOFRRATE",
+        notional=10_000_000,    default_tenor="5Y",
+        pay_frequency="Quarterly", day_count="ACT/360",
+        forward_curve="S490",   discount_curve="S490",
+        base_currency="PEN",    fx_ticker="USDPEN",
+        leg1_forward_curve="S374", leg1_discount_curve="S374",
+    ),
+    "USDEUR": SwapSpec(
+        label="USD/EUR NDSFX",  deal_type="IR.NDSFX",
+        currency="EUR",         float_index="ESTRON",
+        notional=10_000_000,    default_tenor="5Y",
+        pay_frequency="Annual", day_count="ACT/360",
+        forward_curve="S514",   discount_curve="S514",
+        base_currency="USD",    fx_ticker="EURUSD",
+        leg1_forward_curve="S490", leg1_discount_curve="S490",
+    ),
+}
+
 # Ordered label lists for UI selectboxes
 OIS_LABELS:  list[str] = [s.label for s in OIS_SWAP_SPECS.values()]
 XCCY_LABELS: list[str] = [s.label for s in XCCY_SWAP_SPECS.values()]

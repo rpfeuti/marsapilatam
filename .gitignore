@@ -50,3 +50,6 @@ blpapi-*/
 
 # Streamlit secrets (actual credentials — never commit)
 .streamlit/secrets.toml
+
+# Local-only documents (not part of the public app)
+docs/EstrategiaEmpresarial.pdf

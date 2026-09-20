@@ -1,0 +1,93 @@
+---
+description: Regras para o Risk Assistant — chatbot xAI (Grok) com function calling para Bloomberg MARS
+globs: services/chat_service.py,services/chat_tools.py,services/bond_reference_service.py,pages/risk_assistant.py,docs/risk_assistant.md
+alwaysApply: false
+---
+
+# Risk Assistant — xAI Function Calling
+
+## REGRA FUNDAMENTAL — Execução por Etapas
+
+**NUNCA iniciar uma etapa sem ordem explícita do usuário.**
+
+- Cada etapa tem um escopo fixo definido em `docs/risk_assistant.md`
+- Ao concluir uma etapa: reportar o que foi feito, marcar como concluída no todo list e **parar**
+- Não antecipar código da próxima etapa "enquanto está na mão"
+- Só avançar quando o usuário disser explicitamente (ex: "pode fazer a etapa 2", "vai", "próxima")
+
+```
+✅ Usuário: "pode fazer a etapa 2"  → executar etapa 2 completa, parar
+❌ Terminar etapa 1 e já começar etapa 2 por iniciativa própria
+❌ Adicionar tools "adiantando" trabalho de etapas futuras
+```
+
+## Visão Geral
+
+O Risk Assistant é um chatbot Streamlit que usa a **API xAI (Grok)** com **function calling**
+para acionar os serviços Bloomberg MARS já existentes no projeto.
+
+- API xAI é compatível com o SDK `openai` — base URL: `https://api.x.ai/v1`
+- Modelo padrão: configurado em `settings.xai_model` (ex: `grok-3`)
+- Chave: `settings.xai_api_key` (lida do `.env` como `XAI_API_KEY`)
+
+```python
+# ✅ CORRETO — cliente xAI via SDK openai
+from openai import OpenAI
+client = OpenAI(api_key=settings.xai_api_key, base_url="https://api.x.ai/v1")
+
+# ❌ PROIBIDO — nunca chamar a xAI diretamente via httpx/requests
+```
+
+## Arquitetura de Ferramentas (Tools)
+
+Cada tool mapeia **linguagem natural → serviço Bloomberg existente**.
+O `chat_tools.py` define as tools e `execute_tool`; o `chat_service.py` orquestra o loop xAI.
+
+| Tool | Serviço Bloomberg | Etapa |
+|------|-------------------|-------|
+| `lookup_bond` | `BondReferenceService` (BLPAPI) | 2b |
+| `price_bond_swap` | `SwapPricingService` (pacote IR.NDSFX + IR.NDS; template `local_equiv_fixed_and_float`) | 2c |
+| `price_asset_swap` | `SwapPricingService` (IR.NDSFX — asset swap fixo vs fixo) | 2 |
+| `save_asset_swap_deal` | `SwapPricingService.save_deal` (ID Bloomberg; live only) | 2 |
+| `price_swap` | `SwapPricingService` (OIS/XCCY) | 3 |
+| `run_stress_test` | `StressService` | 4 |
+| `run_krr` | `KrrService` | 5 |
+| `price_portfolio` | `PortfolioPricingService` | 6 |
+
+## Padrão de Implementação de Tools
+
+```python
+# 1. Definição JSON Schema (lista _TOOLS em chat_tools.py)
+{"type": "function", "function": {"name": "...", "parameters": {...}}}
+
+# 2. Dispatch em execute_tool()
+def execute_tool(name: str, args: dict) -> str: ...
+
+# 3. Implementação chama SEMPRE o service existente — NUNCA Bloomberg direto
+def _price_asset_swap(...) -> str:
+    svc = SwapPricingService.from_settings()
+    result = svc.price(SwapQuery(swap_type="NDSFX", solve_for_leg=2, ...))
+    return json.dumps({"local_fixed_par_rate_pct": ..., "solve_raw": result.solve_raw})
+
+def _save_asset_swap_deal(...) -> str:
+    svc = SwapPricingService.from_settings()
+    result = svc.price(query)
+    deal_id = svc.save_deal(replace(query, ndsfx_leg2_fixed_rate=result.solve_raw))
+    return json.dumps({"bloomberg_deal_id": deal_id})
+```
+
+## Instrumentos Disponíveis
+
+**OIS:** `COP` (IBR), `USD` (SOFR), `BRL` (CDI), `MXN`, `CLP`, `EUR`
+
+**XCCY/Asset Swap:** `USDCOP`, `USDBRL`, `USDMXN`, `USDCLP`, `USDPEN`, `USDEUR`
+
+## Regras Críticas
+
+- **`save_asset_swap_deal`:** chamar **somente** quando o usuário pedir explicitamente guardar/salvar o deal ou deal ID — **não** em todo pedido de asset swap; para precificação usar só `price_asset_swap`.
+- **NUNCA** chamar Bloomberg diretamente nas tools — sempre via `*Service.from_settings()`
+- **SEMPRE** tratar demo mode: services retornam dados pré-gravados quando `settings.demo_mode=True`
+- Retornar strings JSON das tools (o Grok interpreta e formata para o usuário)
+- Histórico de conversa em `st.session_state.messages` — nunca recriar o cliente a cada rerun
+- Ao adicionar nova tool: (1) JSON schema em `_TOOLS`, (2) `_<nome>()`, (3) dispatch em `execute_tool()`
+- Documentação completa em `docs/risk_assistant.md`; implementação das tools em `services/chat_tools.py`

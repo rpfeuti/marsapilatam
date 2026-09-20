@@ -1,0 +1,64 @@
+---
+description: Correct pattern for running stress/scenario analysis on a saved Bloomberg deal — identifier format, service usage, and result extraction.
+alwaysApply: true
+---
+
+# Stress Analysis — Correct Pattern
+
+## Deal Identifier Format
+
+Saved IR swap deal IDs **always need the ` Corp` yellow-key suffix** for pricing:
+
+```python
+# ❌ WRONG — returns error 105 "No valid security identifiers"
+deal_id = "SLNCRZ6K"
+
+# ✅ CORRECT
+deal_id = "SLNCRZ6K Corp"
+```
+
+## Service Usage
+
+Always use `StressService.from_settings()` — never call `MarsClient` directly for stress.
+
+```python
+from services.stress_service import StressService, StressScenario
+from configs.stress_config import IRRBB_TENORS
+from datetime import date
+
+svc = StressService.from_settings()
+
+# Flat parallel shift (+N bps across all IRRBB tenors)
+scenarios = [
+    StressScenario(
+        name=f"+{(i + 1) * 10}bps",
+        currency="USD",                          # match the swap's currency
+        tenor_shifts={t: float((i + 1) * 10) for t in IRRBB_TENORS},
+    )
+    for i in range(10)
+]
+
+result = svc.run_stress_test("SLNCRZ6K Corp", scenarios, date.today())
+```
+
+## Result Extraction
+
+`StressResult.base_metrics` and `ScenarioOutput.metrics` use `"MktVal"` (not `"MktValPortCcy"`) for single-deal stress:
+
+```python
+base_mtm = float(result.base_metrics.get("MktVal", 0))
+for sc in result.scenario_results:
+    mtm = float(sc.metrics.get("MktVal", 0))
+    delta = mtm - base_mtm
+```
+
+## Available Fields
+
+- `MktVal` — MTM in deal currency
+- `DV01` — dollar value of 1bp
+- `MktPx` — clean price / NPV %
+- Scenario fields: `MktVal`, `MktValPortCcy`, `DV01`, `DV01PortCcy`, `Delta`
+
+## Portfolio Stress
+
+For portfolio-level stress use `run_portfolio_stress_test(portfolio_name, scenarios, date)` and read `MktValPortCcy` instead.

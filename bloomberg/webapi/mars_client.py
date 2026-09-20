@@ -61,6 +61,9 @@ log = logging.getLogger(__name__)
 _POLL_WAIT_SECONDS: int = 10
 _POLL_MAX_ATTEMPTS: int = 120  # 20 minutes maximum
 
+# Include full API error body for auth / allowlist responses (IP may appear past 300 chars).
+_MAX_HTTP_ERROR_BODY: int = 65536
+
 
 _PRICING_ENDPOINTS: frozenset[str] = frozenset(
     {
@@ -77,6 +80,14 @@ def _results_endpoint(endpoint: str) -> str:
     if endpoint in _PRICING_ENDPOINTS:
         return "/marswebapi/v1/results/Pricing"
     return endpoint
+
+
+def _http_error_body_for_status(exc: httpx.HTTPStatusError) -> str:
+    """Return response body for error messages; full (capped) for 401/403 so allowlist IP is not truncated."""
+    text = exc.response.text or ""
+    if exc.response.status_code in (401, 403):
+        return text[:_MAX_HTTP_ERROR_BODY]
+    return text[:300]
 
 
 class MarsClient:
@@ -257,7 +268,7 @@ class MarsClient:
             resp.raise_for_status()
             return resp.json()
         except httpx.HTTPStatusError as exc:
-            body_text = exc.response.text[:300]
+            body_text = _http_error_body_for_status(exc)
             raise MarsApiError(
                 f"HTTP {exc.response.status_code} on {method} {endpoint}: {body_text}"
             ) from exc
@@ -283,7 +294,7 @@ class MarsClient:
                 resp.raise_for_status()
                 return resp.json()
         except httpx.HTTPStatusError as exc:
-            body_text = exc.response.text[:300]
+            body_text = _http_error_body_for_status(exc)
             raise MarsApiError(
                 f"HTTP {exc.response.status_code} on {method} {endpoint}: {body_text}"
             ) from exc

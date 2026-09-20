@@ -98,6 +98,11 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "PT": "Descrição",
         "ES": "Descripción",
     },
+    "app.demo_chat": {
+        "EN": "Ask about swap pricing, stress scenarios, DV01 sensitivity and asset swaps — xAI (Grok) + Bloomberg MARS",
+        "PT": "Pergunte sobre precificação de swaps, cenários de stress, DV01 e asset swaps — xAI (Grok) + Bloomberg MARS",
+        "ES": "Pregunte sobre valoración de swaps, escenarios de estrés, DV01 y asset swaps — xAI (Grok) + Bloomberg MARS",
+    },
     "app.demo_curves": {
         "EN": "Download and visualize interest rate curves via XMarket",
         "PT": "Baixar e visualizar curvas de juros via XMarket",
@@ -707,6 +712,100 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "EN": "No pricing result returned. Check your inputs.",
         "PT": "Nenhum resultado retornado. Verifique os parâmetros.",
         "ES": "No se obtuvo resultado. Verifique los parámetros.",
+    },
+
+    # ------------------------------------------------------------------
+    # sofr_swap page — USD SOFR swap market value calculator
+    # ------------------------------------------------------------------
+    "sofr.page_title": {
+        "EN": "SOFR Swap",
+        "PT": "Swap SOFR",
+        "ES": "Swap SOFR",
+    },
+    "sofr.title": {
+        "EN": "💵 USD SOFR Swap — Market Value",
+        "PT": "💵 Swap SOFR USD — Valor de Mercado",
+        "ES": "💵 Swap SOFR USD — Valor de Mercado",
+    },
+    "sofr.caption": {
+        "EN": "Enter the operation's characteristics and calculate its market value via the Bloomberg MARS API.",
+        "PT": "Informe as características da operação e calcule o valor de mercado via Bloomberg MARS API.",
+        "ES": "Ingrese las características de la operación y calcule el valor de mercado vía Bloomberg MARS API.",
+    },
+    "sofr.section_operation": {
+        "EN": "Operation Details",
+        "PT": "Características da Operação",
+        "ES": "Características de la Operación",
+    },
+    "sofr.section_valuation": {
+        "EN": "Valuation & Curves",
+        "PT": "Valoração e Curvas",
+        "ES": "Valoración y Curvas",
+    },
+    "sofr.button_calculate": {
+        "EN": "Calculate market value",
+        "PT": "Calcular valor de mercado",
+        "ES": "Calcular valor de mercado",
+    },
+    "sofr.info_idle": {
+        "EN": "Enter the swap's characteristics above and click **Calculate market value**.",
+        "PT": "Informe as características do swap acima e clique em **Calcular valor de mercado**.",
+        "ES": "Ingrese las características del swap arriba y haga clic en **Calcular valor de mercado**.",
+    },
+    "sofr.shock_header": {
+        "EN": "Rate Shock Simulation",
+        "PT": "Simulação de Choque de Taxas",
+        "ES": "Simulación de Choque de Tasas",
+    },
+    "sofr.shock_caption": {
+        "EN": "Impact on market value from a parallel +100bp / -100bp shift of the USD SOFR curve.",
+        "PT": "Impacto no valor de mercado de um deslocamento paralelo de +100bp / -100bp na curva USD SOFR.",
+        "ES": "Impacto en el valor de mercado de un desplazamiento paralelo de +100bp / -100bp en la curva USD SOFR.",
+    },
+    "sofr.shock_spinner": {
+        "EN": "Running rate shock scenarios…",
+        "PT": "Executando cenários de choque de taxas…",
+        "ES": "Ejecutando escenarios de choque de tasas…",
+    },
+    "sofr.shock_up_label": {
+        "EN": "+100bps",
+        "PT": "+100bps",
+        "ES": "+100bps",
+    },
+    "sofr.shock_down_label": {
+        "EN": "-100bps",
+        "PT": "-100bps",
+        "ES": "-100bps",
+    },
+    "sofr.shock_base_label": {
+        "EN": "Base MktVal",
+        "PT": "MktVal Base",
+        "ES": "MktVal Base",
+    },
+    "sofr.shock_col_scenario": {
+        "EN": "Scenario",
+        "PT": "Cenário",
+        "ES": "Escenario",
+    },
+    "sofr.shock_col_mtm": {
+        "EN": "MktVal",
+        "PT": "MktVal",
+        "ES": "MktVal",
+    },
+    "sofr.shock_col_delta": {
+        "EN": "Δ vs Base",
+        "PT": "Δ vs Base",
+        "ES": "Δ vs Base",
+    },
+    "sofr.shock_demo_note": {
+        "EN": "Demo mode: shock values are estimated linearly from the base DV01 (no live scenario call).",
+        "PT": "Modo demo: valores de choque estimados linearmente a partir do DV01 base (sem chamada de cenário ao vivo).",
+        "ES": "Modo demo: valores de choque estimados linealmente a partir del DV01 base (sin llamada de escenario en vivo).",
+    },
+    "sofr.shock_error": {
+        "EN": "Rate shock simulation failed: {error}",
+        "PT": "Falha na simulação de choque de taxas: {error}",
+        "ES": "Error en la simulación de choque de tasas: {error}",
     },
 
     # ------------------------------------------------------------------
@@ -1497,6 +1596,50 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "EN": "Could not fetch S490: {error}",
         "PT": "Não foi possível buscar S490: {error}",
         "ES": "No se pudo obtener S490: {error}",
+    },
+
+    # ------------------------------------------------------------------
+    # Risk Assistant (chat) page
+    # ------------------------------------------------------------------
+    "chat.page_title": {
+        "EN": "Risk Assistant",
+        "PT": "Assistente de Riscos",
+        "ES": "Asistente de Riesgos",
+    },
+    "chat.title": {
+        "EN": "🤖 Risk Assistant",
+        "PT": "🤖 Assistente de Riscos",
+        "ES": "🤖 Asistente de Riesgos",
+    },
+    "chat.caption": {
+        "EN": "Ask about swap pricing, stress scenarios, DV01 sensitivity, and asset swaps — powered by xAI (Grok) + Bloomberg MARS.",
+        "PT": "Pergunte sobre precificação de swaps, cenários de stress, sensibilidade DV01 e asset swaps — via xAI (Grok) + Bloomberg MARS.",
+        "ES": "Pregunte sobre valoración de swaps, escenarios de estrés, sensibilidad DV01 y asset swaps — vía xAI (Grok) + Bloomberg MARS.",
+    },
+    "chat.demo_notice": {
+        "EN": "Demo mode — the assistant will use pre-loaded Bloomberg data. Results are illustrative.",
+        "PT": "Modo demo — o assistente usará dados Bloomberg pré-carregados. Resultados são ilustrativos.",
+        "ES": "Modo demo — el asistente usará datos Bloomberg pre-cargados. Los resultados son ilustrativos.",
+    },
+    "chat.input_placeholder": {
+        "EN": "Ask about swap pricing, stress scenarios, DV01...",
+        "PT": "Pergunte sobre precificação de swaps, cenários de stress, DV01...",
+        "ES": "Pregunte sobre valoración de swaps, escenarios de estrés, DV01...",
+    },
+    "chat.thinking": {
+        "EN": "Thinking… (Bloomberg + AI can take 1–2 minutes)",
+        "PT": "A processar… (Bloomberg + IA podem levar 1–2 minutos)",
+        "ES": "Procesando… (Bloomberg + IA pueden tardar 1–2 minutos)",
+    },
+    "chat.clear_btn": {
+        "EN": "Clear conversation",
+        "PT": "Limpar conversa",
+        "ES": "Limpiar conversación",
+    },
+    "chat.model_caption": {
+        "EN": "Model: {model}",
+        "PT": "Modelo: {model}",
+        "ES": "Modelo: {model}",
     },
     "async_swaps.note_methodology": {
         "EN": "**Methodology** — For each tenor, MARS structures a temporary `IR.OIS.SOFR` swap "

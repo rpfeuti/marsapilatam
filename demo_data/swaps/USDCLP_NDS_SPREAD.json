@@ -1,0 +1,8 @@
+{
+  "key": "USDCLP",
+  "swap_type": "XCCY",
+  "solve_for": "Spread",
+  "par_rate": -42.35,
+  "solve_raw": -42.35,
+  "metrics": {}
+}

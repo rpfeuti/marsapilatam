@@ -102,6 +102,13 @@ class StressRepository(Protocol):
         valuation_date: date,
     ) -> StressResult: ...
 
+    def run_stress_test_on_handle(
+        self,
+        deal_handle: str,
+        scenarios: list[StressScenario],
+        valuation_date: date,
+    ) -> StressResult: ...
+
 
 # ===========================================================================
 # Live repository
@@ -192,11 +199,12 @@ class StressLiveRepository:
 
     def _price_with_scenarios(
         self,
-        deal_id: str,
+        identifier: dict[str, Any],
         scenario_ids: list[str],
         valuation_date: date,
     ) -> dict[str, Any]:
-        """Price a deal with base case + scenario overlays."""
+        """Price a deal (by any identifier — saved dealId or temporary dealHandle) with
+        base case + scenario overlays."""
         body: dict[str, Any] = {
             "securitiesPricingRequest": {
                 "pricingParameter": {
@@ -210,7 +218,7 @@ class StressLiveRepository:
                 },
                 "security": [
                     {
-                        "identifier": {"bloombergDealId": deal_id},
+                        "identifier": identifier,
                         "position": 1,
                     }
                 ],
@@ -335,6 +343,28 @@ class StressLiveRepository:
         scenarios: list[StressScenario],
         valuation_date: date,
     ) -> StressResult:
+        return self._run_stress_test_with_identifier(
+            {"bloombergDealId": deal_id}, scenarios, valuation_date,
+        )
+
+    def run_stress_test_on_handle(
+        self,
+        deal_handle: str,
+        scenarios: list[StressScenario],
+        valuation_date: date,
+    ) -> StressResult:
+        """Stress a temporary (unsaved) deal, identified by its dealHandle from
+        POST /marswebapi/v1/deals/temporary, instead of a saved bloombergDealId."""
+        return self._run_stress_test_with_identifier(
+            {"dealHandle": deal_handle}, scenarios, valuation_date,
+        )
+
+    def _run_stress_test_with_identifier(
+        self,
+        identifier: dict[str, Any],
+        scenarios: list[StressScenario],
+        valuation_date: date,
+    ) -> StressResult:
         created_ids: list[str] = []
         id_to_scenario: dict[str, StressScenario] = {}
 
@@ -349,7 +379,7 @@ class StressLiveRepository:
                 created_ids.append(sid)
                 id_to_scenario[sid] = sc
 
-            resp = self._price_with_scenarios(deal_id, created_ids, valuation_date)
+            resp = self._price_with_scenarios(identifier, created_ids, valuation_date)
 
             if "error" in resp:
                 return StressResult(
@@ -463,6 +493,15 @@ class StressDemoRepository:
             ))
         return StressResult(base_metrics=base, scenario_results=outputs)
 
+    def run_stress_test_on_handle(
+        self,
+        deal_handle: str,
+        scenarios: list[StressScenario],
+        valuation_date: date,
+    ) -> StressResult:
+        """Demo mode has no real dealHandle — reuse the same fixed demo shape."""
+        return self.run_stress_test(deal_handle, scenarios, valuation_date)
+
 
 # ===========================================================================
 # Service (orchestrator)
@@ -482,6 +521,15 @@ class StressService:
         valuation_date: date,
     ) -> StressResult:
         return self._repo.run_stress_test(deal_id, scenarios, valuation_date)
+
+    def run_stress_test_on_handle(
+        self,
+        deal_handle: str,
+        scenarios: list[StressScenario],
+        valuation_date: date,
+    ) -> StressResult:
+        """Stress a temporary (unsaved) deal by its dealHandle instead of a saved dealId."""
+        return self._repo.run_stress_test_on_handle(deal_handle, scenarios, valuation_date)
 
     def run_portfolio_stress_test(
         self,

@@ -55,6 +55,9 @@ class Settings(BaseSettings):
     blpapi_host: str = Field(default="localhost", description="Bloomberg Desktop API host")
     blpapi_port: int = Field(default=8194,        description="Bloomberg Desktop API port")
 
+    xai_api_key: str = Field(default="", description="xAI (Grok) API key")
+    xai_model:   str = Field(default="grok-3", description="xAI model name (e.g. grok-3, grok-3-mini)")
+
     @property
     def demo_mode(self) -> bool:
         """True when Bloomberg credentials are not configured."""
