@@ -122,11 +122,26 @@ class ChatService:
         """Public entry point used by the Streamlit Risk Assistant page."""
         return self.chat_loop(messages)
 
+    @staticmethod
+    def _secret(name: str, fallback: str = "") -> str:
+        try:
+            import streamlit as st
+
+            if name in st.secrets:
+                value = st.secrets[name]
+                if value is not None and str(value).strip():
+                    return str(value).strip()
+        except Exception:
+            pass
+        return fallback
+
     @classmethod
     def from_settings(cls) -> ChatService:
-        if not settings.xai_api_key:
+        api_key = cls._secret("XAI_API_KEY", settings.xai_api_key)
+        model = cls._secret("XAI_MODEL", settings.xai_model) or "grok-3"
+        if not api_key:
             raise RuntimeError(
                 "XAI_API_KEY não configurado. Adicione XAI_API_KEY no .env local "
-                "ou em App settings → Secrets no Streamlit Cloud."
+                "ou em App settings → Secrets no Streamlit Cloud, depois faça Reboot do app."
             )
-        return cls(api_key=settings.xai_api_key, model=settings.xai_model)
+        return cls(api_key=api_key, model=model)
